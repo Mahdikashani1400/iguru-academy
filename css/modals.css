@@ -1,0 +1,44 @@
+.modals {
+  z-index: 9999999999999999999;
+}
+.user__basket-modal {
+  width: 375px;
+  min-height: 33%;
+  max-height: calc(100vh - 30px);
+  padding: 39px 34px 20px;
+  text-align: center;
+  left: 30px;
+  top: 20px;
+}
+.search__box-modal {
+  left: 79px;
+  top: 144px;
+  padding: 38px 40px;
+}
+.search__box-modal input {
+  width: 280px;
+}
+.search__box-icon {
+  left: 48px;
+  top: 46px;
+  padding: 0.5rem 0.7rem;
+}
+.search__box-icon svg {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* input */
+input:focus,
+input {
+  outline: none;
+  border: none;
+}
+input::placeholder {
+  transition: 0.3s all;
+}
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}

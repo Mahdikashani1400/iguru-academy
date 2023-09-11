@@ -1,0 +1,243 @@
+.navbar__info .container-fluid {
+  height: 45px;
+  background: var(--primary-bg-light);
+}
+.navbar__info * {
+  color: rgb(172, 172, 174, 1);
+  font-size: 14px !important;
+}
+.navbar__info__right {
+  border-left: 1px solid rgb(172 172 174 / 20%);
+  text-align: end;
+}
+.navbar__info__right-place:hover,
+.navbar__info__left-gmail a:hover {
+  color: var(--primary-color-green);
+}
+.navbar__info__left-login .btn {
+  height: 100%;
+}
+.navbar__info__left-accessibility {
+  height: 100%;
+}
+.navbar__info__left-login .btn {
+  background: var(--primary-color-orange);
+  color: var(--white-color);
+  border-radius: 0;
+  transition: 0.4s all;
+}
+.navbar__info__left-login .btn:hover {
+  background: var(--primary-color-green);
+}
+.navbar__info__left-login .btn path {
+  color: var(--white-color);
+}
+.navbar__info__left-social-media {
+  cursor: pointer;
+  height: 100%;
+}
+.navbar__info__left-social-media svg {
+  width: 16px;
+  height: 16px;
+}
+.navbar__info__left-social-media path {
+  transition: 0.5s all;
+}
+.navbar__info__left-social-media-icon:hover path {
+  color: var(--primary-color-orange);
+}
+.navbar__brand {
+  max-width: 110px;
+}
+
+.navbar__header__menu {
+  position: absolute;
+  border-bottom-color: rgb(157 155 152 / 68%) !important;
+
+  width: 100%;
+  z-index: 1111;
+}
+.plus-toggle::after {
+  content: "+";
+
+  padding-right: 7px;
+}
+.nav-item > a {
+  font-weight: 600;
+  /* padding: 2.3rem 0; */
+}
+
+.nav-item.dropdown .dropdown-menu {
+  left: -33px;
+  background: rgb(36 41 55);
+}
+.nav-item.dropdown .dropdown-menu a {
+  color: var(--white-color);
+  font-size: 18px;
+  font-weight: bold;
+  padding-right: 2.5rem;
+  padding-left: 7rem;
+}
+.nav-item.dropdown .dropdown-menu::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 12px;
+  top: -12px;
+  right: 0;
+}
+
+.dropdown-item {
+  transition: 0.4s all;
+}
+.dropdown-item:hover {
+  color: var(--primary-color-orange) !important;
+  background: none;
+}
+
+.navbar__icon__box {
+  color: #fff;
+}
+.navbar__icon__box svg {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.check-basket,
+.check-search {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s all;
+}
+.bi-bag-check:hover .check-basket,
+.bi-search-heart:hover .check-search {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar .line-bottom-item {
+  position: absolute;
+  bottom: -1px;
+  left: 60.8073%;
+  width: 78px;
+  height: 3px;
+  border-radius: 100px;
+  background: #fff;
+  transition: 0.5s all;
+}
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler svg {
+  color: var(--white-color) !important;
+  font-size: 27px;
+}
+#navbarSupportedContent .close-icon {
+  /* right:0;
+  
+  padding: 1rem; */
+}
+#navbarSupportedContent .close-icon svg {
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  left: 0;
+}
+
+@media screen and (min-width: 1200px) {
+  .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease 0s;
+  }
+  .nav-item.dropdown:hover .dropdown-menu {
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+  }
+  #navbarSupportedContent .navbar-nav {
+    background-color: transparent !important;
+  }
+  #navbarSupportedContent .navbar-nav a {
+    color: var(--white-color) !important;
+  }
+  .map-footer {
+    height: 165px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .form__container {
+    position: relative;
+  }
+  .categories__courses-timer-number {
+    font-size: 70px !important;
+    gap: 2rem !important;
+  }
+  .Satisfaction__content {
+    padding: 3rem 4rem 4rem !important;
+  }
+}
+@media screen and (max-width: 1199.5px) {
+  .navbar__header__menu {
+    height: 100px;
+    background: rgb(45 45 45) !important;
+  }
+  .navbar-nav {
+    overflow: auto;
+    padding-top: 4.5rem;
+  }
+  .navbar-collapse {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: all 0.4s ease 0s;
+  }
+  .map-footer {
+    height: 125px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .about__us__img {
+    width: 500px;
+    height: 500px;
+  }
+  .about__us__img img {
+    border-radius: 50%;
+  }
+  .people-confirmation {
+    width: 110px;
+    height: 110px;
+  }
+  .people-confirmation * {
+    font-size: 18px;
+  }
+  .about__us_courses-menu a::before {
+    top: 18%;
+    right: 0;
+    height: 15%;
+  }
+  .categories__courses-timer-number {
+    font-size: 40px !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .description__text-p {
+    font-size: 75%;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .course__box-title {
+    font-size: 16px;
+  }
+  .brand__slider {
+    padding: 2rem 0;
+  }
+  .categories__courses-timer-number {
+    font-size: 30px !important;
+  }
+}

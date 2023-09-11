@@ -1,0 +1,12 @@
+@import url("../vendor/slick-slider/slick.css");
+@import url("../vendor/slick-slider/slick-theme.css");
+@import "../vendor/Bootstrap/bootstrap.min.css";
+@import "./reset.css";
+@import "./variables.css";
+@import "./fonts.css";
+@import "./modals.css";
+@import "./top-bar.css";
+@import "./main-header.css";
+@import "./footer.css";
+@import "./responsive.css";
+
