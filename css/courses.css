@@ -238,7 +238,7 @@
 
 .learning__tag-box {
   cursor: pointer;
-  background: rgb(246, 246, 246);
+  background: rgb(155 155 155 / 12%);
   color: #5f5f5f;
   font-size: 14px;
   transition: 0.3s all;

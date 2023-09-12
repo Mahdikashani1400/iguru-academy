@@ -17,7 +17,7 @@ function getTitlePage(title, src) {
           <a href="" class="nav-link position-relative">صفحه اصلی</a
           ><span class="location-space fs-5">></span
           ><a href="" class="nav-link position-relative active"
-            >لیست دوره ها</a
+            >${title}</a
           >
         </ul>
       </div>
