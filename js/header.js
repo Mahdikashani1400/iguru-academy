@@ -202,17 +202,17 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
@@ -229,17 +229,17 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
@@ -256,17 +256,17 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-muted plus-toggle"
+                  <a href="" class="dropdown-item text-white plus-toggle"
                     >زیر منو</a
                   >
                 </li>
@@ -377,5 +377,4 @@ function getHeader() {
   });
 }
 
-
-export {getHeader}
+export { getHeader };

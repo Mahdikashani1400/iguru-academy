@@ -180,7 +180,7 @@ img {
 }
 
 .text-orange {
-  color: var(--primary-color-orange);
+  color: var(--primary-color-orange) !important;
 }
 .bg-orange {
   background-color: var(--primary-color-orange);

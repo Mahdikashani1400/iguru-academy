@@ -7,6 +7,10 @@
 .page-footer * {
   color: var(--white-color);
 }
+.footer-information {
+  margin: 5rem auto !important;
+  width: fit-content;
+}
 .footer-contact svg {
   font-size: 15px;
   cursor: pointer;
@@ -18,7 +22,9 @@
 .footer-contact svg:hover path {
   color: var(--white-color);
 }
-
+.footer-courses li {
+  padding: 0.3rem 0;
+}
 .footer-courses a {
   color: var(--text-gray);
 }
@@ -33,6 +39,28 @@
   text-align: center !important;
   color: var(--gray-color);
 }
+.under__line-animate::after,
+.under__line-animate::before {
+  position: absolute;
+  content: "";
+  height: 4px;
+  bottom: -5px;
+  width: 0;
+  background: var(--primary-color-green);
+  transition: 0.5s all;
+  right: 50%;
+}
+.under__line-animate:hover {
+  color: var(--primary-color-green);
+}
+.under__line-animate:hover::before {
+  width: 50%;
+  left: 0;
+}
+.under__line-animate:hover::after {
+  width: 50%;
+  right: 0;
+}
 @media screen and (min-width: 992px) {
   .footer-copyright {
     font-size: 16px;
@@ -46,7 +74,7 @@
     height: 165px;
   }
 }
-@media screen and (min-width: 1199.5px) {
+@media screen and (max-width: 1200px) {
   .map-footer {
     height: 125px;
   }

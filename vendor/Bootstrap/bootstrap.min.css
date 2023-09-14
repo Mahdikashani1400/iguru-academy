@@ -157,12 +157,12 @@ h3 {
 }
 .h4,
 h4 {
-  font-size: calc(1.275rem + 0.3vw);
+  font-size: calc(1.275rem + 0.3vw) !important;
 }
 @media (min-width: 1200px) {
   .h4,
   h4 {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
 }
 .h5,

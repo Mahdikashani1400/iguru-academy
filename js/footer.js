@@ -5,11 +5,11 @@ function getFooter() {
   <!-- Grid row -->
   <div class="row gy-5">
     <!-- Grid column -->
-    <div class="col-lg-3 mb-lg-0 mb-3 order-3 order-lg-1">
+    <div class="col-lg-3 my-lg-0 mb-3 order-3 order-lg-1 ps-lg-5">
       <!-- Links -->
 
       <ul
-        class="footer-info list-unstyled d-flex flex-column text-end gap-4"
+        class="footer-info list-unstyled d-flex flex-column text-end gap-3"
       >
         <li class="pb-2">
           <img
@@ -20,17 +20,17 @@ function getFooter() {
           />
         </li>
         <li>
-          <span class="text-orange">آدرس:</span>
+          <span class="text-orange fw-bold">آدرس:</span>
           <span class="footer-address"
             >ایران ،استان خراسان رضوی، مشهدمقدس</span
           >
         </li>
         <li>
-          <span class="text-orange">ایمیل:</span>
+          <span class="text-orange fw-bold">ایمیل:</span>
           <span class="footer-email">iguru@mail.com</span>
         </li>
         <li>
-          <span class="text-orange">تلفن:</span>
+          <span class="text-orange fw-bold">تلفن:</span>
           <span class="footer-phone">02112345678</span>
         </li>
         <li class="d-flex gap-4 footer-contact">
@@ -43,12 +43,12 @@ function getFooter() {
     <!-- Grid column -->
 
     <!-- Grid column -->
-    <div class="col-lg-3 col-md-6 mb-lg-0 mb-3 order-2 order-md-1">
+    <div class="col-lg-3 col-md-6 my-lg-0 mb-3 order-2 order-md-1">
       <!-- Links -->
       <h4 class="text-uppercase pb-4 text-end">دوره های محبوب</h4>
 
       <ul
-        class="footer-courses list-unstyled d-flex flex-column text-end gap-2"
+        class="footer-courses list-unstyled d-flex flex-column text-end"
       >
         <li>
           <a href="#!" class="under__line-animate position-relative"
@@ -79,7 +79,7 @@ function getFooter() {
     </div>
     <!-- Grid column -->
     <div
-      class="col-lg-6 col-md-6 mt-lg-0 mt-3 order-1 order-md-2 order-lg-3 d-flex flex-column justify-content-center"
+      class="col-lg-6 col-md-6 my-lg-0 mt-3 order-1 order-md-2 order-lg-3 d-flex flex-column"
     >
       <!-- Content -->
       <h4 class="text-uppercase text-end">ما اینجا هستیم</h4>
@@ -104,4 +104,4 @@ function getFooter() {
 </div>
 <!-- Copyright -->`;
 }
-export {getFooter}
+export { getFooter };
