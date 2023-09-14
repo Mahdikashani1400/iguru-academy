@@ -31,14 +31,25 @@
 }
 
 /* input */
+input,
+textarea {
+  background-color: #f3f3f3 !important;
+  outline: none !important;
+  border: none !important;
+  transition: 0.3s all !important;
+}
+
 input:focus,
-input {
+textarea:focus {
   outline: none;
   border: none;
+  background-color: #eef1f2 !important;
 }
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   transition: 0.3s all;
 }
-input:focus::-webkit-input-placeholder {
-  color: transparent;
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: transparent !important;
 }

@@ -209,7 +209,7 @@
   top: 144px;
   padding: 48px 0;
 }
-.learning_search-box input {
+/* .learning_search-box input {
   background-color: #f3f3f3;
   outline: none !important;
   border: none !important;
@@ -217,7 +217,7 @@
 }
 .learning_search-box input:focus {
   background-color: #eef1f2;
-}
+} */
 .learning_search-box .search__box-icon {
   cursor: pointer;
   left: 7px;
