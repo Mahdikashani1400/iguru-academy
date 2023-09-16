@@ -1,0 +1,438 @@
+@import url("../vendor/slick-slider/slick.css");
+@import url("../vendor/slick-slider/slick-theme.css");
+@import "../vendor/Bootstrap/bootstrap.min.css";
+@import "./reset.css";
+@import "./variables.css";
+@import "./fonts.css";
+@import "./modals.css";
+@import "./top-bar.css";
+@import "./footer.css";
+@import "./responsive.css";
+#main .description {
+  position: relative;
+  /* background-image: url(../img/bg/discover_page-bg.jpg); */
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.description__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: brightness(0.9);
+}
+.description .container * {
+  /* z-index: 22; */
+}
+.description .container {
+  margin-top: 200px;
+  z-index: 11;
+}
+.description__title-p {
+  position: relative;
+}
+.description__title-p::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 70%;
+  background: var(--primary-color-orange);
+  right: -10px;
+  top: 5px;
+}
+.description__title-h {
+}
+.description__location .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--white-color);
+  bottom: 3px;
+  left: 0;
+  transition: 0.4s all ease-in-out;
+}
+.description__location .nav-link.active::after {
+  width: 100%;
+  transition: 0.7s all ease-out;
+}
+.description__location .nav-link:not(.active):hover ~ .active::after {
+  width: 0;
+}
+.description__location .nav-link:not(.active):hover::after {
+  width: 100%;
+}
+.description__text {
+  max-width: 600px;
+  font-size: 20px;
+}
+.description__btn .btn {
+  background: var(--primary-color-green);
+  border: 2px solid var(--primary-color-green);
+  color: var(--white-color);
+}
+.description__btn .btn:hover {
+  background: transparent;
+}
+
+/* articls */
+.articls__bg-color {
+  background: #f5f7f8;
+  height: 50%;
+  z-index: -1;
+}
+
+.articls__play__video,
+.articls__play-border {
+  width: 50px;
+  height: 50px;
+}
+
+.articls__play-border {
+  animation: animate-border 3.9s linear 0s infinite;
+  border: 0.5px solid #dddada;
+  opacity: 0;
+}
+.articls__play-border.c1 {
+  animation-delay: 0s;
+}
+.articls__play-border.c2 {
+  animation-delay: 1.3s;
+}
+.articls__play-border.c3 {
+  animation-delay: 2.6s;
+}
+@keyframes animate-border {
+  0% {
+  }
+  25% {
+    padding: 1.5rem;
+  }
+  50% {
+    padding: 2.5rem;
+    opacity: 0.8;
+  }
+  /* 70% {
+    padding: 3.5rem;
+  } */
+  90% {
+    opacity: 0.7;
+  }
+  95% {
+    opacity: 0.3;
+  }
+  100% {
+    padding: 4.5rem;
+    opacity: 0;
+  }
+}
+.articls__play__video svg {
+  width: 25px;
+  height: 25px;
+  color: var(--white-color);
+}
+.about__us__description .span {
+  position: relative;
+  font-weight: 800;
+}
+.about__us__description .span::before {
+  right: -10px;
+  height: 18px;
+  top: 3px;
+}
+.articls__information-box-content {
+  cursor: pointer;
+  transition: all 0.6s;
+}
+.articls__information-box-content:hover {
+  background: var(--primary-color-orange) !important;
+  transition: all 0.4s;
+}
+.articls__information-icon svg {
+  width: 38px;
+  height: 38px;
+  color: var(--primary-color-orange);
+  transition: all 0.4s;
+}
+.articls__information-box-content:hover * {
+  color: var(--white-color) !important;
+}
+
+/* about-us */
+.content {
+  position: relative;
+  padding-bottom: 8rem;
+}
+
+.img {
+  position: relative;
+  height: 470px;
+}
+
+.img .bg-green {
+  width: 80px;
+  height: 80px;
+  right: 10%;
+  top: 3%;
+  z-index: 1;
+}
+.img .bg-orange {
+  width: 25px;
+  height: 25px;
+  left: 20%;
+  top: 65px;
+  z-index: 1;
+}
+.people-confirmation {
+  bottom: -6px;
+  left: 75px;
+  z-index: 1111111;
+  width: 150px;
+  height: 150px;
+  box-shadow: 1px 3px 7px #86808044, 1px 3px 7px #86808044,
+    1px 3px 7px #86808044;
+}
+.people-confirmation * {
+  font-weight: bold;
+}
+.content .span {
+  position: relative;
+  font-weight: 800;
+}
+.content .span::before {
+  right: -10px;
+  height: 18px;
+  top: 3px;
+}
+.description button {
+  border: 2px solid var(--primary-color-orange);
+}
+.description button:hover {
+  background: transparent;
+  border: 2px solid var(--primary-color-orange);
+  color: var(--primary-bg-light) !important;
+}
+.line-side::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  background: #ded3d3df;
+}
+.skills-progress-container {
+  height: 60px;
+}
+.skills-progress-bar-left {
+  position: absolute;
+  box-shadow: 0 0 2px #aca8a8;
+  top: -6px;
+  right: var(--progress-length, 70%);
+  width: 15px;
+  height: 15px;
+}
+.skills-info {
+  top: -20px;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.skills-progress::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  right: 0;
+  width: var(--progress-length, 70%);
+  background: var(--primary-color-green);
+}
+.skills button:hover {
+  background: var(--primary-color-orange);
+}
+/* info */
+/* .info {
+  margin-bottom: 10rem;
+}
+
+.info-title .h3 {
+  font-size: 40px;
+}
+.info-title .h5 {
+  font-size: 22px;
+}
+.info-title.line-side::before {
+  content: "";
+  position: absolute;
+  height: 91%;
+  top: 2px;
+  right: 76px;
+} */
+
+/* form */
+input {
+}
+input::placeholder {
+  font-size: 14px;
+  color: #4f4444 !important;
+}
+
+.container__form button:hover {
+  color: var(--primary-color-orange) !important;
+}
+
+/* comments */
+
+.comments {
+  background: url("../img/bg/bg-slider.jpg");
+  background-position: center;
+  padding: 7rem 0;
+}
+.comments__box__content {
+  background-color: rgba(255, 255, 255, 0.1);
+  direction: rtl;
+}
+
+.comments__box__img {
+  width: 100px;
+  height: 100px;
+}
+
+.comments .slick-dots li {
+  background: #d1d1d1;
+}
+.comments .slick-dots li button:not(li.slick-active button)::before {
+  top: -6.5px;
+}
+
+/* discovers */
+.discovers {
+  padding-top: 7rem;
+}
+
+.discovers__description .line-side::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 73%;
+  background: #ded3d3df;
+  top: 4px;
+  right: -2%;
+}
+.discovers__description .btn {
+  border-color: var(--primary-color-orange) !important;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+.discovers__description .btn:hover {
+  color: var(--dark-color) !important;
+}
+.discovers__boxes {
+  margin-bottom: 5rem !important;
+}
+.discover__box {
+  padding: 0.5rem;
+}
+.discover__box-container {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  perspective: 1000px;
+}
+.discover__slide-1 .h1,
+.discover__slide-2 .p {
+  z-index: 2;
+}
+.discover__box-img,
+.discover__box-img-2 {
+  background: url("../img/teachers/christina-chi-380x422.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+  border-radius: 7px;
+  transition: 0.5s all;
+}
+.discover__box-img-2 {
+  background: url("../img/bg/bg-counter.jpg");
+}
+.discover__box-img {
+  filter: brightness(0.7);
+}
+.discover__box-img-2 {
+  filter: brightness(0.9);
+}
+
+.discover__slide-1 {
+  width: 100%;
+  transition: transform 0.8s cubic-bezier(0.5, 0.2, 0.2, 0.8);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  perspective: inherit;
+  /* transition-delay: 0.3s; */
+}
+.discover__slide-2 {
+  transform: rotateY(180deg);
+  transition: transform 0.8s cubic-bezier(0.5, 0.2, 0.2, 0.8);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  perspective: inherit;
+  width: 100%;
+
+  position: absolute !important;
+}
+.discover__box-container:hover .discover__slide-1 {
+  transform: rotateY(-180deg) !important;
+}
+.discover__box-container:hover .discover__slide-2 {
+  transform: rotateY(0deg);
+}
+
+/* brands */
+.brand {
+  margin: 7rem 0;
+}
+.brand__item {
+  transition: 0.3s all;
+}
+
+.brand__slider__about-us img {
+  filter: grayscale(100%) opacity(0.2);
+  transition: 0.3s all;
+
+  width: auto;
+  margin: auto;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.brand__item:hover img {
+  filter: grayscale(0%);
+
+  opacity: 1;
+}
+
+.slick-list {
+  direction: ltr;
+}
+
+@media screen and (min-width: 1200px) {
+  .articls__information-boxes {
+    padding: 2rem 5rem !important;
+  }
+  .comments__box__text {
+    font-size: 18px !important;
+  }
+  .discovers .container {
+    padding: 0 5rem;
+  }
+  .articls__information-bg-video {
+    padding: 0 5rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .about-us-skills {
+    padding: 0 2rem !important;
+  }
+  .img img {
+    width: 100% !important;
+  }
+}
