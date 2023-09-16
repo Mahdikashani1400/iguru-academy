@@ -117,12 +117,12 @@
 }
 
 /* about-us */
-.questions__content {
+.contacts__content {
   position: relative;
   padding-bottom: 8rem;
 }
 
-.questions__img {
+.contacts__img {
   position: relative;
   height: 520px;
   background-image: url(../img/bg/contacts_form-bg.png);
@@ -142,19 +142,19 @@
 .people-confirmation * {
   font-weight: bold;
 }
-.questions__description .span {
+.contacts__description .span {
   position: relative;
   font-weight: 800;
 }
-.questions__description .span::before {
+.contacts__description .span::before {
   right: -10px;
   height: 18px;
   top: 3px;
 }
-.questions__description button {
+.contacts__description button {
   border: 2px solid var(--primary-color-orange);
 }
-.questions__description button:hover {
+.contacts__description button:hover {
   background: transparent;
   border: 2px solid var(--primary-color-orange);
   color: var(--primary-bg-light) !important;
@@ -169,23 +169,23 @@
   right: -1%;
 }
 
-.questions__collapse-link {
+.contacts__collapse-link {
   background: #f5f7f8;
   transition: 0.4s all;
 }
-.questions__collapse-link.active {
+.contacts__collapse-link.active {
   color: var(--white-color) !important;
   background: var(--primary-color-green);
 }
-.questions__collapse-link.active::after,
-.questions__collapse-link.active::before {
+.contacts__collapse-link.active::after,
+.contacts__collapse-link.active::before {
   background-color: var(--white-color) !important;
 }
-.questions__collapse-link.active::before {
+.contacts__collapse-link.active::before {
   transform: rotate(0deg);
 }
-.questions__collapse-link::after,
-.questions__collapse-link::before {
+.contacts__collapse-link::after,
+.contacts__collapse-link::before {
   position: absolute;
   content: "";
   width: 12px;
@@ -195,15 +195,15 @@
   top: 28px;
   transition: 0.4s all;
 }
-.questions__collapse-link::before {
+.contacts__collapse-link::before {
   transform: rotate(90deg);
 }
-.questions__collapse-link:hover {
+.contacts__collapse-link:hover {
   color: var(--white-color) !important;
   background: var(--primary-color-green);
 }
-.questions__collapse-link:hover::after,
-.questions__collapse-link:hover::before {
+.contacts__collapse-link:hover::after,
+.contacts__collapse-link:hover::before {
   background-color: var(--white-color) !important;
 }
 

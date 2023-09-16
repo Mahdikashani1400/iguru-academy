@@ -109,7 +109,7 @@
 .slick-dots {
   position: absolute;
   bottom: -25px;
-
+  left: 0;
   display: block;
 
   width: 100%;
@@ -159,26 +159,55 @@
 }
 .slick-dots li button:before {
   font-family: "slick";
-  font-size: 6px;
+  font-size: 30px;
   line-height: 20px;
 
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -7px;
+  left: -2px;
 
-  width: 20px;
-  height: 20px;
+  /* width: 20px;
+  height: 20px; */
 
   content: "•";
   text-align: center;
 
   opacity: 0.25;
-  color: black;
-
+  color: transparent;
+  transition: 0.4s all;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
   color: black;
+}
+
+/* custom for myself */
+
+.slick-dots li {
+  background-color: #46444466;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.slick-active {
+  background-color: transparent !important;
+}
+.slick-dots li button {
+  z-index: 11111;
+  margin: -6px;
+  width: 17px;
+  height: 17px;
+}
+.slick-dots li.slick-active button:before {
+  color: rgb(255 72 0);
+
+  top: -7px;
+  left: -5px;
+  font-size: 44px;
+}
+
+.slick-dots li button:not(li.slick-active button):hover::before {
+  color: var(--primary-color-orange);
 }

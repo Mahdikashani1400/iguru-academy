@@ -57,6 +57,79 @@ $(".brand__slider").slick({
   ],
 });
 
+$(".brand__slider__about-us").slick({
+  dots: false, // Boolean
+  arrows: true,
+
+  slidesToShow: 6, // Number
+  slidesToScroll: 2, // Number
+  infinite: true, // Boolean
+  autoplay: true, // Boolean
+  autoplaySpeed: 1500, // Number
+  centerMode: true,
+  // lazyLoad: "ondemand",
+  //   centerMode: true, // Boolen
+  centerPadding: "0px", // String
+  responsive: [
+    {
+      breakpoint: 1250,
+      settings: {
+        slidesToShow: 5,
+        infinite: true, // Boolean
+      },
+    },
+    {
+      breakpoint: 1070,
+      settings: {
+        slidesToShow: 4,
+        infinite: true, // Boolean
+      },
+    },
+    {
+      breakpoint: 975,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 2, // Number
+        infinite: true, // Boolean
+        autoplay: true, // Boolean
+        autoplaySpeed: 1500, // Number
+        centerMode: true,
+        // lazyLoad: "ondemand",
+        //   centerMode: true, // Boolen
+        centerPadding: "0px", // String
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2, // Number
+        infinite: true, // Boolean
+        autoplay: true, // Boolean
+        autoplaySpeed: 1500, // Number
+        centerMode: true,
+        // lazyLoad: "ondemand",
+        //   centerMode: true, // Boolen
+        centerPadding: "0px", // String
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2, // Number
+        infinite: true, // Boolean
+        autoplay: true, // Boolean
+        autoplaySpeed: 1500, // Number
+        centerMode: true,
+        // lazyLoad: "ondemand",
+        //   centerMode: true, // Boolen
+        centerPadding: "0px", // String
+      },
+    },
+  ],
+});
+
 $(".caategories__courses-slider").slick({
   dots: false, // Boolean
   // arrows: true,
@@ -170,6 +243,28 @@ $(".blogs__description + .blogs__boxes").slick({
         slidesToShow: 1,
         infinite: true, // Boolean
         arrows: false,
+      },
+    },
+  ],
+});
+
+$(".comments__boxes").slick({
+  dots: true, // Boolean
+  arrows: false,
+  // asNavFor: ".slider-for",
+  slidesToShow: 2, // Number
+  slidesToScroll: 1, // Number
+  infinite: true, // Boolean
+
+  centerMode: false,
+
+  centerPadding: "0px", // String
+  responsive: [
+    {
+      breakpoint: 1070,
+      settings: {
+        slidesToShow: 1,
+        infinite: true, // Boolean
       },
     },
   ],
