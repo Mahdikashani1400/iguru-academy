@@ -201,3 +201,29 @@ img {
   background: var(--primary-bg-modal);
   box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.08);
 }
+
+
+
+/* input */
+input,
+textarea {
+  background-color: #f3f3f3 !important;
+  outline: none !important;
+  border: none !important;
+  transition: 0.3s all !important;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: none;
+  background-color: #eef1f2 !important;
+}
+input::placeholder,
+textarea::placeholder {
+  transition: 0.3s all;
+}
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: transparent !important;
+}

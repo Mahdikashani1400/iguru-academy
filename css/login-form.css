@@ -1,0 +1,45 @@
+@import "../vendor/Bootstrap/bootstrap.min.css";
+@import "./reset.css";
+@import "./variables.css";
+@import "./fonts.css";
+@import "./top-bar.css";
+@import "./responsive.css";
+
+body {
+  background: #f8f8f8;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toggle__btns__form {
+  width: fit-content;
+}
+.form__container {
+  max-width: 465px;
+}
+form {
+}
+.form-check-label {
+  font-size: 14px;
+}
+.form__container a:hover {
+  color: var(--dark-color);
+}
+.form__container .btn {
+  border: 2px solid var(--primary-color-green);
+}
+.form__container .btn:hover {
+  color: var(--dark-color) !important;
+}
+
+@media screen and (min-width: 992px) {
+  .form__container {
+    padding: 30px 40px !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .login__form {
+    zoom: 0.8;
+  }
+}
