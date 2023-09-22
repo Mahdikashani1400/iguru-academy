@@ -11,7 +11,7 @@ function getModals() {
 <div
   class="search__box-modal bg-modal position-absolute rounded rounded-3"
 >
-  <form class="">
+  <form class="search__form">
     <div class="">
       <input
         type="text"

@@ -10,7 +10,7 @@
 @import "./responsive.css";
 #main .description {
   position: relative;
-  height: 420px;
+  height: 600px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

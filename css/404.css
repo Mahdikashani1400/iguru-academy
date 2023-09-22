@@ -1,0 +1,128 @@
+@import url("../vendor/slick-slider/slick.css");
+@import url("../vendor/slick-slider/slick-theme.css");
+@import "../vendor/Bootstrap/bootstrap.min.css";
+@import "./reset.css";
+@import "./variables.css";
+@import "./fonts.css";
+@import "./modals.css";
+@import "./top-bar.css";
+@import "./footer.css";
+@import "./responsive.css";
+#main .description {
+  position: relative;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.description__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: brightness(0.9);
+}
+.description .container * {
+  /* z-index: 22; */
+}
+.description .container {
+  margin-top: 200px;
+  z-index: 11;
+}
+.description__title-p {
+  position: relative;
+}
+.description__title-p::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 70%;
+  background: var(--primary-color-orange);
+  right: -10px;
+  top: 5px;
+}
+.description__title-h {
+}
+.description__location .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--white-color);
+  bottom: 3px;
+  left: 0;
+  transition: 0.4s all ease-in-out;
+}
+.description__location .nav-link.active::after {
+  width: 100%;
+  transition: 0.7s all ease-out;
+}
+.description__location .nav-link:not(.active):hover ~ .active::after {
+  width: 0;
+}
+.description__location .nav-link:not(.active):hover::after {
+  width: 100%;
+}
+.description__text {
+  max-width: 600px;
+  font-size: 20px;
+}
+.description__btn .btn {
+  background: var(--primary-color-green);
+  border: 2px solid var(--primary-color-green);
+  color: var(--white-color);
+}
+.description__btn .btn:hover {
+  background: transparent;
+}
+
+/* 404 */
+.page__404 {
+  background-image: url("../img/bg/404.png");
+  /* height: 800px; */
+}
+.page__404-logo img {
+  width: 200px;
+  height: 300px;
+}
+.page__404-logo span {
+  font-size: 300px;
+}
+
+.page__404-search .search__box-icon {
+  cursor: pointer;
+  top: 13%;
+  left: 2%;
+  transition: 0.3s all;
+}
+.page__404-search .search__box-icon:hover {
+  background: var(--primary-color-green);
+}
+.page__404-search input {
+  /* width: 400px; */
+}
+.main__page-btn .btn {
+  border: 2px solid var(--primary-color-green) !important;
+}
+
+.main__page-btn .btn:hover {
+  color: var(--primary-color-green) !important;
+}
+
+@media (max-width: 576px) {
+  .page__404-logo span {
+    font-size: 200px;
+  }
+  .page__404-logo img {
+    width: 150px;
+    height: 200px;
+  }
+}
+@media (max-width: 400px) {
+  .page__404-logo span {
+    font-size: 150px;
+  }
+  .page__404-logo img {
+    width: 120px;
+    height: 150px;
+  }
+}
