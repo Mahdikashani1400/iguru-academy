@@ -201,6 +201,16 @@ img {
   background: var(--primary-bg-modal);
   box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.08);
 }
+.to-green:hover {
+  background: var(--primary-color-green);
+}
+.to-orange:hover {
+  background: var(--primary-color-orange);
+}
+
+.text-normal {
+  color: var(--gray-color-less) !important;
+}
 
 /* input */
 input,

@@ -37,7 +37,6 @@
   padding-right: 0;
 
   text-align: center !important;
-  color: var(--gray-color);
 }
 .under__line-animate::after,
 .under__line-animate::before {
@@ -66,7 +65,6 @@
     font-size: 16px;
     padding-right: 10rem;
     text-align: start !important;
-    color: var(--gray-color);
   }
 }
 @media screen and (min-width: 1200px) {

@@ -269,3 +269,29 @@ $(".comments__boxes").slick({
     },
   ],
 });
+
+// explain-product
+$(".slick-wrap").on("init", function (event, slick) {
+  var dots = $(".slick-dots li");
+  console.log("SRANZAN VEE");
+  dots.each(function (k, v) {
+    $(this)
+      .find("button")
+      .addClass("heading" + k);
+  });
+  var items = slick.$slides;
+  items.each(function (k, v) {
+    var text = $(this).find("h2").text();
+    $(".heading" + k).text(text);
+  });
+});
+$(".main-img").slick({
+  dots: true,
+  focusOnSelect: true,
+  infinite: true,
+  arrows: false,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  // centerMode: true,
+});

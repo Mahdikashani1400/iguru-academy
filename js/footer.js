@@ -99,7 +99,7 @@ function getFooter() {
 <!-- Footer Links -->
 
 <!-- Copyright -->
-<div class="footer-copyright text-end bg-black py-3">
+<div class="footer-copyright text-end bg-black text-normal py-3">
   کپی رایت © 1398 تک ستاره وب. تمامی حقوق محفوظ است.
 </div>
 <!-- Copyright -->`;

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>explain-product</title>
+    <link rel="stylesheet" href="vendor/FontAwesome5/all.min.css" />
+
+    <link rel="stylesheet" href="css/explain-product.css" />
+  </head>
+  <body>
+    <div class="modals position-fixed w-100 h-100 d-none d-xl-none"></div>
+
+    <div class="elements">
+      <header class="header"></header>
+
+      <main id="main">
+        <section
+          class="description row justify-content-center align-items-center m-0"
+        ></section>
+        <section class="product-intro pt-5 pb-lg-5">
+          <div class="container">
+            <div class="row py-5 px-xl-5 px-lg-0 mx-2">
+              <div class="product__images col-lg-6 pb-5 mb-5 pb-lg-0 mb-lg-0">
+                <div class="product__images__content">
+                  <div
+                    class="main-img shadow rounded d-flex align-items-center"
+                  >
+                    <img
+                      class=""
+                      src="./img/products/product-1-big.png"
+                      alt=""
+                    />
+                    <img
+                      class=""
+                      src="./img/products/product-1-big.png"
+                      alt=""
+                    />
+                    <img
+                      class=""
+                      src="./img/products/product-1-big.png"
+                      alt=""
+                    />
+                  </div>
+                  <!-- <div class="main-img">
+                    <img
+                      class="shadow rounded"
+                      src="./img/products/product-1-big.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="main-img">
+                    <img
+                      class="shadow rounded"
+                      src="./img/products/product-1-big.png"
+                      alt=""
+                    />
+                  </div> -->
+                </div>
+              </div>
+              <div class="product__about col-lg-6">
+                <div
+                  class="product__about__content pe-lg-5 py-5 py-lg-0 mt-4 mt-lg-0"
+                >
+                  <div class="h1 mb-4 product-title fw-bold">زندگی مخفی</div>
+                  <span class="text-orange product-price fw-bold fs-4"
+                    >۱۰,۰۰۰ تومان</span
+                  >
+                  <div class="p text-normal product__intro-text mt-4 lh-lg">
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                    و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                    تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                    کاربردی می باشد.
+                  </div>
+                  <div class="product-meta py-4 border-bottom border-top my-4">
+                    <div class="p mb-3">
+                      <span class="fw-bold">شناسه محصول:</span>
+                      <span class="product-id text-normal">
+                        machine-learning-for-finance-1
+                      </span>
+                    </div>
+                    <div class="p mb-3">
+                      <span class="fw-bold">دسته:</span>
+                      <span class="product-category text-normal"> آموزش</span>
+                    </div>
+                    <div class="p mb-3">
+                      <span class="fw-bold">برچسب:</span>
+                      <span class="product-tag text-normal">
+                        یادگیری ماشین</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="product__control row gap-3 my-5 justify-content-center justify-content-md-start gy-4"
+                    style="margin-top: 2.4rem !important"
+                  >
+                    <div
+                      class="quantity__number-input position-relative justify-content-start justify-content-md-center col-4 px-0"
+                    >
+                      <div class="icons position-absolute h-100">
+                        <svg
+                          class="svg-inline--fa fa-angle-down plus"
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          data-icon="angle-down"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 384 512"
+                          data-fa-i2svg=""
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"
+                          ></path>
+                        </svg>
+                        <svg
+                          class="svg-inline--fa fa-angle-down minus"
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          data-icon="angle-down"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 384 512"
+                          data-fa-i2svg=""
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <input
+                        type="number"
+                        class="shadow h-100 bg-white text-center rounded w-100"
+                        value="1"
+                        min="1"
+                        style="padding-right: calc(20%)"
+                      />
+                    </div>
+                    <button
+                      class="btn to-green bg-orange text-white h-100 px-0 py-3 fw-bold col-xl-4 col-sm-5 col-8"
+                    >
+                      افزودن به سبد خرید
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="explain mt-lg-5">
+          <div class="container">
+            <div
+              class="row px-xl-5 px-lg-0 mx-2 justify-content-center justify-content-md-start"
+            >
+              <div class="titles d-flex gap-3 fs-5 col-lg-9 col-md-12 row">
+                <div
+                  class="explain-title border-bottom border-3 py-1 text-dark col-md-2 text-center active"
+                >
+                  توضیحات
+                </div>
+                <div
+                  class="comments-title border-bottom border-3 py-1 text-normal col-md-2 text-center"
+                >
+                  نظرات
+                </div>
+              </div>
+              <p class="explain__content mt-4 text-normal pe-0">
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
+                در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
+                نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="same__products py-5 my-4">
+          <div class="container">
+            <div class="row px-xl-5 px-lg-0 mx-2 justify-content-center">
+              <div class="h1 fw-bold mb-5 pe-0">محصولات مرتبط</div>
+              <div
+                class="same__products__boxes row row-cols-lg-4 row-cols-md-2 py-lg-4 px-0"
+              >
+                <div
+                  class="same__product__box d-flex flex-column justify-content-center align-items-center pb-5 pb-lg-0"
+                >
+                  <div class="same__product__content">
+                    <div
+                      class="same__product__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3"
+                    >
+                      <div
+                        class="p same__product__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute"
+                      >
+                        افزودن به سبد خرید
+                      </div>
+                      <img
+                        class="rounded mx-auto d-block"
+                        src="./img//product-5png.png"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      class="same__product__box-title h6 pt-4 fw-bold text-center"
+                    >
+                      آموزش کامل HTML و CSS
+                    </div>
+                    <div
+                      class="same__product__box-price p fw-bold text-orange fs-6 text-center"
+                    >
+                      40,000 تومان
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="same__product__box d-flex flex-column justify-content-center align-items-center pb-5 pb-lg-0"
+                >
+                  <div class="same__product__content">
+                    <div
+                      class="same__product__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3"
+                    >
+                      <div
+                        class="p same__product__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute"
+                      >
+                        افزودن به سبد خرید
+                      </div>
+                      <img
+                        class="rounded mx-auto d-block"
+                        src="./img//product-5png.png"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      class="same__product__box-title h6 pt-4 fw-bold text-center"
+                    >
+                      آموزش کامل HTML و CSS
+                    </div>
+                    <div
+                      class="same__product__box-price p fw-bold text-orange fs-6 text-center"
+                    >
+                      40,000 تومان
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="same__product__box d-flex flex-column justify-content-center align-items-center pb-5 pb-lg-0"
+                >
+                  <div class="same__product__content">
+                    <div
+                      class="same__product__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3"
+                    >
+                      <div
+                        class="p same__product__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute"
+                      >
+                        افزودن به سبد خرید
+                      </div>
+                      <img
+                        class="rounded mx-auto d-block"
+                        src="./img//product-5png.png"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      class="same__product__box-title h6 pt-4 fw-bold text-center"
+                    >
+                      آموزش کامل HTML و CSS
+                    </div>
+                    <div
+                      class="same__product__box-price p fw-bold text-orange fs-6 text-center"
+                    >
+                      40,000 تومان
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="same__product__box d-flex flex-column justify-content-center align-items-center pb-5 pb-lg-0"
+                >
+                  <div class="same__product__content">
+                    <div
+                      class="same__product__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3"
+                    >
+                      <div
+                        class="p same__product__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute"
+                      >
+                        افزودن به سبد خرید
+                      </div>
+                      <img
+                        class="rounded mx-auto d-block"
+                        src="./img//product-5png.png"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      class="same__product__box-title h6 pt-4 fw-bold text-center"
+                    >
+                      آموزش کامل HTML و CSS
+                    </div>
+                    <div
+                      class="same__product__box-price p fw-bold text-orange fs-6 text-center"
+                    >
+                      40,000 تومان
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="page-footer font-large blue pt-4">
+      <!-- Footer Links -->
+    </footer>
+    <script src="vendor/slick-slider/jquery.min.js"></script>
+    <script src="vendor/slick-slider/jquery-migrate.min.js"></script>
+    <script src="vendor/slick-slider/slick.min.js"></script>
+    <script src="vendor/slick-slider/app.js"></script>
+    <script src="vendor/Bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="vendor/FontAwesome5/all.min.js"></script>
+
+    <script src="./js/explain-product.js" type="module"></script>
+  </body>
+</html>
