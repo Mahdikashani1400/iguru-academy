@@ -264,7 +264,7 @@ input:focus::-webkit-input-placeholder {
 }
 .course__box-container:hover .course__box-teacher,
 .course__box-container:hover .course__box-number-star {
-  color: var(--gray-color);
+  color: var(--gray-color-less) !important;
 }
 
 .course__box-bg-img {

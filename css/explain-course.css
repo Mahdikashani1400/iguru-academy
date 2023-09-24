@@ -108,6 +108,173 @@ body {
 .course__review-intro {
   background: #f8f8f8;
 }
+.course__review-intro svg {
+  padding-left: 0.3rem;
+  width: 12px;
+  height: 12px;
+}
+.course__review-intro path {
+  color: var(--primary-color-green);
+  font-weight: bold;
+}
+.course__videos .accordion-button {
+  position: relative;
+  margin-right: 30px;
+  font-size: 18px;
+  width: -webkit-fill-available;
+}
+.course__videos .accordion-button:focus {
+  box-shadow: none;
+}
+.course__videos .accordion-button {
+  box-shadow: none;
+}
+.course__videos .accordion-button::after,
+.course__videos .accordion-button::before {
+  content: "";
+  position: absolute;
+  background-image: none;
+  width: 12px;
+  height: 2.5px;
+  right: -10px;
+  background: var(--primary-color-green);
+}
+.course__videos .accordion-button::after {
+  transform: rotate(90deg);
+}
+.course__videos .accordion-button:not(.collapsed) {
+  color: var(--primary-color-orange);
+  background: none;
+}
+.course__videos .accordion-button:not(.collapsed)::after {
+  transform: rotate(0deg);
+  background-image: none;
+}
+.course__videos .list-group-item {
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+.course__videos .list-group-item:last-child {
+  border-bottom: 0 !important;
+}
+.course__videos .list-group-item a .course__video__title {
+  transition: 0.4s all;
+}
+.course__videos .list-group-item a:hover .course__video__title {
+  color: var(--primary-color-green);
+}
+.course__teacher-img img {
+  width: 170px;
+  height: 170px;
+}
+.course__teacher-socials i {
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.4s all;
+  width: 30px;
+  height: 30px;
+}
+.course__teacher-socials i:hover {
+  transform: translateY(-10px);
+}
+
+/* smae courses */
+.courses__same .course__box {
+  position: relative;
+  height: 380px;
+  background-position: inherit !important;
+}
+.courses__same .course__box-container {
+  cursor: pointer;
+  transition: 0.4s all;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px #8b727278;
+}
+.courses__same .course__box-content {
+  position: relative;
+  transition: 0.4s all;
+}
+
+.courses__same .course__box-content::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 90%;
+  bottom: 0;
+  left: 0;
+  transition: 0.4s all;
+}
+.courses__same .course__box-container:hover .course__box-content::after {
+  background: var(--white-color);
+}
+.courses__same .course__box-container:hover .course__box-title {
+  color: var(--dark-color);
+}
+.courses__same .course__box-container:hover svg {
+  color: var(--primary-color-orange);
+}
+.course__box-container:hover .course__box-teacher,
+.courses__same .course__box-container:hover .course__box-number-star {
+  color: var(--gray-color-less) !important;
+}
+
+.courses__same .course__box-bg-img {
+  margin: 0 24px;
+  background: url(../img/about-us.jpg);
+  background-position: inherit !important;
+  background-size: cover;
+  z-index: -1;
+  width: -webkit-fill-available;
+  height: 100%;
+  border-radius: 10px;
+  filter: brightness(0.7);
+  right: 0;
+}
+.courses__same .course__box-category {
+  position: absolute;
+  font-size: 12px;
+  right: 20px;
+  top: -17px;
+}
+.courses__same .course__box-category:hover {
+  background: var(--primary-color-green);
+}
+.courses__same .course__box-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.courses__same .course__box-img img {
+  height: 100%;
+  border-radius: 50%;
+}
+.courses__same .course__box-description {
+  border-bottom: 1px solid #ffffff62;
+}
+.courses__same .course__box-title {
+  transition: 0.4s all;
+}
+.courses__same .course__box-title:hover {
+  color: var(--primary-color-green) !important;
+}
+.courses__same .course__box-state {
+  cursor: default;
+}
+.courses__same .course__box-price {
+  font-size: 14px;
+  transition: 0.4s all;
+  border: 2px solid var(--primary-color-green);
+}
+.courses__same .course__box-price:hover {
+  background: transparent;
+  color: var(--primary-color-green) !important;
+}
+.courses__same .course__box-number-star {
+  margin: 3px 6px;
+}
+
 /* search */
 .line-side::before {
   content: "";
@@ -180,8 +347,16 @@ body {
     height: 550px;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 576px) {
   .course__box {
     height: 300px;
+  }
+  .course__img {
+    height: 300px !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .course__details .breadcrumb-item {
+    border-left: none !important;
   }
 }

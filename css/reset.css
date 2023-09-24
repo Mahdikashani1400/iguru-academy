@@ -208,6 +208,9 @@ img {
   background: var(--primary-color-orange);
 }
 
+.bg-normal {
+  background-color: var(--gray-bg-less) !important;
+}
 .text-normal {
   color: var(--gray-color-less) !important;
 }
