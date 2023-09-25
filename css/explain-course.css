@@ -110,8 +110,8 @@ body {
 }
 .course__review-intro svg {
   padding-left: 0.3rem;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
 }
 .course__review-intro path {
   color: var(--primary-color-green);
@@ -274,7 +274,9 @@ body {
 .courses__same .course__box-number-star {
   margin: 3px 6px;
 }
-
+.course__comment__star .bi-star-fill {
+  color: #ffb606;
+}
 /* search */
 .line-side::before {
   content: "";
