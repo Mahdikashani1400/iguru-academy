@@ -295,3 +295,44 @@ $(".main-img").slick({
   slidesToScroll: 1,
   // centerMode: true,
 });
+
+// read-blog
+
+$(".blog__slider").slick({
+  dots: false, // Boolean
+  arrows: true,
+
+  slidesToShow: 2, // Number
+  slidesToScroll: 1, // Number
+  infinite: true, // Boolean
+
+  // centerMode: false,
+  centerMode: true,
+
+  centerPadding: "0px", // String
+  responsive: [
+    {
+      breakpoint: 1070,
+      settings: {
+        slidesToShow: 3,
+        infinite: true, // Boolean
+      },
+    },
+    {
+      breakpoint: 978,
+      settings: {
+        slidesToShow: 2,
+        infinite: true, // Boolean
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        infinite: true, // Boolean
+        arrows: false,
+      },
+    },
+  ],
+});

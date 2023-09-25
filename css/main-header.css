@@ -406,7 +406,10 @@ input:focus::-webkit-input-placeholder {
   right: 1rem;
   left: 1rem;
 }
-
+.caategories__courses-slider .slick-arrow {
+  width: 0;
+  z-index: 1;
+}
 .caategories__courses-slider .slick-arrow::before {
   position: absolute;
   font-size: 25px;
@@ -419,7 +422,8 @@ input:focus::-webkit-input-placeholder {
   visibility: hidden;
 }
 .caategories__courses-slider .slick-arrow:hover::before {
-  background-color: #141212d3;
+  background-color: var(--white-color);
+  color: var(--primary-color-orange);
 }
 .caategories__courses-slider .slick-prev::before {
   left: 50px;
