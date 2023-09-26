@@ -294,8 +294,8 @@
 .blog__slider {
   overflow: hidden;
 }
-.blog__slide {
-  height: 400px;
+.blog__slide img {
+  max-height: 400px;
 }
 .blog__slider .slick-arrow {
   width: 0;
@@ -351,8 +351,10 @@ blockquote::before {
   right: -6px;
   color: var(--primary-color-orange);
 }
-.blog-poster {
-  height: 650px;
+.blog-poster img {
+  /* change it */
+  max-height: 530px;
+  max-width: 100%;
 }
 .author {
   background: url("../img/bg/bg-counter.jpg");
@@ -464,6 +466,9 @@ blockquote::before {
 textarea {
   resize: none;
 }
+.send__comment {
+  z-index: 1;
+}
 .send__comment .btn {
   border: 2px solid var(--primary-color-orange) !important;
 }
@@ -480,6 +485,11 @@ textarea {
 @media screen and (max-width: 992px) {
   .blog__box-img {
     height: 420px;
+  }
+}
+@media screen and (max-width: 767.5px) {
+  .blog__slide img {
+    max-height: 450px;
   }
 }
 
