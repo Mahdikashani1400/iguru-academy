@@ -335,6 +335,114 @@
   visibility: visible;
 }
 
+blockquote::before {
+  content: "“";
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  left: -6px;
+  border-radius: unset;
+  font-size: 80px;
+  line-height: 1px;
+  font-weight: 700;
+  font-style: normal;
+  box-shadow: unset;
+  left: auto !important;
+  right: -6px;
+  color: var(--primary-color-orange);
+}
+.blog-poster {
+  height: 650px;
+}
+.author {
+  background: url("../img/bg/bg-counter.jpg");
+}
+.blog__teacher-img img {
+  width: 120px;
+  height: 120px;
+}
+.blog__teacher-socials i {
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.4s all;
+  width: 30px;
+  height: 30px;
+}
+.blog__teacher-socials i:hover {
+  transform: translateY(-6px);
+}
+
+/* same-blogs */
+.blogs__boxes {
+  cursor: pointer;
+  padding-bottom: 3rem;
+  margin-bottom: 5rem !important;
+}
+.blog__box {
+  margin: 0 0.5rem;
+}
+.blog__box-container {
+  position: relative;
+  overflow: hidden;
+}
+.blog__box-date {
+  background: var(--primary-color-green);
+  width: 150px;
+  height: 150px;
+  top: -75px;
+  left: -75px;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+}
+.date-month {
+  position: absolute;
+  top: 55%;
+  left: 70%;
+  font-size: 12px;
+  color: var(--white-color);
+}
+.date-day {
+  position: absolute;
+  left: 63%;
+  top: 69%;
+  color: var(--white-color);
+}
+.blog__box-img {
+  background: url("../img/teachers/christina-chi-380x422.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 350px;
+  border-radius: 7px;
+  transition: 0.5s all;
+}
+.blog__box-img img {
+}
+.blog__box-img:hover {
+  filter: brightness(0.5);
+}
+.blog__box__tags {
+  font-size: 14px;
+}
+.blog__box__author,
+.blog__box-category,
+.blog__box-title {
+  transition: 0.4s all;
+}
+.blog__box__author:hover,
+.blog__box-title:hover,
+.blog__box-category:hover {
+  color: var(--primary-color-orange);
+}
+.blog__box__content {
+  direction: rtl;
+}
+.blog__box__content a.d-inline-block {
+  position: relative;
+  border-bottom: 4px solid rgb(223, 223, 223);
+  transition: 0.4s all;
+}
+
 @media screen and (min-width: 992px) {
   .blogs .container {
     padding: 0 5rem;

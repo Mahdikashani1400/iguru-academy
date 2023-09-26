@@ -240,6 +240,8 @@ $(".blogs__description + .blogs__boxes").slick({
     {
       breakpoint: 768,
       settings: {
+        dots: true,
+
         slidesToShow: 1,
         infinite: true, // Boolean
         arrows: false,
@@ -305,19 +307,13 @@ $(".blog__slider").slick({
   slidesToShow: 2, // Number
   slidesToScroll: 1, // Number
   infinite: true, // Boolean
-
+  autoplay: true, // Boolean
+  autoplaySpeed: 1500, // Number
   // centerMode: false,
   centerMode: true,
 
   centerPadding: "0px", // String
   responsive: [
-    {
-      breakpoint: 1070,
-      settings: {
-        slidesToShow: 3,
-        infinite: true, // Boolean
-      },
-    },
     {
       breakpoint: 978,
       settings: {
@@ -332,6 +328,38 @@ $(".blog__slider").slick({
         slidesToShow: 1,
         infinite: true, // Boolean
         arrows: false,
+      },
+    },
+  ],
+});
+
+$(".reading_blogs .blogs__boxes").slick({
+  dots: false, // Boolean
+  // arrows: false,
+  // asNavFor: ".slider-for",
+  slidesToShow: 2, // Number
+  slidesToScroll: 1, // Number
+  infinite: false, // Boolean
+
+  centerMode: false,
+
+  centerPadding: "0px", // String
+  responsive: [
+    {
+      breakpoint: 978,
+      settings: {
+        slidesToShow: 2,
+        dots: true,
+        focusOnSelect: true,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        infinite: true, // Boolean
+        arrows: false,
+        dots: true,
       },
     },
   ],
