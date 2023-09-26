@@ -323,7 +323,7 @@ $(".blog__slider").slick({
       },
     },
     {
-      breakpoint: 576,
+      breakpoint: 768,
       settings: {
         slidesToShow: 1,
         infinite: true, // Boolean
