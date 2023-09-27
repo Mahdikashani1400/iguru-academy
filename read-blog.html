@@ -19,8 +19,47 @@
 
       <main id="main">
         <section
-          class="description row justify-content-center align-items-center m-0"
-        ></section>
+          class="description d-flex flex-column justify-content-end align-items-center m-0"
+        >
+          <div class="description__bg"></div>
+
+          <div class="container col-9 align-self-end py-5 my-4 px-0">
+            <div
+              class="blog__box-date d-flex flex-column justify-content-center align-items-center"
+            >
+              <span class="date-month">تیر</span>
+              <div class="h4 date-day pt-1 fw-bold">20</div>
+            </div>
+
+            <div class="blog__box__tags pt-4 pb-2">
+              <a href="" class="blog__box-category text-green fw-bold">آموزش</a
+              ><span class="text-green px-1 fw-bold">/</span>
+              <span class="fw-bold text-white ps-2">توسط</span>
+              <a href="" class="blog__box__author fw-bold text-white"
+                >علی سلیمانی</a
+              >
+            </div>
+            <div class="blog__box-title display-5 text-white">
+              نمونه های داستانی معروف از سبک های مدیریت
+            </div>
+          </div>
+          <footer
+            class="all-in-eye d-flex align-self-end py-4 text-white bg-green w-100 gap-3"
+          >
+            <div class="count-commet">
+              <i class="bi bi-chat text-green shadow fw-bold"></i>
+              <span class="fw-bold text-white" style="font-size: 14px"
+                >2 دیدگاه</span
+              >
+            </div>
+            <div class="count-view">
+              <i class="bi bi-person text-green shadow fw-bold"></i>
+              <span class="fw-bold text-white" style="font-size: 14px"
+                >202 بازدید</span
+              >
+            </div>
+          </footer>
+        </section>
         <section class="blogs py-5">
           <div class="container">
             <div class="row justify-content-start">
@@ -65,7 +104,7 @@
                 <div class="blog__slider py-4">
                   <div class="blog__slide px-2">
                     <img
-                      class="rounded-2"
+                      class="rounded-2 img-fluid"
                       src="./img/teachers/christina-chi-380x422.jpg"
                       alt=""
                     />
@@ -79,7 +118,7 @@
                   </div>
                   <div class="blog__slide px-2">
                     <img
-                      class="rounded-2"
+                      class="rounded-2 img-fluid"
                       src="./img/teachers/christina-chi-380x422.jpg"
                       alt=""
                     />
@@ -103,8 +142,8 @@
                     افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
                     طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                   </p>
-                  <blockquote class="position-relative pe-5 py-3">
-                    <div class="h3">
+                  <blockquote class="position-relative pe-4 pe-md-5 py-3">
+                    <div class="h3 lh-base">
                       لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
                       و با استفاده از طراحان گرافیک است.
                     </div>
@@ -136,8 +175,12 @@
                     موجود طراحی اساسا مورد استفاده قرار گیرد.
                   </p>
                 </div>
-                <div class="blog-poster py-4 px-2">
-                  <img class="rounded" src="./img/teachers/t3.jpg" alt="" />
+                <div class="blog-poster py-1 py-md-4 px-2">
+                  <img
+                    class="rounded img-fluid"
+                    src="./img/teachers/t3.jpg"
+                    alt=""
+                  />
                 </div>
                 <p class="px-2 py-3 text-normal">
                   لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
@@ -159,7 +202,7 @@
                 >
                   <div class="row g-0">
                     <div
-                      class="col-md-3 blog__teacher-img row justify-content-md-center justify-content-md-start mb-4 mb-md-0 ps-0"
+                      class="col-md-3 blog__teacher-img row justify-content-center mb-4 mb-md-0 ps-0"
                     >
                       <img
                         src="./img/teachers/christina-chi-380x422.jpg"
@@ -168,7 +211,9 @@
                       />
                     </div>
                     <div class="col-md-9">
-                      <div class="card-body py-0 pe-0 text-white">
+                      <div
+                        class="card-body py-0 pe-0 text-white text-center text-md-end"
+                      >
                         <div class="h4 card-title fw-bold pb-3">
                           درباره علی سلیمانی
                         </div>
@@ -182,7 +227,7 @@
                       </div>
                     </div>
                     <div
-                      class="blog__teacher-socials col-md-4 d-flex pe-md-4 pe-0 me-3 gap-2 align-items-center pt-4 text-white justify-content-end"
+                      class="blog__teacher-socials col-md-4 d-flex pe-md-4 pe-0 me-3 gap-2 align-items-center pt-4 text-white justify-content-md-end justify-content-center"
                     >
                       <i class="bi bi-twitter"></i>
                       <i class="bi bi-linkedin"></i>
@@ -286,11 +331,11 @@
                 <div class="h2"><span class="text-gray">(02)</span> دیدگاه</div>
                 <div class="comments__container row">
                   <div
-                    class="comment card py-4 border-0 px-3 position-relative"
+                    class="comment card py-md-4 border-0 px-3 border-bottom position-relative"
                   >
                     <div class="row g-0">
                       <div
-                        class="col-md-2 d-flex justify-content-center contain-img"
+                        class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0"
                       >
                         <img
                           src="./img/teachers/t4.jpg"
@@ -319,11 +364,11 @@
                     </div>
                   </div>
                   <div
-                    class="comment card py-4 border-0 px-3 position-relative border-top"
+                    class="comment card py-md-4 border-0 px-3 position-relative border-bottom"
                   >
                     <div class="row g-0">
                       <div
-                        class="col-md-2 d-flex justify-content-center contain-img"
+                        class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0"
                       >
                         <img
                           src="./img/teachers/t4.jpg"
@@ -352,7 +397,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="send__comment shadow p-5">
+                <div
+                  class="send__comment shadow pt-5 pb-3 pb-md4 px-md-5 px-sm-4 px-3 mt-4"
+                >
                   <div class="h1 pb-1">دیدگاهتان را بنویسید</div>
                   <p class="text-normal">
                     نشانی ایمیل شما منتشر نخواهد شد. بخش‌های موردنیاز

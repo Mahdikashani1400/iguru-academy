@@ -4,5 +4,5 @@ import { getTitlePage } from "./title-page.js";
 import { getFooter } from "./footer.js";
 getModals();
 getHeader();
-getTitlePage("آموزش زبان انگلیسی ! اصول بنیادی", "read-blog.jpg");
+getTitlePage("", "read-blog.jpg");
 getFooter();
