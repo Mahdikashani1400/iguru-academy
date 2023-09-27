@@ -252,8 +252,8 @@
 .blog__slider {
   overflow: hidden;
 }
-.blog__slide {
-  height: 400px;
+.blog__slide img {
+  max-height: 400px;
 }
 .blog__slider .slick-arrow {
   width: 0;
