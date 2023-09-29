@@ -247,7 +247,7 @@
               </div>
 
               <div
-                class="profile__orders col-md-9 row justify-content-lg-end justify-content-center px-lg-4 px-0"
+                class="profile__orders col-md-9 row justify-content-lg-end justify-content-center px-lg-4 px-0 d-none"
               >
                 <div
                   class="profile__orders__table row justify-content-center p-0 align-self-start mb-5"
@@ -352,7 +352,7 @@
                   <div class="my-3 col-lg-10 ps-2 pe-0">
                     <input
                       type="text"
-                      class="font-italic px-3 py-2 w-100 bg-white border"
+                      class="font-italic px-3 py-3 mt-2 py-2 w-100 bg-white border"
                       placeholder="کلید سفارش"
                     />
                   </div>
@@ -362,6 +362,99 @@
                     </button>
                   </div>
                 </div>
+              </div>
+              <div
+                class="profile__setting col-md-9 row justify-content-center px-lg-4 px-0"
+              >
+                <ul
+                  class="row nav row-cols-lg-4 justify-content-sm-start profile__setting__items fs-5 text-dark p-0 my-4 my-lg-0"
+                >
+                  <li class="nav-item">
+                    <a
+                      class="nav-link border text-dark active"
+                      aria-current="page"
+                      href="#"
+                      >عمومی</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link border text-dark" href="#">آواتار</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link border text-dark" href="#">کلمه عبور</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link border text-dark" href="#">حریم خصوصی</a>
+                  </li>
+                </ul>
+                <form class="ps-0 my-3">
+                  <div class="mb-4">
+                    <label
+                      for="firstName"
+                      class="form-label fs-6 fw-bold text-normal"
+                      >نام</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control py-3 mt-1 text-normal"
+                      id="firstName"
+                      placeholder="کاربر"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label
+                      for="lastName"
+                      class="form-label fs-6 fw-bold text-normal"
+                      >نام خانوادگی</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control py-3 mt-1 text-normal"
+                      id="lastName"
+                      placeholder="دمو"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label
+                      for="userName"
+                      class="form-label fs-6 fw-bold text-normal"
+                      >نام کاربری *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control py-3 mt-1 text-normal"
+                      id="userName"
+                      value="demo"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label
+                      for="email"
+                      class="form-label fs-6 fw-bold text-normal"
+                      >آدرس ایمیل *</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control py-3 mt-1 text-normal"
+                      id="email"
+                      value="demo@demo.com"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="bio" class="form-label fs-6 fw-bold text-normal"
+                      >اطلاعات بیوگرافی</label
+                    >
+                    <textarea class="form-control" id="bio" rows="5"></textarea>
+                  </div>
+                  <div class="col-xl-0 col-lg-3 col-sm-7">
+                    <button
+                      type="submit"
+                      class="btn btn-warning text-white py-2 w-100 border-2 border border-warning fw-bold"
+                    >
+                      ذخیره تغییرات
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
