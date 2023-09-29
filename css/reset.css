@@ -156,6 +156,7 @@ a {
 
 i {
   user-select: none;
+  font-style: italic !important;
 }
 .btn {
   border: none;
