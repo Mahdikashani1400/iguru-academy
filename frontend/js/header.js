@@ -166,7 +166,9 @@ function getHeader() {
           </button>
         </div>
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
-          <span
+          <a
+          href="#navbarSupportedContent"
+          data-bs-toggle="collapse"
             class="close-icon position-absolute d-inline-block right-0 p-3 d-block d-xl-none"
           >
             <svg
@@ -182,12 +184,12 @@ function getHeader() {
                 class="text-danger"
               />
             </svg>
-          </span>
+          </a>
           <ul class="navbar-nav mx-auto bg-light bg-xl-danger h-100">
             <li class="nav-item">
               <a
                 href="#"
-                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
+                class="nav-link active fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
                 >صفحه اصلی</a
               >
             </li>
@@ -328,7 +330,7 @@ function getHeader() {
 
   let menuItem = null;
   let dropdownMenu = null;
-  let menuContainer = $.getElementById("navbarSupportedContent");
+
   let closeIconMenu = $.querySelector(".close-icon");
   window.addEventListener("load", () => {
     menuItem = $.querySelectorAll("#navbarSupportedContent .nav-link");
@@ -344,37 +346,52 @@ function getHeader() {
     if (window.innerWidth < 1200) {
       menuItem.forEach((item) => {
         item.setAttribute("data-bs-toggle", "dropdown");
-        //   item.style.setProperty("--display-drop-down", "auto");
       });
     } else {
       menuItem.forEach((item) => {
         item.setAttribute("data-bs-toggle", "");
-        //   item.style.setProperty("--display-drop-down", "block");
       });
     }
   };
-  const closeMenuHandler = () => {
-    menuContainer.style.opacity = 0;
-    menuContainer.style.visibility = "hidden";
-    setTimeout(() => {
-      menuContainer.classList.remove("show");
-      menuContainer.style.opacity = 1;
-      menuContainer.style.visibility = "visible";
-    }, 300);
-  };
-  closeIconMenu.addEventListener("click", closeMenuHandler);
 
   const navLinks = $.querySelectorAll(".navbar-nav > .nav-item > .nav-link");
+  const navLinkActive = $.querySelector(
+    ".navbar-nav > .nav-item > .nav-link.active"
+  );
+
   const lineBottomItem = $.querySelector(".navbar .line-bottom-item");
   const lineBottomItemHandler = (e) => {
-    lineBottomItem.style.left =
-      ((e.pageX - e.offsetX + 36) * 100) / window.innerWidth + "%";
-    lineBottomItem.style.width = e.target.clientWidth - 48 + "px";
+    if (e.type === "mouseenter") {
+      conculateLineBottom(e.target);
+    } else {
+      conculateLineBottom(navLinkActive);
+    }
   };
-
+  function conculateLineBottom(elem) {
+    lineBottomItem.style.left =
+      ((elem.getBoundingClientRect().x + 36) * 100) / window.innerWidth + "%";
+    lineBottomItem.style.width = elem.clientWidth - 48 + "px";
+  }
+  setTimeout(() => {
+    conculateLineBottom(navLinkActive);
+  }, 100);
   navLinks.forEach((navLink) => {
     navLink.addEventListener("mouseenter", lineBottomItemHandler);
+    navLink.addEventListener("mouseleave", lineBottomItemHandler);
   });
+
+  const navContainer = $.querySelector(".navbar-collapse");
+  function openMenuHandler() {
+    navContainer.classList.add("show-delay");
+    $.body.classList.add("no-scroll");
+  }
+  function closeMenuHandler() {
+    navContainer.classList.remove("show-delay");
+
+    $.body.classList.remove("no-scroll");
+  }
+  navContainer.addEventListener("show.bs.collapse", openMenuHandler);
+  navContainer.addEventListener("hide.bs.collapse", closeMenuHandler);
 }
 
 export { getHeader };

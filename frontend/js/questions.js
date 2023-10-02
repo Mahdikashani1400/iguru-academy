@@ -20,9 +20,5 @@ $.querySelectorAll(".questions__collapse .collapse").forEach((qustion) => {
 });
 
 function collapseElemHandler(e) {
-  if (e.type === "show.bs.collapse") {
-    this.previousElementSibling.classList.add("active");
-  } else {
-    this.previousElementSibling.classList.remove("active");
-  }
+  this.previousElementSibling.classList.toggle("active");
 }

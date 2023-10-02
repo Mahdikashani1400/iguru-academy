@@ -8,7 +8,7 @@
   position: relative;
   background: url("../img/poster.jpg");
   height: 700px;
-
+  background-position: 46% 5%;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -746,6 +746,11 @@ input:focus::-webkit-input-placeholder {
   transition: 0.4s all;
 }
 
+@media screen and (max-width: 991.5px) {
+  .education__comments__text {
+    text-align: center;
+  }
+}
 @media screen and (max-width: 576px) {
   .blogs .container {
     padding: 0 2rem;
