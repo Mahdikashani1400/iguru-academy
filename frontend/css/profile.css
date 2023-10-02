@@ -95,12 +95,26 @@ body {
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
 }
-.profile__menu .list-group-item.active {
+.profile__menu > .list-group > .active > .list-group-item {
   background: var(--primary-color-orange);
   border: 1px solid var(--primary-color-orange);
 }
-.profile__menu .list-group-item.active * {
+
+.profile__menu > .list-group > .active .subset-menu.lg {
+  position: unset !important;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  border-radius: 0 !important;
+  border: 1px solid rgb(0 0 0 / 13%);
+  box-shadow: none !important;
+  padding-right: 1.5rem !important;
+}
+.profile__menu > .list-group > .active > .list-group-item * {
   color: var(--white-color) !important;
+}
+.profile__menu .have-subset .subset-menu .active {
+  color: var(--primary-color-orange) !important;
 }
 .profile__menu .list-group-item:hover {
   color: var(--primary-color-green);
@@ -112,7 +126,7 @@ body {
   color: #000;
 }
 
-.subset-menu {
+.subset-menu.lg {
   visibility: hidden;
   opacity: 0;
   transition: 0.3s;
@@ -121,7 +135,19 @@ body {
   top: 0;
   width: max-content;
 }
-.profile__menu .have-subset:hover .subset-menu {
+.subset-menu.base {
+  height: 0px;
+  overflow: hidden;
+  transition: 0.3s all;
+}
+
+.subset-menu.base > a {
+  background: #f3f3f3 !important;
+}
+.subset-menu.base > a:not(:last-of-type) {
+  border-bottom: 1px solid #bdbcbc !important;
+}
+.profile__menu .have-subset:hover .subset-menu.lg {
   visibility: visible;
   opacity: 1;
 }
@@ -222,6 +248,14 @@ body {
   background: transparent;
   color: var(--primary-color-orange) !important;
 }
+
+/* password */
+.change__password i {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  top: 48% !important;
+}
 @media screen and (max-width: 575.5px) {
   .course__time {
     text-align: center !important;
@@ -238,5 +272,21 @@ body {
   }
   .profile__courses__orders-header div {
     font-size: 16px !important;
+  }
+  .profile__menu .have-subset a.open + .subset-menu.base {
+    height: 207.2px;
+  }
+
+  .profile__menu .have-subset a.open .bi-caret-left-fill {
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 991.5px) {
+  .profile__menu
+    > .list-group
+    > .active
+    > .list-group-item
+    .bi-caret-left-fill {
+    transform: rotate(-90deg);
   }
 }
