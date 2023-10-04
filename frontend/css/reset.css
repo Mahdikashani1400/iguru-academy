@@ -163,6 +163,9 @@ i {
   outline: none;
   transition: 0.4s all;
 }
+.btn:focus {
+  box-shadow: none !important;
+}
 .container-fluid {
   padding: 0;
   margin: 0;

@@ -165,11 +165,14 @@ function getHeader() {
             <span class="text-white d-md-inline col">ورود</span>
           </button>
         </div>
-        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <div class="navbar-collapse collapse " id="navbarSupportedContent">
+          
+          <ul class="navbar-nav mx-auto  bg-xl-danger bg-light h-100">
+          <li class="nav-item">
           <a
           href="#navbarSupportedContent"
           data-bs-toggle="collapse"
-            class="close-icon position-absolute d-inline-block right-0 p-3 d-block d-xl-none"
+            class="close-icon d-inline-block right-0 p-3 d-xl-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -185,11 +188,11 @@ function getHeader() {
               />
             </svg>
           </a>
-          <ul class="navbar-nav mx-auto bg-light bg-xl-danger h-100">
-            <li class="nav-item">
+        </li>
+            <li class="nav-item active">
               <a
-                href="#"
-                class="nav-link active fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
+                href="index.html"
+                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
                 >صفحه اصلی</a
               >
             </li>
@@ -204,20 +207,39 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
+                  <a href="about-us.html" class="dropdown-item text-white "
+                    >درباره ما</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
+                  <a href="" class="dropdown-item text-white "
+                    >سوالات متداول</a
+                  >
+                </li>
+            
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
+                >دوره ها</a
+              >
+              <ul
+                class="dropdown-menu rounded mt-3 py-4"
+                aria-labelledby="navbarDropdown"
+              >
+                <li class="dropdown-submenu dropend">
+                  <a href="" class="dropdown-item text-white "
+                    >لیست دوره ها</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
+                  <a href="" class="dropdown-item text-white "
+                    >پروفایل من</a
                   >
                 </li>
+            
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -231,20 +253,16 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
+                  <a href="" class="dropdown-item text-white"
+                    >وبلاگ های شبکه ای</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
+                  <a href="" class="dropdown-item text-white"
+                    >وبلاگ رندوم</a
                   >
                 </li>
-                <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
-                  >
-                </li>
+           
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -258,20 +276,16 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
+                  <a href="" class="dropdown-item text-white"
+                    >محصولات شبکه ای</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
+                  <a href="" class="dropdown-item text-white"
+                    >سبد خرید</a
                   >
                 </li>
-                <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white plus-toggle"
-                    >زیر منو</a
-                  >
-                </li>
+            
               </ul>
             </li>
             <li class="nav-item">
@@ -286,7 +300,11 @@ function getHeader() {
         <ul
           class="navbar__icon__box nav flex-row align-items-center list-unstyled ms-xl-auto gap-5 d-none d-xl-flex"
         >
-          <li class="nav-item">
+
+          <li class="nav-item"
+          data-bs-toggle="modal"
+          data-bs-target="#userBasketModal"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -305,7 +323,9 @@ function getHeader() {
               />
             </svg>
           </li>
-          <li class="nav-item">
+          <li class="nav-item search"
+          data-bs-toggle="modal"
+          data-bs-target="#searchModal">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -322,6 +342,10 @@ function getHeader() {
                 d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"
               />
             </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
           </li>
         </ul>
       </div>
@@ -334,8 +358,8 @@ function getHeader() {
   let closeIconMenu = $.querySelector(".close-icon");
   window.addEventListener("load", () => {
     menuItem = $.querySelectorAll("#navbarSupportedContent .nav-link");
-    //   dropdownMenu = $.querySelectorAll(".dropdown-menu");
     dropDownHandler();
+    conculateLineBottom(navLinkActive);
   });
   window.addEventListener("resize", () => {
     {
@@ -354,10 +378,8 @@ function getHeader() {
     }
   };
 
-  const navLinks = $.querySelectorAll(".navbar-nav > .nav-item > .nav-link");
-  const navLinkActive = $.querySelector(
-    ".navbar-nav > .nav-item > .nav-link.active"
-  );
+  const navLinks = $.querySelectorAll(".navbar-nav > .nav-item");
+  const navLinkActive = $.querySelector(".navbar-nav > .nav-item.active");
 
   const lineBottomItem = $.querySelector(".navbar .line-bottom-item");
   const lineBottomItemHandler = (e) => {
@@ -369,12 +391,10 @@ function getHeader() {
   };
   function conculateLineBottom(elem) {
     lineBottomItem.style.left =
-      ((elem.getBoundingClientRect().x + 36) * 100) / window.innerWidth + "%";
-    lineBottomItem.style.width = elem.clientWidth - 48 + "px";
+      ((elem.getBoundingClientRect().x + 30) * 100) / window.innerWidth + "%";
+    lineBottomItem.style.width = elem.clientWidth - 42 + "px";
   }
-  setTimeout(() => {
-    conculateLineBottom(navLinkActive);
-  }, 100);
+
   navLinks.forEach((navLink) => {
     navLink.addEventListener("mouseenter", lineBottomItemHandler);
     navLink.addEventListener("mouseleave", lineBottomItemHandler);
@@ -387,11 +407,18 @@ function getHeader() {
   }
   function closeMenuHandler() {
     navContainer.classList.remove("show-delay");
-
     $.body.classList.remove("no-scroll");
   }
   navContainer.addEventListener("show.bs.collapse", openMenuHandler);
   navContainer.addEventListener("hide.bs.collapse", closeMenuHandler);
+
+  const seacrhModal = $.getElementById("searchModal");
+  seacrhModal.addEventListener("show.bs.modal", seacrhModalHandler);
+  seacrhModal.addEventListener("hide.bs.modal", seacrhModalHandler);
+  function seacrhModalHandler() {
+    let searchIcon = $.querySelector(".navbar__icon__box .search");
+    searchIcon.classList.toggle("close");
+  }
 }
 
 export { getHeader };

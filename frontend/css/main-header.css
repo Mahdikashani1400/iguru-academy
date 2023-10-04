@@ -380,6 +380,9 @@ input:focus::-webkit-input-placeholder {
   flex-direction: column;
   justify-content: center;
 }
+.caategories__courses-slider .slick-dots li {
+  background: #ffffff91;
+}
 .caategories__courses-slide {
   position: relative;
   cursor: pointer;

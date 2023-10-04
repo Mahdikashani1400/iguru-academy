@@ -72,15 +72,17 @@
 }
 
 .nav-item.dropdown .dropdown-menu {
-  left: -33px;
+  left: -45px;
   background: rgb(36 41 55);
+  overflow: hidden;
 }
 .nav-item.dropdown .dropdown-menu a {
   color: var(--white-color);
   font-size: 18px;
   font-weight: bold;
   padding-right: 2.5rem;
-  padding-left: 7rem;
+  padding-left: 4rem;
+  text-align: right;
 }
 .nav-item.dropdown .dropdown-menu::before {
   content: "";
@@ -98,6 +100,19 @@
   width: 22px;
   height: 22px;
   cursor: pointer;
+  transition: 0.3s all;
+}
+.navbar__icon__box .bi-x,
+.navbar__icon__box .close .bi-search-heart {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+}
+.navbar__icon__box .close .bi-x {
+  opacity: 1;
+  visibility: visible;
+  width: 35px;
+  height: 35px;
 }
 
 .check-basket,
@@ -195,21 +210,18 @@
   }
   .navbar-nav {
     overflow: auto;
-    padding-top: 4.5rem;
+    padding-top: 0.5rem;
   }
   .navbar-collapse {
     position: fixed;
     width: 100%;
     left: 0;
     top: 0;
-    height: 100%;
+    height: 0;
     transition: all 0.4s ease 0s;
-    visibility: hidden;
-    opacity: 0;
   }
-  .navbar-collapse.show-delay {
-    visibility: visible;
-    opacity: 1;
+  .navbar-collapse.show {
+    height: 100%;
   }
 
   .dropdown-menu {
@@ -223,14 +235,33 @@
     text-align: right;
   }
   .dropdown-menu.show {
-    height: 160px;
+    height: 120px;
     overflow: auto;
     padding: 24px 0 !important;
-    margin-top: 16px !important;
+    margin: 16px !important;
   }
   .dropdown-item {
     color: var(--primary-color-green) !important;
     padding-right: 4.2rem !important;
+  }
+  .plus-toggle::after,
+  .plus-toggle::before {
+    content: "";
+    position: absolute;
+    padding-right: 0;
+    width: 12px;
+    height: 2.7px;
+    margin-right: auto;
+    background: #6c757d;
+    left: 34px;
+    top: 22px;
+    transition: 0.3s all;
+  }
+  .plus-toggle::after {
+    transform: rotate(90deg);
+  }
+  .plus-toggle.show::after {
+    transform: rotate(0deg);
   }
 }
 

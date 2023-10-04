@@ -333,7 +333,7 @@ $(".blog__slider").slick({
   ],
 });
 
-$(".reading_blogs .blogs__boxes").slick({
+$("#readBlog .blogs__boxes").slick({
   dots: false, // Boolean
   // arrows: false,
   // asNavFor: ".slider-for",
