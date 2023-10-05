@@ -7,13 +7,20 @@
 
 body {
   background: #f8f8f8;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+#main {
+  padding: 5rem;
+}
 .toggle__btns__form {
   width: fit-content;
+  cursor: pointer;
+}
+.toggle__btns__form .active {
+  color: #fff !important;
+  background: var(--primary-color-orange) !important;
 }
 .form__container {
   max-width: 465px;
@@ -32,6 +39,28 @@ form {
 .form__container .btn:hover {
   color: var(--dark-color) !important;
 }
+
+/* swal custom style */
+
+.swal2-title {
+  font-size: 22px;
+}
+.swal2-confirm {
+  padding: 0.8rem 1.8rem;
+  background: var(--primary-color-orange) !important;
+  border: 2px solid var(--primary-color-orange) !important;
+  transition: 0.3s all;
+  outline: none;
+  font-weight: bold;
+}
+.swal2-confirm:hover {
+  background-color: transparent !important;
+  color: #0e0e0e;
+}
+.swal2-confirm:focus {
+  box-shadow: none !important;
+}
+/* swal custom style */
 
 @media screen and (min-width: 992px) {
   .form__container {

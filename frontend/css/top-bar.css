@@ -18,6 +18,25 @@
 .navbar__info__left-gmail a:hover {
   color: var(--primary-color-green);
 }
+nav.user-out .user-info {
+  display: none !important;
+}
+.navbar__info__left-gmail .user-info {
+  position: relative;
+  border: 2px solid var(--primary-color-green);
+  border-bottom: none;
+  transition: 0.5s all ease-out;
+  background-image: linear-gradient(
+    40deg,
+    var(--primary-color-green) 40%,
+    transparent 40%
+  );
+  background-position: 100%;
+  background-size: 320%;
+}
+.navbar__info__left-gmail .user-info:hover {
+  background-position: 0;
+}
 .navbar__info__left-login .btn {
   height: 100%;
 }
@@ -303,5 +322,8 @@
   }
   .categories__courses-timer-number {
     font-size: 30px !important;
+  }
+  .navbar__header__menu * {
+    font-size: 13px;
   }
 }

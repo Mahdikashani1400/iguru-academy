@@ -2760,11 +2760,11 @@ textarea.form-control.is-invalid {
 }
 .btn-check:focus + .btn,
 .btn:focus {
-  color: var(--bs-btn-hover-color);
+  /* color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
-  box-shadow: var(--bs-btn-focus-box-shadow);
+  box-shadow: var(--bs-btn-focus-box-shadow); */
 }
 .btn-check:active + .btn,
 .btn-check:checked + .btn,

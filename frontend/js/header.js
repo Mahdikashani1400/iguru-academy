@@ -1,11 +1,10 @@
-// import { Header } from "../vendor/header/app.js";
-// window.customElements.define("header-section", Header);
+import { getUserInfo, isLogin } from "../js/funcs/auth.js";
 
 const $ = document;
 const header = $.querySelector(".header");
 function getHeader() {
   header.innerHTML = `
-    <nav class="navbar__info d-none d-xl-flex">
+    <nav class="navbar__info d-none d-xl-flex user-out">
       <div
         class="container-fluid row justify-content-center align-items-center bg-none"
       >
@@ -17,8 +16,9 @@ function getHeader() {
         <div
           class="navbar__info__left col-md-9 px-5 row justify-content-center align-items-center h-100"
         >
-          <div class="navbar__info__left-gmail col">
-            <a href="">iguru@mail.com</a>
+          <div class="navbar__info__left-gmail col h-100 d-flex align-items-center">
+            <a href="#">iguru@mail.com</a>
+            <a href="#" class="user-info p-3 text-white d-flex align-items-center mx-auto rounded-top  h-100">محمد مهدی جان</a>
           </div>
           <div
             class="navbar__info__left-accessibility col row justify-content-center"
@@ -137,12 +137,12 @@ function getHeader() {
       </div>
     </nav>
     <nav
-      class="navbar navbar-expand-xl navbar__header__menu bg-body-tertiary border-bottom bg-transparent"
+      class="navbar navbar-expand-xl navbar__header__menu bg-body-tertiary border-bottom bg-transparent user-out"
     >
       <span class="line-bottom-item d-none d-xl-inline-block"></span>
 
       <div class="container">
-        <a href="" class="navbar__brand order-2 order-xl-0"
+        <a href="#" class="navbar__brand order-2 order-xl-0 col-4"
           ><img
             src="./img/logo-light.png"
             alt=""
@@ -159,11 +159,13 @@ function getHeader() {
         >
           <span class="fa fa-bars text-white"></span>
         </button>
-        <div class="row justify-content-end order-3">
-          <button class="btn d-flex d-xl-none align-items-center gap-3">
-            <i class="fa fa-user col text-white"></i>
-            <span class="text-white d-md-inline col">ورود</span>
+        <div class="d-flex flex-column flex-sm-row order-3 d-xl-none align-items-center gap-3">
+        <a href="#" class="user-info px-sm-3 p-2 text-white d-flex align-items-center rounded rounded-2 bg-green">محمد مهدی جان</a>
+          <button class="btn d-flex align-items-center gap-2 w-auto bg-white">
+            <i class="fa fa-user col text-orange"></i>
+            <span class="text-normal d-md-inline col">ورود</span>
           </button>
+          
         </div>
         <div class="navbar-collapse collapse " id="navbarSupportedContent">
           
@@ -212,7 +214,7 @@ function getHeader() {
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white "
+                  <a href="questions.html" class="dropdown-item text-white "
                     >سوالات متداول</a
                   >
                 </li>
@@ -230,12 +232,12 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white "
+                  <a href="courses.html" class="dropdown-item text-white "
                     >لیست دوره ها</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white "
+                  <a href="profile.html" class="dropdown-item text-white "
                     >پروفایل من</a
                   >
                 </li>
@@ -253,12 +255,12 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white"
+                  <a href="blogs.html" class="dropdown-item text-white"
                     >وبلاگ های شبکه ای</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white"
+                  <a href="read-blog.html" class="dropdown-item text-white"
                     >وبلاگ رندوم</a
                   >
                 </li>
@@ -276,12 +278,12 @@ function getHeader() {
                 aria-labelledby="navbarDropdown"
               >
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white"
+                  <a href="products.html" class="dropdown-item text-white"
                     >محصولات شبکه ای</a
                   >
                 </li>
                 <li class="dropdown-submenu dropend">
-                  <a href="" class="dropdown-item text-white"
+                  <a href="user-basket.html" class="dropdown-item text-white"
                     >سبد خرید</a
                   >
                 </li>
@@ -290,7 +292,7 @@ function getHeader() {
             </li>
             <li class="nav-item">
               <a
-                href="#"
+                href="contacts.html"
                 class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
                 >تماس با ما</a
               >
@@ -351,11 +353,9 @@ function getHeader() {
       </div>
     </nav>
  `;
-
   let menuItem = null;
   let dropdownMenu = null;
 
-  let closeIconMenu = $.querySelector(".close-icon");
   window.addEventListener("load", () => {
     menuItem = $.querySelectorAll("#navbarSupportedContent .nav-link");
     dropDownHandler();
@@ -418,6 +418,22 @@ function getHeader() {
   function seacrhModalHandler() {
     let searchIcon = $.querySelector(".navbar__icon__box .search");
     searchIcon.classList.toggle("close");
+  }
+
+  if (isLogin()) {
+    (function () {
+      const navs = header.querySelectorAll("nav");
+      const userNames = header.querySelectorAll(".user-info");
+
+      getUserInfo().then((data) => {
+        navs.forEach((nav) => {
+          nav.classList.remove("user-out");
+          userNames.forEach((nameElem) => {
+            nameElem.innerHTML = `${data.name}`;
+          });
+        });
+      });
+    })();
   }
 }
 

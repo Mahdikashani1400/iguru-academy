@@ -72,8 +72,10 @@
   color: var(--primary-color-green);
 }
 .education__comments__content .form-title {
-  position: relative;
   background: var(--primary-color-orange);
+}
+.line-side {
+  position: relative;
 }
 .line-side::before {
   content: "";
@@ -83,6 +85,11 @@
   background: #ded3d3df;
   top: 36%;
   right: 72px;
+}
+.education__comments__content .form-title span::before {
+  height: 31px;
+  top: 3%;
+  right: -5%;
 }
 .education__comments__content form {
   background: var(--white-color);
@@ -218,7 +225,8 @@ input:focus::-webkit-input-placeholder {
 .about__us_courses-menu a::before {
   right: 0;
   width: 2.5px;
-  height: 27%;
+  height: 16px;
+  top: 13px;
 }
 .about__us_courses-menu a:hover {
   color: var(--primary-color-green);

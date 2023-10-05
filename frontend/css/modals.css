@@ -2,6 +2,9 @@
   height: 100vh;
   overflow: hidden;
 }
+.modal {
+  overflow: hidden;
+}
 .modals .user__basket-modal {
   z-index: 9999999999999999999;
   backdrop-filter: blur(3px) grayscale(0.4);
