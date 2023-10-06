@@ -278,8 +278,7 @@ input:focus::-webkit-input-placeholder {
 .course__box-bg-img {
   margin: 0 24px;
   background: url(../img/about-us.jpg);
-  background-position: inherit !important;
-  background-size: cover;
+
   z-index: -1;
   width: -webkit-fill-available;
   height: 100%;
@@ -327,8 +326,8 @@ input:focus::-webkit-input-placeholder {
   background: transparent;
   color: var(--primary-color-green) !important;
 }
-.course__box-number-star {
-  margin: 3px 6px;
+.course__box-star svg {
+  color: #ffb300;
 }
 .about__us__btn {
   border: 2px solid var(--primary-color-green) !important;

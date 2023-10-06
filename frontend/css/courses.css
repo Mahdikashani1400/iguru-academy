@@ -131,18 +131,17 @@
   color: var(--dark-color);
 }
 .course__box-container:hover svg {
-  color: var(--primary-color-orange);
+  /* color: var(--primary-color-orange); */
 }
 .course__box-container:hover .course__box-teacher,
 .course__box-container:hover .course__box-number-star {
-  color: var(--gray-color);
+  color: var(--gray-color-less) !important;
 }
 
 .course__box-bg-img {
   margin: 0 24px;
   background: url(../img/about-us.jpg);
-  background-position: inherit !important;
-  background-size: cover;
+
   z-index: -1;
   width: -webkit-fill-available;
   height: 100%;
@@ -190,10 +189,9 @@
   background: transparent;
   color: var(--primary-color-green) !important;
 }
-.course__box-number-star {
-  margin: 3px 6px;
+.course__box-star svg {
+  color: #ffb300;
 }
-
 /* search */
 .line-side::before {
   content: "";
