@@ -209,46 +209,47 @@ $(".teachers__information-boxes").slick({
     },
   ],
 });
+function aricleSliderHome() {
+  $(".blogs__description + .blogs__boxes").slick({
+    dots: true, // Boolean
+    // arrows: false,
+    // asNavFor: ".slider-for",
+    slidesToShow: 3, // Number
+    slidesToScroll: 1, // Number
+    infinite: false, // Boolean
 
-$(".blogs__description + .blogs__boxes").slick({
-  dots: false, // Boolean
-  // arrows: false,
-  // asNavFor: ".slider-for",
-  slidesToShow: 3, // Number
-  slidesToScroll: 1, // Number
-  infinite: false, // Boolean
+    centerMode: false,
 
-  centerMode: false,
-
-  centerPadding: "0px", // String
-  responsive: [
-    {
-      breakpoint: 1070,
-      settings: {
-        slidesToShow: 3,
-        infinite: true, // Boolean
+    centerPadding: "0px", // String
+    responsive: [
+      {
+        breakpoint: 1070,
+        settings: {
+          slidesToShow: 3,
+          infinite: true, // Boolean
+        },
       },
-    },
-    {
-      breakpoint: 978,
-      settings: {
-        slidesToShow: 2,
-        dots: true,
-        focusOnSelect: true,
+      {
+        breakpoint: 978,
+        settings: {
+          slidesToShow: 2,
+          dots: true,
+          focusOnSelect: true,
+        },
       },
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        dots: true,
+      {
+        breakpoint: 768,
+        settings: {
+          dots: true,
 
-        slidesToShow: 1,
-        infinite: true, // Boolean
-        arrows: false,
+          slidesToShow: 1,
+          infinite: true, // Boolean
+          arrows: false,
+        },
       },
-    },
-  ],
-});
+    ],
+  });
+}
 
 $(".comments__boxes").slick({
   dots: true, // Boolean
@@ -334,7 +335,7 @@ $(".blog__slider").slick({
 });
 
 $("#readBlog .blogs__boxes").slick({
-  dots: false, // Boolean
+  dots: true, // Boolean
   // arrows: false,
   // asNavFor: ".slider-for",
   slidesToShow: 2, // Number
@@ -364,3 +365,5 @@ $("#readBlog .blogs__boxes").slick({
     },
   ],
 });
+
+export { aricleSliderHome };

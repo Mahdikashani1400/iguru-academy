@@ -26,8 +26,8 @@
   height: 100%;
   background-image: linear-gradient(
     90deg,
-    rgba(24, 27, 36, 0.7),
-    rgba(0, 0, 0, 0)
+    rgb(24 27 36 / 74%),
+    rgb(0 0 0 / 27%)
   );
 }
 .description .container * {

@@ -11,5 +11,11 @@ const getPopularCourses = async () => {
   const result = await res.json();
   return result;
 };
+const getArticles = async () => {
+  const res = await fetch("http://localhost:4000/v1/articles", {});
 
-export { getCourses, getPopularCourses };
+  const result = await res.json();
+  return result;
+};
+
+export { getCourses, getPopularCourses, getArticles };
