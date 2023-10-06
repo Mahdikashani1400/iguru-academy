@@ -760,6 +760,13 @@ input:focus::-webkit-input-placeholder {
   .education__comments__text {
     text-align: center;
   }
+  .people-confirmation {
+    width: 120px;
+    height: 120px;
+  }
+  .people-confirmation * {
+    font-size: 18px;
+  }
 }
 @media screen and (max-width: 576px) {
   .blogs .container {

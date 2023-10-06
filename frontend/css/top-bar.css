@@ -292,13 +292,7 @@ nav.user-out .user-info {
   .about__us__img img {
     border-radius: 50%;
   }
-  .people-confirmation {
-    width: 110px;
-    height: 110px;
-  }
-  .people-confirmation * {
-    font-size: 18px;
-  }
+
   .about__us_courses-menu a::before {
     top: 18%;
     right: 0;
