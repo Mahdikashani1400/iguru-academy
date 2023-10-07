@@ -1,4 +1,5 @@
 import { getUserInfo, isLogin } from "../js/funcs/auth.js";
+import { getMenus } from "../js/funcs/shared.js";
 
 const $ = document;
 const header = $.querySelector(".header");
@@ -169,7 +170,7 @@ function getHeader() {
         </div>
         <div class="navbar-collapse collapse " id="navbarSupportedContent">
           
-          <ul class="navbar-nav mx-auto  bg-xl-danger bg-light h-100">
+          <ul class="navbar-nav mx-auto bg-xl-danger bg-light h-100" id="menuContainer">
           <li class="nav-item">
           <a
           href="#navbarSupportedContent"
@@ -353,51 +354,15 @@ function getHeader() {
       </div>
     </nav>
  `;
-  let menuItem = null;
-  let dropdownMenu = null;
 
+  showMenus();
   window.addEventListener("load", () => {
-    menuItem = $.querySelectorAll("#navbarSupportedContent .nav-link");
-    dropDownHandler();
-    conculateLineBottom(navLinkActive);
+    // show-menus
   });
   window.addEventListener("resize", () => {
     {
       dropDownHandler();
     }
-  });
-  const dropDownHandler = () => {
-    if (window.innerWidth < 1200) {
-      menuItem.forEach((item) => {
-        item.setAttribute("data-bs-toggle", "dropdown");
-      });
-    } else {
-      menuItem.forEach((item) => {
-        item.setAttribute("data-bs-toggle", "");
-      });
-    }
-  };
-
-  const navLinks = $.querySelectorAll(".navbar-nav > .nav-item");
-  const navLinkActive = $.querySelector(".navbar-nav > .nav-item.active");
-
-  const lineBottomItem = $.querySelector(".navbar .line-bottom-item");
-  const lineBottomItemHandler = (e) => {
-    if (e.type === "mouseenter") {
-      conculateLineBottom(e.target);
-    } else {
-      conculateLineBottom(navLinkActive);
-    }
-  };
-  function conculateLineBottom(elem) {
-    lineBottomItem.style.left =
-      ((elem.getBoundingClientRect().x + 30) * 100) / window.innerWidth + "%";
-    lineBottomItem.style.width = elem.clientWidth - 42 + "px";
-  }
-
-  navLinks.forEach((navLink) => {
-    navLink.addEventListener("mouseenter", lineBottomItemHandler);
-    navLink.addEventListener("mouseleave", lineBottomItemHandler);
   });
 
   const navContainer = $.querySelector(".navbar-collapse");
@@ -420,6 +385,8 @@ function getHeader() {
     searchIcon.classList.toggle("close");
   }
 
+  // show user-name
+
   if (isLogin()) {
     (function () {
       const navs = header.querySelectorAll("nav");
@@ -434,6 +401,156 @@ function getHeader() {
         });
       });
     })();
+  }
+}
+
+async function showMenus() {
+  const menuContainer = $.getElementById("menuContainer");
+  menuContainer.innerHTML = ` <li class="nav-item">
+  <a
+  href="#navbarSupportedContent"
+  data-bs-toggle="collapse"
+    class="close-icon d-inline-block right-0 p-3 d-xl-none"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-x-lg"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+        class="text-danger"
+      />
+    </svg>
+  </a>
+</li>`;
+  const menusInfo = await getMenus().then((data) => data);
+  menusInfo.forEach((menuInfo) => {
+    if (menuInfo.submenus.length) {
+      menuContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+        <li class="nav-item dropdown ${
+          location.href.includes(menuInfo.href) ? "active" : ""
+        }"
+        onmouseenter="lineBottomItemHandler(event)"
+        onmouseout="lineBottomItemHandler()">
+        <a
+          href="${menuInfo.href}"
+          class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
+   
+          >${menuInfo.title}</a
+        >
+        <ul
+          class="dropdown-menu rounded mt-3 py-4"
+          aria-labelledby="navbarDropdown"
+
+        >
+        ${menuInfo.submenus
+          .map(
+            (subsmenu) =>
+              `
+        <li class="dropdown-submenu dropend">
+        <a href="${subsmenu.href}" class="dropdown-item ${
+                location.href.includes(subsmenu.href) ? "active" : ""
+              } text-white "
+          >${subsmenu.title}</a
+        >
+      </li>
+        `
+          )
+          .join("")}
+        </ul>
+        
+        </li>
+
+      `
+      );
+    } else {
+      menuContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+      <li class="nav-item ${
+        location.href.includes(menuInfo.href) ? "active" : ""
+      }"
+      onmouseenter="lineBottomItemHandler(event)"
+      onmouseout="lineBottomItemHandler()">
+      <a
+        href="${menuInfo.href}"
+        class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
+
+        >${menuInfo.title}</a
+      >
+    </li>`
+      );
+    }
+  });
+  navMenu = $.querySelector(".navbar__header__menu");
+
+  navLinkActive =
+    $.querySelector(".navbar-nav > .nav-item.active") ||
+    $.querySelector(".navbar-nav  .dropdown-item.active").parentElement
+      .parentElement.parentElement;
+  console.log(navLinkActive);
+  menuItem = $.querySelectorAll("#navbarSupportedContent .nav-link");
+
+  conculateLineBottom(navLinkActive);
+  dropDownHandler();
+  // navMenuScroll = navMenu.cloneNode(true);
+
+  // header.append(navMenuScroll);
+}
+
+function conculateLineBottom(elem) {
+  console.log(elem);
+  const lineBottomItem = $.querySelector(".navbar .line-bottom-item");
+  lineBottomItem.style.left =
+    ((elem.getBoundingClientRect().x + 28) * 100) / window.innerWidth + "%";
+  lineBottomItem.style.width = elem.clientWidth - 36 + "px";
+}
+window.lineBottomItemHandler = lineBottomItemHandler;
+let navLinkActive = null;
+function lineBottomItemHandler(e) {
+  if (e.type === "mouseenter") {
+    conculateLineBottom(e.target);
+  } else {
+    conculateLineBottom(navLinkActive);
+  }
+}
+
+let menuItem = null;
+
+function dropDownHandler() {
+  if (window.innerWidth < 1200) {
+    menuItem.forEach((item) => {
+      item.setAttribute("data-bs-toggle", "dropdown");
+    });
+  } else {
+    menuItem.forEach((item) => {
+      item.setAttribute("data-bs-toggle", "");
+    });
+  }
+}
+
+// window.addEventListener("scroll", showMenuOnScroll);
+let scrollValue = null;
+let navMenu = null;
+let navMenuScroll = null;
+// let
+function showMenuOnScroll() {
+  if ($.documentElement.scrollTop > 91) {
+    if ($.documentElement.scrollTop > scrollValue) {
+      console.log(scrollValue);
+      navMenu.style.top = "-91px";
+    } else {
+      navMenu.style.top = 0;
+    }
+    scrollValue = $.documentElement.scrollTop;
+  } else {
+    navMenu.style.top = "46px";
   }
 }
 
