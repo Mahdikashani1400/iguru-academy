@@ -437,7 +437,7 @@ async function showMenus() {
           location.href.includes(menuInfo.href) ? "active" : ""
         }"
         onmouseenter="lineBottomItemHandler(event)"
-        onmouseout="lineBottomItemHandler()">
+        onmouseleave="lineBottomItemHandler()">
         <a
           href="${menuInfo.href}"
           class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
@@ -477,7 +477,7 @@ async function showMenus() {
         location.href.includes(menuInfo.href) ? "active" : ""
       }"
       onmouseenter="lineBottomItemHandler(event)"
-      onmouseout="lineBottomItemHandler()">
+      onmouseleave="lineBottomItemHandler()">
       <a
         href="${menuInfo.href}"
         class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
@@ -514,7 +514,7 @@ function conculateLineBottom(elem) {
 window.lineBottomItemHandler = lineBottomItemHandler;
 let navLinkActive = null;
 function lineBottomItemHandler(e) {
-  if (e.type === "mouseenter") {
+  if (e?.type === "mouseenter") {
     conculateLineBottom(e.target);
   } else {
     conculateLineBottom(navLinkActive);
