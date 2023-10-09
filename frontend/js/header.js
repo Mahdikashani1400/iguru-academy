@@ -3,6 +3,8 @@ import { getMenus } from "../js/funcs/shared.js";
 
 const $ = document;
 const header = $.querySelector(".header");
+let navMenuFix = null;
+let navMenuScroll = null;
 function getHeader() {
   header.innerHTML = `
     <nav class="navbar__info d-none d-xl-flex user-out">
@@ -138,7 +140,7 @@ function getHeader() {
       </div>
     </nav>
     <nav
-      class="navbar navbar-expand-xl navbar__header__menu bg-body-tertiary border-bottom bg-transparent user-out"
+      class="navbar navbar-expand-xl navbar__header__menu fix bg-body-tertiary border-bottom bg-transparent user-out"
     >
       <span class="line-bottom-item d-none d-xl-inline-block"></span>
 
@@ -170,7 +172,7 @@ function getHeader() {
         </div>
         <div class="navbar-collapse collapse " id="navbarSupportedContent">
           
-          <ul class="navbar-nav mx-auto bg-xl-danger bg-light h-100" id="menuContainer">
+          <ul class="navbar-nav mx-auto bg-xl-danger bg-light h-100">
           <li class="nav-item">
           <a
           href="#navbarSupportedContent"
@@ -191,113 +193,78 @@ function getHeader() {
               />
             </svg>
           </a>
-        </li>
-            <li class="nav-item active">
-              <a
-                href="index.html"
-                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
-                >صفحه اصلی</a
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
-                >صفحات</a
-              >
-              <ul
-                class="dropdown-menu rounded mt-3 py-4"
-                aria-labelledby="navbarDropdown"
-              >
-                <li class="dropdown-submenu dropend">
-                  <a href="about-us.html" class="dropdown-item text-white "
-                    >درباره ما</a
-                  >
-                </li>
-                <li class="dropdown-submenu dropend">
-                  <a href="questions.html" class="dropdown-item text-white "
-                    >سوالات متداول</a
-                  >
-                </li>
-            
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
-                >دوره ها</a
-              >
-              <ul
-                class="dropdown-menu rounded mt-3 py-4"
-                aria-labelledby="navbarDropdown"
-              >
-                <li class="dropdown-submenu dropend">
-                  <a href="courses.html" class="dropdown-item text-white "
-                    >لیست دوره ها</a
-                  >
-                </li>
-                <li class="dropdown-submenu dropend">
-                  <a href="profile.html" class="dropdown-item text-white "
-                    >پروفایل من</a
-                  >
-                </li>
-            
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
-                >وبلاگ</a
-              >
-              <ul
-                class="dropdown-menu rounded mt-3 py-4"
-                aria-labelledby="navbarDropdown"
-              >
-                <li class="dropdown-submenu dropend">
-                  <a href="blogs.html" class="dropdown-item text-white"
-                    >وبلاگ های شبکه ای</a
-                  >
-                </li>
-                <li class="dropdown-submenu dropend">
-                  <a href="read-blog.html" class="dropdown-item text-white"
-                    >وبلاگ رندوم</a
-                  >
-                </li>
-           
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
-                >فروشگاه</a
-              >
-              <ul
-                class="dropdown-menu rounded mt-3 py-4"
-                aria-labelledby="navbarDropdown"
-              >
-                <li class="dropdown-submenu dropend">
-                  <a href="products.html" class="dropdown-item text-white"
-                    >محصولات شبکه ای</a
-                  >
-                </li>
-                <li class="dropdown-submenu dropend">
-                  <a href="user-basket.html" class="dropdown-item text-white"
-                    >سبد خرید</a
-                  >
-                </li>
-            
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a
-                href="contacts.html"
-                class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
-                >تماس با ما</a
-              >
-            </li>
+          </ul>
+        </div>
+        <ul
+          class="navbar__icon__box nav flex-row align-items-center list-unstyled ms-xl-auto gap-5 d-none d-xl-flex"
+        >
+
+          <li class="nav-item"
+          data-bs-toggle="modal"
+          data-bs-target="#userBasketModal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-bag-check"
+              viewBox="0 0 16 16"
+            >
+              <path
+                class="check-basket"
+                fill-rule="evenodd"
+                d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+              />
+              <path
+                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+              />
+            </svg>
+          </li>
+          <li class="nav-item search"
+          data-bs-toggle="modal"
+          data-bs-target="#searchModal">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search-heart"
+              viewBox="0 0 16 16"
+            >
+              <path
+                class="check-search"
+                d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"
+              />
+              <path
+                d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"
+              />
+            </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav
+      class="navbar navbar-expand-xl navbar__header__menu scroll bg-body-tertiary border-bottom bg-transparent"
+    >
+      <span class="line-bottom-item d-none d-xl-inline-block"></span>
+
+      <div class="container">
+        <a href="#" class="navbar__brand order-2 order-xl-0 col-4"
+          ><img
+            src="./img/logo-light.png"
+            alt=""
+            class="navbar__brand-item"
+        /></a>
+      
+ 
+        <div class="navbar-collapse">
+          
+          <ul class="navbar-nav mx-auto bg-xl-danger bg-light h-100">
           </ul>
         </div>
         <ul
@@ -354,90 +321,91 @@ function getHeader() {
       </div>
     </nav>
  `;
+  showUserNameHandler();
 
+  navMenuFix = header.querySelector(".navbar__header__menu.fix");
+  navMenuScroll = header.querySelector(".navbar__header__menu.scroll");
   showMenus();
-  window.addEventListener("load", () => {
-    // show-menus
-  });
-  window.addEventListener("resize", () => {
-    {
-      dropDownHandler();
-    }
-  });
 
-  const navContainer = $.querySelector(".navbar-collapse");
-  function openMenuHandler() {
-    navContainer.classList.add("show-delay");
-    $.body.classList.add("no-scroll");
-  }
-  function closeMenuHandler() {
-    navContainer.classList.remove("show-delay");
-    $.body.classList.remove("no-scroll");
-  }
+  navContainer = $.querySelector(".navbar-collapse");
+  seacrhModal = $.getElementById("searchModal");
   navContainer.addEventListener("show.bs.collapse", openMenuHandler);
   navContainer.addEventListener("hide.bs.collapse", closeMenuHandler);
 
-  const seacrhModal = $.getElementById("searchModal");
   seacrhModal.addEventListener("show.bs.modal", seacrhModalHandler);
   seacrhModal.addEventListener("hide.bs.modal", seacrhModalHandler);
-  function seacrhModalHandler() {
-    let searchIcon = $.querySelector(".navbar__icon__box .search");
-    searchIcon.classList.toggle("close");
-  }
+}
 
-  // show user-name
-
+function showUserNameHandler() {
   if (isLogin()) {
-    (function () {
-      const navs = header.querySelectorAll("nav");
-      const userNames = header.querySelectorAll(".user-info");
+    const navs = header.querySelectorAll("nav");
+    const userNames = header.querySelectorAll(".user-info");
 
-      getUserInfo().then((data) => {
-        navs.forEach((nav) => {
-          nav.classList.remove("user-out");
-          userNames.forEach((nameElem) => {
-            nameElem.innerHTML = `${data.name}`;
-          });
+    getUserInfo().then((data) => {
+      navs.forEach((nav) => {
+        nav.classList.remove("user-out");
+        userNames.forEach((nameElem) => {
+          nameElem.innerHTML = `${data.name}`;
         });
       });
-    })();
+    });
   }
 }
 
 async function showMenus() {
-  const menuContainer = $.getElementById("menuContainer");
-  menuContainer.innerHTML = ` <li class="nav-item">
-  <a
-  href="#navbarSupportedContent"
-  data-bs-toggle="collapse"
-    class="close-icon d-inline-block right-0 p-3 d-xl-none"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      fill="currentColor"
-      class="bi bi-x-lg"
-      viewBox="0 0 16 16"
-    >
-      <path
-        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-        class="text-danger"
-      />
-    </svg>
-  </a>
-</li>`;
+  const fixMenuContainer = navMenuFix.querySelector(".navbar-nav");
+  const scrollMenuContainer = navMenuScroll.querySelector(".navbar-nav");
   const menusInfo = await getMenus().then((data) => data);
+
   menusInfo.forEach((menuInfo) => {
     if (menuInfo.submenus.length) {
-      menuContainer.insertAdjacentHTML(
+      fixMenuContainer.insertAdjacentHTML(
         "beforeend",
         `
         <li class="nav-item dropdown ${
           location.href.includes(menuInfo.href) ? "active" : ""
         }"
         onmouseenter="lineBottomItemHandler(event)"
-        onmouseleave="lineBottomItemHandler()">
+        onmouseleave="lineBottomItemHandler(event)">
+        <a
+          href="${menuInfo.href}"
+          class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
+   
+          >${menuInfo.title}</a
+        >
+        <ul
+          class="dropdown-menu rounded mt-3 py-4"
+          aria-labelledby="navbarDropdown"
+
+        >
+        ${menuInfo.submenus
+          .map(
+            (subsmenu) =>
+              `
+        <li class="dropdown-submenu dropend">
+        <a href="${subsmenu.href}" class="dropdown-item ${
+                location.href.includes(subsmenu.href) ? "active" : ""
+              } text-white "
+          >${subsmenu.title}</a
+        >
+      </li>
+        `
+          )
+          .join("")}
+        </ul>
+        
+        </li>
+
+      `
+      );
+      scrollMenuContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+        <li class="nav-item dropdown ${
+          location.href.includes(menuInfo.href) ? "active" : ""
+        }"
+        onmouseenter="lineBottomItemHandler(event)"
+        onmouseleave="lineBottomItemHandler(event)">
         <a
           href="${menuInfo.href}"
           class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white plus-toggle px-4"
@@ -470,14 +438,30 @@ async function showMenus() {
       `
       );
     } else {
-      menuContainer.insertAdjacentHTML(
+      fixMenuContainer.insertAdjacentHTML(
         "beforeend",
         `
       <li class="nav-item ${
         location.href.includes(menuInfo.href) ? "active" : ""
       }"
       onmouseenter="lineBottomItemHandler(event)"
-      onmouseleave="lineBottomItemHandler()">
+      onmouseleave="lineBottomItemHandler(event)">
+      <a
+        href="${menuInfo.href}"
+        class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
+
+        >${menuInfo.title}</a
+      >
+    </li>`
+      );
+      scrollMenuContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+      <li class="nav-item ${
+        location.href.includes(menuInfo.href) ? "active" : ""
+      }"
+      onmouseenter="lineBottomItemHandler(event)"
+      onmouseleave="lineBottomItemHandler(event)">
       <a
         href="${menuInfo.href}"
         class="nav-link fs-5 fs-xl-6 text-muted py-lg-4 text-white px-4"
@@ -488,36 +472,52 @@ async function showMenus() {
       );
     }
   });
-  navMenu = $.querySelector(".navbar__header__menu");
 
-  navLinkActive =
-    $.querySelector(".navbar-nav > .nav-item.active") ||
-    $.querySelector(".navbar-nav  .dropdown-item.active").parentElement
-      .parentElement.parentElement;
-  console.log(navLinkActive);
-  menuItem = $.querySelectorAll("#navbarSupportedContent .nav-link");
+  navLinkActiveFix =
+    fixMenuContainer.querySelector(".navbar-nav > .nav-item.active") ||
+    fixMenuContainer.querySelector(".navbar-nav  .dropdown-item.active")
+      .parentElement.parentElement.parentElement;
+  navLinkActiveScroll =
+    scrollMenuContainer.querySelector(".navbar-nav > .nav-item.active") ||
+    scrollMenuContainer.querySelector(".navbar-nav  .dropdown-item.active")
+      .parentElement.parentElement.parentElement;
+  conculateLineBottom(navLinkActiveFix);
+  conculateLineBottom(navLinkActiveScroll);
 
-  conculateLineBottom(navLinkActive);
+  menuItem = header.querySelectorAll("#navbarSupportedContent .nav-link");
   dropDownHandler();
-  // navMenuScroll = navMenu.cloneNode(true);
-
-  // header.append(navMenuScroll);
 }
 
+window.addEventListener("resize", () => {
+  {
+    dropDownHandler();
+  }
+});
+let lineBottomItem = null;
 function conculateLineBottom(elem) {
   console.log(elem);
-  const lineBottomItem = $.querySelector(".navbar .line-bottom-item");
+  lineBottomItem =
+    elem.parentElement.parentElement.parentElement.parentElement.querySelector(
+      ".line-bottom-item"
+    );
   lineBottomItem.style.left =
     ((elem.getBoundingClientRect().x + 28) * 100) / window.innerWidth + "%";
   lineBottomItem.style.width = elem.clientWidth - 36 + "px";
 }
 window.lineBottomItemHandler = lineBottomItemHandler;
-let navLinkActive = null;
+let navLinkActiveFix = null;
+let navLinkActiveScroll = null;
 function lineBottomItemHandler(e) {
-  if (e?.type === "mouseenter") {
+  if (e.type === "mouseenter") {
     conculateLineBottom(e.target);
+  } else if (
+    e.target.parentElement.parentElement.parentElement.parentElement.classList.contains(
+      "scroll"
+    )
+  ) {
+    conculateLineBottom(navLinkActiveScroll);
   } else {
-    conculateLineBottom(navLinkActive);
+    conculateLineBottom(navLinkActiveFix);
   }
 }
 
@@ -535,22 +535,36 @@ function dropDownHandler() {
   }
 }
 
+let navContainer = null;
+let seacrhModal = null;
+function openMenuHandler() {
+  navContainer.classList.add("show-delay");
+  $.body.classList.add("no-scroll");
+}
+function closeMenuHandler() {
+  navContainer.classList.remove("show-delay");
+  $.body.classList.remove("no-scroll");
+}
+
+function seacrhModalHandler() {
+  let searchIcon = header.querySelector(".navbar__icon__box .search");
+  searchIcon.classList.toggle("close");
+}
+
 // window.addEventListener("scroll", showMenuOnScroll);
 let scrollValue = null;
-let navMenu = null;
-let navMenuScroll = null;
+
 // let
 function showMenuOnScroll() {
   if ($.documentElement.scrollTop > 91) {
     if ($.documentElement.scrollTop > scrollValue) {
-      console.log(scrollValue);
-      navMenu.style.top = "-91px";
+      navMenuScroll.style.top = "-91px";
     } else {
       navMenu.style.top = 0;
     }
     scrollValue = $.documentElement.scrollTop;
   } else {
-    navMenu.style.top = "46px";
+    navMenuScroll.display = "none";
   }
 }
 
