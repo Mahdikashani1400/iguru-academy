@@ -249,14 +249,14 @@ function getHeader() {
       </div>
     </nav>
     <nav
-      class="navbar navbar-expand-xl navbar__header__menu scroll bg-body-tertiary border-bottom bg-transparent"
+      class="navbar navbar-expand-xl navbar__header__menu scroll bg-body-tertiary border-bottom bg-white"
     >
       <span class="line-bottom-item d-none d-xl-inline-block"></span>
 
       <div class="container">
         <a href="#" class="navbar__brand order-2 order-xl-0 col-4"
           ><img
-            src="./img/logo-light.png"
+            src="./img/logo-dark.png"
             alt=""
             class="navbar__brand-item"
         /></a>
@@ -264,7 +264,7 @@ function getHeader() {
  
         <div class="navbar-collapse">
           
-          <ul class="navbar-nav mx-auto bg-xl-danger bg-light h-100">
+          <ul class="navbar-nav mx-auto bg-xl-danger h-100">
           </ul>
         </div>
         <ul
@@ -481,6 +481,7 @@ async function showMenus() {
     scrollMenuContainer.querySelector(".navbar-nav > .nav-item.active") ||
     scrollMenuContainer.querySelector(".navbar-nav  .dropdown-item.active")
       .parentElement.parentElement.parentElement;
+
   conculateLineBottom(navLinkActiveFix);
   conculateLineBottom(navLinkActiveScroll);
 
@@ -495,7 +496,6 @@ window.addEventListener("resize", () => {
 });
 let lineBottomItem = null;
 function conculateLineBottom(elem) {
-  console.log(elem);
   lineBottomItem =
     elem.parentElement.parentElement.parentElement.parentElement.querySelector(
       ".line-bottom-item"
@@ -547,25 +547,27 @@ function closeMenuHandler() {
 }
 
 function seacrhModalHandler() {
-  let searchIcon = header.querySelector(".navbar__icon__box .search");
-  searchIcon.classList.toggle("close");
+  let searchIcons = header.querySelectorAll(".navbar__icon__box .search");
+  searchIcons.forEach((searchIcon) => {
+    searchIcon.classList.toggle("close");
+  });
 }
 
-// window.addEventListener("scroll", showMenuOnScroll);
+window.addEventListener("scroll", showMenuOnScroll);
 let scrollValue = null;
 
-// let
+let topSpace = null;
 function showMenuOnScroll() {
-  if ($.documentElement.scrollTop > 91) {
-    if ($.documentElement.scrollTop > scrollValue) {
-      navMenuScroll.style.top = "-91px";
-    } else {
-      navMenu.style.top = 0;
-    }
-    scrollValue = $.documentElement.scrollTop;
+  topSpace = $.documentElement.scrollTop;
+  console.log(topSpace);
+
+  if (topSpace > scrollValue || topSpace < 150) {
+    navMenuScroll.style.top = "-100px";
   } else {
-    navMenuScroll.display = "none";
+    console.log("y");
+    navMenuScroll.style.top = 0;
   }
+  scrollValue = topSpace;
 }
 
 export { getHeader };

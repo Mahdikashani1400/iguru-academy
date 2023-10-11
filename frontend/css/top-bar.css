@@ -75,12 +75,18 @@ nav.user-out .user-info {
 
 .navbar__header__menu {
   position: absolute;
-  /* position: fixed; */
-  /* top: 0; */
   border-bottom-color: rgb(157 155 152 / 68%) !important;
 
   width: 100%;
   z-index: 1111;
+}
+.navbar__header__menu.scroll {
+  position: fixed;
+  transition: 0.4s all;
+  top: -100px;
+}
+.navbar__header__menu.scroll .navbar-nav .nav-link {
+  color: #000 !important;
 }
 .plus-toggle::after {
   content: "+";
@@ -114,7 +120,7 @@ nav.user-out .user-info {
   right: 0;
 }
 
-.navbar__icon__box {
+.navbar__header__menu.fix .navbar__icon__box {
   color: #fff;
 }
 .navbar__icon__box svg {
@@ -156,6 +162,9 @@ nav.user-out .user-info {
   border-radius: 100px;
   background: #fff;
   transition: 0.5s all;
+}
+.navbar__header__menu.scroll .line-bottom-item {
+  background-color: var(--primary-color-green);
 }
 .navbar-toggler {
   border: none;
@@ -235,9 +244,12 @@ nav.user-out .user-info {
   }
 }
 @media screen and (max-width: 1199.5px) {
-  .navbar__header__menu {
+  .navbar__header__menu.fix {
     height: 100px;
     background: rgb(45 45 45) !important;
+  }
+  .navbar__header__menu.scroll {
+    display: none;
   }
   .navbar-nav {
     overflow: auto;
