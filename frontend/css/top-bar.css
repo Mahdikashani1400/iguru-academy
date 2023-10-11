@@ -111,6 +111,10 @@ nav.user-out .user-info {
   padding-left: 4rem;
   text-align: right;
 }
+.nav-item.dropdown .dropdown-menu a.active {
+  background: none;
+  color: var(--primary-color-orange) !important;
+}
 .nav-item.dropdown .dropdown-menu::before {
   content: "";
   position: absolute;
@@ -165,6 +169,7 @@ nav.user-out .user-info {
 }
 .navbar__header__menu.scroll .line-bottom-item {
   background-color: var(--primary-color-green);
+  height: 3.5px;
 }
 .navbar-toggler {
   border: none;
@@ -268,7 +273,9 @@ nav.user-out .user-info {
   }
 
   .dropdown-menu {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
     height: 0;
     overflow: hidden;
     padding: 0 !important;
@@ -280,7 +287,7 @@ nav.user-out .user-info {
   .dropdown-menu.show {
     height: var(--subset-menu-height, 120px);
     overflow: auto;
-    padding: 24px 0 !important;
+    /* padding: 24px 0 !important; */
     margin: 16px !important;
   }
   .dropdown-item {

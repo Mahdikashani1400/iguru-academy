@@ -1,6 +1,6 @@
+// import { getTitle } from "../js/header.js";
 function getTitlePage(title, src) {
   let description = document.querySelector(".description");
-  console.log(description);
   description.style.backgroundImage = `url(img/bg/${src})`;
   if (title) {
     description.innerHTML = `
@@ -15,7 +15,7 @@ function getTitlePage(title, src) {
       <ul
         class="location-items navbar-nav mx-auto h-100 flex-row justify-content-center align-items-center gap-3"
       >
-        <a href="" class="nav-link position-relative">صفحه اصلی</a
+        <a href="index.html" class="nav-link position-relative">صفحه اصلی</a
         ><span class="location-space fs-5">></span
         ><a href="" class="nav-link position-relative active"
           >${title}</a

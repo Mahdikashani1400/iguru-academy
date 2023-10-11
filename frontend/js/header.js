@@ -351,10 +351,14 @@ function showUserNameHandler() {
     });
   }
 }
+let fixMenuContainer = null;
+let scrollMenuContainer = null;
+
+// let pageTitle = null;
 
 async function showMenus() {
-  const fixMenuContainer = navMenuFix.querySelector(".navbar-nav");
-  const scrollMenuContainer = navMenuScroll.querySelector(".navbar-nav");
+  fixMenuContainer = navMenuFix.querySelector(".navbar-nav");
+  scrollMenuContainer = navMenuScroll.querySelector(".navbar-nav");
   const menusInfo = await getMenus().then((data) => data);
 
   menusInfo.forEach((menuInfo) => {
@@ -487,6 +491,16 @@ async function showMenus() {
 
   menuItem = header.querySelectorAll("#navbarSupportedContent .nav-link");
   dropDownHandler();
+  setHeighOfDropDownItem();
+}
+function setHeighOfDropDownItem() {
+  let dropdownItems = fixMenuContainer.querySelectorAll(".dropdown-menu");
+  dropdownItems.forEach((dropdownItem) => {
+    dropdownItem.style.setProperty(
+      "--subset-menu-height",
+      `${dropdownItem.childElementCount * 37 + 36}px`
+    );
+  });
 }
 
 window.addEventListener("resize", () => {
@@ -559,12 +573,10 @@ let scrollValue = null;
 let topSpace = null;
 function showMenuOnScroll() {
   topSpace = $.documentElement.scrollTop;
-  console.log(topSpace);
 
   if (topSpace > scrollValue || topSpace < 150) {
     navMenuScroll.style.top = "-100px";
   } else {
-    console.log("y");
     navMenuScroll.style.top = 0;
   }
   scrollValue = topSpace;
