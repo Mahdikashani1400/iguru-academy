@@ -5,7 +5,7 @@ const $ = document;
 const header = $.querySelector(".header");
 let navMenuFix = null;
 let navMenuScroll = null;
-function getHeader() {
+async function getHeader() {
   header.innerHTML = `
     <nav class="navbar__info d-none d-xl-flex user-out">
       <div
@@ -325,7 +325,7 @@ function getHeader() {
 
   navMenuFix = header.querySelector(".navbar__header__menu.fix");
   navMenuScroll = header.querySelector(".navbar__header__menu.scroll");
-  showMenus();
+  await showMenus();
 
   navContainer = $.querySelector(".navbar-collapse");
   seacrhModal = $.getElementById("searchModal");
@@ -334,6 +334,15 @@ function getHeader() {
 
   seacrhModal.addEventListener("show.bs.modal", seacrhModalHandler);
   seacrhModal.addEventListener("hide.bs.modal", seacrhModalHandler);
+}
+
+function getPageTitle() {
+  let pageTitle =
+    fixMenuContainer.querySelector(".navbar-nav  .dropdown-item.active")
+      ?.innerHTML ||
+    fixMenuContainer.querySelector(".navbar-nav  .nav-item.active .nav-link")
+      .innerHTML;
+  return pageTitle;
 }
 
 function showUserNameHandler() {
@@ -582,4 +591,4 @@ function showMenuOnScroll() {
   scrollValue = topSpace;
 }
 
-export { getHeader };
+export { getHeader, getPageTitle };

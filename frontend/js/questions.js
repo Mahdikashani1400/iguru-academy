@@ -1,12 +1,15 @@
 import { getModals } from "./modals.js";
-import { getHeader } from "./header.js";
-import { getTitlePage } from "./title-page.js";
+import { getHeader, getPageTitle } from "./header.js";
+import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 const $ = document;
-getModals();
-getHeader();
-getTitlePage("سوالات متداول", "qs_page-bg.jpg");
-getFooter();
+(async function () {
+  getModals();
+  await getHeader();
+  let pageTitle = getPageTitle();
+  getPoster(pageTitle, "qs_page-bg.jpg");
+  getFooter();
+})();
 
 $.querySelectorAll(".questions__collapse .collapse").forEach((qustion) => {
   qustion.addEventListener(

@@ -1,5 +1,4 @@
-// import { getTitle } from "../js/header.js";
-function getTitlePage(title, src) {
+function getPoster(title, src) {
   let description = document.querySelector(".description");
   description.style.backgroundImage = `url(img/bg/${src})`;
   if (title) {
@@ -25,4 +24,4 @@ function getTitlePage(title, src) {
   </div>`;
   }
 }
-export { getTitlePage };
+export { getPoster };

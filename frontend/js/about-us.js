@@ -1,9 +1,13 @@
 import { getModals } from "./modals.js";
-import { getHeader } from "./header.js";
-import { getTitlePage } from "./title-page.js";
+import { getHeader, getPageTitle } from "./header.js";
+import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 const $ = document;
-getModals();
-getHeader();
-getTitlePage("درباره ما", "about-us_page-bg.jpg");
-getFooter();
+
+(async function () {
+  getModals();
+  await getHeader();
+  let pageTitle = getPageTitle();
+  getPoster(pageTitle, "about-us_page-bg.jpg");
+  getFooter();
+})();
