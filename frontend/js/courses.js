@@ -21,6 +21,7 @@ function showCourses() {
   coursesContainer.innerHTML = "";
   getCourses().then((data) => {
     data.forEach((course) => {
+      console.log(course);
       coursesContainer.insertAdjacentHTML(
         "beforeend",
         `
