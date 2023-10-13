@@ -241,6 +241,7 @@
   transition: 0.3s all;
   transition-timing-function: ease-in-out;
 }
+.learning__tag-box.active,
 .learning__tag-box:hover {
   background-color: var(--primary-color-green);
   color: var(--white-color);
