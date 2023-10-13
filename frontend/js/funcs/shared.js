@@ -24,4 +24,15 @@ const getMenus = async () => {
   return result;
 };
 
-export { getCourses, getPopularCourses, getArticles, getMenus };
+const getCategoryOfCourses = async () => {
+  const res = await fetch("http://localhost:4000/v1/category");
+  const result = await res.json();
+  return result;
+};
+export {
+  getCourses,
+  getPopularCourses,
+  getArticles,
+  getMenus,
+  getCategoryOfCourses,
+};
