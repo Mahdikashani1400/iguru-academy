@@ -242,8 +242,12 @@ function changeActivityCategoryBox(elem) {
 window.seacrhInputHandler = seacrhInputHandler;
 function seacrhInputHandler(e) {
   getCourses().then((data) => {
-    searchInCourses(data, "name", e.target.value);
+    searchInCourses(
+      data,
+      "name",
+      e.target.value,
+      showCourses,
+      changeActivityCategoryBox
+    );
   });
 }
-
-export { showCourses, changeActivityCategoryBox };
