@@ -13,16 +13,14 @@ import {
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "course_page-bg.jpg");
+  showCategoryOfCourses();
+  showCourses(getCourses(), "همه");
   getFooter();
 })();
 
 const $ = document;
-window.addEventListener("load", () => {
-  showCategoryOfCourses();
-  showCourses(getCourses(), "همه");
-});
+window.addEventListener("load", () => {});
 function showCourses(coursesData, category) {
-  // console.log(coursesData.then());
   if (coursesData[0]) {
     addCoursesToContainer(coursesData, category);
   } else {
@@ -37,7 +35,7 @@ function addCoursesToContainer(coursesArray, category) {
   coursesContainer.innerHTML = `
   ${coursesArray
     .map((course) => {
-      if (category === course.categoryID.name) {
+      if (course.name !== "product" && category === course.categoryID.name) {
         return `
       
       <div class="course__box rounded">
@@ -118,7 +116,7 @@ function addCoursesToContainer(coursesArray, category) {
     </div>
     
    `;
-      } else if (category === "همه") {
+      } else if (course.name !== "product" && category === "همه") {
         return `
        
       <div class="course__box rounded">
@@ -244,7 +242,6 @@ function changeActivityCategoryBox(elem) {
 window.seacrhInputHandler = seacrhInputHandler;
 function seacrhInputHandler(e) {
   getCourses().then((data) => {
-    console.log(data);
     searchInCourses(data, "name", e.target.value);
   });
 }

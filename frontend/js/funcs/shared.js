@@ -31,10 +31,20 @@ const getCategoryOfCourses = async () => {
   return result;
 };
 
+const getProducts = async () => {
+  const res = await fetch("http://localhost:4000/v1/category");
+  const result = await res.json();
+  return result;
+};
+
 let findCourses = null;
 let AllCategoryBox = null;
 const searchInCourses = (array, prop, searchValue) => {
-  findCourses = array.filter((course) => course[prop].includes(searchValue));
+  findCourses = array.filter((course) =>
+    course[prop]
+      .toLocaleLowerCase()
+      .includes(searchValue.toLocaleLowerCase().trim())
+  );
   AllCategoryBox = $.querySelector(".learning__tag-box.all");
   showCourses(findCourses, "همه");
   changeActivityCategoryBox(AllCategoryBox);
@@ -47,4 +57,5 @@ export {
   getMenus,
   getCategoryOfCourses,
   searchInCourses,
+  getProducts,
 };

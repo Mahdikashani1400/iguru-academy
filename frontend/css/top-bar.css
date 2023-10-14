@@ -294,6 +294,10 @@ nav.user-out .user-info {
     color: var(--primary-color-green) !important;
     padding-right: 4.2rem !important;
   }
+  .nav-item.dropdown .dropdown-menu a:hover {
+    background-color: transparent !important;
+    color: var(--primary-color-orange) !important;
+  }
   .plus-toggle::after,
   .plus-toggle::before {
     content: "";
