@@ -584,7 +584,7 @@ function showMenuOnScroll() {
   topSpace = $.documentElement.scrollTop;
 
   if (topSpace > scrollValue || topSpace < 150) {
-    navMenuScroll.style.top = "-100px";
+    navMenuScroll.style.top = "-200px";
   } else {
     navMenuScroll.style.top = 0;
   }

@@ -1,3 +1,4 @@
+import { showCourses, changeActivityCategoryBox } from "../courses.js";
 const $ = document;
 const getCourses = async () => {
   const res = await fetch("http://localhost:4000/v1/courses", {});
@@ -29,10 +30,21 @@ const getCategoryOfCourses = async () => {
   const result = await res.json();
   return result;
 };
+
+let findCourses = null;
+let AllCategoryBox = null;
+const searchInCourses = (array, prop, searchValue) => {
+  findCourses = array.filter((course) => course[prop].includes(searchValue));
+  AllCategoryBox = $.querySelector(".learning__tag-box.all");
+  showCourses(findCourses, "همه");
+  changeActivityCategoryBox(AllCategoryBox);
+};
+
 export {
   getCourses,
   getPopularCourses,
   getArticles,
   getMenus,
   getCategoryOfCourses,
+  searchInCourses,
 };

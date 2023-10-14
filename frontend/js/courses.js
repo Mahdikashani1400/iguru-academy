@@ -2,7 +2,11 @@ import { getModals } from "./modals.js";
 import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
-import { getCourses, getCategoryOfCourses } from "../js/funcs/shared.js";
+import {
+  getCourses,
+  getCategoryOfCourses,
+  searchInCourses,
+} from "../js/funcs/shared.js";
 
 (async function () {
   getModals();
@@ -15,13 +19,23 @@ import { getCourses, getCategoryOfCourses } from "../js/funcs/shared.js";
 const $ = document;
 window.addEventListener("load", () => {
   showCategoryOfCourses();
-  showCourses("همه");
+  showCourses(getCourses(), "همه");
 });
-function showCourses(category) {
+function showCourses(coursesData, category) {
+  // console.log(coursesData.then());
+  if (coursesData[0]) {
+    addCoursesToContainer(coursesData, category);
+  } else {
+    coursesData.then((data) => {
+      addCoursesToContainer(data, category);
+    });
+  }
+}
+function addCoursesToContainer(coursesArray, category) {
   const coursesContainer = $.querySelector(".learning_courses-boxes");
-  getCourses().then((data) => {
-    coursesContainer.innerHTML = `
-  ${data
+
+  coursesContainer.innerHTML = `
+  ${coursesArray
     .map((course) => {
       if (category === course.categoryID.name) {
         return `
@@ -189,14 +203,12 @@ function showCourses(category) {
     })
     .join("")}  
   `;
-  });
 }
-
 const categoryContainer = $.querySelector(".learning__tags-container");
 
 async function showCategoryOfCourses() {
   categoryContainer.innerHTML = `
-  <div class="learning__tag-box p-2 bg-gray rounded rounded-3 active"
+  <div class="learning__tag-box p-2 bg-gray rounded rounded-3 active all"
   onclick="changeCategoryOfCourses(event)"
                 >
                   همه
@@ -217,10 +229,24 @@ async function showCategoryOfCourses() {
   });
 }
 window.changeCategoryOfCourses = changeCategoryOfCourses;
-let activeCategory = null;
 function changeCategoryOfCourses(e) {
+  showCourses(getCourses(), e.target.innerText);
+  changeActivityCategoryBox(e.target);
+}
+let activeCategory = null;
+
+function changeActivityCategoryBox(elem) {
   activeCategory = categoryContainer.querySelector(".learning__tag-box.active");
   activeCategory.classList.remove("active");
-  e.target.classList.add("active");
-  showCourses(e.target.innerText);
+  elem.classList.add("active");
 }
+
+window.seacrhInputHandler = seacrhInputHandler;
+function seacrhInputHandler(e) {
+  getCourses().then((data) => {
+    console.log(data);
+    searchInCourses(data, "name", e.target.value);
+  });
+}
+
+export { showCourses, changeActivityCategoryBox };
