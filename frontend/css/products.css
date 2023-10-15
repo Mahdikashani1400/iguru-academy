@@ -123,12 +123,9 @@
   box-shadow: none;
 }
 .products__boxes {
-  cursor: pointer;
-  /* padding-bottom: 3rem;
-  margin-bottom: 5rem !important; */
 }
-.product__box {
-  margin: 0 0.5rem;
+.products__box {
+  cursor: pointer !important;
 }
 
 .products__box-img {
