@@ -58,7 +58,7 @@
                 </div>
 
                 <div
-                  class="products__boxes text-end row justify-content-start row-cols-lg-3 row-cols-sm-2 g-5 g-sm-4 pb-4"
+                  class="products__boxes text-end row justify-content-start row-cols-lg-3 row-cols-sm-2 g-5 g-sm-4 pb-4 w-100"
                 >
                   <div
                     class="products__box d-flex flex-column justify-content-center align-items-center my-5"
@@ -305,6 +305,7 @@
                         type="text"
                         class="form-control px-3 py-3"
                         id="searchBox"
+                        oninput="seacrhInputHandler(event)"
                         placeholder="جستجو ..."
                       />
                       <div
@@ -447,7 +448,7 @@
                     دسته ها
                   </div>
                   <ul class="products__category-items">
-                    <li class="nav-item position-relative">
+                    <li class="nav-item position-relative active">
                       <a href="" class="nav-link py-1 pe-3"
                         >آموزش
                         <span class="text-gray fs-6 fw-bold">(11)</span></a

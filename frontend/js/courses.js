@@ -5,7 +5,7 @@ import { getFooter } from "./footer.js";
 import {
   getCourses,
   getCategoryOfCourses,
-  searchInCourses,
+  searchInData,
 } from "../js/funcs/shared.js";
 
 (async function () {
@@ -19,7 +19,6 @@ import {
 })();
 
 const $ = document;
-window.addEventListener("load", () => {});
 function showCourses(coursesData, category) {
   if (coursesData[0]) {
     addCoursesToContainer(coursesData, category);
@@ -213,7 +212,7 @@ async function showCategoryOfCourses() {
                 </div>`;
   const categoryInfo = await getCategoryOfCourses().then((data) => data);
   categoryInfo.forEach((cat) => {
-    if (cat.title) {
+    if (cat.title === "course") {
       categoryContainer.insertAdjacentHTML(
         "beforeend",
         `
@@ -242,7 +241,7 @@ function changeActivityCategoryBox(elem) {
 window.seacrhInputHandler = seacrhInputHandler;
 function seacrhInputHandler(e) {
   getCourses().then((data) => {
-    searchInCourses(
+    searchInData(
       data,
       "name",
       e.target.value,

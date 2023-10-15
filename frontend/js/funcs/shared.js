@@ -30,28 +30,24 @@ const getCategoryOfCourses = async () => {
   return result;
 };
 
-const getProducts = async () => {
-  const res = await fetch("http://localhost:4000/v1/category");
-  const result = await res.json();
-  return result;
-};
-
-let findCourses = null;
+let findData = null;
 let AllCategoryBox = null;
-const searchInCourses = (
+const searchInData = (
   array,
   prop,
   searchValue,
   showCallBack,
   catBoxCallBack
 ) => {
-  findCourses = array.filter((course) =>
-    course[prop]
+  findData = array.filter((data) =>
+    data[prop]
       .toLocaleLowerCase()
       .includes(searchValue.toLocaleLowerCase().trim())
   );
-  AllCategoryBox = $.querySelector(".learning__tag-box.all");
-  showCallBack(findCourses, "همه");
+  AllCategoryBox =
+    $.querySelector(".learning__tag-box.all") ||
+    $.querySelector(".products__category-items .nav-item.active");
+  showCallBack(findData, "همه");
   catBoxCallBack(AllCategoryBox);
 };
 
@@ -61,6 +57,5 @@ export {
   getArticles,
   getMenus,
   getCategoryOfCourses,
-  searchInCourses,
-  getProducts,
+  searchInData,
 };
