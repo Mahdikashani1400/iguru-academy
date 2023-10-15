@@ -7,27 +7,27 @@ import {
   getCategoryOfCourses,
   searchInData,
 } from "./funcs/shared.js";
+
+let productsInfo = null;
 (async function () {
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "blog_page-bg.jpg");
   showCategoryOfProducts();
-  showProducts(getCourses(), "همه");
+  await getCourses().then((data) => {
+    productsInfo = data;
+  });
+  showProducts(productsInfo, "همه");
 
   getFooter();
 })();
 const $ = document;
 
 const productsContainer = $.querySelector(".products__boxes");
+
 function showProducts(productsData, category) {
-  if (productsData[0]) {
-    addProductsToContainer(productsData, category);
-  } else {
-    productsData.then((data) => {
-      addProductsToContainer(data, category);
-    });
-  }
+  addProductsToContainer(productsData, category);
 }
 function addProductsToContainer(productsArray, category) {
   productsContainer.innerHTML = `
@@ -103,7 +103,7 @@ async function showCategoryOfProducts() {
 window.changeCategoryOfProducts = changeCategoryOfProducts;
 
 let categoryTarget = null;
-let categoryTargetText = null;
+let categoryTargetText = "همه";
 function changeCategoryOfProducts(e) {
   e.preventDefault();
 
@@ -114,7 +114,7 @@ function changeCategoryOfProducts(e) {
   }
   categoryTargetText = categoryTarget.innerText.split("(")[0].trim();
 
-  showProducts(getCourses(), categoryTargetText);
+  showProducts(productsInfo, categoryTargetText);
   changeActivityCategoryBox(categoryTarget.parentElement);
 }
 
@@ -134,7 +134,54 @@ function seacrhInputHandler(e) {
       "shortName",
       e.target.value,
       showProducts,
-      changeActivityCategoryBox
+      changeActivityCategoryBox,
+      showNotFoundAlert
     );
   });
+}
+
+let sortFilter = $.getElementById("sortFilter");
+sortFilter.addEventListener("change", sortedProductByUser);
+async function sortedProductByUser(e) {
+  let value = e.target.value;
+  let outPutArray = [];
+
+  switch (value) {
+    case "default": {
+      outPutArray = productsInfo;
+      break;
+    }
+    case "last": {
+      outPutArray = productsInfo;
+      break;
+    }
+    case "first": {
+      console.log(productsInfo);
+      outPutArray = [...productsInfo].reverse();
+      break;
+    }
+    // case "score" : {
+    //   outPutArray =productsInfo.filter(product=>{
+
+    //   })
+    //   break
+    // }
+  }
+  showProducts(outPutArray, categoryTargetText);
+}
+
+let NotFoundAlert = $.querySelector(".not__found__alert");
+let productsContent = $.querySelector(".products__content");
+function showNotFoundAlert(state) {
+  if (state === "block") {
+    NotFoundAlert.classList.add("d-block");
+    NotFoundAlert.classList.remove("d-none");
+    productsContent.classList.add("justify-content-start");
+    productsContent.classList.remove("justify-content-between");
+  } else {
+    NotFoundAlert.classList.add("d-none");
+    NotFoundAlert.classList.remove("d-block");
+    productsContent.classList.add("justify-content-between");
+    productsContent.classList.remove("justify-content-start");
+  }
 }

@@ -37,13 +37,20 @@ const searchInData = (
   prop,
   searchValue,
   showCallBack,
-  catBoxCallBack
+  catBoxCallBack,
+  showNotFoundAlert
 ) => {
   findData = array.filter((data) =>
     data[prop]
       .toLocaleLowerCase()
       .includes(searchValue.toLocaleLowerCase().trim())
   );
+  console.log(findData == 0);
+  if (findData == 0) {
+    showNotFoundAlert("block");
+  } else {
+    showNotFoundAlert("none");
+  }
   AllCategoryBox =
     $.querySelector(".learning__tag-box.all") ||
     $.querySelector(".products__category-items .nav-item.active");
