@@ -1,13 +1,18 @@
 import { getModals } from "./modals.js";
-import { getHeader } from "./header.js";
-import { getTitlePage } from "./title-page.js";
+import { getHeader, getPageTitle } from "./header.js";
+import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 const $ = document;
-getModals();
-getHeader();
-getTitlePage("خطای 404", "blog_page-bg.jpg");
-getFooter();
 
+(async function () {
+  getModals();
+  await getHeader();
+  let pageTitle = getPageTitle();
+
+  getPoster(pageTitle, "blog_page-bg.jpg");
+
+  getFooter();
+})();
 let inputNumberContainers = $.querySelectorAll(".quantity__number-input");
 let inputNumber = null;
 function changeNumber(e) {
