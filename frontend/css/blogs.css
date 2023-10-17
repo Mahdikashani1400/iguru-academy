@@ -245,6 +245,18 @@
   background-color: var(--primary-color-green);
   color: var(--white-color);
 }
+.not__found__alert {
+  background: #e95374de;
+  border: 1px solid rgba(245, 66, 105, 0.871);
+  height: 30%;
+  width: 100%;
+}
+.reading_blogs.not__found-active {
+  justify-content: start !important;
+}
+.reading_blogs.not__found-active .not__found__alert {
+  display: flex !important;
+}
 .reading_blogs-page-box {
   cursor: pointer;
   width: 40px;

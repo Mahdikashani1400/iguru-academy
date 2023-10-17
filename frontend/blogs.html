@@ -25,7 +25,7 @@
                 class="reading_blogs d-flex flex-column align-items-center justify-content-center text-center gap-5 my-5 pb-4 pb-xl-0 col-12 col-xl-8 row-cols-12 order-1 order-xl-2 flex-grow-1"
               >
                 <div
-                  class="blogs__boxes text-end row gap-5 justify-content-center"
+                  class="blogs__boxes text-end row gap-5 justify-content-center w-100"
                 >
                   <div class="blog__box pb-3">
                     <div class="blog__box-container mx-1">
@@ -137,8 +137,11 @@
                   </div>
                 </div>
                 <div
-                  class="reading_blogs-page-boxes d-flex gap-2 align-self-start pe-4"
+                  class="not__found__alert d-flex align-items-center justify-content-center text-white rounded-3 d-none fs-5"
                 >
+                  محصول مورد نظر شما یافت نشد ...
+                </div>
+                <div class="reading_blogs-page-boxes d-flex gap-2 pe-4">
                   <div
                     class="reading_blogs-page-box d-flex justify-content-center align-items-center text-black p-2 fw-bold active"
                   >
@@ -165,11 +168,12 @@
                       <input
                         type="text"
                         class="form-control px-3 py-3"
-                        id="searchBox"
+                        id="searchArticle"
                         placeholder="جستجو ..."
                       />
                       <div
                         class="search__box-icon position-absolute bg-green rounded rounded-1"
+                        onclick="seacrhInputHandler()"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -272,7 +276,7 @@
                   </div>
                 </div>
 
-                <div class="reading__tags py-2">
+                <!-- <div class="reading__tags py-2">
                   <div
                     class="reading__tags-title h6 text-orange line-side py-3 px-2 position-relative fw-bold"
                   >
@@ -310,7 +314,7 @@
                       کسب و کار
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

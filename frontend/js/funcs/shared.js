@@ -37,8 +37,7 @@ const searchInData = (
   prop,
   searchValue,
   showCallBack,
-  catBoxCallBack,
-  showNotFoundAlert
+  catBoxCallBack
 ) => {
   findData = array.filter((data) =>
     data[prop]
@@ -50,7 +49,7 @@ const searchInData = (
   } else {
   }
   AllCategoryBox =
-    $.querySelector(".learning__tag-box.all") ||
+    $.querySelector(".nav-item.all") ||
     $.querySelector(".products__category-items .nav-item.active");
   showCallBack(findData, "همه");
   catBoxCallBack(AllCategoryBox);
