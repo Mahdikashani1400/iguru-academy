@@ -6,6 +6,7 @@ import {
   getCourses,
   getCategoryOfCourses,
   searchInData,
+  showNotFoundAlert,
 } from "../js/funcs/shared.js";
 let coursesInfo = null;
 (async function () {
@@ -22,11 +23,14 @@ let coursesInfo = null;
 })();
 
 const $ = document;
+
+let coursesContainer = $.querySelector(".learning_courses");
+
 function showCourses(coursesData, category) {
   if (coursesData == 0) {
-    showNotFoundAlert("show");
+    showNotFoundAlert("show", coursesContainer);
   } else {
-    showNotFoundAlert("hide");
+    showNotFoundAlert("hide", coursesContainer);
   }
   addCoursesToContainer(coursesData, category);
 }
@@ -251,12 +255,4 @@ function seacrhInputHandler(e) {
     showCourses,
     changeActivityCategoryBox
   );
-}
-let coursesContainer = $.querySelector(".learning_courses");
-function showNotFoundAlert(state) {
-  if (state === "show") {
-    coursesContainer.classList.add("not__found-active");
-  } else {
-    coursesContainer.classList.remove("not__found-active");
-  }
 }

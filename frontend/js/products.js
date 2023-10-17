@@ -6,6 +6,7 @@ import {
   getCourses,
   getCategoryOfCourses,
   searchInData,
+  showNotFoundAlert,
 } from "./funcs/shared.js";
 
 let productsInfo = null;
@@ -24,16 +25,19 @@ let productsInfo = null;
 })();
 const $ = document;
 
-const productsContainer = $.querySelector(".products__boxes");
+let productsContent = $.querySelector(".products__content");
 
 function showProducts(productsData, category) {
   if (productsData == 0) {
-    showNotFoundAlert("show");
+    showNotFoundAlert("show", productsContent);
   } else {
-    showNotFoundAlert("hide");
+    showNotFoundAlert("hide", productsContent);
   }
   addProductsToContainer(productsData, category);
 }
+
+const productsContainer = $.querySelector(".products__boxes");
+
 function addProductsToContainer(productsArray, category) {
   productsContainer.innerHTML = `
     ${productsArray
@@ -139,8 +143,7 @@ function seacrhInputHandler(e) {
     "shortName",
     searchInput.value,
     showProducts,
-    changeActivityCategoryBox,
-    showNotFoundAlert
+    changeActivityCategoryBox
   );
 }
 
@@ -172,13 +175,4 @@ async function sortedProductByUser(e) {
     // }
   }
   showProducts(outPutArray, categoryTargetText);
-}
-
-let productsContent = $.querySelector(".products__content");
-function showNotFoundAlert(state) {
-  if (state === "show") {
-    productsContent.classList.add("not__found-active");
-  } else {
-    productsContent.classList.remove("not__found-active");
-  }
 }

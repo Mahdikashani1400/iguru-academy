@@ -56,6 +56,14 @@ const searchInData = (
   catBoxCallBack(AllCategoryBox);
 };
 
+const showNotFoundAlert = (state, container) => {
+  if (state === "show") {
+    container.classList.add("not__found-active");
+  } else {
+    container.classList.remove("not__found-active");
+  }
+};
+
 export {
   getCourses,
   getPopularCourses,
@@ -63,4 +71,5 @@ export {
   getMenus,
   getCategoryOfCourses,
   searchInData,
+  showNotFoundAlert,
 };
