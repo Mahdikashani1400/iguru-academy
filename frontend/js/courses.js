@@ -7,26 +7,28 @@ import {
   getCategoryOfCourses,
   searchInData,
 } from "../js/funcs/shared.js";
-
+let coursesInfo = null;
 (async function () {
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "course_page-bg.jpg");
   showCategoryOfCourses();
-  showCourses(getCourses(), "همه");
+  await getCourses().then((data) => {
+    coursesInfo = data;
+  });
+  showCourses(coursesInfo, "همه");
   getFooter();
 })();
 
 const $ = document;
 function showCourses(coursesData, category) {
-  if (coursesData[0]) {
-    addCoursesToContainer(coursesData, category);
+  if (coursesData == 0) {
+    showNotFoundAlert("show");
   } else {
-    coursesData.then((data) => {
-      addCoursesToContainer(data, category);
-    });
+    showNotFoundAlert("hide");
   }
+  addCoursesToContainer(coursesData, category);
 }
 function addCoursesToContainer(coursesArray, category) {
   const coursesContainer = $.querySelector(".learning_courses-boxes");
@@ -227,7 +229,7 @@ async function showCategoryOfCourses() {
 }
 window.changeCategoryOfCourses = changeCategoryOfCourses;
 function changeCategoryOfCourses(e) {
-  showCourses(getCourses(), e.target.innerText);
+  showCourses(coursesInfo, e.target.innerText);
   changeActivityCategoryBox(e.target);
 }
 let activeCategory = null;
@@ -239,14 +241,22 @@ function changeActivityCategoryBox(elem) {
 }
 
 window.seacrhInputHandler = seacrhInputHandler;
+let searchInput = $.getElementById("searchCourses");
 function seacrhInputHandler(e) {
-  getCourses().then((data) => {
-    searchInData(
-      data,
-      "name",
-      e.target.value,
-      showCourses,
-      changeActivityCategoryBox
-    );
-  });
+  console.log(searchInput.value);
+  searchInData(
+    coursesInfo,
+    "name",
+    searchInput.value,
+    showCourses,
+    changeActivityCategoryBox
+  );
+}
+let coursesContainer = $.querySelector(".learning_courses");
+function showNotFoundAlert(state) {
+  if (state === "show") {
+    coursesContainer.classList.add("not__found-active");
+  } else {
+    coursesContainer.classList.remove("not__found-active");
+  }
 }

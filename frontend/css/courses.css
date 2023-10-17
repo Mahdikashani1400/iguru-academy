@@ -97,6 +97,12 @@
 .learning_courses-boxes {
   /* course__boxes */
 }
+.learning_courses.not__found-active {
+  justify-content: start !important;
+}
+.learning_courses.not__found-active .not__found__alert {
+  display: flex !important;
+}
 .course__box {
   position: relative;
   height: 350px;
@@ -191,6 +197,12 @@
 }
 .course__box-star svg {
   color: #ffb300;
+}
+.not__found__alert {
+  background: #e95374de;
+  border: 1px solid rgba(245, 66, 105, 0.871);
+  height: 100%;
+  width: 100%;
 }
 /* search */
 .line-side::before {

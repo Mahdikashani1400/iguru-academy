@@ -124,6 +124,12 @@
 }
 .products__boxes {
 }
+.products__content.not__found-active {
+  justify-content: start !important;
+}
+.products__content.not__found-active .not__found__alert {
+  display: flex !important;
+}
 .products__box {
   cursor: pointer !important;
 }

@@ -47,9 +47,7 @@ const searchInData = (
   );
   console.log(findData == 0);
   if (findData == 0) {
-    showNotFoundAlert("block");
   } else {
-    showNotFoundAlert("none");
   }
   AllCategoryBox =
     $.querySelector(".learning__tag-box.all") ||

@@ -27,6 +27,11 @@ const $ = document;
 const productsContainer = $.querySelector(".products__boxes");
 
 function showProducts(productsData, category) {
+  if (productsData == 0) {
+    showNotFoundAlert("show");
+  } else {
+    showNotFoundAlert("hide");
+  }
   addProductsToContainer(productsData, category);
 }
 function addProductsToContainer(productsArray, category) {
@@ -127,17 +132,16 @@ function changeActivityCategoryBox(elem) {
 }
 
 window.seacrhInputHandler = seacrhInputHandler;
+let searchInput = $.getElementById("searchProducts");
 function seacrhInputHandler(e) {
-  getCourses().then((data) => {
-    searchInData(
-      data,
-      "shortName",
-      e.target.value,
-      showProducts,
-      changeActivityCategoryBox,
-      showNotFoundAlert
-    );
-  });
+  searchInData(
+    productsInfo,
+    "shortName",
+    searchInput.value,
+    showProducts,
+    changeActivityCategoryBox,
+    showNotFoundAlert
+  );
 }
 
 let sortFilter = $.getElementById("sortFilter");
@@ -170,18 +174,11 @@ async function sortedProductByUser(e) {
   showProducts(outPutArray, categoryTargetText);
 }
 
-let NotFoundAlert = $.querySelector(".not__found__alert");
 let productsContent = $.querySelector(".products__content");
 function showNotFoundAlert(state) {
-  if (state === "block") {
-    NotFoundAlert.classList.add("d-block");
-    NotFoundAlert.classList.remove("d-none");
-    productsContent.classList.add("justify-content-start");
-    productsContent.classList.remove("justify-content-between");
+  if (state === "show") {
+    productsContent.classList.add("not__found-active");
   } else {
-    NotFoundAlert.classList.add("d-none");
-    NotFoundAlert.classList.remove("d-block");
-    productsContent.classList.add("justify-content-between");
-    productsContent.classList.remove("justify-content-start");
+    productsContent.classList.remove("not__found-active");
   }
 }
