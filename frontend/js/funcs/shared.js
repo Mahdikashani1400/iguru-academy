@@ -41,6 +41,13 @@ const getCourseDetails = async (courseName) => {
   const result = await res.json();
   return result;
 };
+const getRelatedCourses = async (courseName) => {
+  const res = await fetch(
+    `http://localhost:4000/v1/courses/related/${courseName}`
+  );
+  const result = await res.json();
+  return result;
+};
 
 let findData = null;
 let AllCategoryBox = null;
@@ -84,4 +91,5 @@ export {
   searchInData,
   showNotFoundAlert,
   getCourseDetails,
+  getRelatedCourses,
 };

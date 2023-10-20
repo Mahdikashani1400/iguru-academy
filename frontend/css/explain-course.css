@@ -228,7 +228,7 @@ body {
 .courses__same .course__box-bg-img {
   margin: 0 24px;
   background: url(../img/about-us.jpg);
-  background-position: inherit !important;
+  background-position: center;
   background-size: cover;
   z-index: -1;
   width: -webkit-fill-available;
@@ -281,8 +281,15 @@ body {
   margin: 3px 6px;
 }
 .course__comment__star .bi-star-fill {
-  color: #ffb606;
+  color: #ffb606 !important;
 }
+.not__found__course {
+  background: #e95374de;
+  border: 1px solid rgba(245, 66, 105, 0.871);
+  height: 100%;
+  width: 100%;
+}
+
 /* search */
 .line-side::before {
   content: "";
