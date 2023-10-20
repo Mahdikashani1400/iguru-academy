@@ -34,7 +34,7 @@
                   aria-label="breadcrumb"
                   class="course__details my-5"
                 >
-                  <ol class="breadcrumb flex-column flex-sm-row">
+                  <ol class="breadcrumb flex-column flex-md-row">
                     <li
                       class="breadcrumb-item teacher__info d-flex border-start py-2 align-items-center"
                     >
@@ -66,7 +66,7 @@
                       </svg>
                       <div class="px-4">
                         <div class="span text-orange fw-bold">دسته</div>
-                        <div class="span fw-bold">زبان ها</div>
+                        <div class="span fw-bold course__category">زبان ها</div>
                       </div>
                     </li>
                     <li
@@ -74,7 +74,7 @@
                     >
                       <div class="px-4">
                         <div class="span text-orange fw-bold">نقد و بررسی</div>
-                        <div class="p fw-bold">
+                        <div class="p fw-bold course__stars">
                           <i class="bi bi-star-fill"></i>
                           <i class="bi bi-star-fill"></i>
                           <i class="bi bi-star-fill"></i>
@@ -84,6 +84,15 @@
                       </div>
                     </li>
                   </ol>
+                  <li
+                    class="breadcrumb-item teacher__info d-flex py-2 align-items-center px-4 d-xl-none"
+                  >
+                    <div
+                      class="px-3 py-3 bg-green text-white course__price align-self-center rounded-2"
+                    >
+                      39،000 تومان
+                    </div>
+                  </li>
                 </nav>
                 <div class="course__img px-2 px-sm-0">
                   <img src="./img/teachers/t3.jpg" class="rounded" alt="" />
@@ -119,7 +128,7 @@
                   </ol>
                 </nav>
                 <div class="course__content__details mb-5">
-                  <div class="course__review">
+                  <div class="course__review d-none">
                     <div class="course__review-text my-5 text-normal">
                       <p class="mb-3">
                         در دوره آموزش وردپرس شما با نحوه استفاده ازسیستم مدیریت
@@ -440,7 +449,7 @@
                   <div class="course__videos">
                     <div
                       class="accordion accordion-panelsStayOpen"
-                      id="accordionFlushExample"
+                      id="sessionsContainer"
                     >
                       <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -1178,20 +1187,20 @@
                   <div class="learning__info__decription p-4">
                     <ul class="items d-flex flex-column gap-3">
                       <li class="item text-normal">
-                        <i class="fa fa-user text-gray ps-2"></i>اولین دانشجو
-                        باشید
+                        <i class="fa fa-user ps-2"></i
+                        ><span>اولین دانشجو باشید</span>
                       </li>
                       <li class="item text-normal">
-                        <i class="fa fa-user text-gray ps-2"></i>اولین دانشجو
-                        باشید
+                        <i class="bi bi-mortarboard-fill ps-2"></i
+                        ><span class="course__state"></span>
                       </li>
                       <li class="item text-normal">
-                        <i class="fa fa-user text-gray ps-2"></i>اولین دانشجو
-                        باشید
+                        <i class="bi bi-calendar3 text-gray ps-2"></i
+                        ><span class="course__date"></span>
                       </li>
                       <li class="item text-normal">
-                        <i class="fa fa-user text-gray ps-2"></i>اولین دانشجو
-                        باشید
+                        <i class="bi bi-clock-history text-gray ps-2"></i
+                        ><span class="course__time"></span>
                       </li>
                       <li class="item text-normal">
                         <i class="fa fa-user text-gray ps-2"></i>اولین دانشجو

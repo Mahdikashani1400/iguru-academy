@@ -85,6 +85,12 @@ body {
 .learning__info__decription {
   background: #f8f8f8;
 }
+.learning__info__decription svg,
+.learning__info__decription i {
+  color: rgb(0, 189, 166) !important;
+  width: 16px;
+  height: 16px;
+}
 .teacher__info img {
   width: 45px;
   height: 45px;
@@ -347,6 +353,11 @@ body {
 @media screen and (min-width: 992px) {
   .course__box {
     height: 550px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .breadcrumb-item {
+    border: none !important;
   }
 }
 @media screen and (max-width: 576px) {

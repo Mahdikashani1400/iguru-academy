@@ -1,3 +1,5 @@
+import { getToken } from "./utils.js";
+
 const $ = document;
 const getCourses = async () => {
   const res = await fetch("http://localhost:4000/v1/courses", {});
@@ -26,6 +28,16 @@ const getMenus = async () => {
 
 const getCategoryOfCourses = async () => {
   const res = await fetch("http://localhost:4000/v1/category");
+  const result = await res.json();
+  return result;
+};
+
+const getCourseDetails = async (courseName) => {
+  const res = await fetch(`http://localhost:4000/v1/courses/${courseName}`, {
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
   const result = await res.json();
   return result;
 };
@@ -71,4 +83,5 @@ export {
   getCategoryOfCourses,
   searchInData,
   showNotFoundAlert,
+  getCourseDetails,
 };
