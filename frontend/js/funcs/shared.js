@@ -1,4 +1,4 @@
-import { getToken } from "./utils.js";
+import { getToken, showSwal, showToast } from "./utils.js";
 
 const $ = document;
 const getCourses = async () => {
@@ -82,11 +82,47 @@ const showNotFoundAlert = (state, container) => {
   }
 };
 
-
-
-const goToCourseDetail = (courseName)=> {
+const goToCourseDetail = (courseName) => {
   window.location.href = `explain-course.html?name=${courseName}`;
-}
+};
+
+let MSGInfo = {};
+const submitContactsMSG = async () => {
+  const userNameInput = $.getElementById("userName");
+  const emailInput = $.getElementById("email");
+  const phoneInput = $.getElementById("phone");
+  const messageInput = $.getElementById("message");
+  MSGInfo = {
+    name: userNameInput.value.trim(),
+    email: emailInput.value.trim(),
+    phone: phoneInput.value.trim(),
+    body: messageInput.value.trim(),
+  };
+  await fetch("http://localhost:4000/v1/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(MSGInfo),
+  }).then((res) => {
+    if (res.status === 201) {
+      showSwal(
+        "پیغام شما با موفقیت ارسال شد.",
+        "success",
+        "برگشت به صفحه اصلی",
+        () => {
+          location.href = "index.html";
+        }
+      );
+    } else {
+      showSwal(
+        "مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.",
+        "error",
+        "تصحیح اطلاعات"
+      );
+    }
+  });
+};
 
 export {
   getCourses,
@@ -99,4 +135,5 @@ export {
   getCourseDetails,
   getRelatedCourses,
   goToCourseDetail,
+  submitContactsMSG,
 };

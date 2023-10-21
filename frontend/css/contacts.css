@@ -232,7 +232,8 @@ input::placeholder {
   font-size: 14px;
   color: #4f4444 !important;
 }
-.container__form button:hover {
+.container__form button:hover,
+.container__form button:focus {
   color: var(--primary-color-orange) !important;
 }
 @media screen and (min-width: 1200px) {
