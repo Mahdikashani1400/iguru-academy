@@ -24,9 +24,9 @@
           <div class="container">
             <div class="row justify-content-start my-5 justify-content-center">
               <div
-                class="learning_courses d-flex flex-column justify-content-start col-12 col-xl-8 order-1 order-xl-2"
+                class="learning_courses d-flex flex-column justify-content-start col-12 col-xl-8 order-2"
               >
-                <div class="course__title h1">
+                <div class="course__title h1 d-none d-xl-block">
                   آموزش زبان انگلیسی ! اصول بنیادی
                 </div>
                 <nav
@@ -70,7 +70,7 @@
                       </div>
                     </li>
                     <li
-                      class="breadcrumb-item teacher__stars d-flex border-start py-2 align-items-center pe-3"
+                      class="breadcrumb-item teacher__stars d-flex py-2 align-items-center pe-3"
                     >
                       <div class="px-4">
                         <div class="span text-orange fw-bold">نقد و بررسی</div>
@@ -84,15 +84,6 @@
                       </div>
                     </li>
                   </ol>
-                  <li
-                    class="breadcrumb-item teacher__info d-flex py-2 align-items-center px-4 d-xl-none"
-                  >
-                    <div
-                      class="px-3 py-3 bg-green text-white course__price align-self-center rounded-2"
-                    >
-                      39،000 تومان
-                    </div>
-                  </li>
                 </nav>
                 <div class="course__img px-2 px-sm-0">
                   <img src="./img/teachers/t3.jpg" class="rounded" alt="" />
@@ -1172,14 +1163,17 @@
                   </div>
                 </div>
                 <div
-                  class="not__found__course d-flex align-items-center justify-content-center text-white rounded-3 fs-5 py-5 mt-5 d-none"
+                  class="not__found__course d-flex align-items-center justify-content-center text-white rounded-3 fs-5 py-5 mt-5 bg-secondary border d-none"
                 >
                   دوره مرتبطی وجود ندارد !
                 </div>
               </div>
               <div
-                class="learning_search row ps-lg-4 col-12 col-xl-3 pe-xl-0 order-2 order-xl-1 py-5 py-xl-0 justify-content-center h-100"
+                class="learning_search row ps-lg-4 col-12 col-xl-3 pe-xl-0 order-1 py-5 py-xl-0 justify-content-center h-100"
               >
+                <div class="course__title h1 d-xl-none pb-4">
+                  آموزش زبان انگلیسی
+                </div>
                 <div class="learning__info rounded col-lg-6 col-xl-12">
                   <div
                     class="learning__info-price bg-green text-white d-flex justify-content-center gap-3 py-4 align-items-center rounded-top"
@@ -1231,7 +1225,7 @@
                     خرید دوره
                   </div>
                 </div>
-                <div class="learning_search-box">
+                <div class="learning_search-box d-none">
                   <form class="">
                     <div class="position-relative">
                       <input
@@ -1263,7 +1257,7 @@
                     </div>
                   </form>
                 </div>
-                <div class="learning__tags py-2">
+                <div class="learning__tags py-2 d-none">
                   <div
                     class="learning__tags-title h6 text-orange line-side py-3 position-relative fw-bold"
                   >

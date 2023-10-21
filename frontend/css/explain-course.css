@@ -286,7 +286,6 @@ body {
 .not__found__course {
   background: #e95374de;
   border: 1px solid rgba(245, 66, 105, 0.871);
-  height: 100%;
   width: 100%;
 }
 

@@ -451,6 +451,8 @@ async function showMenus() {
       `
       );
     } else {
+      console.log(menuInfo);
+
       fixMenuContainer.insertAdjacentHTML(
         "beforeend",
         `
@@ -549,7 +551,10 @@ let menuItem = null;
 function dropDownHandler() {
   if (window.innerWidth < 1200) {
     menuItem.forEach((item) => {
-      item.setAttribute("data-bs-toggle", "dropdown");
+      console.log(item);
+      if (item.classList.contains("plus-toggle")) {
+        item.setAttribute("data-bs-toggle", "dropdown");
+      }
     });
   } else {
     menuItem.forEach((item) => {

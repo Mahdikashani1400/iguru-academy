@@ -82,6 +82,12 @@ const showNotFoundAlert = (state, container) => {
   }
 };
 
+
+
+const goToCourseDetail = (courseName)=> {
+  window.location.href = `explain-course.html?name=${courseName}`;
+}
+
 export {
   getCourses,
   getPopularCourses,
@@ -92,4 +98,5 @@ export {
   showNotFoundAlert,
   getCourseDetails,
   getRelatedCourses,
+  goToCourseDetail,
 };

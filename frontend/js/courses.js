@@ -7,6 +7,7 @@ import {
   getCategoryOfCourses,
   searchInData,
   showNotFoundAlert,
+  goToCourseDetail
 } from "../js/funcs/shared.js";
 let coursesInfo = null;
 (async function () {
@@ -186,6 +187,3 @@ function seacrhInputHandler(e) {
 }
 
 window.goToCourseDetail = goToCourseDetail;
-function goToCourseDetail(courseName) {
-  window.location.href = `explain-course.html?name=${courseName}`;
-}

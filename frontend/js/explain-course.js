@@ -2,7 +2,11 @@ import { getModals } from "./modals.js";
 import { getHeader } from "./header.js";
 import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
-import { getCourseDetails, getRelatedCourses } from "../js/funcs/shared.js";
+import {
+  getCourseDetails,
+  getRelatedCourses,
+  goToCourseDetail,
+} from "../js/funcs/shared.js";
 const $ = document;
 
 let courseInfo = null;
@@ -119,7 +123,7 @@ function showCourseSessions() {
         session.title.split("/")[1]
       }</span><span class="me-auto">${session.time} دقیقه
           <i class="bi bi-${
-            session.free ? "un" : ""
+            session.free || session.isUserRegisteredToThisCourse ? "un" : ""
           }lock-fill me-1 me-sm-3 text-orange"></i></span></a>
     </li>
     
@@ -141,7 +145,9 @@ function showCourseSessions() {
               session.title.split("/")[1]
             }</span><span class="me-auto">${session.time} دقیقه
                 <i class="bi bi-${
-                  session.free ? "un" : ""
+                  session.free || session.isUserRegisteredToThisCourse
+                    ? "un"
+                    : ""
                 }lock-fill me-1 me-sm-3 text-orange"></i></span></a>
           </li>
             `
@@ -209,9 +215,7 @@ function showRelatedCourses() {
 }
 
 window.goToCourseDetail = goToCourseDetail;
-function goToCourseDetail(courseName) {
-  window.location.href = `explain-course.html?name=${courseName}`;
-}
+
 function changeDateToFa(date) {
   let dateTarget = new Date(
     Date.UTC(date.split("-")[0], date.split("-")[1] - 1, date.split("-")[2])
