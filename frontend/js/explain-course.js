@@ -8,6 +8,7 @@ import {
   goToCourseDetail,
 } from "../js/funcs/shared.js";
 const $ = document;
+window.goToCourseDetail = goToCourseDetail;
 
 let courseInfo = null;
 let relatedCourses = null;
@@ -214,7 +215,30 @@ function showRelatedCourses() {
   }
 }
 
-window.goToCourseDetail = goToCourseDetail;
+const courseMenuItems = $.querySelectorAll(".content__menu .breadcrumb-item");
+let activeLastItem = null;
+let activeLastDescribe = null;
+let activeNewDescribe = null;
+courseMenuItems.forEach((item) => {
+  item.addEventListener("click", descriptionCourseToggle.bind(item));
+});
+function descriptionCourseToggle() {
+  // change activation item
+
+  activeLastItem = $.querySelector(".content__menu .breadcrumb-item.active");
+  activeLastItem.classList.remove("active");
+  this.classList.add("active");
+
+  // change activation description
+  activeLastDescribe = $.querySelector(
+    ".course__content__details > div.active"
+  );
+  activeLastDescribe.classList.remove("active");
+  activeLastDescribe.classList.add("d-none");
+  activeNewDescribe = $.getElementById(`${this.dataset.bsToggle}`);
+  activeNewDescribe.classList.add("active");
+  activeNewDescribe.classList.remove("d-none");
+}
 
 function changeDateToFa(date) {
   let dateTarget = new Date(

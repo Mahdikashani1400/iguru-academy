@@ -102,7 +102,13 @@ body {
 .course__img {
   height: 550px;
 }
-
+.content__menu .breadcrumb-item {
+  cursor: pointer;
+}
+.content__menu .breadcrumb-item.active {
+  background: var(--primary-color-orange) !important;
+  color: var(--white-color) !important;
+}
 .content__menu .breadcrumb-item:not(:last-of-type):after {
   position: absolute;
   content: "";
@@ -111,6 +117,7 @@ body {
   height: 50%;
   left: 0px;
 }
+
 .course__review-intro {
   background: #f8f8f8;
 }

@@ -97,29 +97,33 @@
                     class="breadcrumb row row-cols-md-4 row-cols-sm-2 mx-0 shadow text-center"
                   >
                     <li
-                      class="flex-grow-1 breadcrumb-item bg-orange border-start py-3 fw-bold fs-5 text-white rounded"
+                      class="flex-grow-1 breadcrumb-item border-start py-3 fw-bold fs-5 text-dark rounded"
+                      data-bs-toggle="review"
                     >
                       مرور کلی
                     </li>
                     <li
-                      class="flex-grow-1 breadcrumb-item py-3 fw-bold fs-5 text-dark border-start"
+                      class="flex-grow-1 breadcrumb-item py-3 fw-bold fs-5 text-dark border-start active"
+                      data-bs-toggle="sessions"
                     >
                       برنامه تحصیلی
                     </li>
                     <li
                       class="flex-grow-1 breadcrumb-item py-3 fw-bold fs-5 text-dark border-start"
+                      data-bs-toggle="teacherInfo"
                     >
                       مدرس
                     </li>
                     <li
                       class="flex-grow-1 py-3 fw-bold fs-5 text-dark breadcrumb-item rounded"
+                      data-bs-toggle="comments"
                     >
                       نقد و بررسی ها
                     </li>
                   </ol>
                 </nav>
                 <div class="course__content__details mb-5">
-                  <div class="course__review d-none">
+                  <div class="course__review d-none" id="review">
                     <div class="course__review-text my-5 text-normal">
                       <p class="mb-3">
                         در دوره آموزش وردپرس شما با نحوه استفاده ازسیستم مدیریت
@@ -437,7 +441,7 @@
                       </p>
                     </div>
                   </div>
-                  <div class="course__videos">
+                  <div class="course__videos active" id="sessions">
                     <div
                       class="accordion accordion-panelsStayOpen"
                       id="sessionsContainer"
@@ -731,6 +735,7 @@
                   </div>
                   <div
                     class="course__teacher bg-normal p-md-5 p-3 rounded-bottom d-none"
+                    id="teacherInfo"
                   >
                     <div class="card px-sm-5 py-5 bg-white border-0">
                       <div class="row g-0">
@@ -768,6 +773,7 @@
                   </div>
                   <div
                     class="course__comment__star bg-normal row align-items-center py-5 justify-content-center d-none"
+                    id="comments"
                   >
                     <div class="col-md-3 row g-2 text-center pb-4 pb-md-0">
                       <span class="average__star-number display-1">5</span>
