@@ -124,6 +124,50 @@ const submitContactsMSG = async () => {
   });
 };
 
+let infoComment = {};
+const sendComment = async (courseShortName, body, score, getAllComments) => {
+  infoComment = {
+    body,
+    courseShortName,
+    score,
+  };
+  console.log(infoComment);
+  await fetch(`http://localhost:4000/v1/comments`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(infoComment),
+  }).then((res) => {
+    if (res.status === 201) {
+      showToast("دیدگاه شما با موفقیت ارسال شد.", "success", () => {});
+    } else {
+      showToast("مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.", "error");
+    }
+    getAllComments();
+  });
+};
+
+const changeDateToFa = (date) => {
+  let dateTarget = new Date(
+    Date.UTC(date.split("-")[0], date.split("-")[1] - 1, date.split("-")[2])
+  );
+
+  return dateTarget.toLocaleDateString("fa-IR");
+};
+
+const minuteToTimer = (time) => {
+  return `${
+    Math.floor(time / 60) > 9
+      ? Math.floor(time / 60)
+      : `0${Math.floor(time / 60)}`
+  }:${
+    Math.floor(time % 60) > 9
+      ? Math.floor(time % 60)
+      : `0${Math.floor(time % 60)}`
+  }`;
+};
 export {
   getCourses,
   getPopularCourses,
@@ -136,4 +180,7 @@ export {
   getRelatedCourses,
   goToCourseDetail,
   submitContactsMSG,
+  sendComment,
+  changeDateToFa,
+  minuteToTimer,
 };

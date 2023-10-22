@@ -192,6 +192,9 @@ body {
 }
 
 /* comments */
+.comment.answer {
+  width: 90%;
+}
 .comment img {
   width: 80px;
   height: 80px;
@@ -202,6 +205,14 @@ body {
   font-size: 0.9em;
   left: 18px;
   top: 18%;
+}
+.comment .reply {
+  transition: 0.3s all;
+  border: 1.8px solid var(--primary-color-green);
+}
+.comment .reply:hover {
+  color: var(--primary-color-green) !important;
+  background: transparent !important;
 }
 .contain-img {
   width: fit-content;
@@ -318,9 +329,9 @@ textarea {
 .courses__same .course__box-number-star {
   margin: 3px 6px;
 }
-.bi::before,
-[class^="bi-"]::before,
-[class*=" bi-"]::before {
+.bi-star::before,
+[class^="bi-star"]::before,
+[class*=" bi-star"]::before {
   color: #ffb606 !important;
   font-size: 17px;
 }
@@ -404,6 +415,10 @@ textarea {
   }
   .course__img {
     height: 300px !important;
+  }
+  .contain-img img {
+    width: 60px;
+    height: 60px;
   }
 }
 @media screen and (max-width: 400px) {

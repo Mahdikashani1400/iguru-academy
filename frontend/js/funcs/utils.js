@@ -35,6 +35,6 @@ const setToken = (token) => {
   return setToLocalSt("user", { token });
 };
 const getToken = () => {
-  return getFromLocalSt("user");
+  return getFromLocalSt("user")?.token||null;
 };
 export { showSwal, showToast, setToken, getToken };

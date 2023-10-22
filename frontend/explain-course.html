@@ -892,7 +892,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="comments row py-4 mb-4">
+                <div class="comments row py-4 mb-4" id="commentsContainer">
                   <div class="h2">
                     <span class="text-gray">(02)</span> دیدگاه
                   </div>
@@ -970,42 +970,18 @@
                     class="send__comment shadow pt-5 pb-3 pb-md4 px-md-5 px-sm-4 px-3 mt-4"
                   >
                     <div class="h1 pb-1">دیدگاهتان را بنویسید</div>
-                    <p class="text-normal">
-                      نشانی ایمیل شما منتشر نخواهد شد. بخش‌های موردنیاز
-                      علامت‌گذاری شده‌اند *
-                    </p>
+
                     <form class="row py-4">
-                      <div class="mb-3 col-md-6">
-                        <input
-                          type="text"
-                          class="form-control p-3"
-                          id="firstName"
-                          placeholder="نام شما *"
-                        />
-                      </div>
-                      <div class="mb-3 col-md-6">
-                        <input
-                          type="email"
-                          class="form-control p-3"
-                          id="email"
-                          placeholder="ایمیل شما *"
-                        />
-                      </div>
                       <div class="mb-3">
-                        <input
-                          type="text"
-                          class="form-control p-3"
-                          id="webSite"
-                          placeholder="وب سایت"
-                        />
-                      </div>
-                      <div class="mb-3">
+                        <div class="h3 my-3 text-normal" id="userName">
+                          mahdi
+                        </div>
                         <textarea
                           name="comment"
                           cols="45"
                           rows="5"
                           placeholder="دیدگاه شما ..."
-                          id="comment"
+                          id="commentText"
                           class="form-control p-3"
                         ></textarea>
                       </div>
@@ -1029,6 +1005,7 @@
                       <div class="mb-3 col-md-3">
                         <button
                           class="btn fw-bold w-100 py-3 bg-orange text-white"
+                          id="submitCommentBtn"
                         >
                           فرستادن دیدگاه
                         </button>
@@ -1482,7 +1459,7 @@
     <script src="vendor/Bootstrap/bootstrap.bundle.min.js"></script>
 
     <script src="vendor/FontAwesome5/all.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/explain-course.js" type="module"></script>
   </body>
 </html>

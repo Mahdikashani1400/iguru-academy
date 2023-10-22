@@ -6,11 +6,16 @@ import {
   getCourseDetails,
   getRelatedCourses,
   goToCourseDetail,
+  sendComment,
+  changeDateToFa,
+  minuteToTimer,
 } from "../js/funcs/shared.js";
+import { getUserInfo } from "../js/funcs/auth.js";
 const $ = document;
 window.goToCourseDetail = goToCourseDetail;
 
 let courseInfo = null;
+let userInfo = null;
 let relatedCourses = null;
 let courseName = new URLSearchParams(location.search).get("name");
 
@@ -27,6 +32,11 @@ let courseName = new URLSearchParams(location.search).get("name");
     relatedCourses = data;
   });
   showRelatedCourses();
+  await getUserInfo().then((data) => {
+    userInfo = data;
+  });
+  getAllComments();
+
   getFooter();
 })();
 
@@ -240,18 +250,111 @@ function descriptionCourseToggle() {
   activeNewDescribe.classList.remove("d-none");
 }
 
-let starsContainer = $.querySelector(".course__star-icons");
+// get all comments
+let commentsContainer = $.getElementById("commentsContainer");
+function getAllComments() {
+  console.log(courseInfo);
+  commentsContainer.innerHTML = `
+                  <div class="h2">
+                    <span class="text-gray">${
+                      courseInfo.comments.length
+                    }</span> دیدگاه
+                  </div>
+                  <div class="comments__container row">
+                  
+                  ${courseInfo.comments
+                    .map((comment) => {
+                      return `
+                      <div class="comment card py-4 my-3 border-1 px-3 bg-normal position-relative d-flex">
+                      <div class="row g-0">
+                        <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
+                          <img src="./img/teachers/t4.jpg" class="rounded-3" alt="...">
+                        </div>
+                        <div class="col-md-10 flex-grow-1 pe-4">
+                          <div class="card-body p-0">
+                            <h3 class="card-title fw-bold mb-0">${
+                              comment.creator.username
+                            }</h3>
+                            <small class="text-gray fw-bold date-comment">${changeDateToFa(
+                              comment.updatedAt.split("T")[0]
+                            )}</small>
+                            <span class="badge bg-green position-absolute reply">پاسخ</span>
+                            <p class="card-text mt-1 text-normal">
+                            ${comment.body}
+
+                            </p>
+                            <p class="card-text"></p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="comment answer card py-3 mt-4 border-1 px-3 position-relative align-self-center bg-transparent">
+                    <div class="row g-0">
+                      <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
+                        <img src="./img/teachers/t4.jpg" class="rounded-3" alt="...">
+                      </div>
+                      <div class="col-md-10 flex-grow-1 pe-4">
+                        <div class="card-body p-0">
+                          <h3 class="card-title fw-bold mb-0">مدیر سایت</h3>
+                          <small class="text-gray fw-bold date-comment">${changeDateToFa(
+                            comment.updatedAt.split("T")[0]
+                          )}</small>
+                          <span class="badge bg-green position-absolute reply">پاسخ</span>
+                          <p class="card-text mt-1 text-normal">
+                        بمیر باو
+
+                          </p>
+                          <p class="card-text"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    </div>
+
+                    `;
+                    })
+                    .join("")}
+                  </div>
+                  <div class="send__comment shadow pt-5 pb-3 pb-md4 px-md-5 px-sm-4 px-3 mt-4">
+                    <div class="h1 pb-1">دیدگاهتان را بنویسید</div>
+
+                    <form class="row py-4">
+                      <div class="mb-3">
+                        <div class="h3 my-3 text-normal" id="userName">Mahdi123456</div>
+                        <textarea name="comment" cols="45" rows="5" placeholder="دیدگاه شما ..." id="commentText" class="form-control p-3"></textarea>
+                      </div>
+                      <div class="mb-3 d-flex pe-3 me-1">
+                        <span class="text-normal ps-3" style="font-size: 18px">
+                          امتیاز شما به دوره :</span>
+                        <div class="p fw-bold course__star-icons d-flex flex-row-reverse gap-1 align-items-end"
+                        onclick="setStarsByUser(event)">
+                          <i class="bi bi-star-fill" data-bs-target="star-1"></i>
+                          <i class="bi bi-star" data-bs-target="star-2"></i>
+                          <i class="bi bi-star" data-bs-target="star-3"></i>
+                          <i class="bi bi-star" data-bs-target="star-4"></i>
+                          <i class="bi bi-star" data-bs-target="star-5"></i>
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-3">
+                        <button class="btn fw-bold w-100 py-3 bg-orange text-white" 
+                        onclick = "submitCommentHandler(event)">
+                          فرستادن دیدگاه
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+              `;
+}
+
 let starTarget = null;
-starsContainer.addEventListener("click", setStarsByUser);
+let starNumber = 1;
+window.setStarsByUser = setStarsByUser;
 function setStarsByUser(e) {
   if (e.target.tagName === "I") {
     starTarget = e.target;
-    console.log(starTarget.dataset);
-    starsContainer.querySelectorAll("i").forEach((star) => {
-      if (
-        starTarget.dataset.bsTarget.split("-")[1] <
-        star.dataset.bsTarget.split("-")[1]
-      ) {
+    starNumber = starTarget.dataset.bsTarget.split("-")[1];
+    $.querySelectorAll(".course__star-icons i").forEach((star) => {
+      if (starNumber < star.dataset.bsTarget.split("-")[1]) {
         star.classList.remove("bi-star-fill");
         star.classList.add("bi-star");
       } else {
@@ -262,22 +365,12 @@ function setStarsByUser(e) {
   }
 }
 
-function changeDateToFa(date) {
-  let dateTarget = new Date(
-    Date.UTC(date.split("-")[0], date.split("-")[1] - 1, date.split("-")[2])
-  );
+// send comment from user
 
-  return dateTarget.toLocaleDateString("fa-IR");
-}
-
-function minuteToTimer(time) {
-  return `${
-    Math.floor(time / 60) > 9
-      ? Math.floor(time / 60)
-      : `0${Math.floor(time / 60)}`
-  }:${
-    Math.floor(time % 60) > 9
-      ? Math.floor(time % 60)
-      : `0${Math.floor(time % 60)}`
-  }`;
+let commentText = null;
+window.submitCommentHandler = submitCommentHandler;
+function submitCommentHandler(e) {
+  e.preventDefault();
+  commentText = $.getElementById("commentText");
+  sendComment(courseName, commentText.value, starNumber, getAllComments);
 }

@@ -249,7 +249,7 @@ const login = (e) => {
     });
 };
 
-const token = getToken()?.token || null;
+const token = getToken();
 async function getUserInfo() {
   if (!isLogin()) {
     return 0;
