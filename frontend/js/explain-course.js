@@ -240,6 +240,28 @@ function descriptionCourseToggle() {
   activeNewDescribe.classList.remove("d-none");
 }
 
+let starsContainer = $.querySelector(".course__star-icons");
+let starTarget = null;
+starsContainer.addEventListener("click", setStarsByUser);
+function setStarsByUser(e) {
+  if (e.target.tagName === "I") {
+    starTarget = e.target;
+    console.log(starTarget.dataset);
+    starsContainer.querySelectorAll("i").forEach((star) => {
+      if (
+        starTarget.dataset.bsTarget.split("-")[1] <
+        star.dataset.bsTarget.split("-")[1]
+      ) {
+        star.classList.remove("bi-star-fill");
+        star.classList.add("bi-star");
+      } else {
+        star.classList.add("bi-star-fill");
+        star.classList.remove("bi-star");
+      }
+    });
+  }
+}
+
 function changeDateToFa(date) {
   let dateTarget = new Date(
     Date.UTC(date.split("-")[0], date.split("-")[1] - 1, date.split("-")[2])

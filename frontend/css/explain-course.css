@@ -191,6 +191,37 @@ body {
   transform: translateY(-10px);
 }
 
+/* comments */
+.comment img {
+  width: 80px;
+  height: 80px;
+}
+.comment .badge {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+  left: 18px;
+  top: 18%;
+}
+.contain-img {
+  width: fit-content;
+}
+.date-comment {
+  font-size: 14px;
+}
+textarea {
+  resize: none;
+}
+.send__comment .btn {
+  border: 2px solid var(--primary-color-orange) !important;
+}
+.send__comment .btn:hover {
+  border: 2px solid var(--primary-color-orange);
+  color: var(--primary-color-orange) !important;
+}
+.course__star-icons {
+  cursor: pointer;
+}
 /* smae courses */
 .courses__same .course__box {
   position: relative;
@@ -287,8 +318,11 @@ body {
 .courses__same .course__box-number-star {
   margin: 3px 6px;
 }
-.course__comment__star .bi-star-fill {
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
   color: #ffb606 !important;
+  font-size: 17px;
 }
 .not__found__course {
   background: #e95374de;
@@ -312,15 +346,6 @@ body {
   padding: 48px 0;
 }
 
-/* .learning_search-box input {
-  background-color: #f3f3f3;
-  outline: none !important;
-  border: none !important;
-  transition: 0.3s all;
-}
-.learning_search-box input:focus {
-  background-color: #eef1f2;
-} */
 .learning_search-box .search__box-icon {
   cursor: pointer;
   left: 7px;
