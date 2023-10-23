@@ -149,6 +149,29 @@ const sendComment = async (courseShortName, body, score, getAllComments) => {
   });
 };
 
+let infoCommentAnswer = {};
+const answerComment = async (commentID, body, getAllComments) => {
+  infoCommentAnswer = {
+    body,
+  };
+  console.log(getToken());
+  await fetch(`http://localhost:4000/v1/comments/answer/${commentID}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(infoCommentAnswer),
+  }).then((res) => {
+    if (res.status === 201) {
+      showToast("دیدگاه شما با موفقیت ارسال شد.", "success", () => {});
+    } else {
+      showToast("مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.", "error");
+    }
+    getAllComments();
+  });
+};
+
 const changeDateToFa = (date) => {
   let dateTarget = new Date(
     Date.UTC(date.split("-")[0], date.split("-")[1] - 1, date.split("-")[2])
@@ -183,4 +206,5 @@ export {
   sendComment,
   changeDateToFa,
   minuteToTimer,
+  answerComment,
 };

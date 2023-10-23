@@ -9,6 +9,7 @@ import {
   sendComment,
   changeDateToFa,
   minuteToTimer,
+  answerComment,
 } from "../js/funcs/shared.js";
 import { getUserInfo } from "../js/funcs/auth.js";
 const $ = document;
@@ -273,14 +274,19 @@ function getAllComments() {
                         </div>
                         <div class="col-md-10 flex-grow-1 pe-4">
                           <div class="card-body p-0">
-                            <h3 class="card-title fw-bold mb-0 username">${
-                              comment.creator.username
-                            }</h3>
+                           <div class="d-flex align-items-center gap-2" >
+                           <h3 class="card-title fw-bold mb-0 username">${
+                             comment.creator.username
+                           }</h3>
+                          <span class="badge bg-green">${
+                            comment.creator.role === "ADMIN" ? "ادمین" : "کاربر"
+                          }</span>
+                           </div>
+                            
                             <small class="text-gray fw-bold date-comment">${changeDateToFa(
                               comment.updatedAt.split("T")[0]
                             )}</small>
-                            <span class="badge bg-green position-absolute reply"
-                            onclick="answerUserToUser(event)">پاسخ</span>
+                         
                             <p class="card-text mt-1 text-normal">
                             ${comment.body}
 
@@ -300,9 +306,17 @@ function getAllComments() {
                        </div>
                        <div class="col-md-10 flex-grow-1 pe-4">
                          <div class="card-body p-0">
-                           <h3 class="card-title fw-bold mb-0">${
-                             comment.answerContent.creator.username
-                           }</h3>
+                         <div class="d-flex align-items-center gap-2" >
+                         <h3 class="card-title fw-bold mb-0 username">${
+                           comment.answerContent.creator.username
+                         }</h3>
+                        <span class="badge bg-primary">${
+                          comment.answerContent.creator.role === "ADMIN"
+                            ? "ادمین"
+                            : "کاربر"
+                        }</span>
+                         </div>
+                       
                            <small class="text-gray fw-bold date-comment">${changeDateToFa(
                              comment.answerContent.updatedAt.split("T")[0]
                            )}</small>
@@ -331,8 +345,7 @@ ${comment.answerContent.body}
                         <div class="h3 my-3 d-flex justify-content-between align-items-center"><span class="text-normal" id="userName">${
                           userInfo.username
                         }</span>
-                        <button type="button" class="btn btn-outline-danger px-2 py-1 py-sm-2 px-sm-3 cancel-answer d-none"
-                        onclick="cancelAnswerUserToUser()">لغو پاسخ</button>
+                       
                         </div>
                         <textarea name="comment" cols="45" rows="5" placeholder="دیدگاه شما ..." id="commentText" class="form-control p-3"></textarea>
                       </div>
@@ -388,24 +401,32 @@ function submitCommentHandler(e) {
   sendComment(courseName, commentText.value, starNumber, getAllComments);
 }
 
-let cancelAnswer = null;
-let userCommentTarget = null;
-let userNameSender = null;
-let starsContainer = null;
-window.answerUserToUser = answerUserToUser;
-function answerUserToUser(e) {
-  userNameSender = $.querySelector("#userName");
-  cancelAnswer = $.querySelector(".cancel-answer");
-  starsContainer = $.getElementById("starsContainer");
-  userCommentTarget = e.target.previousElementSibling.previousElementSibling;
-  console.log(userCommentTarget);
-  userNameSender.innerHTML = `پاسخ به ${userCommentTarget.innerHTML}`;
-  cancelAnswer.classList.remove("d-none");
-  starsContainer.classList.add("d-none");
-}
-window.cancelAnswerUserToUser = cancelAnswerUserToUser;
-function cancelAnswerUserToUser() {
-  userNameSender.innerHTML = userInfo.username;
-  cancelAnswer.classList.add("d-none");
-  starsContainer.classList.remove("d-none");
-}
+// let repliedCommentID = null;
+// let cancelAnswer = null;
+// let userCommentTarget = null;
+// let userNameSender = null;
+// let starsContainer = null;
+// window.answerUserToUser = answerUserToUser;
+// function answerUserToUser(e, commentID) {
+//   repliedCommentID = commentID;
+//   userNameSender = $.querySelector("#userName");
+//   cancelAnswer = $.querySelector(".cancel-answer");
+//   starsContainer = $.getElementById("starsContainer");
+
+//   userCommentTarget = e.target.previousElementSibling.previousElementSibling;
+//   console.log(userCommentTarget);
+//   userNameSender.innerHTML = `پاسخ به ${userCommentTarget.innerHTML}`;
+//   cancelAnswer.classList.remove("d-none");
+//   starsContainer.classList.add("d-none");
+//   commentState = "reply";
+// }
+// window.cancelAnswerUserToUser = cancelAnswerUserToUser;
+// function cancelAnswerUserToUser() {
+//   userNameSender.innerHTML = userInfo.username;
+//   cancelAnswer.classList.add("d-none");
+//   starsContainer.classList.remove("d-none");
+//   commentState = "send";
+// }
+
+// <button type="button" class="btn btn-outline-danger px-2 py-1 py-sm-2 px-sm-3 cancel-answer d-none"
+// onclick="cancelAnswerUserToUser()">لغو پاسخ</button>
