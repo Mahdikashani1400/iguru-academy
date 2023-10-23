@@ -265,20 +265,22 @@ function getAllComments() {
                   ${courseInfo.comments
                     .map((comment) => {
                       return `
-                      <div class="comment card py-4 my-3 border-1 px-3 bg-normal position-relative d-flex">
+                      <div class="comment card py-4 my-3 border-1 px-3 bg-normal position-relative d-flex"
+                      >
                       <div class="row g-0">
                         <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
                           <img src="./img/teachers/t4.jpg" class="rounded-3" alt="...">
                         </div>
                         <div class="col-md-10 flex-grow-1 pe-4">
                           <div class="card-body p-0">
-                            <h3 class="card-title fw-bold mb-0">${
+                            <h3 class="card-title fw-bold mb-0 username">${
                               comment.creator.username
                             }</h3>
                             <small class="text-gray fw-bold date-comment">${changeDateToFa(
                               comment.updatedAt.split("T")[0]
                             )}</small>
-                            <span class="badge bg-green position-absolute reply">پاسخ</span>
+                            <span class="badge bg-green position-absolute reply"
+                            onclick="answerUserToUser(event)">پاسخ</span>
                             <p class="card-text mt-1 text-normal">
                             ${comment.body}
 
@@ -290,18 +292,21 @@ function getAllComments() {
 
                      ${
                        comment.answerContent
-                         ? ` <div class="comment answer card py-3 mt-4 border-1 px-3 position-relative align-self-center bg-transparent">
+                         ? ` <div class="comment answer card py-3 mt-4 mb-3 border-1 px-3 position-relative align-self-center bg-transparent"
+                       >
                      <div class="row g-0">
                        <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
                          <img src="./img/teachers/t4.jpg" class="rounded-3" alt="...">
                        </div>
                        <div class="col-md-10 flex-grow-1 pe-4">
                          <div class="card-body p-0">
-                           <h3 class="card-title fw-bold mb-0">مدیر سایت</h3>
+                           <h3 class="card-title fw-bold mb-0">${
+                             comment.answerContent.creator.username
+                           }</h3>
                            <small class="text-gray fw-bold date-comment">${changeDateToFa(
-                             comment.updatedAt.split("T")[0]
+                             comment.answerContent.updatedAt.split("T")[0]
                            )}</small>
-                           <span class="badge bg-green position-absolute reply">پاسخ</span>
+                 
                            <p class="card-text mt-1 text-normal">
 ${comment.answerContent.body} 
                            </p>
@@ -323,10 +328,15 @@ ${comment.answerContent.body}
 
                     <form class="row py-4">
                       <div class="mb-3">
-                        <div class="h3 my-3 text-normal" id="userName">Mahdi123456</div>
+                        <div class="h3 my-3 d-flex justify-content-between align-items-center"><span class="text-normal" id="userName">${
+                          userInfo.username
+                        }</span>
+                        <button type="button" class="btn btn-outline-danger px-2 py-1 py-sm-2 px-sm-3 cancel-answer d-none"
+                        onclick="cancelAnswerUserToUser()">لغو پاسخ</button>
+                        </div>
                         <textarea name="comment" cols="45" rows="5" placeholder="دیدگاه شما ..." id="commentText" class="form-control p-3"></textarea>
                       </div>
-                      <div class="mb-3 d-flex pe-3 me-1">
+                      <div class="mb-3 d-flex pe-3 me-1" id="starsContainer">
                         <span class="text-normal ps-3" style="font-size: 18px">
                           امتیاز شما به دوره :</span>
                         <div class="p fw-bold course__star-icons d-flex flex-row-reverse gap-1 align-items-end"
@@ -339,7 +349,7 @@ ${comment.answerContent.body}
                         </div>
                       </div>
                       <div class="mb-3 col-md-3">
-                        <button class="btn fw-bold w-100 py-3 bg-orange text-white" 
+                        <button class="btn fw-bold w-100 py-3 bg-orange text-white submit-comment" 
                         onclick = "submitCommentHandler(event)">
                           فرستادن دیدگاه
                         </button>
@@ -376,4 +386,26 @@ function submitCommentHandler(e) {
   e.preventDefault();
   commentText = $.getElementById("commentText");
   sendComment(courseName, commentText.value, starNumber, getAllComments);
+}
+
+let cancelAnswer = null;
+let userCommentTarget = null;
+let userNameSender = null;
+let starsContainer = null;
+window.answerUserToUser = answerUserToUser;
+function answerUserToUser(e) {
+  userNameSender = $.querySelector("#userName");
+  cancelAnswer = $.querySelector(".cancel-answer");
+  starsContainer = $.getElementById("starsContainer");
+  userCommentTarget = e.target.previousElementSibling.previousElementSibling;
+  console.log(userCommentTarget);
+  userNameSender.innerHTML = `پاسخ به ${userCommentTarget.innerHTML}`;
+  cancelAnswer.classList.remove("d-none");
+  starsContainer.classList.add("d-none");
+}
+window.cancelAnswerUserToUser = cancelAnswerUserToUser;
+function cancelAnswerUserToUser() {
+  userNameSender.innerHTML = userInfo.username;
+  cancelAnswer.classList.add("d-none");
+  starsContainer.classList.remove("d-none");
 }
