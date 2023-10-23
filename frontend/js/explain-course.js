@@ -288,27 +288,30 @@ function getAllComments() {
                         </div>
                       </div>
 
-                      <div class="comment answer card py-3 mt-4 border-1 px-3 position-relative align-self-center bg-transparent">
-                    <div class="row g-0">
-                      <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
-                        <img src="./img/teachers/t4.jpg" class="rounded-3" alt="...">
-                      </div>
-                      <div class="col-md-10 flex-grow-1 pe-4">
-                        <div class="card-body p-0">
-                          <h3 class="card-title fw-bold mb-0">مدیر سایت</h3>
-                          <small class="text-gray fw-bold date-comment">${changeDateToFa(
-                            comment.updatedAt.split("T")[0]
-                          )}</small>
-                          <span class="badge bg-green position-absolute reply">پاسخ</span>
-                          <p class="card-text mt-1 text-normal">
-                        بمیر باو
-
-                          </p>
-                          <p class="card-text"></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                     ${
+                       comment.answerContent
+                         ? ` <div class="comment answer card py-3 mt-4 border-1 px-3 position-relative align-self-center bg-transparent">
+                     <div class="row g-0">
+                       <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
+                         <img src="./img/teachers/t4.jpg" class="rounded-3" alt="...">
+                       </div>
+                       <div class="col-md-10 flex-grow-1 pe-4">
+                         <div class="card-body p-0">
+                           <h3 class="card-title fw-bold mb-0">مدیر سایت</h3>
+                           <small class="text-gray fw-bold date-comment">${changeDateToFa(
+                             comment.updatedAt.split("T")[0]
+                           )}</small>
+                           <span class="badge bg-green position-absolute reply">پاسخ</span>
+                           <p class="card-text mt-1 text-normal">
+${comment.answerContent.body} 
+                           </p>
+                           <p class="card-text"></p>
+                         </div>
+                       </div>
+                     </div>
+                   </div>`
+                         : ""
+                     }
                     </div>
 
                     `;
