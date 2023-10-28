@@ -1,16 +1,223 @@
 import { getModals } from "./modals.js";
 import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
+import { globalSearchHandler } from "../js/funcs/shared.js";
 import { aricleSliderSearch } from "../vendor/slick-slider/app.js";
 import { getFooter } from "./footer.js";
 const $ = document;
-
+let searchValue = new URLSearchParams(location.search).get("searchValue");
+let searchValueInfos = null;
 (async function () {
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
 
   getPoster(pageTitle, "blog_page-bg.jpg");
+  await globalSearchHandler(searchValue).then((data) => {
+    searchValueInfos = data;
+  });
+  console.log(searchValueInfos);
+  getSearchValueData();
+  showSearchValueData();
   aricleSliderSearch();
   getFooter();
 })();
+
+let coursesInfoArray = null;
+let productsInfoArray = null;
+let articlesInfoArray = null;
+
+function getSearchValueData() {
+  coursesInfoArray = searchValueInfos.allResultCourses.filter((data) => {
+    return !data.shortName.split("/")[0].includes("محصول");
+  });
+  productsInfoArray = searchValueInfos.allResultCourses.filter((data) => {
+    return data.shortName.split("/")[0].includes("محصول");
+  });
+  articlesInfoArray = searchValueInfos.allResultArticles;
+}
+
+let coursesContainer = $.querySelector(".search__courses");
+let productsContainer = $.querySelector(".search__products");
+let articlesContainer = $.querySelector(".search__blogs");
+let searchTitle = $.querySelector(".search__title");
+
+function showSearchValueData() {
+  searchTitle.innerHTML = `
+  نتیجه جستجو برای : ${searchValue}
+`;
+  articlesInfoArray.length
+    ? (articlesContainer.innerHTML = `
+    <div class="search__title-courses h2 text-normal pb-3 pt-5">
+    مقالات مرتبط
+  </div>
+  <div class="blogs__boxes text-end">
+   ${articlesInfoArray
+     .map((article) => {
+       return ` <div class="blog__box">
+    <div class="blog__box-container mx-1">
+      <div class="blog__box-date">
+        <span class="date-month">تیر</span>
+        <div class="h4 date-day">20</div>
+      </div>
+      <div class="blog__box-img" style="background-image:url('http://localhost:4000/courses/covers/${article.cover}');"></div>
+      <div class="blog__box__content">
+        <div class="blog__box__tags pt-4 pb-2">
+          <a href="" class="blog__box-category text-green fw-bold"
+            >${article.shortName}</a
+          ><span class="text-green px-1 fw-bold">/</span>
+          <span class="fw-bold text-gray ps-2">توسط</span>
+          <a href="" class="blog__box__author fw-bold text-gray"
+            >علی سلیمانی</a
+          >
+        </div>
+        <div class="blog__box-title h5 fw-bold">
+        ${article.title}
+        </div>
+        <a
+          href=""
+          class="under__line-animate text-orange fw-bold d-inline-block pt-2 pb-1"
+          >ادامه مطلب</a
+        >
+      </div>
+    </div>
+  </div>`;
+     })
+     .join("")}
+  </div>
+  `)
+    : "";
+  coursesInfoArray.length
+    ? (coursesContainer.innerHTML = `
+        
+    <div class="search__title-course h2 text-normal py-5">
+    دوره های مرتبط
+  </div>
+  <div class="about__us_courses-boxes row gx-5 gy-5 mx-auto">
+   ${coursesInfoArray
+     .map((course) => {
+       return `
+    <div
+    class="course__box col-xl-3 col-lg-4 col-md-6 col-12 rounded"
+  >
+    <div
+      class="course__box-container d-flex flex-column justify-content-end text-white h-100"
+      onclick="goToCourseDetail('اقتصاد')"
+    >
+      <div
+        class="course__box-bg-img position-absolute bg-img"
+        style="
+        style="background-image:url('http://localhost:4000/courses/covers/${
+          course.cover
+        }');"
+        "
+      ></div>
+      <a
+        class="course__box-category fw-bold rounded px-3 py-2 bg-orange text-white"
+        href="#"
+        >${course.categoryID.name}</a
+      >
+      <div class="course__box-content">
+        <div
+          class="course__box-description pb-3 d-flex flex-column pe-4 ps-2 align-items-start"
+        >
+          <div class="course__box-img">
+            <img
+              src="./img/poster.jpg"
+              alt=""
+              class="img-fluid"
+            />
+          </div>
+          <div class="course__box-teacher h6 mt-2">علی رحیمی</div>
+          <div class="course__box-title h5 fw-bold text-end mt-1">
+          ${course.name} 
+          </div>
+        </div>
+        <div
+          class="course__box-state d-flex justify-content-between p-3 flex-wrap"
+        >
+          <a
+            class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white text-center"
+            href="#"
+          >
+          ${
+            course.price
+              ? Number(course.price).toLocaleString("fa-IR") + " تومان"
+              : "رایگان"
+          }
+          </a>
+          <div
+            class="course__box-star d-flex align-items-center gap-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-star-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-star-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-star-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-star-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-star-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+     })
+     .join("")}
+  </div>
+
+        `)
+    : "";
+}

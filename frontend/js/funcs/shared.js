@@ -20,7 +20,7 @@ const getArticles = async () => {
   return result;
 };
 const getMenus = async () => {
-  const res = await fetch("http://localhost:4000/v1/menus", {});
+  const res = await fetch("http://localhost:4000/v1/menus");
 
   const result = await res.json();
   return result;
@@ -191,6 +191,14 @@ const minuteToTimer = (time) => {
       : `0${Math.floor(time % 60)}`
   }`;
 };
+
+const globalSearchHandler = async (searchValue) => {
+  const res = await fetch(`http://localhost:4000/v1/search/${searchValue}`);
+
+  const result = await res.json();
+  return result;
+};
+
 export {
   getCourses,
   getPopularCourses,
@@ -207,4 +215,5 @@ export {
   changeDateToFa,
   minuteToTimer,
   answerComment,
+  globalSearchHandler,
 };

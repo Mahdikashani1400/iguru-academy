@@ -43,7 +43,7 @@ function addProductsToContainer(productsArray, category) {
     ${productsArray
       .map((product) => {
         if (
-          product.name === "product" &&
+          product.shortName.split("/")[0].includes("محصول") &&
           category === product.categoryID.name
         ) {
           return `
@@ -60,7 +60,10 @@ function addProductsToContainer(productsArray, category) {
                       ${product.price} تومان
                     </div>
                   </div>`;
-        } else if (product.name === "product" && category === "همه") {
+        } else if (
+          product.shortName.split("/")[0].includes("محصول") &&
+          category === "همه"
+        ) {
           return `
         
         <div class="products__box d-flex flex-column justify-content-center align-items-center my-5">

@@ -126,6 +126,7 @@ function getModals() {
             />
             <div
               class="search__box-icon position-absolute bg-green rounded rounded-1"
+              onclick="goToSearchPage()"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -154,5 +155,9 @@ function getModals() {
     
     `;
 }
-
+window.goToSearchPage = goToSearchPage;
+function goToSearchPage() {
+  let searchBox = $.getElementById("searchBox");
+  window.location.href = `search.html?searchValue=${searchBox.value}`;
+}
 export { getModals };
