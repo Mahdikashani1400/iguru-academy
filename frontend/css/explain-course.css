@@ -220,6 +220,8 @@ body {
   color: var(--primary-color-green) !important;
   background: transparent !important;
 }
+.empty__comments {
+}
 .contain-img {
   width: fit-content;
 }
@@ -430,5 +432,8 @@ textarea {
 @media screen and (max-width: 400px) {
   .course__details .breadcrumb-item {
     border-left: none !important;
+  }
+  .empty__comments {
+    font-size: 17px !important;
   }
 }

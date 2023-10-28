@@ -7,7 +7,7 @@ import {
   getCategoryOfCourses,
   searchInData,
   showNotFoundAlert,
-  goToCourseDetail
+  goToCourseDetail,
 } from "../js/funcs/shared.js";
 let coursesInfo = null;
 (async function () {
@@ -86,7 +86,7 @@ function addCoursesToContainer(coursesArray, category) {
             >${courseTarget.name}  </div>
           </div>
           <div
-            class="course__box-state d-flex justify-content-between p-3 pe-4"
+            class="course__box-state d-flex justify-content-between p-3 pe-sm-4 flex-wrap"
           >
             <a
               class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white"

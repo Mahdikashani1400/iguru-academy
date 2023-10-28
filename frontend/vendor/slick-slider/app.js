@@ -210,7 +210,48 @@ $(".teachers__information-boxes").slick({
   ],
 });
 function aricleSliderHome() {
-  $(".blogs__description + .blogs__boxes").slick({
+  $(".home-page .blogs__boxes").slick({
+    dots: true, // Boolean
+    // arrows: false,
+    // asNavFor: ".slider-for",
+    slidesToShow: 3, // Number
+    slidesToScroll: 1, // Number
+    infinite: false, // Boolean
+
+    centerMode: false,
+
+    centerPadding: "0px", // String
+    responsive: [
+      {
+        breakpoint: 1070,
+        settings: {
+          slidesToShow: 3,
+          infinite: true, // Boolean
+        },
+      },
+      {
+        breakpoint: 978,
+        settings: {
+          slidesToShow: 2,
+          dots: true,
+          focusOnSelect: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          dots: true,
+
+          slidesToShow: 1,
+          infinite: true, // Boolean
+          arrows: false,
+        },
+      },
+    ],
+  });
+}
+function aricleSliderSearch() {
+  $(".searchs .blogs__boxes").slick({
     dots: true, // Boolean
     // arrows: false,
     // asNavFor: ".slider-for",
@@ -366,4 +407,4 @@ $("#readBlog .blogs__boxes").slick({
   ],
 });
 
-export { aricleSliderHome };
+export { aricleSliderHome, aricleSliderSearch };
