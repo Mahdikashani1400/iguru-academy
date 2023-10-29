@@ -1,9 +1,16 @@
 import { getModals } from "./modals.js";
 import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
-import { globalSearchHandler } from "../js/funcs/shared.js";
+import {
+  globalSearchHandler,
+  goToCourseDetail,
+  goToProductDetail,
+} from "../js/funcs/shared.js";
 import { aricleSliderSearch } from "../vendor/slick-slider/app.js";
 import { getFooter } from "./footer.js";
+
+window.goToCourseDetail = goToCourseDetail;
+window.goToProductDetail = goToProductDetail;
 const $ = document;
 let searchValue = new URLSearchParams(location.search).get("searchValue");
 let searchValueInfos = null;
@@ -96,13 +103,13 @@ function showSearchValueData() {
   <div class="about__us_courses-boxes row gx-5 gy-5 mx-auto">
    ${coursesInfoArray
      .map((course) => {
+       console.log(course);
        return `
     <div
-    class="course__box col-xl-3 col-lg-4 col-md-6 col-12 rounded"
-  >
+    class="course__box col-xl-3 col-lg-4 col-md-6 col-12 rounded">
     <div
       class="course__box-container d-flex flex-column justify-content-end text-white h-100"
-      onclick="goToCourseDetail('اقتصاد')"
+      onclick="goToCourseDetail('${course.shortName}')"
     >
       <div
         class="course__box-bg-img position-absolute bg-img"
@@ -227,7 +234,7 @@ ${productsInfoArray
     return `
     <div
     class="products__box d-flex flex-column justify-content-center align-items-center my-5"
-  >
+    onclick = "goToProductDetail('${product.shortName}')">
     <div
       class="products__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3"
     >

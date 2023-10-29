@@ -28,9 +28,15 @@ function showPopularCourses(category) {
     coursesContainer.innerHTML = `
     ${data
       .map((course) => {
-        if (course.name !== "product" && category === course.categoryID.name) {
+        if (
+          !course.shortName.split("_")[0].includes("محصول") &&
+          category === course.categoryID.name
+        ) {
           courseTarget = course;
-        } else if (course.name !== "product" && category === "همه") {
+        } else if (
+          !course.shortName.split("_")[0].includes("محصول") &&
+          category === "همه"
+        ) {
           courseTarget = course;
         } else {
           return "";
@@ -47,7 +53,7 @@ function showPopularCourses(category) {
             
           </div>
           <a class="course__box-category fw-bold rounded px-3 py-2 bg-orange text-white" href="#">${
-            courseTarget.shortName
+            courseTarget.categoryID.name
           }</a>
           <div class="course__box-content">
             <div class="course__box-description pb-3 d-flex flex-column pe-4 ps-2 align-items-start">

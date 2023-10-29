@@ -1,21 +1,25 @@
 import { getModals } from "./modals.js";
-import { getHeader, getPageTitle } from "./header.js";
+import { getHeader } from "./header.js";
 import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 import {
   getCourseDetails,
   getRelatedCourses,
   sendComment,
+  changeDateToFa,
+  goToProductDetail,
 } from "../js/funcs/shared.js";
 import { getUserInfo } from "../js/funcs/auth.js";
-
 import { productCoverSlider } from "../vendor/slick-slider/app.js";
+
+window.goToProductDetail = goToProductDetail;
+
 const $ = document;
 let productInfo = null;
 let relatedProducts = null;
 let userInfo = null;
 let productName = new URLSearchParams(location.search).get("name");
-console.log(productName);
+
 (async function () {
   getModals();
   await getHeader();
@@ -23,8 +27,7 @@ console.log(productName);
     productInfo = data;
   });
 
-  let pageTitle = getPageTitle();
-  getPoster(pageTitle, "blog_page-bg.jpg");
+  getPoster(productName.split("_")[1], "blog_page-bg.jpg");
 
   showProductDetails();
   setTimeout(() => {
@@ -171,13 +174,13 @@ function getAllComments() {
     <div class="h2">
       <span class="text-gray">${productInfo.comments.length}</span> دیدگاه
     </div>
-    <div class="comments__container row mx-auto">
+    <div class="comments__container row mx-auto px-0">
     
     ${productInfo.comments
       .map((comment) => {
         console.log(comment);
         return `
-        <div class="comment card py-4 my-3 border-1 px-3 bg-normal position-relative d-flex"
+        <div class="comment card py-4 my-3 border-1 px-sm-3 bg-normal position-relative d-flex px-0"
         >
         <div class="row g-0">
           <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
@@ -198,7 +201,7 @@ function getAllComments() {
                 comment.updatedAt.split("T")[0]
               )}</small>
            
-              <p class="card-text mt-1 text-normal">
+              <p class="card-text mt-1 text-normal lh-lg">
               ${comment.body}
 
               </p>
@@ -230,7 +233,7 @@ function getAllComments() {
                comment.answerContent.updatedAt.split("T")[0]
              )}</small>
    
-             <p class="card-text mt-1 text-normal">
+             <p class="card-text mt-1 text-normal lh-lg">
 ${comment.answerContent.body} 
              </p>
              <p class="card-text"></p>
@@ -284,8 +287,8 @@ ${comment.answerContent.body}
     <div class="h2">
       <span class="text-gray">${productInfo.comments.length}</span> دیدگاه
     </div>
-    <div class="comments__container row mx-auto">
-    <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5" style="background:#e95374d4;">هنوز هیچ دیدگاهی ثبت نشده است.</div>
+    <div class="comments__container row mx-auto px-0">
+    <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5 mt-3 mb-5" style="background:#e95374d4;">هنوز هیچ دیدگاهی ثبت نشده است.</div>
 
     </div>
     <div class="send__comment shadow pt-5 pb-3 pb-md4 px-md-5 px-sm-4 px-3 mt-4">

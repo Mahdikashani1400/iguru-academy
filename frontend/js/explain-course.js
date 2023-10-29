@@ -286,7 +286,7 @@ function getAllComments() {
                 comment.updatedAt.split("T")[0]
               )}</small>
            
-              <p class="card-text mt-1 text-normal">
+              <p class="card-text mt-1 text-normal lh-lg">
               ${comment.body}
 
               </p>
@@ -318,7 +318,7 @@ function getAllComments() {
                comment.answerContent.updatedAt.split("T")[0]
              )}</small>
    
-             <p class="card-text mt-1 text-normal">
+             <p class="card-text mt-1 text-normal lh-lg">
 ${comment.answerContent.body} 
              </p>
              <p class="card-text"></p>
