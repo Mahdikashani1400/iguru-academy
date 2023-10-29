@@ -37,7 +37,7 @@ function showProducts(productsData, category) {
 }
 
 const productsContainer = $.querySelector(".products__boxes");
-
+let productTarget = null;
 function addProductsToContainer(productsArray, category) {
   productsContainer.innerHTML = `
     ${productsArray
@@ -46,39 +46,29 @@ function addProductsToContainer(productsArray, category) {
           product.shortName.split("/")[0].includes("محصول") &&
           category === product.categoryID.name
         ) {
-          return `
-        
-        <div class="products__box d-flex flex-column justify-content-center align-items-center my-5">
-                    <div class="products__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3">
-                      <div class="p products__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
-                        افزودن به سبد خرید
-                      </div>
-                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${product.cover}" alt="">
-                    </div>
-                    <div class="products__box-title h6 pt-4 fw-bold">${product.shortName}</div>
-                    <div class="products__box-price p fw-bold text-orange fs-6">
-                      ${product.price} تومان
-                    </div>
-                  </div>`;
+          productTarget = product;
         } else if (
           product.shortName.split("/")[0].includes("محصول") &&
           category === "همه"
         ) {
-          return `
+          productTarget = product;
+        } else {
+          return "";
+        }
+        return `
         
         <div class="products__box d-flex flex-column justify-content-center align-items-center my-5">
                     <div class="products__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3">
                       <div class="p products__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
                         افزودن به سبد خرید
                       </div>
-                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${product.cover}" alt="">
+                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${productTarget.cover}" alt="">
                     </div>
-                    <div class="products__box-title h6 pt-4 fw-bold">${product.name}</div>
+                    <div class="products__box-title h6 pt-4 fw-bold">${productTarget.name}</div>
                     <div class="products__box-price p fw-bold text-orange fs-6">
-                      ${product.price} تومان
+                      ${productTarget.price} تومان
                     </div>
                   </div>`;
-        }
       })
       .join("")}
     `;
