@@ -43,9 +43,15 @@ function addCoursesToContainer(coursesArray, category) {
   coursesContainer.innerHTML = `
   ${coursesArray
     .map((course) => {
-      if (course.name !== "product" && category === course.categoryID.name) {
+      if (
+        !course.shortName.split("/")[0].includes("محصول") &&
+        category === course.categoryID.name
+      ) {
         courseTarget = course;
-      } else if (course.name !== "product" && category === "همه") {
+      } else if (
+        !course.shortName.split("/")[0].includes("محصول") &&
+        category === "همه"
+      ) {
         courseTarget = course;
       } else {
         return "";

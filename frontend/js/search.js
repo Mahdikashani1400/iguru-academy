@@ -44,7 +44,7 @@ let searchTitle = $.querySelector(".search__title");
 
 function showSearchValueData() {
   searchTitle.innerHTML = `
-  نتیجه جستجو برای : ${searchValue}
+  نتیجه جستجو برای : ${searchValue || "..."}
 `;
   articlesInfoArray.length
     ? (articlesContainer.innerHTML = `
@@ -86,7 +86,7 @@ function showSearchValueData() {
      .join("")}
   </div>
   `)
-    : "";
+    : (articlesContainer.innerHTML = "");
   coursesInfoArray.length
     ? (coursesContainer.innerHTML = `
         
@@ -106,17 +106,11 @@ function showSearchValueData() {
     >
       <div
         class="course__box-bg-img position-absolute bg-img"
-        style="
         style="background-image:url('http://localhost:4000/courses/covers/${
           course.cover
         }');"
-        "
       ></div>
-      <a
-        class="course__box-category fw-bold rounded px-3 py-2 bg-orange text-white"
-        href="#"
-        >${course.categoryID.name}</a
-      >
+    
       <div class="course__box-content">
         <div
           class="course__box-description pb-3 d-flex flex-column pe-4 ps-2 align-items-start"
@@ -219,5 +213,47 @@ function showSearchValueData() {
   </div>
 
         `)
-    : "";
+    : (coursesContainer.innerHTML = "");
+  productsInfoArray.length
+    ? (productsContainer.innerHTML = `
+    <div class="search__title-products h2 text-normal pb-3">
+    محصولات مرتبط
+  </div>
+  <div
+  class="products__boxes text-end row justify-content-start row-cols-lg-3 row-cols-sm-2 g-5 g-sm-4 pb-4 w-100 mx-auto"
+>
+${productsInfoArray
+  .map((product) => {
+    return `
+    <div
+    class="products__box d-flex flex-column justify-content-center align-items-center my-5"
+  >
+    <div
+      class="products__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3"
+    >
+      <div
+        class="p products__box-add-basket fw-bold d-flex bg-green py-3 px-4 text-white rounded-top position-absolute"
+      >
+        افزودن به سبد خرید
+      </div>
+      <img
+        class="rounded mx-auto d-block"
+        src="http://localhost:4000/courses/covers/${product.cover}"
+        alt=""
+      />
+    </div>
+    <div class="products__box-title h6 pt-4 fw-bold">
+    ${product.name}
+    </div>
+    <div class="products__box-price p fw-bold text-orange fs-6">
+    ${product.price} تومان
+    </div>
+  </div>
+
+    `;
+  })
+  .join("")}
+</div>
+    `)
+    : (productsContainer.innerHTML = "");
 }

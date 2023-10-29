@@ -73,7 +73,7 @@ function addProductsToContainer(productsArray, category) {
                       </div>
                       <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${product.cover}" alt="">
                     </div>
-                    <div class="products__box-title h6 pt-4 fw-bold">${product.shortName}</div>
+                    <div class="products__box-title h6 pt-4 fw-bold">${product.name}</div>
                     <div class="products__box-price p fw-bold text-orange fs-6">
                       ${product.price} تومان
                     </div>
