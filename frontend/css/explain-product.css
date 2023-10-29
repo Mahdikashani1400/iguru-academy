@@ -114,6 +114,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .quantity__number-input {
   width: 102px;
   height: 56.5px;
+  user-select: none;
 }
 .quantity__number-input .icons {
   width: 20%;
@@ -143,9 +144,20 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #232323a8;
 }
 
-/* explain */
-.explain .titles .active {
+/* more__details */
+.more__details .titles .active {
   border-bottom: 3px solid var(--primary-color-orange) !important;
+}
+
+/* comments */
+.course__star-icons {
+  cursor: pointer;
+}
+.bi-star::before,
+[class^="bi-star"]::before,
+[class*=" bi-star"]::before {
+  color: #ffb606 !important;
+  font-size: 17px;
 }
 
 /* same-products */

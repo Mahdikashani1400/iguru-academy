@@ -14,7 +14,7 @@ const $ = document;
 
 let inputNumberContainers = $.querySelectorAll(".quantity__number-input");
 let inputNumber = null;
-function changeNumber(e) {
+function changeInputNumber(e) {
   inputNumber = this.querySelector("input");
 
   if (e.target.classList.contains("plus")) {
@@ -24,5 +24,8 @@ function changeNumber(e) {
   }
 }
 inputNumberContainers.forEach((elem) => {
-  elem.addEventListener("click", changeNumber.bind(elem));
+  elem.querySelector("input").addEventListener("keydown", (e) => {
+    e.preventDefault();
+  });
+  elem.addEventListener("click", changeInputNumber.bind(elem));
 });
