@@ -29,10 +29,10 @@ let articlesInfoArray = null;
 
 function getSearchValueData() {
   coursesInfoArray = searchValueInfos.allResultCourses.filter((data) => {
-    return !data.shortName.split("/")[0].includes("محصول");
+    return !data.shortName.split("_")[0].includes("محصول");
   });
   productsInfoArray = searchValueInfos.allResultCourses.filter((data) => {
-    return data.shortName.split("/")[0].includes("محصول");
+    return data.shortName.split("_")[0].includes("محصول");
   });
   articlesInfoArray = searchValueInfos.allResultArticles;
 }

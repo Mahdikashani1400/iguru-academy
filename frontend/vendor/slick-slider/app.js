@@ -329,16 +329,18 @@ $(".slick-wrap").on("init", function (event, slick) {
     $(".heading" + k).text(text);
   });
 });
-$(".main-img").slick({
-  dots: true,
-  focusOnSelect: true,
-  infinite: true,
-  arrows: false,
-  speed: 300,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  // centerMode: true,
-});
+function productCoverSlider() {
+  $(".main-img").slick({
+    dots: true,
+    focusOnSelect: true,
+    infinite: true,
+    arrows: false,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // centerMode: true,
+  });
+}
 
 // read-blog
 
@@ -407,4 +409,4 @@ $("#readBlog .blogs__boxes").slick({
   ],
 });
 
-export { aricleSliderHome, aricleSliderSearch };
+export { aricleSliderHome, aricleSliderSearch, productCoverSlider };

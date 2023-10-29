@@ -7,7 +7,12 @@ import {
   getCategoryOfCourses,
   searchInData,
   showNotFoundAlert,
+  goToProductDetail,
 } from "./funcs/shared.js";
+
+window.goToProductDetail = goToProductDetail;
+window.changeCategoryOfProducts = changeCategoryOfProducts;
+window.seacrhInputHandler = seacrhInputHandler;
 
 let productsInfo = null;
 (async function () {
@@ -43,12 +48,12 @@ function addProductsToContainer(productsArray, category) {
     ${productsArray
       .map((product) => {
         if (
-          product.shortName.split("/")[0].includes("محصول") &&
+          product.shortName.split("_")[0].includes("محصول") &&
           category === product.categoryID.name
         ) {
           productTarget = product;
         } else if (
-          product.shortName.split("/")[0].includes("محصول") &&
+          product.shortName.split("_")[0].includes("محصول") &&
           category === "همه"
         ) {
           productTarget = product;
@@ -57,16 +62,27 @@ function addProductsToContainer(productsArray, category) {
         }
         return `
         
-        <div class="products__box d-flex flex-column justify-content-center align-items-center my-5">
+        <div class="products__box d-flex flex-column justify-content-center align-items-center my-5"
+        onclick = "goToProductDetail('${productTarget.shortName}')">
                     <div class="products__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3">
                       <div class="p products__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
                         افزودن به سبد خرید
                       </div>
-                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${productTarget.cover}" alt="">
+                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${
+                        productTarget.cover
+                      }" alt="">
                     </div>
-                    <div class="products__box-title h6 pt-4 fw-bold">${productTarget.name}</div>
+                    <div class="products__box-title h6 pt-4 fw-bold">${
+                      productTarget.name
+                    }</div>
                     <div class="products__box-price p fw-bold text-orange fs-6">
-                      ${productTarget.price} تومان
+                      ${
+                        productTarget.price
+                          ? Number(productTarget.price).toLocaleString(
+                              "fa-IR"
+                            ) + " تومان"
+                          : "رایگان"
+                      }
                     </div>
                   </div>`;
       })
@@ -102,8 +118,6 @@ async function showCategoryOfProducts() {
   });
 }
 
-window.changeCategoryOfProducts = changeCategoryOfProducts;
-
 let categoryTarget = null;
 let categoryTargetText = "همه";
 function changeCategoryOfProducts(e) {
@@ -128,7 +142,6 @@ function changeActivityCategoryBox(elem) {
   elem.classList.add("active");
 }
 
-window.seacrhInputHandler = seacrhInputHandler;
 let searchInput = $.getElementById("searchProducts");
 function seacrhInputHandler(e) {
   searchInData(

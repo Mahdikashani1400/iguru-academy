@@ -85,7 +85,9 @@ const showNotFoundAlert = (state, container) => {
 const goToCourseDetail = (courseName) => {
   window.location.href = `explain-course.html?name=${courseName}`;
 };
-
+const goToProductDetail = (productName) => {
+  window.location.href = `explain-product.html?name=${productName}`;
+};
 let MSGInfo = {};
 const submitContactsMSG = async () => {
   const userNameInput = $.getElementById("userName");
@@ -210,6 +212,7 @@ export {
   getCourseDetails,
   getRelatedCourses,
   goToCourseDetail,
+  goToProductDetail,
   submitContactsMSG,
   sendComment,
   changeDateToFa,

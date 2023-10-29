@@ -44,12 +44,12 @@ function addCoursesToContainer(coursesArray, category) {
   ${coursesArray
     .map((course) => {
       if (
-        !course.shortName.split("/")[0].includes("محصول") &&
+        !course.shortName.split("_")[0].includes("محصول") &&
         category === course.categoryID.name
       ) {
         courseTarget = course;
       } else if (
-        !course.shortName.split("/")[0].includes("محصول") &&
+        !course.shortName.split("_")[0].includes("محصول") &&
         category === "همه"
       ) {
         courseTarget = course;
