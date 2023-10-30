@@ -25,14 +25,14 @@ nav.user-out .user-info {
   position: relative;
   border: 2px solid var(--primary-color-green);
   border-bottom: none;
-  transition: 0.45s all ease-out;
+  transition: 0.48s all ease-out;
   background-image: linear-gradient(
     40deg,
     var(--primary-color-green) 40%,
     transparent 40%
   );
   background-position: 100%;
-  background-size: 350%;
+  background-size: 400%;
 }
 .navbar__info__left-gmail .user-info:hover {
   background-position: 0;

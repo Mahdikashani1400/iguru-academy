@@ -337,11 +337,22 @@ textarea {
 .courses__same .course__box-number-star {
   margin: 3px 6px;
 }
+
 .bi-star::before,
 [class^="bi-star"]::before,
 [class*=" bi-star"]::before {
-  color: #ffb606 !important;
   font-size: 17px;
+  /* background: -webkit-linear-gradient(0deg, #ffb606 40%, #6062622b 60%); */
+  background: var(
+    --star-fill-color,
+    -webkit-linear-gradient(0deg, #ffb606 100%, #6062622b 0%)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 17px;
+}
+.average__star-icons {
+  direction: ltr;
 }
 .not__found__course {
   background: #e95374de;

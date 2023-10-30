@@ -194,6 +194,12 @@ const minuteToTimer = (time) => {
   }`;
 };
 
+const changePriceNumberToFa = (priceNumber) => {
+  return priceNumber
+    ? Number(priceNumber).toLocaleString("fa-IR") + " تومان"
+    : "رایگان";
+};
+
 const globalSearchHandler = async (searchValue) => {
   const res = await fetch(`http://localhost:4000/v1/search/${searchValue}`);
 
@@ -216,6 +222,7 @@ export {
   submitContactsMSG,
   sendComment,
   changeDateToFa,
+  changePriceNumberToFa,
   minuteToTimer,
   answerComment,
   globalSearchHandler,

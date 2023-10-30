@@ -6,13 +6,13 @@ import { submitContactsMSG } from "../js/funcs/shared.js";
 
 const $ = document;
 
-(async function () {
+window.addEventListener("load", async () => {
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "contacts_page-bg.jpg");
   getFooter();
-})();
+});
 
 const submitBtn = $.getElementById("submitBtn");
 submitBtn.addEventListener("click", (e) => {

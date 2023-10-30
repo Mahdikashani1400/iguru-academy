@@ -9,15 +9,16 @@ import {
   goToCourseDetail,
 } from "./funcs/shared.js";
 
-getModals();
-getHeader();
-getFooter();
 
 const $ = document;
-window.addEventListener("load", () => {
+window.addEventListener("load",async () => {
+  getModals();
+  await getHeader();
+  
   showPopularCourses("همه");
   showArticles();
   showCategoryOfCourses();
+  getFooter();
 });
 
 let courseTarget = null;

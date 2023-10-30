@@ -7,6 +7,7 @@ import {
   getRelatedCourses,
   sendComment,
   changeDateToFa,
+  changePriceNumberToFa,
   goToProductDetail,
 } from "../js/funcs/shared.js";
 import { getUserInfo } from "../js/funcs/auth.js";
@@ -20,7 +21,7 @@ let relatedProducts = null;
 let userInfo = null;
 let productName = new URLSearchParams(location.search).get("name");
 
-(async function () {
+window.addEventListener("load", async () => {
   getModals();
   await getHeader();
   await getCourseDetails(productName).then((data) => {
@@ -46,17 +47,14 @@ let productName = new URLSearchParams(location.search).get("name");
   getAllComments();
   showRelatedproducts();
   getFooter();
-})();
-
+});
 function showProductDetails() {
   const title = $.querySelector(".product-title");
   const price = $.querySelector(".product-price");
   const category = $.querySelector(".product-category");
   const imagesContainer = $.querySelector(".main-img");
   title.innerHTML = productInfo.name;
-  price.innerHTML = productInfo.price
-    ? Number(productInfo.price).toLocaleString("fa-IR") + " تومان"
-    : "رایگان";
+  price.innerHTML = changePriceNumberToFa(productInfo.price)
   category.innerHTML = productInfo.categoryID.name;
   imagesContainer.innerHTML = `
     <img
@@ -110,9 +108,7 @@ function showRelatedproducts() {
           </div>
           <div class="same__product__box-price p fw-bold text-orange fs-6 text-center">
           ${
-            product.price
-              ? Number(product.price).toLocaleString("fa-IR") + " تومان"
-              : "رایگان"
+            changePriceNumberToFa(product.price)
           }
           </div>
         </div>

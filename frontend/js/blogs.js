@@ -10,7 +10,8 @@ import {
 } from "./funcs/shared.js";
 
 let articlesInfo = null;
-(async function () {
+window.addEventListener("load", async () => {
+
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
@@ -22,7 +23,9 @@ let articlesInfo = null;
   showArticles(articlesInfo, "همه");
 
   getFooter();
-})();
+
+ 
+});
 
 const $ = document;
 let blogsContainer = $.querySelector(".reading_blogs");

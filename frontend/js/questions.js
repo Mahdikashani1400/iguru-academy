@@ -3,13 +3,13 @@ import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 const $ = document;
-(async function () {
+window.addEventListener("load", async () => {
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "qs_page-bg.jpg");
   getFooter();
-})();
+});
 
 $.querySelectorAll(".questions__collapse .collapse").forEach((qustion) => {
   qustion.addEventListener(

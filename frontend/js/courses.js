@@ -8,9 +8,10 @@ import {
   searchInData,
   showNotFoundAlert,
   goToCourseDetail,
+  changePriceNumberToFa,
 } from "../js/funcs/shared.js";
 let coursesInfo = null;
-(async function () {
+window.addEventListener("load", async () => {
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
@@ -22,7 +23,7 @@ let coursesInfo = null;
 
   showCourses(coursesInfo, "همه");
   getFooter();
-})();
+});
 
 const $ = document;
 
@@ -98,12 +99,7 @@ function addCoursesToContainer(coursesArray, category) {
               class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white"
               href="#"
             >
-              ${
-                courseTarget.price
-                  ? Number(courseTarget.price).toLocaleString("fa-IR") +
-                    " تومان"
-                  : "رایگان"
-              }
+              ${changePriceNumberToFa(courseTarget.price)}
             </a>
             <div
               class="course__box-star d-flex align-items-center gap-1"

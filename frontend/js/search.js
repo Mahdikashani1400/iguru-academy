@@ -5,6 +5,7 @@ import {
   globalSearchHandler,
   goToCourseDetail,
   goToProductDetail,
+  changePriceNumberToFa,
 } from "../js/funcs/shared.js";
 import { aricleSliderSearch } from "../vendor/slick-slider/app.js";
 import { getFooter } from "./footer.js";
@@ -14,7 +15,8 @@ window.goToProductDetail = goToProductDetail;
 const $ = document;
 let searchValue = new URLSearchParams(location.search).get("searchValue");
 let searchValueInfos = null;
-(async function () {
+window.addEventListener("load", async () => {
+
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
@@ -28,7 +30,9 @@ let searchValueInfos = null;
   showSearchValueData();
   aricleSliderSearch();
   getFooter();
-})();
+
+ 
+});
 
 let coursesInfoArray = null;
 let productsInfoArray = null;
@@ -142,9 +146,7 @@ function showSearchValueData() {
             href="#"
           >
           ${
-            course.price
-              ? Number(course.price).toLocaleString("fa-IR") + " تومان"
-              : "رایگان"
+            changePriceNumberToFa(course.price)
           }
           </a>
           <div
@@ -253,7 +255,7 @@ ${productsInfoArray
     ${product.name}
     </div>
     <div class="products__box-price p fw-bold text-orange fs-6">
-    ${product.price} تومان
+    ${changePriceNumberToFa(product.price)}
     </div>
   </div>
 

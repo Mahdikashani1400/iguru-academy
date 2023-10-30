@@ -7,7 +7,9 @@ import {
   getCategoryOfCourses,
   searchInData,
   showNotFoundAlert,
+
   goToProductDetail,
+  changePriceNumberToFa,
 } from "./funcs/shared.js";
 
 window.goToProductDetail = goToProductDetail;
@@ -15,7 +17,8 @@ window.changeCategoryOfProducts = changeCategoryOfProducts;
 window.seacrhInputHandler = seacrhInputHandler;
 
 let productsInfo = null;
-(async function () {
+window.addEventListener("load", async () => {
+
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
@@ -27,7 +30,10 @@ let productsInfo = null;
   showProducts(productsInfo, "همه");
 
   getFooter();
-})();
+
+ 
+});
+
 const $ = document;
 
 let productsContent = $.querySelector(".products__content");
@@ -77,11 +83,7 @@ function addProductsToContainer(productsArray, category) {
                     }</div>
                     <div class="products__box-price p fw-bold text-orange fs-6">
                       ${
-                        productTarget.price
-                          ? Number(productTarget.price).toLocaleString(
-                              "fa-IR"
-                            ) + " تومان"
-                          : "رایگان"
+                        changePriceNumberToFa(productTarget.price)
                       }
                     </div>
                   </div>`;

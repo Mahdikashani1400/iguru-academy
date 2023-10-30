@@ -8,6 +8,7 @@ import {
   goToCourseDetail,
   sendComment,
   changeDateToFa,
+  changePriceNumberToFa,
   minuteToTimer,
   answerComment,
 } from "../js/funcs/shared.js";
@@ -19,16 +20,21 @@ let courseInfo = null;
 let userInfo = null;
 let relatedCourses = null;
 let courseName = new URLSearchParams(location.search).get("name");
+let scoresInfo = null;
 
-(async function () {
+window.addEventListener("load", async () => {
   getModals();
   await getHeader();
   await getCourseDetails(courseName).then((data) => {
     courseInfo = data;
+    scoresInfo = _.countBy(courseInfo.comments, (obj) => {
+      return obj.score;
+    });
   });
   getPoster(courseName, "course_page-bg.jpg");
   showCourseSessions();
   showCourseDetails();
+  showScoreUsersByStars();
   await getRelatedCourses(courseName).then((data) => {
     relatedCourses = data;
   });
@@ -36,18 +42,17 @@ let courseName = new URLSearchParams(location.search).get("name");
   await getUserInfo().then((data) => {
     userInfo = data;
   });
+
   getAllComments();
 
   getFooter();
-})();
+});
 
 function showCourseDetails() {
   const title = $.querySelector(".course__title");
   title.innerHTML = courseInfo.shortName;
   const price = $.querySelector(".price-number");
-  price.innerHTML = courseInfo.price
-    ? Number(courseInfo.price).toLocaleString("fa-IR") + " تومان"
-    : "رایگان";
+  price.innerHTML = changePriceNumberToFa(courseInfo.price);
 
   const category = $.querySelector(".course__category");
   category.innerHTML = courseInfo.categoryID.name;
@@ -84,6 +89,7 @@ let sessionsBox = null;
 let sessionsBoxesCounter = null;
 let sessionsCategory = null;
 let courseTime = 0;
+
 function showCourseSessions() {
   sessionsContainer.innerHTML = "";
   if (!courseInfo.sessions.length) {
@@ -168,6 +174,57 @@ function showCourseSessions() {
     });
   }
 }
+
+let singleScoresContainer = $.querySelectorAll(
+  ".single__scores__container > div"
+);
+let staticStarNumber = null;
+let countOfScore = null;
+let scoreTargetProgress = null;
+let StarNumberAverageVar = null;
+let countOfComments = $.querySelector(".count__comments");
+let StarNumberAverageElem = $.querySelector(".average__star-number");
+let StarsIconsAverage = $.querySelectorAll(".average__star-icons > i");
+function showScoreUsersByStars() {
+  singleScoresContainer.forEach((elemScore) => {
+    staticStarNumber = elemScore.querySelector(".star-number");
+    countOfScore = elemScore.querySelector(".score");
+    scoreTargetProgress = elemScore.querySelector(".progress-bar");
+    countOfScore.innerHTML = scoresInfo[staticStarNumber.innerText] || 0;
+    scoreTargetProgress.style.width = `${
+      (countOfScore.innerHTML / Object.entries(scoresInfo).length) * 100
+    }%`;
+
+    StarNumberAverageVar +=
+      scoresInfo[staticStarNumber.innerText] * staticStarNumber.innerText || 0;
+  });
+  StarNumberAverageVar = (
+    StarNumberAverageVar / _.sum(Object.values(scoresInfo))
+  ).toFixed(1);
+  StarNumberAverageElem.innerHTML = StarNumberAverageVar;
+
+  StarsIconsAverage.forEach((icon, index) => {
+    if (index + 1 <= StarNumberAverageVar.split(".")[0]) {
+      icon.style.setProperty(
+        "--star-fill-color",
+        `-webkit-linear-gradient(0deg, #ffb606 100%, #6062622b 0%)`
+      );
+    } else if (index + 1 == +StarNumberAverageVar.split(".")[0] + 1) {
+      console.log("dcs");
+      icon.style.setProperty(
+        "--star-fill-color",
+        `-webkit-linear-gradient(0deg, #ffb606 ${
+          StarNumberAverageVar.split(".")[1] * 10
+        }%, #6062622b ${100 - StarNumberAverageVar.split(".")[1] * 10}%)`
+      );
+    } else {
+      icon.style.setProperty("--star-fill-color", `#6062622b`);
+    }
+  });
+
+  countOfComments.innerHTML = `${_.sum(Object.values(scoresInfo))} نقد و بررسی`;
+}
+
 const relatedCoursesContainer = $.querySelector(".courses__same-boxes");
 let notFoundourse = $.querySelector(".not__found__course");
 function showRelatedCourses() {
@@ -201,13 +258,7 @@ function showRelatedCourses() {
                                 </div>
                                 <div class="course__box-state d-flex justify-content-between p-3">
                                   <a class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white" href="#">
-                                  ${
-                                    course.price
-                                      ? Number(course.price).toLocaleString(
-                                          "fa-IR"
-                                        ) + " تومان"
-                                      : "رایگان"
-                                  }
+                                  ${changePriceNumberToFa(course.price)}
                                   </a>
                                   <div class="course__box-star d-flex align-items-center justify-content-center justify-content-sm-start">
                                     <span class="course__box-number-star align-self-end"></span>
@@ -263,7 +314,6 @@ function getAllComments() {
     
     ${courseInfo.comments
       .map((comment) => {
-        console.log(comment);
         return `
         <div class="comment card py-4 my-3 border-1 px-3 bg-normal position-relative d-flex"
         >

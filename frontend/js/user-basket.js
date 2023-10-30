@@ -4,13 +4,13 @@ import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 const $ = document;
 
-(async function () {
+window.addEventListener("load", async () => {
   getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "blog_page-bg.jpg");
   getFooter();
-})();
+});
 
 let inputNumberContainers = $.querySelectorAll(".quantity__number-input");
 let inputNumber = null;
