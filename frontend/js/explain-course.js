@@ -198,27 +198,30 @@ function showScoreUsersByStars() {
     StarNumberAverageVar +=
       scoresInfo[staticStarNumber.innerText] * staticStarNumber.innerText || 0;
   });
-  StarNumberAverageVar = (
+  StarNumberAverageVar = +(
     StarNumberAverageVar / _.sum(Object.values(scoresInfo))
   ).toFixed(1);
-  StarNumberAverageElem.innerHTML = StarNumberAverageVar;
+  console.log(typeof StarNumberAverageVar);
+  StarNumberAverageElem.innerHTML = StarNumberAverageVar || 0;
 
   StarsIconsAverage.forEach((icon, index) => {
-    if (index + 1 <= StarNumberAverageVar.split(".")[0]) {
-      icon.style.setProperty(
-        "--star-fill-color",
-        `-webkit-linear-gradient(0deg, #ffb606 100%, #6062622b 0%)`
-      );
-    } else if (index + 1 == +StarNumberAverageVar.split(".")[0] + 1) {
-      console.log("dcs");
-      icon.style.setProperty(
-        "--star-fill-color",
-        `-webkit-linear-gradient(0deg, #ffb606 ${
-          StarNumberAverageVar.split(".")[1] * 10
-        }%, #6062622b ${100 - StarNumberAverageVar.split(".")[1] * 10}%)`
-      );
-    } else {
-      icon.style.setProperty("--star-fill-color", `#6062622b`);
+    if (StarNumberAverageVar) {
+      if (index + 1 <= StarNumberAverageVar.split(".")[0]) {
+        icon.style.setProperty(
+          "--star-fill-color",
+          `-webkit-linear-gradient(0deg, #ffb606 100%, #6062622b 0%)`
+        );
+      } else if (index + 1 == +StarNumberAverageVar.split(".")[0] + 1) {
+        console.log("dcs");
+        icon.style.setProperty(
+          "--star-fill-color",
+          `-webkit-linear-gradient(0deg, #ffb606 ${
+            StarNumberAverageVar.split(".")[1] * 10
+          }%, #6062622b ${100 - StarNumberAverageVar.split(".")[1] * 10}%)`
+        );
+      } else {
+        icon.style.setProperty("--star-fill-color", `#6062622b`);
+      }
     }
   });
 

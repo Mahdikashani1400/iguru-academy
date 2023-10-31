@@ -151,9 +151,21 @@ input:focus::-webkit-input-placeholder {
 }
 
 /* about-us */
+
+#about__us__particles {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
+/* #about__us__particles canvas {
+  position: absolute;
+  z-index: -1;
+} */
 .about__us__content {
   position: relative;
   padding-bottom: 8rem;
+  z-index: 2;
 }
 .about__us__content::before {
   content: "";
@@ -215,6 +227,10 @@ input:focus::-webkit-input-placeholder {
 }
 
 /* menu */
+.about__us_courses {
+  position: relative;
+  z-index: 2;
+}
 .about__us_courses-menu a {
   color: #232727db;
   font-size: 14px;

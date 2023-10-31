@@ -123,9 +123,20 @@
 }
 
 /* about-us */
+#questions__particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.questions .container {
+  position: relative;
+  z-index: 2;
+}
 .questions__content {
   position: relative;
-  padding-bottom: 8rem;
+  padding-bottom: 2rem;
 }
 
 .questions__img {

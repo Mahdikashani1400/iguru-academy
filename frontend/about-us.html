@@ -194,16 +194,17 @@
           </div>
         </section>
 
-        <section class="about-us my-4">
+        <section class="about-us my-4 position-relative">
+          <div class="position-absolute" id="about__us__particles"></div>
           <div class="container">
-            <div class="content row mt-5 pt-5 pb-4">
+            <div class="content mt-5 pt-5 pb-4 d-flex row">
               <div class="img col-lg-6 gy-5 py-2 mt-1 order-lg-1 text-center">
                 <div class="bg-green position-absolute rounded-circle"></div>
                 <div class="bg-orange position-absolute rounded-circle"></div>
                 <img src="./img/bg/about-us_skills.png" alt="" srcset="" />
               </div>
               <div
-                class="about-us-skills col-lg-6 ps-4 d-flex flex-column gap-3 gy-5"
+                class="about-us-skills col-lg-6 ps-4 d-flex flex-column gap-3 gy-5 ps-5"
                 style="padding-right: 6rem"
               >
                 <div class="span line-side text-orange">تخصص ما</div>
@@ -564,7 +565,7 @@
     <script src="vendor/Bootstrap/bootstrap.bundle.min.js"></script>
 
     <script src="vendor/FontAwesome5/all.min.js"></script>
-
+    <script src="./vendor/particles/particles.js" type="module"></script>
     <script src="./js/about-us.js" type="module"></script>
   </body>
 </html>

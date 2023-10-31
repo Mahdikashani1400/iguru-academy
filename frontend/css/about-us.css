@@ -160,6 +160,12 @@
 }
 
 /* about-us */
+#about__us__particles {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
 .content {
   position: relative;
   padding-bottom: 8rem;
@@ -167,7 +173,7 @@
 
 .img {
   position: relative;
-  height: 470px;
+  height: 560px;
 }
 
 .img .bg-green {
@@ -434,5 +440,15 @@ input::placeholder {
   }
   .img img {
     width: 100% !important;
+  }
+}
+@media screen and (max-width: 576px) {
+  .img {
+    height: 430px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .img {
+    height: 320px;
   }
 }
