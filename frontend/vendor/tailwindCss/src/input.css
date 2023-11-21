@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    height: -webkit-fill-available;
+    overflow-x: hidden;
+  }
+  @font-face {
+    font-family: IRANSans;
+    src: local("IRANSans"), url("../../fonts/IRANSans/IRANSans_Light.ttf");
+    font-display: "swap";
+  }
+}

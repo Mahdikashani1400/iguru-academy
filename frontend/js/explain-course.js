@@ -70,9 +70,8 @@ function showCourseDetails() {
     : "ثبت نام در دوره";
 
   const courseState = $.querySelector(".course__state");
-  courseState.innerHTML = `وضعیت : ${
-    courseInfo.isComplete ? "به اتمام رسیده" : "در حال برگزاری"
-  }`;
+  courseState.innerHTML = `وضعیت : ${courseInfo.isComplete ? "به اتمام رسیده" : "در حال برگزاری"
+    }`;
 
   const lastUpdate = $.querySelector(".course__date");
   lastUpdate.innerText =
@@ -137,11 +136,9 @@ function showCourseSessions() {
       <ol class="list-group list-group-numbered box-${sessionsBoxesCounter}">
     
       <li class="list-group-item gap-0 gap-sm-2 align-items-center d-flex bg-light py-0 px-1 px-sm-3 rounded-0">
-      <a href="#" class="text-normal fw-bold px-1 py-2 d-flex align-items-center justify-content-center justify-content-sm-start w-100"><i class="bi bi-file-earmark text-orange fw-bold fs-5 ps-2 d-none d-sm-inline"></i><span class="course__video__title">${
-        session.title.split("/")[1]
-      }</span><span class="me-auto">${session.time} دقیقه
-          <i class="bi bi-${
-            session.free || session.isUserRegisteredToThisCourse ? "un" : ""
+      <a href="#" class="text-normal fw-bold px-1 py-2 d-flex align-items-center justify-content-center justify-content-sm-start w-100"><i class="bi bi-file-earmark text-orange fw-bold fs-5 ps-2 d-none d-sm-inline"></i><span class="course__video__title">${session.title.split("/")[1]
+          }</span><span class="me-auto">${session.time} دقیقه
+          <i class="bi bi-${session.free || session.isUserRegisteredToThisCourse ? "un" : ""
           }lock-fill me-1 me-sm-3 text-orange"></i></span></a>
     </li>
     
@@ -159,14 +156,12 @@ function showCourseSessions() {
           "beforeend",
           `
             <li class="list-group-item gap-0 gap-sm-2 align-items-center d-flex bg-light py-0 px-1 px-sm-3 rounded-0">
-            <a href="#" class="text-normal fw-bold px-1 py-2 d-flex align-items-center justify-content-center justify-content-sm-start w-100"><i class="bi bi-file-earmark text-orange fw-bold fs-5 ps-2 d-none d-sm-inline"></i><span class="course__video__title">${
-              session.title.split("/")[1]
-            }</span><span class="me-auto">${session.time} دقیقه
-                <i class="bi bi-${
-                  session.free || session.isUserRegisteredToThisCourse
-                    ? "un"
-                    : ""
-                }lock-fill me-1 me-sm-3 text-orange"></i></span></a>
+            <a href="#" class="text-normal fw-bold px-1 py-2 d-flex align-items-center justify-content-center justify-content-sm-start w-100"><i class="bi bi-file-earmark text-orange fw-bold fs-5 ps-2 d-none d-sm-inline"></i><span class="course__video__title">${session.title.split("/")[1]
+          }</span><span class="me-auto">${session.time} دقیقه
+                <i class="bi bi-${session.free || session.isUserRegisteredToThisCourse
+            ? "un"
+            : ""
+          }lock-fill me-1 me-sm-3 text-orange"></i></span></a>
           </li>
             `
         );
@@ -191,9 +186,8 @@ function showScoreUsersByStars() {
     countOfScore = elemScore.querySelector(".score");
     scoreTargetProgress = elemScore.querySelector(".progress-bar");
     countOfScore.innerHTML = scoresInfo[staticStarNumber.innerText] || 0;
-    scoreTargetProgress.style.width = `${
-      (countOfScore.innerHTML / Object.entries(scoresInfo).length) * 100
-    }%`;
+    scoreTargetProgress.style.width = `${(countOfScore.innerHTML / Object.entries(scoresInfo).length) * 100
+      }%`;
 
     StarNumberAverageVar +=
       scoresInfo[staticStarNumber.innerText] * staticStarNumber.innerText || 0;
@@ -206,17 +200,16 @@ function showScoreUsersByStars() {
 
   StarsIconsAverage.forEach((icon, index) => {
     if (StarNumberAverageVar) {
-      if (index + 1 <= StarNumberAverageVar.split(".")[0]) {
+      if (index + 1 <= String(StarNumberAverageVar).split(".")[0]) {
         icon.style.setProperty(
           "--star-fill-color",
           `-webkit-linear-gradient(0deg, #ffb606 100%, #6062622b 0%)`
         );
-      } else if (index + 1 == +StarNumberAverageVar.split(".")[0] + 1) {
+      } else if (index + 1 == String(StarNumberAverageVar).split(".")[0] + 1) {
         console.log("dcs");
         icon.style.setProperty(
           "--star-fill-color",
-          `-webkit-linear-gradient(0deg, #ffb606 ${
-            StarNumberAverageVar.split(".")[1] * 10
+          `-webkit-linear-gradient(0deg, #ffb606 ${StarNumberAverageVar.split(".")[1] * 10
           }%, #6062622b ${100 - StarNumberAverageVar.split(".")[1] * 10}%)`
         );
       } else {
@@ -240,13 +233,11 @@ function showRelatedCourses() {
         onclick = "goToCourseDetail('${course.shortName}')"
         >
                               <div class="course__box-bg-img position-absolute bg-img"
-                              style="background-image:url('http://localhost:4000/courses/covers/${
-                                course.cover
-                              }');">
+                              style="background-image:url('http://localhost:4000/courses/covers/${course.cover
+        }');">
                               </div>
-                              <a class="course__box-category fw-bold rounded px-3 py-2 bg-orange text-white" href="#">${
-                                courseInfo.categoryID.name
-                              }</a>
+                              <a class="course__box-category fw-bold rounded px-3 py-2 bg-orange text-white" href="#">${courseInfo.categoryID.name
+        }</a>
                               <div class="course__box-content">
                                 <div class="course__box-description pb-3 d-flex flex-column pe-4 ps-2 align-items-start">
                                   <div class="course__box-img">
@@ -316,8 +307,8 @@ function getAllComments() {
     <div class="comments__container row mx-auto">
     
     ${courseInfo.comments
-      .map((comment) => {
-        return `
+        .map((comment) => {
+          return `
         <div class="comment card py-4 my-3 border-1 px-3 bg-normal position-relative d-flex"
         >
         <div class="row g-0">
@@ -327,17 +318,15 @@ function getAllComments() {
           <div class="col-md-10 flex-grow-1 pe-4">
             <div class="card-body p-0">
              <div class="d-flex align-items-center gap-2" >
-             <h3 class="card-title fw-bold mb-0 username">${
-               comment.creator.username
-             }</h3>
-            <span class="badge bg-green">${
-              comment.creator.role === "ADMIN" ? "ادمین" : "کاربر"
+             <h3 class="card-title fw-bold mb-0 username">${comment.creator.username
+            }</h3>
+            <span class="badge bg-green">${comment.creator.role === "ADMIN" ? "ادمین" : "کاربر"
             }</span>
              </div>
               
               <small class="text-gray fw-bold date-comment">${changeDateToFa(
-                comment.updatedAt.split("T")[0]
-              )}</small>
+              comment.updatedAt.split("T")[0]
+            )}</small>
            
               <p class="card-text mt-1 text-normal lh-lg">
               ${comment.body}
@@ -348,9 +337,8 @@ function getAllComments() {
           </div>
         </div>
 
-       ${
-         comment.answerContent
-           ? ` <div class="comment answer card py-3 mt-4 mb-3 border-1 px-3 position-relative align-self-center bg-transparent"
+       ${comment.answerContent
+              ? ` <div class="comment answer card py-3 mt-4 mb-3 border-1 px-3 position-relative align-self-center bg-transparent"
          >
        <div class="row g-0">
          <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
@@ -359,17 +347,15 @@ function getAllComments() {
          <div class="col-md-10 flex-grow-1 pe-4">
            <div class="card-body p-0">
            <div class="d-flex align-items-center gap-2" >
-           <h3 class="card-title fw-bold mb-0 username">${
-             comment.answerContent.creator.username
-           }</h3>
-          <span class="badge bg-primary">${
-            comment.answerContent.creator.role === "ADMIN" ? "ادمین" : "کاربر"
-          }</span>
+           <h3 class="card-title fw-bold mb-0 username">${comment.answerContent.creator.username
+              }</h3>
+          <span class="badge bg-primary">${comment.answerContent.creator.role === "ADMIN" ? "ادمین" : "کاربر"
+              }</span>
            </div>
          
              <small class="text-gray fw-bold date-comment">${changeDateToFa(
-               comment.answerContent.updatedAt.split("T")[0]
-             )}</small>
+                comment.answerContent.updatedAt.split("T")[0]
+              )}</small>
    
              <p class="card-text mt-1 text-normal lh-lg">
 ${comment.answerContent.body} 
@@ -379,22 +365,21 @@ ${comment.answerContent.body}
          </div>
        </div>
      </div>`
-           : ""
-       }
+              : ""
+            }
       </div>
 
       `;
-      })
-      .join("")}
+        })
+        .join("")}
     </div>
     <div class="send__comment shadow pt-5 pb-3 pb-md4 px-md-5 px-sm-4 px-3 mt-4">
       <div class="h1 pb-1">دیدگاهتان را بنویسید</div>
 
       <form class="row py-4">
         <div class="mb-3">
-          <div class="h3 my-3 d-flex justify-content-between align-items-center"><span class="text-normal" id="userName">${
-            userInfo.username
-          }</span>
+          <div class="h3 my-3 d-flex justify-content-between align-items-center"><span class="text-normal" id="userName">${userInfo.username
+      }</span>
          
           </div>
           <textarea name="comment" cols="45" rows="5" placeholder="دیدگاه شما ..." id="commentText" class="form-control p-3"></textarea>
