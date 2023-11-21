@@ -6,3 +6,4 @@
     "build":"npx tailwindcss -i ./src/input.css -o ../../Cms/styles/style.css --watch"
   }
 }
+ 

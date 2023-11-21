@@ -434,6 +434,20 @@ video {
   display: none;
 }
 
+html,
+  body {
+  height: -webkit-fill-available;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: IRANSans;
+
+  src: local("IRANSans"), url("../../fonts/IRANSans/IRANSans_Light.ttf");
+
+  font-display: "swap";
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -534,16 +548,32 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
+.fixed {
+  position: fixed;
 }
 
 .flex {
   display: flex;
 }
 
+.h-full {
+  height: 100%;
+}
+
+.w-36 {
+  width: 9rem;
+}
+
+.w-\[260px\] {
+  width: 260px;
+}
+
 .w-full {
   width: 100%;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -554,85 +584,101 @@ video {
   justify-content: center;
 }
 
-.bg-red-500 {
+.gap-y-8 {
+  row-gap: 2rem;
+}
+
+.bg-\[\#14141E\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+  background-color: rgb(20 20 30 / var(--tw-bg-opacity));
 }
 
-.bg-sky-800 {
+.bg-black-dark {
   --tw-bg-opacity: 1;
-  background-color: rgb(7 89 133 / var(--tw-bg-opacity));
+  background-color: rgb(42 44 56 / var(--tw-bg-opacity));
 }
 
-.bg-gray-800 {
+.bg-blue-primary {
   --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  background-color: rgb(105 108 255 / var(--tw-bg-opacity));
 }
 
-.bg-blue-400 {
+.bg-\[\#5356EC\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+  background-color: rgb(83 86 236 / var(--tw-bg-opacity));
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.bg-blue-primary\/10 {
+  background-color: rgb(105 108 255 / 0.1);
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.bg-blue-primary\/30 {
+  background-color: rgb(105 108 255 / 0.3);
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.font-bold {
-  font-weight: 700;
+.pt-7 {
+  padding-top: 1.75rem;
 }
 
-.text-fuchsia-200 {
+.font-IRANSans {
+  font-family: IRANSans;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.leading-6 {
+  line-height: 1.5rem;
+}
+
+.text-gray-primary {
   --tw-text-opacity: 1;
-  color: rgb(245 208 254 / var(--tw-text-opacity));
+  color: rgb(118 131 146 / var(--tw-text-opacity));
 }
 
-.text-fuchsia-800 {
+.text-blue-primary {
   --tw-text-opacity: 1;
-  color: rgb(134 25 143 / var(--tw-text-opacity));
+  color: rgb(105 108 255 / var(--tw-text-opacity));
 }
 
-.text-emerald-800 {
-  --tw-text-opacity: 1;
-  color: rgb(6 95 70 / var(--tw-text-opacity));
+.invert {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.text-blue-700 {
-  --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity));
+.child\:rounded-2xl > * {
+  border-radius: 1rem;
 }
 
-.text-red-700 {
-  --tw-text-opacity: 1;
-  color: rgb(185 28 28 / var(--tw-text-opacity));
+.child\:rounded-sm > * {
+  border-radius: 0.125rem;
 }
 
-.text-teal-300 {
-  --tw-text-opacity: 1;
-  color: rgb(94 234 212 / var(--tw-text-opacity));
+.child\:rounded-lg > * {
+  border-radius: 0.5rem;
 }
 
-.text-neutral-700 {
-  --tw-text-opacity: 1;
-  color: rgb(64 64 64 / var(--tw-text-opacity));
+.child\:rounded-md > * {
+  border-radius: 0.375rem;
 }
 
-.text-orange-950 {
-  --tw-text-opacity: 1;
-  color: rgb(67 20 7 / var(--tw-text-opacity));
+.child\:py-2 > * {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.underline {
-  text-decoration-line: underline;
+.child\:px-4 > * {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
