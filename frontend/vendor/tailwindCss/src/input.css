@@ -14,3 +14,36 @@
     font-display: "swap";
   }
 }
+@layer components {
+  .header__nav {
+    @apply bg-black-dark w-72 fixed top-0 right-0 h-full px-4 pt-7 flex flex-col items-center gap-y-8 ml-7;
+  }
+  .header__menu {
+    @apply flex flex-col w-full text-gray-primary font-normal leading-6 text-base child:py-2 child:my-1 child:px-4 child:rounded-md child:flex child:items-center child:gap-x-4;
+  }
+  .header__nav.mobile {
+    @apply w-25 px-2;
+  }
+  .header__nav.mobile ~ .body__content {
+    @apply mr-25;
+  }
+  .header__nav.mobile .shape {
+  }
+  .header__nav.mobile .shape svg {
+    @apply rotate-180;
+  }
+  .header__nav.mobile .nav__logo {
+    @apply hidden;
+  }
+  .header__nav.mobile .header__menu {
+  }
+  .header__nav.mobile .header__menu span {
+    display: none;
+  }
+  .header__nav.mobile .header__menu a {
+    @apply h-[84px] rounded-full justify-center;
+  }
+  .header__nav.mobile .header__menu svg {
+    @apply w-9 h-9;
+  }
+}

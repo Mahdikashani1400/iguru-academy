@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["../../Cms/*.html"],
+  content: ["../../Cms/*.html", "../tailwindCss/node_modules/flowbite/**/*.js"],
   theme: {
+    container: {
+      center: "true"
+    },
     extend: {
       spacing: {
         '25': '100px',
@@ -32,6 +35,7 @@ module.exports = {
     function ({ addVariant }) {
       addVariant('child', "& > *")
       addVariant('child-hover', "& > *:hover")
-    }
+    },
+    require('../tailwindCss/node_modules/flowbite/plugin')
   ],
 };
