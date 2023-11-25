@@ -36,14 +36,21 @@
     @apply hidden;
   }
   .header__nav.mobile .header__menu {
+    @apply items-center;
   }
   .header__nav.mobile .header__menu span {
     display: none;
   }
   .header__nav.mobile .header__menu a {
-    @apply h-[84px] rounded-full justify-center;
+    @apply w-16 h-16 rounded-full justify-center;
   }
   .header__nav.mobile .header__menu svg {
     @apply w-9 h-9;
+  }
+
+  /* mony__info */
+
+  .mony__info .title {
+    @apply font-semibold text-xl;
   }
 }
