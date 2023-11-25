@@ -69,14 +69,26 @@ menuBtn.addEventListener('click', () => {
         { month: "اسفند", benfit: 23 },
     ];
     const config = {
-
+        tooltips: {
+            enabled: true
+        },
+        hover: {
+            animationDuration: 1
+        },
+        maintainAspectRatio: false,
         type: 'line',
 
         data: {
             labels: data.map(row => row.month),
             datasets: [
+
+
                 {
+                    title: {
+                        margin: 50
+                    },
                     label: 'Acquisitions by month',
+
                     data: data.map(row => row.benfit),
                     backgroundColor: bgGradient,
                     borderColor: borderGradient,
@@ -87,19 +99,61 @@ menuBtn.addEventListener('click', () => {
             ]
         },
         options: {
+            "animation": {
+                "duration": 1,
+                "onComplete": function () {
+                    var chartInstance = this.chart,
+                        ctx = chartInstance.ctx;
+                    ctx.fillStyle = "#898989";
+                    ctx.font = Chart.helpers.fontString("18px", Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+
+                    this.data.datasets.forEach(function (dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function (bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
+                    });
+                }
+            },
+
             responsive: true,
+
+            legend: {
+                display: false
+
+            },
             plugins: {
-                legend: {
-                    position: 'top',
-                    labels: {
-                        fontColor: 'red'
-                    }
-                },
                 title: {
                     display: true,
-                    text: 'Chart.js Line Chart'
+                    text: 'Chart.js Line Chart',
                 },
 
+            },
+            scales: {
+                grid: {
+
+                },
+                xAxes: [{
+                    display: true,
+                    offset: true,
+                    ticks: {
+                        fontSize: 18,
+                        fontColor: "#898989",
+                        padding: 5,
+                        beginAtZero: true,
+                        stepSize: 20 //<-- set this
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        fontSize: 18,
+                        fontColor: "#898989",
+                        padding: 5,
+                    }
+                }]
             }
         },
     };

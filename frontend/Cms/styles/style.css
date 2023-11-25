@@ -1237,6 +1237,11 @@ html,
   margin-bottom: 0.75rem;
 }
 
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1251,6 +1256,10 @@ html,
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mr-80 {
+  margin-right: 20rem;
 }
 
 .block {
@@ -1449,6 +1458,10 @@ html,
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -1475,6 +1488,10 @@ html,
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .gap-x-1 {
@@ -1943,6 +1960,15 @@ html,
   --tw-ring-color: rgb(229 231 235 / var(--tw-ring-opacity));
 }
 
+.child\:mx-5 > * {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.child\:mr-5 > * {
+  margin-right: 1.25rem;
+}
+
 .child\:grow > * {
   flex-grow: 1;
 }
@@ -2060,4 +2086,10 @@ html,
 :is(.dark .dark\:hover\:text-white:hover) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 1024px) {
+  .lg\:flex-row {
+    flex-direction: row;
+  }
 }
