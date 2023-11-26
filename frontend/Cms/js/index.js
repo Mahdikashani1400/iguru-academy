@@ -1,39 +1,21 @@
+import { createHeader } from "./funcs/header.js"
+
 const $ = document;
 
-window.addEventListener('DOMContentLoaded', () => {
-    sizeOfMenuHandler()
-
-    themeColorHandler()
+window.addEventListener('load', () => {
+    // sizeOfMenuHandler()
+    createHeader()
     createChart()
 })
 
 
 // themeColorHandler
 
-let stateMode = null
-function themeColorHandler(e) {
-    stateMode = localStorage.getItem('theme')
-
-    if (stateMode === 'dark') {
-
-        e ? (localStorage.theme = 'light') && (document.documentElement.classList.remove('dark')) : (document.documentElement.classList.add('dark'))
-
-
-
-    } else {
-        e ? (localStorage.theme = 'dark') && (document.documentElement.classList.add('dark')) : (document.documentElement.classList.remove('dark'))
-
-    }
-}
-let themeToggles = document.querySelectorAll('.themeToggle')
-themeToggles.forEach(themeToggle => {
-    themeToggle.addEventListener('click', themeColorHandler)
-})
 
 
 
 
-let typeOfChart = null
+
 function createChart() {
     (async function () {
 
@@ -101,7 +83,7 @@ function createChart() {
                 animationDuration: 1
             },
             maintainAspectRatio: false,
-            type: window.innerWidth > 900 ? ('line') && (typeOfChart = 'line') : ('bar') && (typeOfChart = 'bar'),
+            type: window.innerWidth > 900 ? ('line') : ('bar'),
 
             data: {
                 labels: data.map(row => row.month),
@@ -199,21 +181,6 @@ function createChart() {
 
         );
     })();
-}
-const menuBtn = $.getElementById('menuBtn')
-const headerNav = $.querySelector('.header__nav')
-
-menuBtn.addEventListener('click', () => {
-    headerNav.classList.toggle('mobile')
-});
-window.addEventListener('resize', () => {
-    sizeOfMenuHandler()
-
-});
-function sizeOfMenuHandler() {
-    if (window.innerWidth < 1024 && !headerNav.classList.contains('mobile')) {
-        headerNav.classList.add('mobile')
-    }
 }
 
 

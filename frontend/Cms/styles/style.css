@@ -1068,6 +1068,16 @@ input:focus {
 
 /*  */
 
+.body__content {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.body__content > * {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
 .header__nav {
   position: fixed;
   top: 0px;
@@ -1089,6 +1099,10 @@ input:focus {
 :is(.dark .header__nav) {
   --tw-bg-opacity: 1;
   background-color: rgb(42 44 56 / var(--tw-bg-opacity));
+}
+
+.header__nav ~ .body__content {
+  margin-right: 18rem;
 }
 
 .header__menu {
@@ -1122,9 +1136,15 @@ input:focus {
 }
 
 .header__nav.mobile {
-  width: 100px;
+  width: 5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .header__nav.mobile {
+    width: 100px;
+  }
 }
 
 .header__nav.mobile ~ .body__content {
@@ -1139,6 +1159,11 @@ input:focus {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.header__nav.hide .shape svg {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .header__nav.mobile .nav__logo {
   display: none;
 }
@@ -1147,15 +1172,30 @@ input:focus {
   align-items: center;
 }
 
+.header__nav.mobile.hide {
+  right: -7rem;
+}
+
+.header__nav.mobile.hide .shape {
+  right: 105px;
+}
+
+.header__nav.mobile.hide ~ .body__content {
+  margin-right: 0px;
+}
+
 .header__nav.mobile .header__menu span {
   display: none;
 }
 
 .header__nav.mobile .header__menu a {
-  height: 4rem;
-  width: 4rem;
+  height: 3.5rem;
+  width: 3.5rem;
   justify-content: center;
   border-radius: 9999px;
+  padding: 0px;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
 }
 
 .header__nav.mobile .header__menu svg {
@@ -1275,11 +1315,6 @@ input:focus {
   order: 1;
 }
 
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1294,6 +1329,10 @@ input:focus {
 
 .mr-72 {
   margin-right: 18rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
 }
 
 .mt-2 {
@@ -2116,11 +2155,6 @@ input:focus {
   opacity: 1;
 }
 
-.child\:mx-5 > * {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
-
 .child\:grow > * {
   flex-grow: 1;
 }
@@ -2394,10 +2428,6 @@ input:focus {
 }
 
 @media (min-width: 1024px) {
-  .lg\:flex {
-    display: flex;
-  }
-
   .lg\:flex-row {
     flex-direction: row;
   }
