@@ -6,6 +6,12 @@ module.exports = {
       center: "true"
     },
     extend: {
+      boxShadow: {
+        "main": "0px 1px 10px 0px rgba(0, 0, 0, 0.05)"
+      },
+      dropShadow: {
+        'main': " 0px 0px 10px rgba(0, 0, 0, 0.40)"
+      },
       spacing: {
         '25': '100px',
         '50': '200px'

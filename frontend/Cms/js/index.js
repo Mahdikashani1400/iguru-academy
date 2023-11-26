@@ -46,7 +46,7 @@ menuBtn.addEventListener('click', () => {
                 ctx.shadowColor = '#92FE9D';
                 ctx.shadowBlur = 10;
                 ctx.shadowOffsetX = 0;
-                ctx.shadowOffsetY = 4;
+                ctx.shadowOffsetY = 0;
                 _stroke.apply(this, arguments)
                 ctx.restore();
             }
@@ -60,7 +60,7 @@ menuBtn.addEventListener('click', () => {
         { month: "خرداد", benfit: 15 },
         { month: "تیر", benfit: 25 },
         { month: "مرداد", benfit: 22 },
-        { month: "شهریور", benfit: 30 },
+        { month: "شهریور", benfit: 33 },
         { month: "مهر", benfit: 19 },
         { month: "آبان", benfit: 28 },
         { month: "آذر", benfit: 28 },
@@ -70,7 +70,7 @@ menuBtn.addEventListener('click', () => {
     ];
     const config = {
         tooltips: {
-            enabled: true
+            enabled: false
         },
         hover: {
             animationDuration: 1
@@ -99,6 +99,8 @@ menuBtn.addEventListener('click', () => {
             ]
         },
         options: {
+
+            events: ["mouseout", "click", "touchstart", "touchmove", "touchend", "mouseenter"],
             "animation": {
                 "duration": 1,
                 "onComplete": function () {
@@ -131,11 +133,11 @@ menuBtn.addEventListener('click', () => {
                     text: 'Chart.js Line Chart',
                 },
 
-            },
-            scales: {
-                grid: {
 
-                },
+            },
+
+            scales: {
+
                 xAxes: [{
                     display: true,
                     offset: true,
@@ -145,9 +147,17 @@ menuBtn.addEventListener('click', () => {
                         padding: 5,
                         beginAtZero: true,
                         stepSize: 20 //<-- set this
+                    },
+
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.01)",
                     }
+
                 }],
                 yAxes: [{
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.07)",
+                    },
                     ticks: {
                         fontSize: 18,
                         fontColor: "#898989",

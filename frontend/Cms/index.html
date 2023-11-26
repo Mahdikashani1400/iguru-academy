@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css" />
   </head>
-  <body class="font-IRANSans bg-[#14141E]">
+  <body class="font-IRANSans bg-[#14141E] dark">
     <svg class="hidden">
       <symbol
         xmlns="http://www.w3.org/2000/svg"
@@ -353,7 +353,7 @@
       <header>
         <div class="container">
           <div
-            class="flex items-center bg-black-dark rounded-md p-3 justify-between"
+            class="flex items-center bg-black-dark rounded-md p-3 justify-between shadow-main"
           >
             <div class="flex items-center gap-x-8">
               <div
@@ -406,7 +406,7 @@
       <section class="mony__info">
         <div class="container">
           <div
-            class="flex lg:flex-row flex-col justify-center gap-5 text-white child:bg-black-dark child:grow child:p-8 text-lg child:rounded-lg flex-wrap"
+            class="flex lg:flex-row flex-col justify-center gap-5 text-white child:bg-black-dark child:grow child:p-8 text-lg child:rounded-lg child:shadow-main flex-wrap"
           >
             <div class="flex flex-col gap-y-4">
               <h6 class="title">درآمد</h6>
@@ -438,6 +438,76 @@
       <section class="chart__info">
         <div class="container">
           <canvas id="acquisitions"></canvas>
+        </div>
+      </section>
+      <section class="new__users">
+        <div class="container">
+          <div class="flex flex-col p-6 rounded-md gap-y-5">
+            <h6 class="font-semibold text-xl text-white tracking-wide">
+              افراد اخیرا <span class="text-blue-primary">ثبت نام </span> شده
+            </h6>
+
+            <div class="relative overflow-x-auto">
+              <table
+                class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 shadow-main"
+              >
+                <thead
+                  class="text-lg shadow-xl child:drop-shadow-main font-extrabold text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3">شناسه</th>
+                    <th scope="col" class="px-6 py-3">نام</th>
+                    <th scope="col" class="px-6 py-3">نام خانوادگی</th>
+                    <th scope="col" class="px-6 py-3">شماره</th>
+                    <th scope="col" class="px-6 py-3">ایمیل</th>
+                    <th scope="col" class="px-6 py-3">رمز عبور</th>
+                  </tr>
+                </thead>
+                <tbody class="text-lg">
+                  <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  >
+                    <th
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      ali22
+                    </th>
+                    <td class="px-6 py-4">علی</td>
+                    <td class="px-6 py-4">محمدی</td>
+                    <td class="px-6 py-4">09123456789</td>
+                    <td class="px-6 py-4">ali22@gmail.com</td>
+                    <td class="px-6 py-4">ali123456</td>
+                  </tr>
+                  <!-- <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  >
+                    <th
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      Microsoft Surface Pro
+                    </th>
+                    <td class="px-6 py-4">White</td>
+                    <td class="px-6 py-4">Laptop PC</td>
+                    <td class="px-6 py-4">$1999</td>
+                    <td class="px-6 py-4">Laptop PC</td>
+                    <td class="px-6 py-4">$1999</td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-800">
+                    <th
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      Magic Mouse 2
+                    </th>
+                    <td class="px-6 py-4">Black</td>
+                    <td class="px-6 py-4">Accessories</td>
+                    <td class="px-6 py-4">$99</td>
+                    <td class="px-6 py-4">Accessories</td>
+                    <td class="px-6 py-4">$99</td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
     </div>
