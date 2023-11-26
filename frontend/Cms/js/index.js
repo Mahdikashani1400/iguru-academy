@@ -1,8 +1,37 @@
 const $ = document;
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
+    sizeOfMenuHandler()
+
+    themeColorHandler()
     createChart()
 })
+
+
+// themeColorHandler
+
+let stateMode = null
+function themeColorHandler(e) {
+    stateMode = localStorage.getItem('theme')
+
+    if (stateMode === 'dark') {
+
+        e ? (localStorage.theme = 'light') && (document.documentElement.classList.remove('dark')) : (document.documentElement.classList.add('dark'))
+
+
+
+    } else {
+        e ? (localStorage.theme = 'dark') && (document.documentElement.classList.add('dark')) : (document.documentElement.classList.remove('dark'))
+
+    }
+}
+let themeToggles = document.querySelectorAll('.themeToggle')
+themeToggles.forEach(themeToggle => {
+    themeToggle.addEventListener('click', themeColorHandler)
+})
+
+
+
 
 let typeOfChart = null
 function createChart() {
@@ -178,11 +207,14 @@ menuBtn.addEventListener('click', () => {
     headerNav.classList.toggle('mobile')
 });
 window.addEventListener('resize', () => {
+    sizeOfMenuHandler()
+
+});
+function sizeOfMenuHandler() {
     if (window.innerWidth < 1024 && !headerNav.classList.contains('mobile')) {
         headerNav.classList.add('mobile')
     }
-
-});
+}
 
 
 

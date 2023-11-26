@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css" />
   </head>
-  <body class="font-IRANSans bg-[#14141E] dark">
+  <body class="font-IRANSans dark:bg-[#14141E] bg-[#F5F5F9]">
     <svg class="hidden">
       <symbol
         xmlns="http://www.w3.org/2000/svg"
@@ -311,18 +311,20 @@
       </symbol>
     </svg>
 
-    <nav class="header__nav mobile">
+    <nav class="header__nav">
       <a
         href="#"
-        class="absolute w-10 h-10 bg-[#14141E] -left-5 top-1/2 rounded-full hidden lg:flex items-center justify-center shape"
+        class="absolute w-10 h-10 dark:bg-[#14141E] bg-[#F5F5F9] -left-5 top-1/2 rounded-full hidden lg:flex items-center justify-center shape"
         id="menuBtn"
       >
-        <svg class="w-[26px] h-[26px] p-[2.5px] bg-blue-primary rounded-full">
+        <svg
+          class="w-[26px] h-[26px] p-[2.5px] bg-blue-primary rounded-full dark:text-black text-white"
+        >
           <use href="#chevron-right"></use>
         </svg>
       </a>
       <div class="nav__logo w-36 flex justify-center relative">
-        <img class="invert" src="../img/logo-dark.png" alt="" />
+        <img class="dark:invert" src="../img/logo-dark.png" alt="" />
       </div>
       <ul class="header__menu">
         <a
@@ -409,15 +411,15 @@
       <header>
         <div class="container">
           <div
-            class="flex items-center bg-black-dark rounded-md p-3 justify-between shadow-main"
+            class="flex items-center dark:bg-black-dark bg-white rounded-md p-1 sm:p-3 justify-between shadow-main"
           >
             <div
-              class="w-full md:w-fit flex items-center justify-between md:justify-start gap-x-4 lg:gap-x-8"
+              class="w-full md:w-fit flex items-center sm:justify-between justify-center md:justify-start gap-x-4 lg:gap-x-8"
             >
               <div
-                class="md:w-fit sm:w-80 w-full h-12 flex items-center md:py-6 md:px-4 px-2 py-03 bg-gray-700 rounded-md text-white"
+                class="md:w-fit sm:w-80 w-full h-12 flex items-center md:py-6 md:px-4 px-2 py-03 dark:bg-gray-700 bg-gray-200 rounded-md dark:text-white text-black"
               >
-                <svg class="w-5 h-5 text-gray-300">
+                <svg class="w-5 h-5 dark:text-gray-300 text-light-primary">
                   <use href="#magnifying-glass"></use>
                 </svg>
                 <input
@@ -425,39 +427,62 @@
                   type="text"
                 />
               </div>
-              <a href="#" class="relative sm:inline-block hidden">
-                <svg class="w-7 h-7 text-gray-300">
-                  <use href="#bell"></use>
-                </svg>
-                <div
-                  class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-4 -end-2 dark:border-gray-900"
-                >
-                  20
+              <div class="relative sm:flex hidden group">
+                <a href="#" class="relative">
+                  <svg class="w-7 h-7 text-light-primary dark:text-gray-300">
+                    <use href="#bell"></use>
+                  </svg>
+                  <div
+                    class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-4 -end-2 dark:border-gray-900"
+                  >
+                    20
+                  </div>
+                </a>
+                <div class="absolute pt-5 top-4 -left-32">
+                  <div
+                    class="bg-white dark:bg-black-dark text-zinc-800 dark:text-gray-primary shadow-main w-64 h-64 overflow-y-scroll scrollbar-customize px-4 py-2 rounded-lg child:py-2 child:border-b child:border-gray-300 child:dark:border-gray-700 child:break-words transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+                  >
+                    <p class="">پرداختی ها با موفقیت انجام شد</p>
+                    <p class="">خونه ها با موفقیت خریداری شدند.</p>
+                    <p class="">
+                      خونه ها با موفقیت
+                      wccccccccccccccccccccccccccccccccccccccccخریداری شدند.
+                    </p>
+                    <p class="">خونه ها با موفقیت خریداری شدند.</p>
+                    <p class="">خونه ها با موفقیت خریداری شدند.</p>
+                    <p class="">خونه ها با موفقیت خریداری شدند.</p>
+                    <p class="">خونه ها با موفقیت خریداری شدند.</p>
+                    <p class="">خونه ها با موفقیت خریداری شدند.</p>
+                  </div>
                 </div>
-              </a>
-              <a href="#" class="hidden md:inline-block">
-                <svg class="w-7 h-7 text-gray-300">
+              </div>
+              <a href="#" class="themeToggle hidden md:inline-block">
+                <svg class="w-7 h-7 text-gray-300 dark:inline-block hidden">
                   <use href="#sun"></use>
                 </svg>
-                <svg class="w-6 h-6 text-gray-300 hidden">
+                <svg
+                  class="w-6 h-6 text-light-primary dark:hidden inline-block"
+                >
                   <use href="#moon"></use>
                 </svg>
               </a>
               <a
                 href="#"
-                class="fixed bottom-4 left-4 bg-gray-700 z-10 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center md:hidden"
+                class="themeToggle fixed bottom-4 left-4 dark:bg-gray-700 bg-white z-10 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center md:hidden"
               >
-                <svg class="w-7 h-7 text-gray-300">
+                <svg class="w-7 h-7 text-gray-300 dark:inline-block hidden">
                   <use href="#sun"></use>
                 </svg>
-                <svg class="w-6 h-6 text-gray-300 hidden">
+                <svg
+                  class="w-6 h-6 text-light-primary dark:hidden inline-block"
+                >
                   <use href="#moon"></use>
                 </svg>
               </a>
             </div>
             <a
               href="#"
-              class="md:flex hidden gap-x-2 lg:gap-x-4 text-white items-center"
+              class="md:flex hidden gap-x-2 lg:gap-x-4 dark:text-white text-zinc-800 font-semibold items-center"
             >
               <p class="flex items-center gap-x-1.5 order-1 md:-order-1">
                 <svg class="w-4 h-4 rotate-90 stroke-1">
@@ -478,46 +503,46 @@
       <section class="mony__info">
         <div class="container">
           <div
-            class="flex lg:flex-row flex-col justify-center gap-5 text-white child:bg-black-dark child:grow child:p-8 text-lg child:rounded-lg child:shadow-main flex-wrap"
+            class="flex lg:flex-row flex-col justify-center gap-5 dark:text-white text-zinc-700 child:dark:bg-black-dark child:bg-white child:grow child:p-8 sm:text-lg text-base child:rounded-lg child:shadow-main flex-wrap"
           >
             <div class="flex flex-col gap-y-4">
               <h6 class="title">درآمد</h6>
-              <div
-                class="flex justify-between items-center font-semibold drop-shadow-main"
-              >
+              <div class="flex justify-between items-center font-semibold">
                 <span>2420$</span>
                 <span class="text-emerald-400">5.2%+</span>
-                <svg class="w-14 h-14 text-blue-primary">
+                <svg class="sm:w-14 sm:h-14 w-8 h-10 text-blue-primary">
                   <use href="#banknotes"></use>
                 </svg>
               </div>
-              <span class="text-gray-300">درآمد یک ماه گذشته</span>
+              <span class="dark:text-gray-300 text-[#697A8D]"
+                >درآمد یک ماه گذشته</span
+              >
             </div>
             <div class="flex flex-col gap-y-4">
               <h6 class="title">فروش</h6>
-              <div
-                class="flex justify-between items-center font-semibold drop-shadow-main"
-              >
+              <div class="flex justify-between items-center font-semibold">
                 <span>2420$</span>
                 <span class="text-emerald-400">5.2%+</span>
-                <svg class="w-14 h-14 text-blue-primary">
+                <svg class="sm:w-14 sm:h-14 w-8 h-10 text-blue-primary">
                   <use href="#shopping-cart"></use>
                 </svg>
               </div>
-              <span class="text-gray-300">فروش یک ماه گذشته</span>
+              <span class="dark:text-gray-300 text-[#697A8D]"
+                >فروش یک ماه گذشته</span
+              >
             </div>
             <div class="flex flex-col gap-y-4">
               <h6 class="title">هزینه</h6>
-              <div
-                class="flex justify-between items-center font-semibold drop-shadow-main"
-              >
+              <div class="flex justify-between items-center font-semibold">
                 <span>2420$</span>
                 <span class="text-emerald-400">5.2%+</span>
-                <svg class="w-14 h-14 text-blue-primary">
+                <svg class="sm:w-14 sm:h-14 w-8 h-10 text-blue-primary">
                   <use href="#currency-dollar"></use>
                 </svg>
               </div>
-              <span class="text-gray-300">هزینه های یک ماه گذشته</span>
+              <span class="dark:text-gray-300 text-[#697A8D]"
+                >هزینه های یک ماه گذشته</span
+              >
             </div>
           </div>
         </div>
@@ -530,7 +555,9 @@
       <section class="new__users">
         <div class="container">
           <div class="flex flex-col p-6 rounded-md gap-y-5">
-            <h6 class="font-semibold text-xl text-white tracking-wide">
+            <h6
+              class="font-semibold md:text-xl text-lg dark:text-white text-zinc-800 tracking-wide"
+            >
               افراد اخیرا <span class="text-blue-primary">ثبت نام </span> شده
             </h6>
 
@@ -539,7 +566,7 @@
                 class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 shadow-main"
               >
                 <thead
-                  class="text-lg shadow-xl child:drop-shadow-main font-extrabold text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                  class="sm:text-lg text-base shadow-xl font-extrabold text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
                 >
                   <tr>
                     <th scope="col" class="px-6 py-3">شناسه</th>
