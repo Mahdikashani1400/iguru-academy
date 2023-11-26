@@ -85,6 +85,50 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
+        id="currency-dollar"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </symbol>
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        id="banknotes"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
+        />
+      </symbol>
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        id="shopping-cart"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+        />
+      </symbol>
+
+      <!-- menu-cions -->
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
         id="home"
       >
         <path
@@ -270,7 +314,7 @@
     <nav class="header__nav mobile">
       <a
         href="#"
-        class="absolute w-10 h-10 bg-[#14141E] -left-5 top-1/2 rounded-full flex items-center justify-center shape"
+        class="absolute w-10 h-10 bg-[#14141E] -left-5 top-1/2 rounded-full hidden lg:flex items-center justify-center shape"
         id="menuBtn"
       >
         <svg class="w-[26px] h-[26px] p-[2.5px] bg-blue-primary rounded-full">
@@ -281,6 +325,18 @@
         <img class="invert" src="../img/logo-dark.png" alt="" />
       </div>
       <ul class="header__menu">
+        <a
+          href="#"
+          class="flex flex-col gap-x-2 text-white items-center md:hidden p-0 mb-7"
+        >
+          <p class="flex items-center gap-x-1.5 order-1 md:-order-1">علی</p>
+
+          <img
+            class="w-12 h-12 rounded-full"
+            src="../img/teachers/t3.jpg"
+            alt=""
+          />
+        </a>
         <a href="#" class="bg-blue-primary/10 text-blue-primary">
           <svg class="w-5 h-5">
             <use href="#home"></use>
@@ -355,19 +411,21 @@
           <div
             class="flex items-center bg-black-dark rounded-md p-3 justify-between shadow-main"
           >
-            <div class="flex items-center gap-x-8">
+            <div
+              class="w-full md:w-fit flex items-center justify-between md:justify-start gap-x-4 lg:gap-x-8"
+            >
               <div
-                class="w-fit h-12 flex items-center py-6 px-4 bg-gray-700 rounded-md text-white"
+                class="md:w-fit sm:w-80 w-full h-12 flex items-center md:py-6 md:px-4 px-2 py-03 bg-gray-700 rounded-md text-white"
               >
                 <svg class="w-5 h-5 text-gray-300">
                   <use href="#magnifying-glass"></use>
                 </svg>
                 <input
+                  class="bg-transparent border-none focus:outline-none focus:shadow-none sm:w-80 w-full px-3"
                   type="text"
-                  class="bg-transparent border-none focus:outline-none w-80 px-3"
                 />
               </div>
-              <a href="#" class="relative">
+              <a href="#" class="relative sm:inline-block hidden">
                 <svg class="w-7 h-7 text-gray-300">
                   <use href="#bell"></use>
                 </svg>
@@ -377,7 +435,18 @@
                   20
                 </div>
               </a>
-              <a href="#" class="">
+              <a href="#" class="hidden md:inline-block">
+                <svg class="w-7 h-7 text-gray-300">
+                  <use href="#sun"></use>
+                </svg>
+                <svg class="w-6 h-6 text-gray-300 hidden">
+                  <use href="#moon"></use>
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="fixed bottom-4 left-4 bg-gray-700 z-10 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center md:hidden"
+              >
                 <svg class="w-7 h-7 text-gray-300">
                   <use href="#sun"></use>
                 </svg>
@@ -386,8 +455,11 @@
                 </svg>
               </a>
             </div>
-            <a href="#" class="flex gap-x-4 text-white items-center">
-              <p class="flex items-center gap-x-1.5">
+            <a
+              href="#"
+              class="md:flex hidden gap-x-2 lg:gap-x-4 text-white items-center"
+            >
+              <p class="flex items-center gap-x-1.5 order-1 md:-order-1">
                 <svg class="w-4 h-4 rotate-90 stroke-1">
                   <use href="#chevron-right"></use>
                 </svg>
@@ -410,32 +482,47 @@
           >
             <div class="flex flex-col gap-y-4">
               <h6 class="title">درآمد</h6>
-              <div class="flex justify-between">
+              <div
+                class="flex justify-between items-center font-semibold drop-shadow-main"
+              >
                 <span>2420$</span>
                 <span class="text-emerald-400">5.2%+</span>
+                <svg class="w-14 h-14 text-blue-primary">
+                  <use href="#banknotes"></use>
+                </svg>
               </div>
               <span class="text-gray-300">درآمد یک ماه گذشته</span>
             </div>
             <div class="flex flex-col gap-y-4">
-              <h6 class="title">درآمد</h6>
-              <div class="flex justify-between">
+              <h6 class="title">فروش</h6>
+              <div
+                class="flex justify-between items-center font-semibold drop-shadow-main"
+              >
                 <span>2420$</span>
                 <span class="text-emerald-400">5.2%+</span>
+                <svg class="w-14 h-14 text-blue-primary">
+                  <use href="#shopping-cart"></use>
+                </svg>
               </div>
-              <span class="text-gray-300">درآمد یک ماه گذشته</span>
+              <span class="text-gray-300">فروش یک ماه گذشته</span>
             </div>
             <div class="flex flex-col gap-y-4">
-              <h6 class="title">درآمد</h6>
-              <div class="flex justify-between">
+              <h6 class="title">هزینه</h6>
+              <div
+                class="flex justify-between items-center font-semibold drop-shadow-main"
+              >
                 <span>2420$</span>
                 <span class="text-emerald-400">5.2%+</span>
+                <svg class="w-14 h-14 text-blue-primary">
+                  <use href="#currency-dollar"></use>
+                </svg>
               </div>
-              <span class="text-gray-300">درآمد یک ماه گذشته</span>
+              <span class="text-gray-300">هزینه های یک ماه گذشته</span>
             </div>
           </div>
         </div>
       </section>
-      <section class="chart__info">
+      <section class="chart__info hidden sm:block">
         <div class="container">
           <canvas id="acquisitions"></canvas>
         </div>
