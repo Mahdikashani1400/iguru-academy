@@ -314,53 +314,37 @@
     <div class="body__content mr-72">
       <header class="header"></header>
       <main>
-        <section class="edit__info--admin">
+        <section class="new__article">
           <div class="container">
-            <h1 class="title">ویرایش اطلاعات</h1>
+            <h1 class="title">مقاله جدید</h1>
             <form class="customize__inputs">
-              <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
                 <div>
-                  <label for="first_name" class="">نام</label>
+                  <label for="title" class="">عنوان</label>
                   <input
                     type="text"
-                    id="first_name"
+                    id="title"
                     class=""
-                    placeholder="علی"
+                    placeholder="جامعه شناسی"
                     required
                   />
                 </div>
                 <div>
-                  <label for="last_name" class="">نام خانوادگی</label>
+                  <label for="link" class="">لینک</label>
                   <input
                     type="text"
-                    id="last_name"
+                    lang="en"
+                    dir="ltr"
+                    id="link"
                     class=""
-                    placeholder="یوسفی"
+                    placeholder="test-article"
                     required
                   />
                 </div>
-                <div class="">
-                  <label for="email" class="">آدرس ایمیل</label>
-                  <input
-                    type="email"
-                    id="email"
-                    class=""
-                    placeholder="ali.yousefi@gmail.com"
-                    required
-                  />
+                <div class="md:col-span-2">
+                  <label for="bodyArticle" class="">مقاله</label>
+                  <textarea name="" id="bodyArticle" rows="8"></textarea>
                 </div>
-                <div>
-                  <label for="phone" class="">شماره تلفن</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    class=""
-                    placeholder="09123456789"
-                    pattern="0?9[0-9]{9}"
-                    required
-                  />
-                </div>
-
                 <div class="">
                   <label class="" for="file_input">عکس پروفایل</label>
                   <input
@@ -375,14 +359,98 @@
                 type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                اعمال تغییرات
+                انتشار مقاله
               </button>
             </form>
+          </div>
+        </section>
+        <section class="articles__table">
+          <div class="container">
+            <div
+              class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main"
+            >
+              <h4
+                class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800"
+              >
+                لیست <span class="text-blue-primary">مقالات</span>
+              </h4>
+              <table
+                class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-100"
+              >
+                <thead
+                  class="text-lg text-gray-700 uppercase bg-blue-primary/20 dark:bg-blue-primary/20 dark:text-gray-300"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3">شماره</th>
+                    <th scope="col" class="px-6 py-3">عنوان</th>
+                    <th scope="col" class="px-6 py-3">حالت</th>
+                    <th scope="col" class="px-6 py-3">زمان انتشار</th>
+                    <th scope="col" class="px-6 py-3">نویسنده</th>
+                    <th scope="col" class="px-6 py-3">ویرایش</th>
+                    <th scope="col" class="px-6 py-3">حذف</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b dark:border-gray-700 text-base">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      1
+                    </th>
+                    <td class="px-5 py-5">مقاله فیک</td>
+                    <td class="px-5 py-5">پیش نویس</td>
+                    <td class="px-5 py-5">2023-11-08</td>
+                    <td class="px-5 py-5">علیرضا</td>
+                    <td class="px-4 py-5">
+                      <a
+                        href="#"
+                        class="px-4 py-2 rounded-lg text-white bg-blue-primary/90 hover:bg-blue-primary"
+                        >ویرایش</a
+                      >
+                    </td>
+                    <td class="px-4 py-5">
+                      <a
+                        href="#"
+                        class="px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700"
+                        >حذف</a
+                      >
+                    </td>
+                  </tr>
+                  <tr class="dark:border-gray-700 text-base">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      1
+                    </th>
+                    <td class="px-5 py-5">مقاله فیک</td>
+                    <td class="px-5 py-5">پیش نویس</td>
+                    <td class="px-5 py-5">2023-11-08</td>
+                    <td class="px-5 py-5">علیرضا</td>
+                    <td class="px-4 py-5">
+                      <a
+                        href="#"
+                        class="px-4 py-2 rounded-lg text-white bg-blue-primary/90 hover:bg-blue-primary"
+                        >ویرایش</a
+                      >
+                    </td>
+                    <td class="px-4 py-5">
+                      <a
+                        href="#"
+                        class="px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700"
+                        >حذف</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script type="module" src="./js/edit-info.js"></script>
+    <script type="module" src="./js/articles.js"></script>
   </body>
 </html>

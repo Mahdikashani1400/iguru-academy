@@ -915,10 +915,16 @@ body {
 }
 
 main {
-  margin-top: 3rem;
+  margin-top: 2.25rem;
   display: flex;
   flex-direction: column;
   row-gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    margin-top: 3rem;
+  }
 }
 
 input:focus {
@@ -1231,7 +1237,30 @@ input:focus {
 
 /* edit__info--admin */
 
-.edit__info--admin input:not(input[type="file"]) {
+.title {
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(39 39 42 / var(--tw-text-opacity));
+}
+
+:is(.dark .title) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 768px) {
+  .title {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.customize__inputs input:not(input[type="file"]),
+  .customize__inputs textarea {
   display: block;
   width: 100%;
   border-radius: 0.5rem;
@@ -1247,14 +1276,16 @@ input:focus {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.edit__info--admin input:not(input[type="file"]):focus {
+.customize__inputs input:not(input[type="file"]):focus,
+  .customize__inputs textarea:focus {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(63 131 248 / var(--tw-ring-opacity));
 }
 
-:is(.dark .edit__info--admin input:not(input[type="file"])) {
+:is(.dark .customize__inputs input:not(input[type="file"])),:is(.dark 
+  .customize__inputs textarea) {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -1263,24 +1294,35 @@ input:focus {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-:is(.dark .edit__info--admin input:not(input[type="file"]))::-moz-placeholder {
+:is(.dark .customize__inputs input:not(input[type="file"]))::-moz-placeholder, :is(.dark 
+  .customize__inputs textarea)::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
-:is(.dark .edit__info--admin input:not(input[type="file"]))::placeholder {
+:is(.dark .customize__inputs input:not(input[type="file"]))::placeholder,:is(.dark 
+  .customize__inputs textarea)::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
-:is(.dark .edit__info--admin input:not(input[type="file"]):focus) {
+:is(.dark .customize__inputs input:not(input[type="file"]):focus),:is(.dark 
+  .customize__inputs textarea:focus) {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(63 131 248 / var(--tw-ring-opacity));
 }
 
-.edit__info--admin label {
+@media (min-width: 640px) {
+  .customize__inputs input:not(input[type="file"]),
+  .customize__inputs textarea {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.customize__inputs label {
   margin-bottom: 0.5rem;
   display: block;
   font-size: 0.875rem;
@@ -1290,9 +1332,16 @@ input:focus {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-:is(.dark .edit__info--admin label) {
+:is(.dark .customize__inputs label) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 640px) {
+  .customize__inputs label {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 
 .visible {
@@ -1397,6 +1446,11 @@ input:focus {
 
 .order-1 {
   order: 1;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .mb-1 {
@@ -1614,6 +1668,10 @@ input:focus {
   resize: both;
 }
 
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1812,6 +1870,10 @@ input:focus {
   background-color: rgb(105 108 255 / 0.1);
 }
 
+.bg-blue-primary\/20 {
+  background-color: rgb(105 108 255 / 0.2);
+}
+
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -1852,6 +1914,30 @@ input:focus {
 
 .bg-white\/50 {
   background-color: rgb(255 255 255 / 0.5);
+}
+
+.bg-red-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 213 213 / var(--tw-bg-opacity));
+}
+
+.bg-red-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 28 28 / var(--tw-bg-opacity));
+}
+
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 36 36 / var(--tw-bg-opacity));
+}
+
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 128 128 / var(--tw-bg-opacity));
+}
+
+.bg-blue-primary\/90 {
+  background-color: rgb(105 108 255 / 0.9);
 }
 
 .stroke-1 {
@@ -1931,6 +2017,31 @@ input:focus {
   padding-bottom: 1rem;
 }
 
+.px-\[14px\] {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.px-\[30px\] {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.px-\[20px\] {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -1960,6 +2071,11 @@ input:focus {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-xs {
@@ -2179,6 +2295,21 @@ input:focus {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-red-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 36 36 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(200 30 30 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(105 108 255 / var(--tw-bg-opacity));
+}
+
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
@@ -2328,6 +2459,10 @@ input:focus {
   background-color: rgb(28 100 242 / var(--tw-bg-opacity));
 }
 
+:is(.dark .dark\:bg-blue-primary\/20) {
+  background-color: rgb(105 108 255 / 0.2);
+}
+
 :is(.dark .dark\:bg-gray-600) {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
@@ -2359,6 +2494,11 @@ input:focus {
 :is(.dark .dark\:text-blue-500) {
   --tw-text-opacity: 1;
   color: rgb(63 131 248 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-gray-100) {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 
 :is(.dark .dark\:text-gray-300) {
@@ -2483,6 +2623,10 @@ input:focus {
 @media (min-width: 768px) {
   .md\:-order-1 {
     order: -1;
+  }
+
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
   }
 
   .md\:inline-block {

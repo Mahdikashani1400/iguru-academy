@@ -12,7 +12,7 @@
     @apply font-IRANSans dark:bg-[#14141E] bg-[#F5F5F9];
   }
   main {
-    @apply flex flex-col gap-y-12 mt-12;
+    @apply flex flex-col gap-y-12 md:mt-12 mt-9;
   }
   input:focus {
     box-shadow: none !important;
@@ -99,11 +99,14 @@
   }
 
   /* edit__info--admin */
-
-  .edit__info--admin input:not(input[type="file"]) {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  .title {
+    @apply font-semibold md:text-2xl text-xl dark:text-white text-zinc-800 md:mb-8 mb-5;
   }
-  .edit__info--admin label {
-    @apply block mb-2 text-sm font-semibold text-gray-900 dark:text-white;
+  .customize__inputs input:not(input[type="file"]),
+  .customize__inputs textarea {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-lg text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+  .customize__inputs label {
+    @apply block mb-2 sm:text-lg text-sm font-semibold text-gray-900 dark:text-white;
   }
 }
