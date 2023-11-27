@@ -1980,14 +1980,6 @@ input:focus {
   background-color: rgb(105 108 255 / 0.1);
 }
 
-.bg-blue-primary\/90 {
-  background-color: rgb(105 108 255 / 0.9);
-}
-
-.bg-blue-primary\/90 {
-  background-color: rgb(105 108 255 / 0.9);
-}
-
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -2015,11 +2007,6 @@ input:focus {
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(240 82 82 / var(--tw-bg-opacity));
-}
-
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(224 36 36 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
@@ -2360,19 +2347,9 @@ input:focus {
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-primary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(105 108 255 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-red-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(200 30 30 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-white:hover {
