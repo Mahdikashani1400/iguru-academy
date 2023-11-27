@@ -2,7 +2,7 @@ import { createHeader } from "./funcs/header.js"
 
 const $ = document;
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
     // sizeOfMenuHandler()
     createHeader()
     createChart()

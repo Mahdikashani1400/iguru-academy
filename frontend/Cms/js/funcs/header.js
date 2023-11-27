@@ -1,57 +1,56 @@
 const $ = document;
 function createHeader() {
-    const headerNav = $.querySelector('.header__nav')
-    insertHeaderTemplate(headerNav)
-    let stateMode = null
-    function themeColorHandler(e) {
-        stateMode = localStorage.getItem('theme')
+  const headerNav = $.querySelector('.header__nav')
+  insertHeaderTemplate(headerNav)
+  let stateMode = null
+  function themeColorHandler(e) {
+    stateMode = localStorage.getItem('theme')
 
-        if (stateMode === 'dark') {
+    if (stateMode === 'dark') {
 
-            e ? (localStorage.theme = 'light') && (document.documentElement.classList.remove('dark')) : (document.documentElement.classList.add('dark'))
+      e ? (localStorage.theme = 'light') && (document.documentElement.classList.remove('dark')) : (document.documentElement.classList.add('dark'))
 
 
 
-        } else {
-            e ? (localStorage.theme = 'dark') && (document.documentElement.classList.add('dark')) : (document.documentElement.classList.remove('dark'))
+    } else {
+      e ? (localStorage.theme = 'dark') && (document.documentElement.classList.add('dark')) : (document.documentElement.classList.remove('dark'))
 
-        }
     }
-    themeColorHandler()
-    let themeToggles = document.querySelectorAll('.themeToggle')
-    themeToggles.forEach(themeToggle => {
-        themeToggle.addEventListener('click', themeColorHandler)
-    })
+  }
+  themeColorHandler()
+  let themeToggles = document.querySelectorAll('.themeToggle')
+  themeToggles.forEach(themeToggle => {
+    themeToggle.addEventListener('click', themeColorHandler)
+  })
 
-    const menuBtn = $.getElementById('menuBtn')
-    menuBtn.addEventListener('click', () => {
-        if (window.innerWidth >= 1024) {
-            headerNav.classList.toggle('mobile')
-        } else {
+  const menuBtn = $.getElementById('menuBtn')
+  menuBtn.addEventListener('click', () => {
+    if (window.innerWidth >= 1024) {
+      headerNav.classList.toggle('mobile')
+    } else {
 
-            headerNav.classList.toggle('hide')
-        }
-    });
-    window.addEventListener('resize', () => {
-        sizeOfMenuHandler()
-
-    });
-    function sizeOfMenuHandler() {
-        if (window.innerWidth < 1024 && !headerNav.classList.contains('mobile')) {
-            headerNav.classList.add('mobile')
-        } else if (window.innerWidth >= 1024) {
-            headerNav.classList.remove('hide')
-
-        }
+      headerNav.classList.toggle('hide')
     }
+  });
+  window.addEventListener('resize', () => {
     sizeOfMenuHandler()
+
+  });
+  function sizeOfMenuHandler() {
+    if (window.innerWidth < 1024 && !headerNav.classList.contains('mobile')) {
+      headerNav.classList.add('mobile')
+    } else if (window.innerWidth >= 1024) {
+      headerNav.classList.remove('hide')
+
+    }
+  }
+  sizeOfMenuHandler()
 
 }
 
 function insertHeaderTemplate(headerNav) {
-    headerNav.innerHtml = "سلام"
-    console.log(headerNav.innerHtml);
-    headerNav.insertAdjacentHTML('beforeend', `
+
+  headerNav.insertAdjacentHTML('beforeend', `
     <a
     href="#"
     class="absolute w-10 h-10 dark:bg-[#14141E] bg-[#F5F5F9] -left-5 top-1/2 rounded-full flex items-center justify-center shape"
@@ -149,8 +148,8 @@ function insertHeaderTemplate(headerNav) {
 
     `)
 
-    const header = $.querySelector('.header')
-    header.innerHTML = `
+  const header = $.querySelector('.header')
+  header.innerHTML = `
     
     <div class="container">
     <div
@@ -183,7 +182,7 @@ function insertHeaderTemplate(headerNav) {
           </a>
           <div class="absolute pt-5 top-4 -left-32">
             <div
-              class="bg-white dark:bg-black-dark text-zinc-800 dark:text-gray-primary shadow-main w-64 h-64 overflow-y-scroll scrollbar-customize px-4 py-2 rounded-lg child:py-2 child:border-b child:border-gray-300 child:dark:border-gray-700 child:break-words transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+              class="bg-white dark:bg-black-dark text-zinc-800 dark:text-gray-primary shadow-main w-64 h-64 overflow-y-scroll scrollbar-customize px-4 py-2 rounded-lg child:py-2 child:border-b child:border-gray-300 child:dark:border-gray-700 child:break-words transition-all duration-300 hidden group-hover:block"
             >
               <p class="">پرداختی ها با موفقیت انجام شد</p>
               <p class="">خونه ها با موفقیت خریداری شدند.</p>
