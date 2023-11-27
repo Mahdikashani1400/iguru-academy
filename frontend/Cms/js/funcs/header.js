@@ -153,7 +153,7 @@ function insertHeaderTemplate(headerNav) {
     
     <div class="container">
     <div
-      class="flex items-center dark:bg-black-dark bg-white rounded-md p-1 sm:p-3 justify-between shadow-main"
+      class="flex items-center dark:bg-black-dark bg-white rounded-md sm:p-3 justify-between shadow-main"
     >
       <div
         class="w-full md:w-fit flex items-center sm:justify-between justify-center md:justify-start gap-x-4 lg:gap-x-8"
