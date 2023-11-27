@@ -109,4 +109,30 @@
   .customize__inputs label {
     @apply block mb-2 sm:text-lg text-sm font-semibold text-gray-900 dark:text-white;
   }
+
+  /* table */
+  .public__table {
+    @apply w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-100;
+  }
+  .public__table thead {
+    @apply text-lg text-gray-700 uppercase bg-blue-primary/20 dark:bg-blue-primary/20 dark:text-gray-300;
+  }
+  .public__table thead th {
+    @apply px-6 py-3;
+  }
+  .public__table tbody tr {
+    @apply text-base border-b dark:border-gray-700;
+  }
+  .public__table tbody tr:last-of-type {
+    @apply border-b-0;
+  }
+  .public__table tbody tr th {
+    @apply px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white;
+  }
+  .public__table .remove {
+    @apply px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700;
+  }
+  .public__table .edit {
+    @apply px-4 py-2 rounded-lg text-white bg-blue-primary/90 hover:bg-blue-primary;
+  }
 }

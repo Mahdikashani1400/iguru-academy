@@ -316,37 +316,43 @@
       <main>
         <section class="new__article">
           <div class="container">
-            <h1 class="title">مقاله جدید</h1>
+            <h1 class="title">محصول جدید</h1>
             <form class="customize__inputs">
               <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
                 <div>
-                  <label for="title" class="">عنوان</label>
+                  <label for="lable" class="">نام محصول</label>
                   <input
                     type="text"
-                    id="title"
+                    id="lable"
                     class=""
-                    placeholder="جامعه شناسی"
+                    placeholder="کتاب"
                     required
                   />
                 </div>
                 <div>
-                  <label for="link" class="">لینک</label>
+                  <label for="price" class="">قیمت محصول</label>
                   <input
                     type="text"
-                    lang="en"
                     dir="ltr"
-                    id="link"
+                    id="price"
                     class=""
-                    placeholder="test-article"
+                    placeholder="120000"
                     required
                   />
                 </div>
-                <div class="md:col-span-2">
-                  <label for="bodyArticle" class="">مقاله</label>
-                  <textarea name="" id="bodyArticle" rows="8"></textarea>
+                <div>
+                  <label for="price" class="">تعداد محصول</label>
+                  <input
+                    type="text"
+                    id="count"
+                    class=""
+                    placeholder="550"
+                    required
+                  />
                 </div>
+
                 <div class="">
-                  <label class="" for="file_input">عکس پروفایل</label>
+                  <label class="" for="file_input">عکس محصول</label>
                   <input
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     id="file_input"
@@ -359,7 +365,7 @@
                 type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                انتشار مقاله
+                افزودن محصول
               </button>
             </form>
           </div>
@@ -372,27 +378,39 @@
               <h4
                 class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800"
               >
-                لیست <span class="text-blue-primary">مقالات</span>
+                لیست <span class="text-blue-primary">محصولات</span>
               </h4>
               <table class="public__table">
                 <thead class="">
                   <tr>
-                    <th scope="col" class="px-6 py-3">شماره</th>
-                    <th scope="col" class="px-6 py-3">عنوان</th>
-                    <th scope="col" class="px-6 py-3">حالت</th>
-                    <th scope="col" class="px-6 py-3">زمان انتشار</th>
-                    <th scope="col" class="px-6 py-3">نویسنده</th>
-                    <th scope="col" class="px-6 py-3">ویرایش</th>
-                    <th scope="col" class="px-6 py-3">حذف</th>
+                    <th scope="col" class="px-6 py-3">
+                      <input
+                        type="checkbox"
+                        class="rounded-[5px] focus:drop-shadow"
+                      />
+                    </th>
+                    <th scope="col" class="">شناسه</th>
+                    <th scope="col" class="">نام محصول</th>
+                    <th scope="col" class="">تعداد</th>
+                    <th scope="col" class="">وضعیت</th>
+                    <th scope="col" class="">قیمت</th>
+                    <th scope="col" class="">ویرایش</th>
+                    <th scope="col" class="">حذف</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class=" ">
-                    <th scope="row" class="">1</th>
-                    <td class="px-5 py-5">مقاله فیک</td>
-                    <td class="px-5 py-5">پیش نویس</td>
-                    <td class="px-5 py-5">2023-11-08</td>
-                    <td class="px-5 py-5">علیرضا</td>
+                  <tr class="">
+                    <th scope="col" class="px-6 py-3">
+                      <input
+                        type="checkbox"
+                        class="rounded-[5px] focus:drop-shadow"
+                      />
+                    </th>
+                    <th scope="row" class="">23344</th>
+                    <td class="px-5 py-5">کتاب HTML</td>
+                    <td class="px-5 py-5">550</td>
+                    <td class="px-5 py-5">در حال فروش</td>
+                    <td class="px-5 py-5">50,000</td>
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
                     </td>
@@ -401,16 +419,17 @@
                     </td>
                   </tr>
                   <tr class="">
-                    <th
-                      scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      1
+                    <th scope="col" class="px-6 py-3">
+                      <input
+                        type="checkbox"
+                        class="rounded-[5px] focus:drop-shadow"
+                      />
                     </th>
-                    <td class="px-5 py-5">مقاله فیک</td>
-                    <td class="px-5 py-5">پیش نویس</td>
-                    <td class="px-5 py-5">2023-11-08</td>
-                    <td class="px-5 py-5">علیرضا</td>
+                    <th scope="row" class="">23635</th>
+                    <td class="px-5 py-5">کتاب HTML</td>
+                    <td class="px-5 py-5">550</td>
+                    <td class="px-5 py-5">در حال فروش</td>
+                    <td class="px-5 py-5">50,000</td>
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
                     </td>
@@ -426,6 +445,6 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script type="module" src="./js/articles.js"></script>
+    <script type="module" src="./js/products.js"></script>
   </body>
 </html>
