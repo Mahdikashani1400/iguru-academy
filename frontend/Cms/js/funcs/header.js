@@ -68,7 +68,7 @@ function insertHeaderTemplate(headerNav) {
   <ul class="header__menu">
     <a
       href="#"
-      class="flex flex-col gap-x-2 text-white items-center md:hidden p-0 mb-7"
+      class="flex flex-col gap-x-2 dark:text-white text-zinc-800 items-center md:hidden p-0 mb-7 mt-2"
     >
       <p class="flex items-center gap-x-1.5 order-1 md:-order-1">علی</p>
 
