@@ -8,6 +8,15 @@
     height: -webkit-fill-available;
     overflow-x: hidden;
   }
+  body {
+    @apply font-IRANSans dark:bg-[#14141E] bg-[#F5F5F9];
+  }
+  main {
+    @apply flex flex-col gap-y-12 mt-12;
+  }
+  input:focus {
+    box-shadow: none !important;
+  }
   @font-face {
     font-family: IRANSans;
     src: local("IRANSans"), url("../../fonts/IRANSans/IRANSans_Light.ttf");
@@ -15,10 +24,6 @@
   }
 }
 @layer components {
-  input:focus {
-    box-shadow: none !important;
-  }
-
   /* scrollbar-customize  */
   .scrollbar-customize {
     scrollbar-gutter: stable;
@@ -91,5 +96,14 @@
 
   .mony__info .title {
     @apply font-semibold text-xl;
+  }
+
+  /* edit__info--admin */
+
+  .edit__info--admin input:not(input[type="file"]) {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+  .edit__info--admin label {
+    @apply block mb-2 text-sm font-semibold text-gray-900 dark:text-white;
   }
 }
