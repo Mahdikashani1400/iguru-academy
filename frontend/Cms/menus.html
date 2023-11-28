@@ -314,47 +314,47 @@
     <div class="body__content mr-72">
       <header class="header"></header>
       <main>
-        <section class="new__sessions">
+        <section class="new__menus">
           <div class="container">
-            <h1 class="title">افزودن قسمت جدید</h1>
+            <h1 class="title">افزودن آیتم جدید</h1>
             <form class="customize__inputs">
               <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                  <label for="title" class="">عنوان جلسه</label>
+                  <label for="title" class="">عنوان آیتم</label>
                   <input
                     type="text"
                     id="title"
                     class=""
-                    placeholder="علی"
+                    placeholder="محصولات پر فروش"
                     required
                   />
                 </div>
                 <div>
-                  <label for="time" class="">مدت زمان جلسه</label>
+                  <label for="destination" class="">مقصد آیتم</label>
                   <input
                     type="text"
-                    id="time"
+                    id="destination"
                     class=""
-                    placeholder="یوسفی"
+                    placeholder="products"
                     required
                   />
                 </div>
                 <div class="">
-                  <label for="forCourse" class="">انتخاب دوره</label>
-                  <select id="forCourse" class="">
-                    <option value="جی اس">جی اس</option>
-                    <option value="جی اس">جی اس</option>
-                    <option value="جی اس">جی اس</option>
-                    <option value="جی اس">جی اس</option>
+                  <label for="parent" class="">انتخاب پرنت</label>
+                  <select id="parent" class="">
+                    <option value="محصولات">محصولات</option>
+                    <option value="محصولات">محصولات</option>
+                    <option value="محصولات">محصولات</option>
+                    <option value="محصولات">محصولات</option>
                   </select>
                 </div>
               </div>
 
-              <button type="submit" class="">افزودن جلسه</button>
+              <button type="submit" class="">افزودن آیتم</button>
             </form>
           </div>
         </section>
-        <section class="sessions__table">
+        <section class="menus__table">
           <div class="container">
             <div
               class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main"
@@ -362,7 +362,7 @@
               <h4
                 class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800"
               >
-                لیست <span class="text-blue-primary">جلسات</span>
+                لیست <span class="text-blue-primary">آیتم ها</span>
               </h4>
               <table class="public__table">
                 <thead class="">
@@ -373,11 +373,11 @@
                         class="rounded-[5px] focus:drop-shadow"
                       />
                     </th>
-                    <th scope="col" class="">شناسه</th>
-                    <th scope="col" class="">عنوان جلسه</th>
-                    <th scope="col" class="">مدت زمان جلسه</th>
-                    <th scope="col" class="">نام دوره</th>
-                    <th scope="col" class="">چندمین قسمت</th>
+                    <th scope="col" class="">شماره آیتم</th>
+                    <th scope="col" class="">عنوان آیتم</th>
+                    <th scope="col" class="">مقصد آیتم</th>
+                    <th scope="col" class="">پرنت آیتم</th>
+
                     <th scope="col" class="">ویرایش</th>
                     <th scope="col" class="">حذف</th>
                   </tr>
@@ -390,11 +390,10 @@
                         class="rounded-[5px] focus:drop-shadow"
                       />
                     </th>
-                    <th scope="row" class="">23344</th>
-                    <td class="px-5 py-5">کار با عملگر ها</td>
-                    <td class="px-5 py-5">00:39</td>
-                    <td class="px-5 py-5">جی اس</td>
-                    <td class="px-5 py-5">128</td>
+                    <th scope="row" class="">1</th>
+                    <td class="px-5 py-5">فرانت اند</td>
+                    <td class="px-5 py-5">frontend</td>
+                    <td class="px-5 py-5">برنامه نویسی</td>
 
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
@@ -410,11 +409,10 @@
                         class="rounded-[5px] focus:drop-shadow"
                       />
                     </th>
-                    <th scope="row" class="">23344</th>
-                    <td class="px-5 py-5">کار با عملگر ها</td>
-                    <td class="px-5 py-5">00:39</td>
-                    <td class="px-5 py-5">جی اس</td>
-                    <td class="px-5 py-5">128</td>
+                    <th scope="row" class="">1</th>
+                    <td class="px-5 py-5">فرانت اند</td>
+                    <td class="px-5 py-5">frontend</td>
+                    <td class="px-5 py-5">برنامه نویسی</td>
 
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
@@ -431,6 +429,6 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script type="module" src="./js/sessions.js"></script>
+    <script type="module" src="./js/menus.js"></script>
   </body>
 </html>

@@ -1260,7 +1260,8 @@ input:focus {
 }
 
 .customize__inputs input,
-  .customize__inputs textarea {
+  .customize__inputs textarea,
+  .customize__inputs select {
   display: block;
   width: 100%;
   border-radius: 0.5rem;
@@ -1277,7 +1278,8 @@ input:focus {
 }
 
 .customize__inputs input:focus,
-  .customize__inputs textarea:focus {
+  .customize__inputs textarea:focus,
+  .customize__inputs select:focus {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
@@ -1285,7 +1287,8 @@ input:focus {
 }
 
 :is(.dark .customize__inputs input),:is(.dark 
-  .customize__inputs textarea) {
+  .customize__inputs textarea),:is(.dark 
+  .customize__inputs select) {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -1295,19 +1298,22 @@ input:focus {
 }
 
 :is(.dark .customize__inputs input)::-moz-placeholder, :is(.dark 
-  .customize__inputs textarea)::-moz-placeholder {
+  .customize__inputs textarea)::-moz-placeholder, :is(.dark 
+  .customize__inputs select)::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
 :is(.dark .customize__inputs input)::placeholder,:is(.dark 
-  .customize__inputs textarea)::placeholder {
+  .customize__inputs textarea)::placeholder,:is(.dark 
+  .customize__inputs select)::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
 :is(.dark .customize__inputs input:focus),:is(.dark 
-  .customize__inputs textarea:focus) {
+  .customize__inputs textarea:focus),:is(.dark 
+  .customize__inputs select:focus) {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
@@ -1316,7 +1322,8 @@ input:focus {
 
 @media (min-width: 640px) {
   .customize__inputs input,
-  .customize__inputs textarea {
+  .customize__inputs textarea,
+  .customize__inputs select {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
@@ -1352,55 +1359,6 @@ input:focus {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
-}
-
-.customize__inputs select {
-  display: block;
-  width: 100%;
-  border-radius: 0.5rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-  padding: 0.625rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.customize__inputs select:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(63 131 248 / var(--tw-border-opacity));
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(63 131 248 / var(--tw-ring-opacity));
-}
-
-:is(.dark .customize__inputs select) {
-  --tw-border-opacity: 1;
-  border-color: rgb(75 85 99 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-:is(.dark .customize__inputs select)::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
-}
-
-:is(.dark .customize__inputs select)::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
-}
-
-:is(.dark .customize__inputs select:focus) {
-  --tw-border-opacity: 1;
-  border-color: rgb(63 131 248 / var(--tw-border-opacity));
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(63 131 248 / var(--tw-ring-opacity));
 }
 
 .customize__inputs button {
@@ -1453,6 +1411,8 @@ input:focus {
 @media (min-width: 640px) {
   .customize__inputs button {
     width: auto;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
