@@ -314,70 +314,51 @@
     <div class="body__content mr-72">
       <header class="header"></header>
       <main>
-        <section class="new__user">
+        <section class="new__sessions">
           <div class="container">
-            <h1 class="title">افزودن کاربر جدید</h1>
+            <h1 class="title">افزودن قسمت جدید</h1>
             <form class="customize__inputs">
               <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                  <label for="first_name" class="">نام</label>
+                  <label for="title" class="">عنوان جلسه</label>
                   <input
                     type="text"
-                    id="first_name"
+                    id="title"
                     class=""
                     placeholder="علی"
                     required
                   />
                 </div>
                 <div>
-                  <label for="last_name" class="">نام خانوادگی</label>
+                  <label for="time" class="">مدت زمان جلسه</label>
                   <input
                     type="text"
-                    id="last_name"
+                    id="time"
                     class=""
                     placeholder="یوسفی"
                     required
                   />
                 </div>
                 <div class="">
-                  <label for="email" class="">آدرس ایمیل</label>
-                  <input
-                    type="email"
-                    id="email"
-                    class=""
-                    placeholder="ali.yousefi@gmail.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="phone" class="">رمز عبور</label>
-                  <input
-                    type="password"
-                    id="password"
-                    class=""
-                    placeholder="رمز عبور"
-                    pattern=""
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="phone" class="">شماره تلفن</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    class=""
-                    placeholder="09123456789"
-                    pattern="0?9[0-9]{9}"
-                    required
-                  />
+                  <label
+                    for="forCourse"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >انتخاب دوره</label
+                  >
+                  <select id="forCourse" class="">
+                    <option value="جی اس">جی اس</option>
+                    <option value="جی اس">جی اس</option>
+                    <option value="جی اس">جی اس</option>
+                    <option value="جی اس">جی اس</option>
+                  </select>
                 </div>
               </div>
 
-              <button type="submit" class="">افزودن کاربر</button>
+              <button type="submit" class="">افزودن جلسه</button>
             </form>
           </div>
         </section>
-        <section class="users__table">
+        <section class="sessions__table">
           <div class="container">
             <div
               class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main"
@@ -385,7 +366,7 @@
               <h4
                 class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800"
               >
-                لیست <span class="text-blue-primary">کاربران</span>
+                لیست <span class="text-blue-primary">جلسات</span>
               </h4>
               <table class="public__table">
                 <thead class="">
@@ -397,11 +378,10 @@
                       />
                     </th>
                     <th scope="col" class="">شناسه</th>
-                    <th scope="col" class="">نام</th>
-                    <th scope="col" class="">نام خانوادگی</th>
-                    <th scope="col" class="">شماره</th>
-                    <th scope="col" class="">ایمیل</th>
-                    <th scope="col" class="">رمز عبور</th>
+                    <th scope="col" class="">عنوان جلسه</th>
+                    <th scope="col" class="">مدت زمان جلسه</th>
+                    <th scope="col" class="">نام دوره</th>
+                    <th scope="col" class="">چندمین قسمت</th>
                     <th scope="col" class="">ویرایش</th>
                     <th scope="col" class="">حذف</th>
                   </tr>
@@ -415,11 +395,11 @@
                       />
                     </th>
                     <th scope="row" class="">23344</th>
-                    <td class="px-5 py-5">علی</td>
-                    <td class="px-5 py-5">سبزواری</td>
-                    <td class="px-5 py-5">09123456789</td>
-                    <td class="px-5 py-5">ali.sabzevari@gmail.com</td>
-                    <td class="px-5 py-5">aliSabzi7768</td>
+                    <td class="px-5 py-5">کار با عملگر ها</td>
+                    <td class="px-5 py-5">00:39</td>
+                    <td class="px-5 py-5">جی اس</td>
+                    <td class="px-5 py-5">128</td>
+
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
                     </td>
@@ -435,11 +415,11 @@
                       />
                     </th>
                     <th scope="row" class="">23344</th>
-                    <td class="px-5 py-5">علی</td>
-                    <td class="px-5 py-5">سبزواری</td>
-                    <td class="px-5 py-5">09123456789</td>
-                    <td class="px-5 py-5">ali.sabzevari@gmail.com</td>
-                    <td class="px-5 py-5">aliSabzi7768</td>
+                    <td class="px-5 py-5">کار با عملگر ها</td>
+                    <td class="px-5 py-5">00:39</td>
+                    <td class="px-5 py-5">جی اس</td>
+                    <td class="px-5 py-5">128</td>
+
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
                     </td>
@@ -455,6 +435,6 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script type="module" src="./js/users.js"></script>
+    <script type="module" src="./js/sessions.js"></script>
   </body>
 </html>
