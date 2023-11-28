@@ -102,12 +102,18 @@
   .title {
     @apply font-semibold md:text-2xl text-xl dark:text-white text-zinc-800 md:mb-8 mb-5;
   }
-  .customize__inputs input:not(input[type="file"]),
+  .customize__inputs input,
   .customize__inputs textarea {
     @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-lg text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
   }
+  .customize__inputs input[type="file"] {
+    @apply cursor-pointer focus:outline-none p-0;
+  }
   .customize__inputs label {
     @apply block mb-2 sm:text-lg text-sm font-semibold text-gray-900 dark:text-white;
+  }
+  .customize__inputs button {
+    @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
   }
 
   /* table */
@@ -118,10 +124,10 @@
     @apply text-lg text-gray-700 uppercase bg-blue-primary/20 dark:bg-blue-primary/20 dark:text-gray-300;
   }
   .public__table thead th {
-    @apply px-6 py-3;
+    @apply px-6 py-3 text-center;
   }
   .public__table tbody tr {
-    @apply text-base border-b dark:border-gray-700;
+    @apply text-base text-center border-b dark:border-gray-700;
   }
   .public__table tbody tr:last-of-type {
     @apply border-b-0;

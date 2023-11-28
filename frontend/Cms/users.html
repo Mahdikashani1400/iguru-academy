@@ -314,59 +314,70 @@
     <div class="body__content mr-72">
       <header class="header"></header>
       <main>
-        <section class="new__product">
+        <section class="new__user">
           <div class="container">
-            <h1 class="title">محصول جدید</h1>
+            <h1 class="title">افزودن کاربر</h1>
             <form class="customize__inputs">
-              <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
+              <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                  <label for="lable" class="">نام محصول</label>
+                  <label for="first_name" class="">نام</label>
                   <input
                     type="text"
-                    id="lable"
+                    id="first_name"
                     class=""
-                    placeholder="کتاب"
+                    placeholder="علی"
                     required
                   />
                 </div>
                 <div>
-                  <label for="price" class="">قیمت محصول</label>
+                  <label for="last_name" class="">نام خانوادگی</label>
                   <input
                     type="text"
-                    dir="ltr"
-                    id="price"
+                    id="last_name"
                     class=""
-                    placeholder="120000"
+                    placeholder="یوسفی"
                     required
                   />
                 </div>
-                <div>
-                  <label for="price" class="">تعداد محصول</label>
-                  <input
-                    type="text"
-                    id="count"
-                    class=""
-                    placeholder="550"
-                    required
-                  />
-                </div>
-
                 <div class="">
-                  <label class="" for="file_input">عکس محصول</label>
-                  <input class="" id="file_input" type="file" />
+                  <label for="email" class="">آدرس ایمیل</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class=""
+                    placeholder="ali.yousefi@gmail.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="phone" class="">رمز عبور</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class=""
+                    placeholder="رمز عبور"
+                    pattern=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="phone" class="">شماره تلفن</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    class=""
+                    placeholder="09123456789"
+                    pattern="0?9[0-9]{9}"
+                    required
+                  />
                 </div>
               </div>
 
-              <button
-                type="submit"
-                class="hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                افزودن محصول
-              </button>
+              <button type="submit" class="">افزودن کاربر</button>
             </form>
           </div>
         </section>
-        <section class="products__table">
+        <section class="users__table">
           <div class="container">
             <div
               class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main"
@@ -374,7 +385,7 @@
               <h4
                 class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800"
               >
-                لیست <span class="text-blue-primary">محصولات</span>
+                لیست <span class="text-blue-primary">کاربران</span>
               </h4>
               <table class="public__table">
                 <thead class="">
@@ -386,10 +397,11 @@
                       />
                     </th>
                     <th scope="col" class="">شناسه</th>
-                    <th scope="col" class="">نام محصول</th>
-                    <th scope="col" class="">تعداد</th>
-                    <th scope="col" class="">وضعیت</th>
-                    <th scope="col" class="">قیمت</th>
+                    <th scope="col" class="">نام</th>
+                    <th scope="col" class="">نام خانوادگی</th>
+                    <th scope="col" class="">شماره</th>
+                    <th scope="col" class="">ایمیل</th>
+                    <th scope="col" class="">رمز عبور</th>
                     <th scope="col" class="">ویرایش</th>
                     <th scope="col" class="">حذف</th>
                   </tr>
@@ -403,10 +415,11 @@
                       />
                     </th>
                     <th scope="row" class="">23344</th>
-                    <td class="px-5 py-5">کتاب HTML</td>
-                    <td class="px-5 py-5">550</td>
-                    <td class="px-5 py-5">در حال فروش</td>
-                    <td class="px-5 py-5">50,000</td>
+                    <td class="px-5 py-5">علی</td>
+                    <td class="px-5 py-5">سبزواری</td>
+                    <td class="px-5 py-5">09123456789</td>
+                    <td class="px-5 py-5">ali.sabzevari@gmail.com</td>
+                    <td class="px-5 py-5">aliSabzi7768</td>
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
                     </td>
@@ -421,11 +434,12 @@
                         class="rounded-[5px] focus:drop-shadow"
                       />
                     </th>
-                    <th scope="row" class="">23635</th>
-                    <td class="px-5 py-5">کتاب HTML</td>
-                    <td class="px-5 py-5">550</td>
-                    <td class="px-5 py-5">در حال فروش</td>
-                    <td class="px-5 py-5">50,000</td>
+                    <th scope="row" class="">23344</th>
+                    <td class="px-5 py-5">علی</td>
+                    <td class="px-5 py-5">سبزواری</td>
+                    <td class="px-5 py-5">09123456789</td>
+                    <td class="px-5 py-5">ali.sabzevari@gmail.com</td>
+                    <td class="px-5 py-5">aliSabzi7768</td>
                     <td class="px-4 py-5">
                       <a href="#" class="edit">ویرایش</a>
                     </td>
