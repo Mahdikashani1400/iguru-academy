@@ -138,12 +138,20 @@
   .public__table tbody tr th {
     @apply px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white;
   }
-  .public__table .remove {
+  .public__table tr .attention {
+    @apply bg-emerald-700 text-white;
+  }
+  .public__table tr .no__attention {
+    @apply bg-red-600 text-white;
+  }
+  .public__table .remove,
+  .public__table .reject {
     @apply px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700;
   }
   .public__table .edit,
   .public__table .see,
-  .public__table .answer {
+  .public__table .answer,
+  .public__table .accept {
     @apply px-4 py-2 rounded-lg text-white bg-blue-primary/90 hover:bg-blue-primary;
   }
 }

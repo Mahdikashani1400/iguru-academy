@@ -1531,7 +1531,22 @@ input:focus {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.public__table .remove {
+.public__table tr .attention {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 120 87 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.public__table tr .no__attention {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 36 36 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.public__table .remove,
+  .public__table .reject {
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(224 36 36 / var(--tw-bg-opacity));
@@ -1543,14 +1558,16 @@ input:focus {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.public__table .remove:hover {
+.public__table .remove:hover,
+  .public__table .reject:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(200 30 30 / var(--tw-bg-opacity));
 }
 
 .public__table .edit,
   .public__table .see,
-  .public__table .answer {
+  .public__table .answer,
+  .public__table .accept {
   border-radius: 0.5rem;
   background-color: rgb(105 108 255 / 0.9);
   padding-left: 1rem;
@@ -1563,7 +1580,8 @@ input:focus {
 
 .public__table .edit:hover,
   .public__table .see:hover,
-  .public__table .answer:hover {
+  .public__table .answer:hover,
+  .public__table .accept:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(105 108 255 / var(--tw-bg-opacity));
 }
