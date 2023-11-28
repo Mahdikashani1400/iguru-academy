@@ -1548,7 +1548,9 @@ input:focus {
   background-color: rgb(200 30 30 / var(--tw-bg-opacity));
 }
 
-.public__table .edit {
+.public__table .edit,
+  .public__table .see,
+  .public__table .answer {
   border-radius: 0.5rem;
   background-color: rgb(105 108 255 / 0.9);
   padding-left: 1rem;
@@ -1559,7 +1561,9 @@ input:focus {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.public__table .edit:hover {
+.public__table .edit:hover,
+  .public__table .see:hover,
+  .public__table .answer:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(105 108 255 / var(--tw-bg-opacity));
 }
@@ -1819,14 +1823,6 @@ input:focus {
 
 .w-full {
   width: 100%;
-}
-
-.w-25 {
-  width: 100px;
-}
-
-.w-50 {
-  width: 200px;
 }
 
 .flex-1 {

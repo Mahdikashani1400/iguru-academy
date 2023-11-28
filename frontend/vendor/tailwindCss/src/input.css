@@ -141,7 +141,9 @@
   .public__table .remove {
     @apply px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700;
   }
-  .public__table .edit {
+  .public__table .edit,
+  .public__table .see,
+  .public__table .answer {
     @apply px-4 py-2 rounded-lg text-white bg-blue-primary/90 hover:bg-blue-primary;
   }
 }
