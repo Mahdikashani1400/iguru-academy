@@ -314,7 +314,59 @@
     <div class="body__content mr-72">
       <header class="header"></header>
       <main>
-        <section class="messages__table">
+        <section class="new__menus">
+          <div class="container">
+            <h1 class="title">افزودن کد تخفیف</h1>
+            <form class="customize__inputs">
+              <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                  <label for="code" class="">کد تخفیف</label>
+                  <input
+                    type="text"
+                    id="code"
+                    class=""
+                    placeholder="norouz1400"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="percent" class="">درصد تخفیف</label>
+                  <input
+                    type="text"
+                    id="percent"
+                    class=""
+                    placeholder="50"
+                    required
+                  />
+                </div>
+                <div class="">
+                  <label for="course" class="">انتخاب دوره مورد نظر</label>
+                  <select id="course" class="">
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="expired" class=""
+                    >حداکثر مهلت استفاده ( روز )</label
+                  >
+                  <input
+                    type="text"
+                    id="expired"
+                    class=""
+                    placeholder="12"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="">افزودن کد</button>
+            </form>
+          </div>
+        </section>
+        <section class="menus__table">
           <div class="container">
             <div
               class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main"
@@ -322,83 +374,51 @@
               <h4
                 class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800"
               >
-                لیست <span class="text-blue-primary">کامنت ها</span>
+                لیست <span class="text-blue-primary">آیتم ها</span>
               </h4>
               <table class="public__table">
                 <thead class="">
                   <tr>
-                    <th scope="col" class="">
-                      <input
-                        type="checkbox"
-                        class="rounded-[5px] focus:drop-shadow"
-                      />
-                    </th>
                     <th scope="col" class="">شماره</th>
-                    <th scope="col" class="">ارسال کننده</th>
-                    <th scope="col" class="">ایمیل</th>
-                    <th scope="col" class="">شماره تماس</th>
-                    <th scope="col" class="">تاریخ ثبت</th>
-                    <th scope="col" class="">مشاهده</th>
-                    <th scope="col" class="">پاسخ</th>
-                    <th scope="col" class="">تایید</th>
-                    <th scope="col" class="">رد</th>
+                    <th scope="col" class="">کد تخفیف</th>
+                    <th scope="col" class="">سازنده</th>
+                    <th scope="col" class="">درصد</th>
+                    <th scope="col" class="">حداکثر مهلت استفاده</th>
+                    <th scope="col" class="">تعداد استفاده شده</th>
+                    <th scope="col" class="">تاریخ ساخت</th>
+
+                    <th scope="col" class="">ویرایش</th>
                     <th scope="col" class="">حذف</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="">
-                    <th scope="col" class="">
-                      <input
-                        type="checkbox"
-                        class="rounded-[5px] focus:drop-shadow"
-                      />
-                    </th>
-                    <th scope="row" class="attention">1</th>
-                    <td class="px-5 py-5">احمد میری</td>
-                    <td class="px-5 py-5">ahmad.miri@gmail.com</td>
-                    <td class="px-5 py-5">09123456789</td>
-                    <td class="px-5 py-5">2021-10-13</td>
+                    <th scope="row" class="">1</th>
+                    <td class="px-5 py-5">react_50</td>
+                    <td class="px-5 py-5">علی خدا دوست</td>
+                    <td class="px-5 py-5">70</td>
+                    <td class="px-5 py-5">2</td>
+                    <td class="px-5 py-5">3</td>
+                    <td class="px-5 py-5">2022-09-18</td>
 
                     <td class="px-4 py-5">
-                      <a href="#" class="see">مشاهده</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="answer">پاسخ</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="accept">تایید</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="reject">رد</a>
+                      <a href="#" class="edit">ویرایش</a>
                     </td>
                     <td class="px-4 py-5">
                       <a href="#" class="remove">حذف</a>
                     </td>
                   </tr>
                   <tr class="">
-                    <th scope="col" class="">
-                      <input
-                        type="checkbox"
-                        class="rounded-[5px] focus:drop-shadow"
-                      />
-                    </th>
-                    <th scope="row" class="no__attention">1</th>
-                    <td class="px-5 py-5">احمد میری</td>
-                    <td class="px-5 py-5">ahmad.miri@gmail.com</td>
-                    <td class="px-5 py-5">09123456789</td>
-                    <td class="px-5 py-5">2021-10-13</td>
+                    <th scope="row" class="">1</th>
+                    <td class="px-5 py-5">react_50</td>
+                    <td class="px-5 py-5">علی خدا دوست</td>
+                    <td class="px-5 py-5">70</td>
+                    <td class="px-5 py-5">2</td>
+                    <td class="px-5 py-5">3</td>
+                    <td class="px-5 py-5">2022-09-18</td>
 
                     <td class="px-4 py-5">
-                      <a href="#" class="see">مشاهده</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="answer">پاسخ</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="accept">تایید</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="reject">رد</a>
+                      <a href="#" class="edit">ویرایش</a>
                     </td>
                     <td class="px-4 py-5">
                       <a href="#" class="remove">حذف</a>
@@ -412,6 +432,6 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script type="module" src="./js/messages.js"></script>
+    <script type="module" src="./js/menus.js"></script>
   </body>
 </html>

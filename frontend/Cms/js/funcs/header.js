@@ -115,19 +115,9 @@ function insertHeaderTemplate(headerNav) {
       <span>کامنت ها</span></a
     ><a href="#"
       ><svg class="w-5 h-5">
-        <use href="#ticket"></use>
-      </svg>
-      <span>تیکت ها</span></a
-    ><a href="#"
-      ><svg class="w-5 h-5">
         <use href="#receipt-percent"></use>
       </svg>
       <span>کد های تخفیف</span></a
-    ><a href="#"
-      ><svg class="w-5 h-5">
-        <use href="#gift"></use>
-      </svg>
-      <span>تخفیف همگانی</span></a
     ><a href="#"
       ><svg class="w-5 h-5">
         <use href="#folder"></use>
