@@ -78,7 +78,7 @@ function insertHeaderTemplate(headerNav) {
         alt=""
       />
     </a>
-    <a href="index.html" class="bg-blue-primary/10 text-blue-primary">
+    <a href="index.html" class="">
       <svg class="w-5 h-5">
         <use href="#home"></use>
       </svg>
@@ -233,6 +233,15 @@ function insertHeaderTemplate(headerNav) {
   </div>
 
     `
+
+  const items = headerNav.querySelectorAll('a')
+  items.forEach(item => {
+    if (item.href === location.href) {
+      item.classList.add('active')
+    }
+  })
+
+
 
 }
 

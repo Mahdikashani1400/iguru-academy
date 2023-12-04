@@ -133,7 +133,6 @@ const sendComment = async (courseShortName, body, score, getAllComments) => {
     courseShortName,
     score,
   };
-  console.log(infoComment);
   await fetch(`http://localhost:4000/v1/comments`, {
     method: "POST",
     headers: {
@@ -143,7 +142,7 @@ const sendComment = async (courseShortName, body, score, getAllComments) => {
     body: JSON.stringify(infoComment),
   }).then((res) => {
     if (res.status === 201) {
-      showToast("دیدگاه شما با موفقیت ارسال شد.", "success", () => {});
+      showToast("دیدگاه شما با موفقیت ارسال شد.", "success", () => { });
     } else {
       showToast("مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.", "error");
     }
@@ -166,7 +165,7 @@ const answerComment = async (commentID, body, getAllComments) => {
     body: JSON.stringify(infoCommentAnswer),
   }).then((res) => {
     if (res.status === 201) {
-      showToast("دیدگاه شما با موفقیت ارسال شد.", "success", () => {});
+      showToast("دیدگاه شما با موفقیت ارسال شد.", "success", () => { });
     } else {
       showToast("مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.", "error");
     }
@@ -183,15 +182,13 @@ const changeDateToFa = (date) => {
 };
 
 const minuteToTimer = (time) => {
-  return `${
-    Math.floor(time / 60) > 9
+  return `${Math.floor(time / 60) > 9
       ? Math.floor(time / 60)
       : `0${Math.floor(time / 60)}`
-  }:${
-    Math.floor(time % 60) > 9
+    }:${Math.floor(time % 60) > 9
       ? Math.floor(time % 60)
       : `0${Math.floor(time % 60)}`
-  }`;
+    }`;
 };
 
 const changePriceNumberToFa = (priceNumber) => {

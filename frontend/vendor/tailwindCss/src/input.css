@@ -91,6 +91,9 @@
   .header__nav.mobile .header__menu svg {
     @apply w-9 h-9;
   }
+  .header__menu a.active {
+    @apply bg-blue-primary/10 text-blue-primary;
+  }
 
   /* mony__info */
 
