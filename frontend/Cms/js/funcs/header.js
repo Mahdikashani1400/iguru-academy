@@ -78,52 +78,52 @@ function insertHeaderTemplate(headerNav) {
         alt=""
       />
     </a>
-    <a href="#" class="bg-blue-primary/10 text-blue-primary">
+    <a href="index.html" class="bg-blue-primary/10 text-blue-primary">
       <svg class="w-5 h-5">
         <use href="#home"></use>
       </svg>
       <span>صفحه اصلی</span></a
-    ><a href="#"
+    ><a href="courses.html"
       ><svg class="w-5 h-5">
         <use href="#book-open"></use>
       </svg>
       <span>دوره ها</span></a
-    ><a href="#"
+    ><a href="products.html"
       ><svg class="w-5 h-5">
         <use href="#shopping-bag"></use>
       </svg>
       <span>محصولات</span></a
-    ><a href="#"
+    ><a href="menus.html"
       ><svg class="w-5 h-5">
         <use href="#bars-3"></use>
       </svg>
       <span>منو ها</span></a
-    ><a href="#"
+    ><a href="articles.html"
       ><svg class="w-5 h-5">
         <use href="#document-text"></use>
       </svg>
       <span>مقاله ها</span></a
-    ><a href="#"
+    ><a href="users.html"
       ><svg class="w-5 h-5">
         <use href="#users"></use>
       </svg>
       <span>کاربران</span></a
-    ><a href="#"
+    ><a href="comments.html"
       ><svg class="w-5 h-5">
         <use href="#chat-bubble-left-right"></use>
       </svg>
       <span>کامنت ها</span></a
-    ><a href="#"
+    ><a href="discount.html"
       ><svg class="w-5 h-5">
         <use href="#receipt-percent"></use>
       </svg>
       <span>کد های تخفیف</span></a
-    ><a href="#"
+    ><a href="categories.html"
       ><svg class="w-5 h-5">
         <use href="#folder"></use>
       </svg>
       <span>دسته بندی ها</span></a
-    ><a href="#"
+    ><a href="messages.html"
       ><svg class="w-5 h-5">
         <use href="#envelope"></use>
       </svg>
