@@ -340,8 +340,8 @@
                   />
                 </div>
                 <div class="">
-                  <label for="parent" class="">انتخاب پرنت</label>
-                  <select id="parent" class="">
+                  <label for="itemParent" class="">انتخاب پرنت</label>
+                  <select id="itemParent" class="">
                     <option value="محصولات">محصولات</option>
                     <option value="محصولات">محصولات</option>
                     <option value="محصولات">محصولات</option>
@@ -350,7 +350,9 @@
                 </div>
               </div>
 
-              <button type="submit" class="">افزودن آیتم</button>
+              <button type="submit" class="" id="addItemBtn">
+                افزودن آیتم
+              </button>
             </form>
           </div>
         </section>
@@ -429,6 +431,7 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="./js/menus.js"></script>
   </body>
 </html>

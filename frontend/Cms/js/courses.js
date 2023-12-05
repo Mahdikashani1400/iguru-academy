@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getCourses, getCategoryOfCourses } from "./funcs/shared.js"
+import { getCourses, getCategoryOfCourses, changePriceNumberToFa } from "./funcs/shared.js"
 
 
 const $ = document;
@@ -39,7 +39,7 @@ const getCoursesTable = () => {
       <td class="px-5 py-5">${course.categoryID.name}</td>
       <td class="px-5 py-5">${course.status === 'start' ? "شروع شده" : ""}</td>
       <td class="px-5 py-5">${course.registers}</td>
-      <td class="px-5 py-5">${course.price}</td>
+      <td class="px-5 py-5">${changePriceNumberToFa(course.price)}</td>
       <td class="px-4 py-5">
       <a href="#" class="edit">ویرایش</a>
       </td>

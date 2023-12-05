@@ -156,4 +156,11 @@
   .public__table .accept {
     @apply px-4 py-2 rounded-lg text-white bg-blue-primary/90 hover:bg-blue-primary;
   }
+
+  /* zoom */
+  @media screen and (min-width: 1400px) {
+    html {
+      zoom: 0.8;
+    }
+  }
 }

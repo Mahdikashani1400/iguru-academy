@@ -375,8 +375,7 @@ async function showMenus() {
       fixMenuContainer.insertAdjacentHTML(
         "beforeend",
         `
-        <li class="nav-item dropdown ${
-          location.href.includes(menuInfo.href) ? "active" : ""
+        <li class="nav-item dropdown ${location.href.includes(menuInfo.href) ? "active" : ""
         }"
         onmouseenter="lineBottomItemHandler(event)"
         onmouseleave="lineBottomItemHandler(event)">
@@ -396,8 +395,7 @@ async function showMenus() {
             (subsmenu) =>
               `
         <li class="dropdown-submenu dropend">
-        <a href="${subsmenu.href}" class="dropdown-item ${
-                location.href.includes(subsmenu.href) ? "active" : ""
+        <a href="${subsmenu.href}" class="dropdown-item ${location.href.includes(subsmenu.href) ? "active" : ""
               } text-white "
           >${subsmenu.title}</a
         >
@@ -414,8 +412,7 @@ async function showMenus() {
       scrollMenuContainer.insertAdjacentHTML(
         "beforeend",
         `
-        <li class="nav-item dropdown ${
-          location.href.includes(menuInfo.href) ? "active" : ""
+        <li class="nav-item dropdown ${location.href.includes(menuInfo.href) ? "active" : ""
         }"
         onmouseenter="lineBottomItemHandler(event)"
         onmouseleave="lineBottomItemHandler(event)">
@@ -435,8 +432,7 @@ async function showMenus() {
             (subsmenu) =>
               `
         <li class="dropdown-submenu dropend">
-        <a href="${subsmenu.href}" class="dropdown-item ${
-                location.href.includes(subsmenu.href) ? "active" : ""
+        <a href="${subsmenu.href}" class="dropdown-item ${location.href.includes(subsmenu.href) ? "active" : ""
               } text-white "
           >${subsmenu.title}</a
         >
@@ -454,9 +450,8 @@ async function showMenus() {
       fixMenuContainer.insertAdjacentHTML(
         "beforeend",
         `
-      <li class="nav-item ${
-        location.href.includes(menuInfo.href) ? "active" : ""
-      }"
+      <li class="nav-item ${location.href.includes(menuInfo.href) ? "active" : ""
+        }"
       onmouseenter="lineBottomItemHandler(event)"
       onmouseleave="lineBottomItemHandler(event)">
       <a
@@ -470,9 +465,8 @@ async function showMenus() {
       scrollMenuContainer.insertAdjacentHTML(
         "beforeend",
         `
-      <li class="nav-item ${
-        location.href.includes(menuInfo.href) ? "active" : ""
-      }"
+      <li class="nav-item ${location.href.includes(menuInfo.href) ? "active" : ""
+        }"
       onmouseenter="lineBottomItemHandler(event)"
       onmouseleave="lineBottomItemHandler(event)">
       <a

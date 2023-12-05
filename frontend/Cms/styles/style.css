@@ -1552,6 +1552,14 @@ input:focus {
   background-color: rgb(105 108 255 / var(--tw-bg-opacity));
 }
 
+/* zoom */
+
+@media screen and (min-width: 1400px) {
+  html {
+    zoom: 0.8;
+  }
+}
+
 .visible {
   visibility: visible;
 }
