@@ -1,9 +1,11 @@
-const showSwal = (title, icon, confirmButtonText, callback) => {
+const showSwal = (title, icon, [confirmButtonText, cancelButtonText], callback) => {
     swal
         .fire({
             title,
             icon,
             confirmButtonText,
+            cancelButtonText,
+            showCancelButton: true,
         })
         .then((result) => {
             callback ? callback(result) : null;

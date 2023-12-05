@@ -21,7 +21,6 @@ window.addEventListener("load", async () => {
 const coursesTable = $.querySelector(".courses__table tbody")
 let numId = 20110
 const getCoursesTable = () => {
-    console.log(coursesInfo);
     coursesTable.innerHTML = `
     ${coursesInfo.map((course, index) => {
         if (course.categoryID.title === 'course') {

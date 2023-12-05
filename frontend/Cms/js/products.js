@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getCourses, getCategoryOfCourses } from "./funcs/shared.js"
+import { getCourses, getCategoryOfCourses, changePriceNumberToFa } from "./funcs/shared.js"
 
 
 const $ = document;

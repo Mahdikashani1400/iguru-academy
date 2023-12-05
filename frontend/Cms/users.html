@@ -320,20 +320,20 @@
             <form class="customize__inputs">
               <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                  <label for="first_name" class="">نام</label>
+                  <label for="firstName" class="">نام و نام خانوادگی</label>
                   <input
                     type="text"
-                    id="first_name"
+                    id="firstName"
                     class=""
                     placeholder="علی"
                     required
                   />
                 </div>
                 <div>
-                  <label for="last_name" class="">نام خانوادگی</label>
+                  <label for="last_name" class="">نام کاربری</label>
                   <input
                     type="text"
-                    id="last_name"
+                    id="userName"
                     class=""
                     placeholder="یوسفی"
                     required
@@ -373,7 +373,9 @@
                 </div>
               </div>
 
-              <button type="submit" class="">افزودن کاربر</button>
+              <button type="submit" class="" id="addUserBtn">
+                افزودن کاربر
+              </button>
             </form>
           </div>
         </section>
@@ -396,14 +398,16 @@
                         class="rounded-[5px] focus:drop-shadow"
                       />
                     </th>
-                    <th scope="col" class="">شناسه</th>
-                    <th scope="col" class="">نام</th>
-                    <th scope="col" class="">نام خانوادگی</th>
+                    <th scope="col" class="">شماره</th>
+                    <th scope="col" class="">نام و نام خانوادگی</th>
+
+                    <th scope="col" class="">نام کاربری</th>
                     <th scope="col" class="">شماره</th>
                     <th scope="col" class="">ایمیل</th>
-                    <th scope="col" class="">رمز عبور</th>
+                    <th scope="col" class="">نقش</th>
                     <th scope="col" class="">ویرایش</th>
                     <th scope="col" class="">حذف</th>
+                    <th scope="col" class="">بن</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -455,6 +459,8 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script type="module" src="./js/users.js"></script>
   </body>
 </html>

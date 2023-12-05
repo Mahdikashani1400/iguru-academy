@@ -1,5 +1,6 @@
 import { createHeader } from "./funcs/header.js"
 import { getMenus, addMenuItem, removeItem } from "./funcs/shared.js"
+import { showSwal } from "./funcs/utils.js";
 
 const $ = document;
 let menusInfo = null
@@ -99,13 +100,18 @@ addItemBtn.addEventListener('click', createMenu)
 window.ItemInfoHandler = ItemInfoHandler
 let targetItemId = null
 async function ItemInfoHandler(e) {
+  e.preventDefault()
+
   targetItemId = e.currentTarget.id
   if (e.target.classList.contains('remove')) {
-
-    await removeItem(targetItemId)
+    showSwal('آیا از حذف آیتم مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
+      if (res.isConfirmed) {
+        await removeItem(targetItemId)
+        cleanAndGetInfo()
+      }
+    })
 
   }
-  cleanAndGetInfo()
 
 }
 function clearInputs() {

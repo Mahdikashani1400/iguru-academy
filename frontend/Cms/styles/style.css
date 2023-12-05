@@ -1267,7 +1267,8 @@ input:focus {
 
 .customize__inputs input,
   .customize__inputs textarea,
-  .customize__inputs select {
+  .customize__inputs select,
+  .contain-input-swal input {
   display: block;
   width: 100%;
   border-radius: 0.5rem;
@@ -1285,7 +1286,8 @@ input:focus {
 
 .customize__inputs input:focus,
   .customize__inputs textarea:focus,
-  .customize__inputs select:focus {
+  .customize__inputs select:focus,
+  .contain-input-swal input:focus {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
@@ -1294,7 +1296,8 @@ input:focus {
 
 :is(.dark .customize__inputs input),:is(.dark 
   .customize__inputs textarea),:is(.dark 
-  .customize__inputs select) {
+  .customize__inputs select),:is(.dark 
+  .contain-input-swal input) {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -1305,21 +1308,24 @@ input:focus {
 
 :is(.dark .customize__inputs input)::-moz-placeholder, :is(.dark 
   .customize__inputs textarea)::-moz-placeholder, :is(.dark 
-  .customize__inputs select)::-moz-placeholder {
+  .customize__inputs select)::-moz-placeholder, :is(.dark 
+  .contain-input-swal input)::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
 :is(.dark .customize__inputs input)::placeholder,:is(.dark 
   .customize__inputs textarea)::placeholder,:is(.dark 
-  .customize__inputs select)::placeholder {
+  .customize__inputs select)::placeholder,:is(.dark 
+  .contain-input-swal input)::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
 :is(.dark .customize__inputs input:focus),:is(.dark 
   .customize__inputs textarea:focus),:is(.dark 
-  .customize__inputs select:focus) {
+  .customize__inputs select:focus),:is(.dark 
+  .contain-input-swal input:focus) {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
@@ -1329,7 +1335,8 @@ input:focus {
 @media (min-width: 640px) {
   .customize__inputs input,
   .customize__inputs textarea,
-  .customize__inputs select {
+  .customize__inputs select,
+  .contain-input-swal input {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
@@ -1345,7 +1352,8 @@ input:focus {
   outline-offset: 2px;
 }
 
-.customize__inputs label {
+.customize__inputs label,
+  .contain-input-swal label {
   margin-bottom: 0.5rem;
   display: block;
   font-size: 0.875rem;
@@ -1355,13 +1363,15 @@ input:focus {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-:is(.dark .customize__inputs label) {
+:is(.dark .customize__inputs label),:is(.dark 
+  .contain-input-swal label) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px) {
-  .customize__inputs label {
+  .customize__inputs label,
+  .contain-input-swal label {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
@@ -1512,7 +1522,8 @@ input:focus {
 }
 
 .public__table .remove,
-  .public__table .reject {
+  .public__table .reject,
+  .public__table .ban {
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(224 36 36 / var(--tw-bg-opacity));
@@ -1525,9 +1536,22 @@ input:focus {
 }
 
 .public__table .remove:hover,
-  .public__table .reject:hover {
+  .public__table .reject:hover,
+  .public__table .ban:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(200 30 30 / var(--tw-bg-opacity));
+}
+
+.public__table .reject,
+  .public__table .ban {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 28 28 / var(--tw-bg-opacity));
+}
+
+.public__table .reject:hover,
+  .public__table .ban:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(119 29 29 / var(--tw-bg-opacity));
 }
 
 .public__table .edit,
@@ -1551,6 +1575,8 @@ input:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(105 108 255 / var(--tw-bg-opacity));
 }
+
+/* users_input */
 
 /* zoom */
 
