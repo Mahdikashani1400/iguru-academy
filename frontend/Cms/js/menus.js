@@ -79,10 +79,10 @@ const itemParentHandler = () => {
 
 }
 
+const title = $.getElementById('title')
+const destination = $.getElementById('destination')
 const createMenu = async (e) => {
   e.preventDefault()
-  const title = $.getElementById('title')
-  const destination = $.getElementById('destination')
   const itemParent = $.getElementById('itemParent')
   const itemParentId = menusInfo.find(item => {
     return item.title === itemParent.value
@@ -115,8 +115,7 @@ async function ItemInfoHandler(e) {
 
 }
 function clearInputs() {
-  const title = $.getElementById('title')
-  const destination = $.getElementById('destination')
+
   title.value = ''
   destination.value = ''
 }
