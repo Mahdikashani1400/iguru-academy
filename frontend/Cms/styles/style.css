@@ -931,6 +931,16 @@ input:focus {
   box-shadow: none !important;
 }
 
+/* zoom */
+
+@media screen and (min-width: 1400px) {
+  html {
+    zoom: 0.8;
+  }
+}
+
+/*  */
+
 @font-face {
   font-family: IRANSans;
 
@@ -1352,8 +1362,7 @@ input:focus {
   outline-offset: 2px;
 }
 
-.customize__inputs label,
-  .contain-input-swal label {
+.customize__inputs label {
   margin-bottom: 0.5rem;
   display: block;
   font-size: 0.875rem;
@@ -1363,15 +1372,13 @@ input:focus {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-:is(.dark .customize__inputs label),:is(.dark 
-  .contain-input-swal label) {
+:is(.dark .customize__inputs label) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px) {
-  .customize__inputs label,
-  .contain-input-swal label {
+  .customize__inputs label {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
@@ -1578,12 +1585,13 @@ input:focus {
 
 /* users_input */
 
-/* zoom */
+.contain-input-swal {
+  margin-bottom: 1.5rem;
+}
 
-@media screen and (min-width: 1400px) {
-  html {
-    zoom: 0.8;
-  }
+.contain-input-swal input {
+  margin-top: 0.5rem;
+  width: -webkit-fill-available;
 }
 
 .visible {

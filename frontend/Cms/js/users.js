@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getUsersInfo, newUserFetch, removeUser, banUser } from "./funcs/shared.js"
+import { getUsersInfo, newUserFetch, removeUser, banUser, editUserInfo } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js";
 
 const $ = document;
@@ -16,11 +16,10 @@ window.addEventListener("load", async () => {
 })
 
 const usersTable = $.querySelector(".users__table tbody")
-let numId = 20110
 
 function getUsersTable() {
     usersTable.innerHTML = `
-    ${usersInfo.map((user) => {
+    ${usersInfo.map((user, index) => {
         return `
             <tr class="" id="${user._id}" onclick="userInfoHandler(event)">
             <th scope="col" class="">
@@ -29,7 +28,7 @@ function getUsersTable() {
                 class="rounded-[5px] focus:drop-shadow"
               />
             </th>
-            <th scope="row" class="">${++numId}</th>
+            <th scope="row" class="">${++index}</th>
             <td class="px-5 py-5">${user.name}</td>
             <td class="px-5 py-5">${user.username}</td>
             <td class="px-5 py-5">${user.phone}</td>
@@ -119,57 +118,38 @@ async function userInfoHandler(e) {
             }
         })
     } else if (e.target.classList.contains("edit")) {
+        const userTargetInfo = usersInfo.find(user => user._id === targetUserId)
         let { value: formValues } = await swal.fire({
             title: "ویرایش کاربر",
             html:
-                `<div class="contain-input-swal"><lable>نام کاربری</lable> <input id="swal-input1" class="swal2-input "value=""></div>` +
-                `<div class="contain-input-swal"><lable>ایمیل</lable> <input id="swal-input2" type="email" class="swal2-input" value=""></div>` +
-                `<div class="contain-input-swal"><lable>رمز ورود</lable> <input id="swal-input3" type="password" class="swal2-input" value=""></div>`,
-            preConfirm: () => {
-                username = document.getElementById("swal-input1").value;
-                email = document.getElementById("swal-input2").value;
-                password = document.getElementById("swal-input3").value;
-                if (
-                    username.trim().length > 3 &&
-                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password) &&
-                    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
-                ) {
-                    hasUser = usersInfo.some((user) => {
-                        if (user.id != id) {
-                            return user.username === username.trim();
-                        }
-                    });
-                    hasEmail = usersInfo.some((user) => {
-                        if (user.id != id) {
-                            return user.email === email.trim();
-                        }
-                    });
-                    if (hasUser) {
-                        Toast.fire({
-                            icon: "warning",
-                            text: "نام کاربری تکراری میباشد!",
-                            timer: 3000,
-                        });
-                    } else if (hasEmail) {
-                        Toast.fire({
-                            icon: "warning",
-                            text: "ایمیل تکراری میباشد!",
-                            timer: 3000,
-                        });
-                    }
+                `<div class="contain-input-swal"><lable>نام و نام خانوادگی</lable> <input id="swalFirstName" class="swal2-input" value="${userTargetInfo.name}"></div>` +
+                `<div class="contain-input-swal"><lable>نام کاربری</lable> <input id="swalUserName" class="swal2-input" value="${userTargetInfo.username}"></div>` +
+                `<div class="contain-input-swal"><lable>ایمیل</lable> <input id="swalEmail" type="email" class="swal2-input"  value="${userTargetInfo.email}"></div>` +
 
-                    return {
-                        id,
-                        username: username.trim(),
-                        email: email.trim(),
-                        password,
-                    };
-                } else {
-                    Swal.showValidationMessage(
-                        `لطفا اطلاعات خواسته شده را به درستی وارد کنید.`
-                    );
-                }
-            },
+                `<div class="contain-input-swal"><lable>رمز عبور جدید</lable> <input id="swalPassword" type="password" class="swal2-input" value=""></div>`
+                +
+                `<div class="contain-input-swal"><lable>شماره</lable> <input id="swalPhone" class="swal2-input" value="${userTargetInfo.phone}"></div>`,
+            confirmButtonText: 'تصحیح اطلاعات',
+            showCancelButton: true,
+            cancelButtonText: 'لغو',
+
+            preConfirm: () => {
+                const swalFirstNameValue = $.getElementById('swalFirstName').value
+                const swalUserNameValue = $.getElementById('swalUserName').value
+                const swalEmailValue = $.getElementById('swalEmail').value
+                const swalPasswordValue = $.getElementById('swalPassword').value
+                const swalPhoneValue = $.getElementById('swalPhone').value
+                editUserInfo(
+                    targetUserId,
+                    swalFirstNameValue,
+                    swalUserNameValue,
+                    swalEmailValue,
+                    swalPasswordValue,
+                    swalPhoneValue,
+                )
+
+            }
+
         });
     }
 }

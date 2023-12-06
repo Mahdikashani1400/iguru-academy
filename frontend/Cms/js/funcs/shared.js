@@ -139,6 +139,36 @@ const banUser = async (id, body) => {
     });
 
 }
+
+const editUserInfo = async (id, name, username, email, password, phone) => {
+    const newInfo = { username, email, password, name, phone }
+    console.log(newInfo);
+    await fetch(`http://localhost:4000/v1/users/${id}`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newInfo),
+    }).then(async (res) => {
+        console.log(res);
+        if (res.status === 200) {
+
+            showToast("اطلاعات کاربر مورد نظر با موفقیت ویرایش شد.", "success");
+
+        } else if (res.status === 409) {
+
+            showToast("اطلاعات داده شده تکراری میباشند .", "error");
+
+        } else if (res.status === 400) {
+
+            showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
+
+        }
+        return res.json();
+    });
+
+}
 const changePriceNumberToFa = (priceNumber) => {
     return priceNumber
         ? Number(priceNumber).toLocaleString("fa-IR") + " تومان"
@@ -155,5 +185,6 @@ export {
     getUsersInfo,
     newUserFetch,
     removeUser,
-    banUser
+    banUser,
+    editUserInfo
 }

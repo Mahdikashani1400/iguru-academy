@@ -17,6 +17,19 @@
   input:focus {
     box-shadow: none !important;
   }
+  .swal2-container.swal2-rtl.swal2-center.swal2-backdrop-show {
+    background: red !important;
+    @apply bg-red-600;
+  }
+  /* zoom */
+  @media screen and (min-width: 1400px) {
+    html {
+      zoom: 0.8;
+    }
+  }
+
+  /*  */
+
   @font-face {
     font-family: IRANSans;
     src: local("IRANSans"), url("../../fonts/IRANSans/IRANSans_Light.ttf");
@@ -114,8 +127,7 @@
   .customize__inputs input[type="file"] {
     @apply cursor-pointer focus:outline-none p-0;
   }
-  .customize__inputs label,
-  .contain-input-swal label {
+  .customize__inputs label {
     @apply block mb-2 sm:text-lg text-sm font-semibold text-gray-900 dark:text-white;
   }
 
@@ -165,14 +177,11 @@
   }
 
   /* users_input */
-  .swal2-modal {
-    @apply dark:bg-zinc-700 bg-gray-100;
-  }
 
-  /* zoom */
-  @media screen and (min-width: 1400px) {
-    html {
-      zoom: 0.8;
-    }
+  .contain-input-swal {
+    @apply mb-6;
+  }
+  .contain-input-swal input {
+    @apply w-[-webkit-fill-available] mt-2;
   }
 }

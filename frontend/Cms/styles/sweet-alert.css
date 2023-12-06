@@ -1,0 +1,23 @@
+.dark .swal2-popup.swal2-modal.swal2-show {
+  border-radius: 10px;
+  background-color: rgb(20, 20, 30);
+  color: #fff;
+}
+.swal2-actions {
+  gap: 2rem;
+}
+.swal2-confirm,
+.swal2-cancel {
+  padding: 0.8rem 0 !important;
+  width: 140px;
+}
+.swal2-cancel {
+  background-color: #dc2626 !important;
+}
+
+.dark .swal2-success-fix,
+.dark .swal2-success-circular-line-right,
+.dark .swal2-success-circular-line-left {
+  /* display: none; */
+  background-color: rgb(20, 20, 30) !important;
+}
