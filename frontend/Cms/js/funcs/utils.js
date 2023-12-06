@@ -18,7 +18,7 @@ const showToast = (title, icon, callback) => {
             icon,
             title,
             showConfirmButton: false,
-            // timer: 2000,
+            timer: 2000,
             timerProgressBar: true,
         })
         .then((result) => {

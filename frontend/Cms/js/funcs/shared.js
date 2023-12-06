@@ -52,9 +52,9 @@ const addMenuItem = async (title, href, parent) => {
         return res.json();
     });
 }
-const removeItem = async (id) => {
+const removeTarget = async (id, target, targetFa) => {
 
-    await fetch(`http://localhost:4000/v1/menus/${id}`, {
+    await fetch(`http://localhost:4000/v1/${target}/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
@@ -62,7 +62,7 @@ const removeItem = async (id) => {
         },
     }).then((res) => {
 
-        showToast("آیتم مد نظر با موفقیت حذف شد.", "success");
+        showToast(`${targetFa} مد نظر با موفقیت حذف شد.`, "success");
 
         return res.json();
     });
@@ -106,22 +106,7 @@ const newUserFetch = async (username, email, password, confirmPassword, name, ph
     });
 
 }
-const removeUser = async (id) => {
 
-    await fetch(`http://localhost:4000/v1/users/${id}`, {
-        method: "DELETE",
-        headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
-            "Content-Type": "application/json",
-        },
-    }).then((res) => {
-
-        showToast("کاربر مد نظر با موفقیت حذف شد.", "success");
-
-        return res.json();
-    });
-
-}
 const banUser = async (id, body) => {
 
     await fetch(`http://localhost:4000/v1/users/${id}`, {
@@ -169,6 +154,46 @@ const editUserInfo = async (id, name, username, email, password, phone) => {
     });
 
 }
+
+
+const getDiscounts = async () => {
+    const res = await fetch("http://localhost:4000/v1/offs", {
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            "Content-Type": "application/json",
+        }
+    },);
+
+    const result = await res.json();
+    return result;
+}
+
+const addOff = async (code, percent, course, max) => {
+    const newDiscount = { code, percent, course, max }
+    await fetch("http://localhost:4000/v1/offs/", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newDiscount),
+    }).then(async (res) => {
+        if (res.status === 201) {
+
+            showToast("کد تخفیف مد نظر با موفقیت اضافه شد.", "success");
+
+        } else if (res.status === 409) {
+
+            showToast("اطلاعات داده شده تکراری میباشند .", "error");
+
+        } else if (res.status === 400) {
+
+            showToast("لطفا اطلاعات کد خود را به طور کامل وارد کنید.", "error");
+
+        }
+        return res.json();
+    });
+}
 const changePriceNumberToFa = (priceNumber) => {
     return priceNumber
         ? Number(priceNumber).toLocaleString("fa-IR") + " تومان"
@@ -181,10 +206,12 @@ export {
     getCategoryOfCourses,
     changePriceNumberToFa,
     addMenuItem,
-    removeItem,
+    removeTarget,
     getUsersInfo,
     newUserFetch,
-    removeUser,
+
     banUser,
-    editUserInfo
+    editUserInfo,
+    getDiscounts,
+    addOff
 }

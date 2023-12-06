@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css" />
+    
   </head>
   <body>
     <svg class="hidden">
@@ -340,8 +341,10 @@
                   />
                 </div>
                 <div class="">
-                  <label for="course" class="">انتخاب دوره مورد نظر</label>
-                  <select id="course" class="">
+                  <label for="courseSelect" class=""
+                    >انتخاب دوره مورد نظر</label
+                  >
+                  <select id="courseSelect" class="">
                     <option value="زبان انگلیسی">زبان انگلیسی</option>
                     <option value="زبان انگلیسی">زبان انگلیسی</option>
                     <option value="زبان انگلیسی">زبان انگلیسی</option>
@@ -349,12 +352,10 @@
                   </select>
                 </div>
                 <div>
-                  <label for="expired" class=""
-                    >حداکثر مهلت استفاده ( روز )</label
-                  >
+                  <label for="max" class="">حداکثر مهلت استفاده ( روز )</label>
                   <input
                     type="text"
-                    id="expired"
+                    id="max"
                     class=""
                     placeholder="12"
                     required
@@ -362,11 +363,11 @@
                 </div>
               </div>
 
-              <button type="submit" class="">افزودن کد</button>
+              <button type="submit" class="" id="addOffBtn">افزودن کد</button>
             </form>
           </div>
         </section>
-        <section class="menus__table">
+        <section class="discounts__table">
           <div class="container">
             <div
               class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main"
@@ -432,6 +433,7 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script type="module" src="./js/menus.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="./js/discount.js"></script>
   </body>
 </html>

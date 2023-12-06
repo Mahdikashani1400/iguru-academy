@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getUsersInfo, newUserFetch, removeUser, banUser, editUserInfo } from "./funcs/shared.js"
+import { getUsersInfo, newUserFetch, removeTarget, banUser, editUserInfo } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js";
 
 const $ = document;
@@ -75,6 +75,7 @@ addUserBtn.addEventListener('click', addNewUser)
 
 
 async function cleanAndGetInfo() {
+    console.log('gg');
     await getUsersInfo().then(data => {
         usersInfo = data[0] ? data : []
 
@@ -98,7 +99,7 @@ async function userInfoHandler(e) {
     if (e.target.classList.contains('remove')) {
         showSwal('آیا از حذف کاربر مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {
-                await removeUser(targetUserId)
+                await removeTarget(targetUserId, "users", "کاربر")
 
                 cleanAndGetInfo()
             }
@@ -119,7 +120,7 @@ async function userInfoHandler(e) {
         })
     } else if (e.target.classList.contains("edit")) {
         const userTargetInfo = usersInfo.find(user => user._id === targetUserId)
-        let { value: formValues } = await swal.fire({
+        await swal.fire({
             title: "ویرایش کاربر",
             html:
                 `<div class="contain-input-swal"><lable>نام و نام خانوادگی</lable> <input id="swalFirstName" class="swal2-input" value="${userTargetInfo.name}"></div>` +
@@ -133,13 +134,13 @@ async function userInfoHandler(e) {
             showCancelButton: true,
             cancelButtonText: 'لغو',
 
-            preConfirm: () => {
+            preConfirm: async () => {
                 const swalFirstNameValue = $.getElementById('swalFirstName').value
                 const swalUserNameValue = $.getElementById('swalUserName').value
                 const swalEmailValue = $.getElementById('swalEmail').value
                 const swalPasswordValue = $.getElementById('swalPassword').value
                 const swalPhoneValue = $.getElementById('swalPhone').value
-                editUserInfo(
+                await editUserInfo(
                     targetUserId,
                     swalFirstNameValue,
                     swalUserNameValue,
@@ -151,5 +152,6 @@ async function userInfoHandler(e) {
             }
 
         });
+        cleanAndGetInfo()
     }
 }

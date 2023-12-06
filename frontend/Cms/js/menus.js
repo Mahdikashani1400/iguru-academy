@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getMenus, addMenuItem, removeItem } from "./funcs/shared.js"
+import { getMenus, addMenuItem, removeTarget } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js";
 
 const $ = document;
@@ -106,7 +106,7 @@ async function ItemInfoHandler(e) {
   if (e.target.classList.contains('remove')) {
     showSwal('آیا از حذف آیتم مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
       if (res.isConfirmed) {
-        await removeItem(targetItemId)
+        await removeTarget(targetItemId, "menus", "آیتم")
         cleanAndGetInfo()
       }
     })
