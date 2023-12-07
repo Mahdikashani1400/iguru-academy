@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addCategory, removeTarget } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget, UpdateTarget } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 const $ = document;
 let categoriesInfo = null
@@ -8,9 +8,10 @@ window.addEventListener("load", async () => {
     // sizeOfMenuHandler()
     createHeader()
     await getTarget("category").then(data => {
-        categoriesInfo = data[0] ? data : []
+        categoriesInfo = data[0] ? data.reverse() : []
 
     })
+    console.log(categoriesInfo);
     getCategoriesTable()
 })
 
@@ -42,8 +43,9 @@ const destination = $.getElementById('destination')
 const createCategory = async (e) => {
     e.preventDefault()
 
+    const newCategory = { title: destination.value, name: title.value }
 
-    await addCategory(title.value, destination.value).then(res => {
+    await addTarget("category", "دسته بندی", newCategory, "author").then(res => {
     })
     cleanAndGetInfo()
 
@@ -66,6 +68,30 @@ async function categoryInfoHandler(e) {
             }
         })
 
+    } else if (e.target.classList.contains("edit")) {
+        const categoryTargetInfo = categoriesInfo.find(category => category._id === targetCategoryId)
+        await swal.fire({
+            title: "ویرایش دسته بندی",
+            html:
+                `<div class="contain-input-swal"><lable>عنوان دسته بندی
+                </lable> <input id="swalDestination" class="swal2-input" value="${categoryTargetInfo.name}"></div>` +
+                `<div class="contain-input-swal"><lable>مقصد</lable> <input id="swalTitle" class="swal2-input" value="${categoryTargetInfo.title}"></div>`
+            ,
+            confirmButtonText: 'تصحیح اطلاعات',
+            showCancelButton: true,
+            cancelButtonText: 'لغو',
+
+            preConfirm: async () => {
+                const swalTitle = $.getElementById('swalTitle').value
+                const swalDestination = $.getElementById('swalDestination').value
+
+                const UpdateInfo = { title: swalTitle, name: swalDestination }
+
+                await UpdateTarget("category", targetCategoryId, "دسته بندی", UpdateInfo)
+            }
+
+        });
+        cleanAndGetInfo()
     }
 
 }
@@ -78,7 +104,7 @@ function clearInputs() {
 
 async function cleanAndGetInfo() {
     await getTarget("category").then(data => {
-        categoriesInfo = data[0] ? data : []
+        categoriesInfo = data[0] ? data.reverse() : []
 
     })
     getCategoriesTable()

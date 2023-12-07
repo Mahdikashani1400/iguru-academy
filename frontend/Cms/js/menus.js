@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getMenus, addMenuItem, removeTarget } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js";
 
 const $ = document;
@@ -87,8 +87,9 @@ const createMenu = async (e) => {
   const itemParentId = menusInfo.find(item => {
     return item.title === itemParent.value
   })?._id
+  const newItemMenu = { title: title.value, href: destination.value + '.html', parent: itemParentId }
 
-  await addMenuItem(title.value, destination.value + '.html', itemParentId).then(res => {
+  await addTarget("menus", "آیتم", newItemMenu, "author").then(res => {
   })
   cleanAndGetInfo()
 
@@ -121,7 +122,7 @@ function clearInputs() {
 }
 
 async function cleanAndGetInfo() {
-  await getMenus().then(data => {
+  await getTarget("menus").then(data => {
     menusInfo = data[0] ? data : []
 
   })

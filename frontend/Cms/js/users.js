@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getUsersInfo, newUserFetch, removeTarget, banUser, editUserInfo } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget, banUser, UpdateTarget } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js";
 
 const $ = document;
@@ -7,9 +7,9 @@ let usersInfo = null
 window.addEventListener("load", async () => {
     // sizeOfMenuHandler()
     createHeader()
-    await getUsersInfo().then(data => {
-        usersInfo = data[0] ? data : []
-        console.log(usersInfo[usersInfo.length - 1].password);
+    await getTarget("users", "author").then(data => {
+        usersInfo = data[0] ? data.reverse() : []
+
 
     })
     getUsersTable()
@@ -58,14 +58,11 @@ const password = $.getElementById("password")
 const phone = $.getElementById("phone")
 async function addNewUser(e) {
     e.preventDefault()
-
-    await newUserFetch(
-        userName.value,
-        email.value,
-        password.value,
-        password.value,
-        firstName.value,
-        phone.value,
+    const newUser = { username: userName.value, email: email.value, password: password.value, confirmPassword: password.value, name: firstName.value, phone: phone.value }
+    await addTarget(
+        "auth/register",
+        "کاربر",
+        newUser
     )
     cleanAndGetInfo()
 }
@@ -75,9 +72,8 @@ addUserBtn.addEventListener('click', addNewUser)
 
 
 async function cleanAndGetInfo() {
-    console.log('gg');
-    await getUsersInfo().then(data => {
-        usersInfo = data[0] ? data : []
+    await getTarget("users", "author").then(data => {
+        usersInfo = data[0] ? data.reverse() : []
 
     })
     getUsersTable()
@@ -140,13 +136,14 @@ async function userInfoHandler(e) {
                 const swalEmailValue = $.getElementById('swalEmail').value
                 const swalPasswordValue = $.getElementById('swalPassword').value
                 const swalPhoneValue = $.getElementById('swalPhone').value
-                await editUserInfo(
+                const UpdateInfo = {
+                    username: swalUserNameValue, email: swalEmailValue, password: swalPasswordValue, name: swalFirstNameValue, phone: swalPhoneValue
+                }
+                await UpdateTarget(
+                    "users",
                     targetUserId,
-                    swalFirstNameValue,
-                    swalUserNameValue,
-                    swalEmailValue,
-                    swalPasswordValue,
-                    swalPhoneValue,
+                    "کاربر",
+                    UpdateInfo
                 )
 
             }

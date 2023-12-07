@@ -1,16 +1,16 @@
 import { createHeader } from "./funcs/header.js"
-import { getArticles, getCategoryOfCourses } from "./funcs/shared.js"
+import { getTarget } from "./funcs/shared.js"
 
 const $ = document;
 let articlesInfo = null
 let categoriesInfo = null
 window.addEventListener("load", async () => {
     createHeader()
-    await getArticles().then(data => {
+    await getTarget("articles").then(data => {
         articlesInfo = data
 
     })
-    await getCategoryOfCourses().then(data => {
+    await getTarget("category").then(data => {
         categoriesInfo = data
 
     })

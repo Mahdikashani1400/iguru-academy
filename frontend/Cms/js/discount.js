@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getDiscounts, getCourses, addOff, removeTarget } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 
 const $ = document;
@@ -9,10 +9,10 @@ let coursesInfo = null
 window.addEventListener("load", async () => {
     // sizeOfMenuHandler()
     createHeader()
-    await getDiscounts().then(data => {
+    await getTarget("offs", "author").then(data => {
         discountsInfo = data[0] ? data.reverse() : []
     })
-    await getCourses().then(data => {
+    await getTarget("courses").then(data => {
         coursesInfo = data[0] ? data.reverse() : []
     })
     cleanAndGetInfo()
@@ -63,10 +63,12 @@ async function createDiscount(e) {
     const courseTargetId = coursesInfo.find(item => {
         return item.name === courseSelect.value
     })?._id
-    await addOff(code.value, percent.value, courseTargetId, max.value)
+    const newDiscount = { code: code.value, percent: percent.value, course: courseTargetId, max: max.value }
+
+    await addTarget("offs", "کد تخفیف", newDiscount, "author")
     cleanAndGetInfo()
 }
-const addOffBtn = $.getElementById("addOffBtn")
+const addTargetBtn = $.getElementById("addOffBtn")
 addOffBtn.addEventListener("click", createDiscount)
 function clearInputs() {
 
@@ -76,7 +78,7 @@ function clearInputs() {
 }
 
 async function cleanAndGetInfo() {
-    await getDiscounts().then(data => {
+    await getTarget("offs", "author").then(data => {
         discountsInfo = data[0] ? data.reverse() : []
     })
     courseSelectHandler()

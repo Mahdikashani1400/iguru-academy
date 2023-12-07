@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getCourses, getCategoryOfCourses, changePriceNumberToFa } from "./funcs/shared.js"
+import { getTarget, getCategoryOfCourses, changePriceNumberToFa } from "./funcs/shared.js"
 
 
 const $ = document;
@@ -8,7 +8,7 @@ let categoriesInfo = null
 window.addEventListener("load", async () => {
     // sizeOfMenuHandler()
     createHeader()
-    await getCourses().then(data => {
+    await getTarget("courses").then(data => {
         coursesInfo = data
 
     })
