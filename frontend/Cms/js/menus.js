@@ -67,7 +67,7 @@ const getMenusTable = async () => {
     
     `
 }
-let itemParent = $.getElementById('itemParent')
+const itemParent = $.getElementById('itemParent')
 
 const itemParentHandler = () => {
   itemParent.innerHTML = `
@@ -83,7 +83,6 @@ const title = $.getElementById('title')
 const destination = $.getElementById('destination')
 const createMenu = async (e) => {
   e.preventDefault()
-  const itemParent = $.getElementById('itemParent')
   const itemParentId = menusInfo.find(item => {
     return item.title === itemParent.value
   })?._id

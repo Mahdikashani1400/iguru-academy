@@ -19,11 +19,12 @@ const addTarget = async (target, targetFa, bodyObj, state = null) => {
     await fetch(`http://localhost:4000/v1/${target}/`, {
         method: "POST",
         headers: {
-            Authorization: state === "author" ? `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA` : null,
+            Authorization: state === "author" && `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(bodyObj),
     }).then(async (res) => {
+        console.log(res);
         if (res.status === 201 || res.status === 200) {
 
             showToast(`${targetFa} مد نظر با موفقیت اضافه شد.`, "success");
@@ -40,6 +41,31 @@ const addTarget = async (target, targetFa, bodyObj, state = null) => {
         return res.json();
     });
 }
+const addCourse = async (bodyObj) => {
+    const res = await fetch(`http://localhost:4000/v1/courses/`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+        },
+        body: bodyObj,
+    })
+    if (res.ok) {
+        // if (res.status === 201 || res.status === 200) {
+
+        //     showToast(`${targetFa} مد نظر با موفقیت اضافه شد.`, "success");
+
+        // } else if (res.status === 409) {
+
+        //     showToast("اطلاعات داده شده تکراری میباشند .", "error");
+
+        // } else if (res.status === 400) {
+
+        //     showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
+
+        // }
+    }
+}
+
 
 
 const removeTarget = async (id, target, targetFa) => {
@@ -132,4 +158,5 @@ export {
     UpdateTarget,
     banUser,
     changePriceNumberToFa,
+    addCourse
 }

@@ -318,13 +318,17 @@
         <section class="new__course">
           <div class="container">
             <h1 class="title">دوره جدید</h1>
-            <form class="customize__inputs">
+            <form
+              class="customize__inputs"
+              action="javascript:void(0)"
+              enctype="multipart/form-data"
+            >
               <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
                 <div>
-                  <label for="lable" class="">نام دوره</label>
+                  <label for="title" class="">نام دوره</label>
                   <input
                     type="text"
-                    id="lable"
+                    id="title"
                     class=""
                     placeholder="کتاب"
                     required
@@ -341,36 +345,26 @@
                     required
                   />
                 </div>
-                <div>
-                  <label for="price" class="">تعداد دوره</label>
-                  <input
-                    type="text"
-                    id="count"
-                    class=""
-                    placeholder="550"
-                    required
-                  />
-                </div>
 
                 <div class="">
                   <label class="" for="file_input">عکس دوره</label>
                   <input class="" id="file_input" type="file" />
                 </div>
                 <div>
-                  <label for="link" class="">لینک</label>
+                  <label for="dest" class="">لینک</label>
                   <input
                     type="text"
                     lang="en"
                     dir="ltr"
-                    id="link"
+                    id="dest"
                     class=""
                     placeholder="test-course"
                     required
                   />
                 </div>
                 <div class="">
-                  <label for="course" class="">انتخاب دسته بندی</label>
-                  <select id="course" class="">
+                  <label for="courseCategory" class="">انتخاب دسته بندی</label>
+                  <select id="courseCategory" class="">
                     <option value="زبان انگلیسی">زبان انگلیسی</option>
                     <option value="زبان انگلیسی">زبان انگلیسی</option>
                     <option value="زبان انگلیسی">زبان انگلیسی</option>
@@ -378,12 +372,14 @@
                   </select>
                 </div>
                 <div class="md:col-span-2">
-                  <label for="bodyArticle" class="">توضیحات دوره</label>
-                  <textarea name="" id="bodyArticle" rows="8"></textarea>
+                  <label for="descCourse" class="">توضیحات دوره</label>
+                  <textarea name="" id="descCourse" rows="8"></textarea>
                 </div>
               </div>
 
-              <button type="submit" class="">افزودن دوره</button>
+              <button type="submit" class="" id="addCourseBtn">
+                افزودن دوره
+              </button>
             </form>
           </div>
         </section>
@@ -409,7 +405,7 @@
                     <th scope="col" class="">شناسه</th>
                     <th scope="col" class="">نام دوره</th>
                     <th scope="col" class="">دسته بندی</th>
-                    <th scope="col" class="">وضعیت</th>
+                    <th scope="col" class="">امتیاز</th>
                     <th scope="col" class="">تعداد دانشجویان</th>
                     <th scope="col" class="">قیمت</th>
                     <th scope="col" class="">ویرایش</th>
@@ -465,6 +461,7 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="./js/courses.js"></script>
   </body>
 </html>
