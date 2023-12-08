@@ -42,28 +42,52 @@ const addTarget = async (target, targetFa, bodyObj, state = null) => {
     });
 }
 const addCourse = async (bodyObj) => {
-    const res = await fetch(`http://localhost:4000/v1/courses/`, {
+    const res = await fetch(`http://localhost:4000/v1/courses`, {
         method: "POST",
         headers: {
             Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+
         },
         body: bodyObj,
     })
-    if (res.ok) {
-        // if (res.status === 201 || res.status === 200) {
+    if (res.status === 201 || res.status === 200) {
 
-        //     showToast(`${targetFa} مد نظر با موفقیت اضافه شد.`, "success");
+        showToast(`دوره مد نظر با موفقیت اضافه شد.`, "success");
 
-        // } else if (res.status === 409) {
+    } else if (res.status === 409) {
 
-        //     showToast("اطلاعات داده شده تکراری میباشند .", "error");
+        showToast("اطلاعات داده شده تکراری میباشند .", "error");
 
-        // } else if (res.status === 400) {
+    } else if (res.status === 400) {
 
-        //     showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
+        showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
 
-        // }
     }
+    return res.json();
+}
+const addSession = async (courseID, bodyObj) => {
+    const res = await fetch(`http://localhost:4000/v1/courses/${courseID}/sessions`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+
+        },
+        body: bodyObj,
+    })
+    if (res.status === 201 || res.status === 200) {
+
+        showToast(`دوره مد نظر با موفقیت اضافه شد.`, "success");
+
+    } else if (res.status === 409) {
+
+        showToast("اطلاعات داده شده تکراری میباشند .", "error");
+
+    } else if (res.status === 400) {
+
+        showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
+
+    }
+    return res.json();
 }
 
 
@@ -151,6 +175,22 @@ const changePriceNumberToFa = (priceNumber) => {
         ? Number(priceNumber).toLocaleString("fa-IR") + " تومان"
         : "رایگان";
 };
+
+
+const minuteToTimer = (time) => {
+    return `${Math.floor(time / 60) > 9
+        ? Math.floor(time / 60)
+        : `0${Math.floor(time / 60)}`
+        }:${Math.floor(time % 60) > 9
+            ? Math.floor(time % 60)
+            : `0${Math.floor(time % 60)}`
+        }`;
+};
+
+const timerToNum = (time) => {
+    return time.includes(':') ? Number(time.split(":")[0] * 60) + Number(time.split(":")[1]) : time
+}
+
 export {
     getTarget,
     addTarget,
@@ -158,5 +198,8 @@ export {
     UpdateTarget,
     banUser,
     changePriceNumberToFa,
-    addCourse
+    addCourse,
+    addSession,
+    minuteToTimer,
+    timerToNum
 }

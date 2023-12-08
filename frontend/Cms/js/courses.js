@@ -1,5 +1,6 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addCourse, changePriceNumberToFa } from "./funcs/shared.js"
+import { getTarget, addCourse, removeTarget, changePriceNumberToFa } from "./funcs/shared.js"
+import { showSwal } from "./funcs/utils.js"
 
 
 const $ = document;
@@ -7,33 +8,30 @@ let coursesInfo = null
 let categoriesInfo = null
 window.addEventListener("load", async () => {
     createHeader()
-    await getTarget("courses").then(data => {
-        coursesInfo = data[0] ? data.reverse() : []
-
-
-    })
     await getTarget("category").then(data => {
-        categoriesInfo = data[0] ? data.reverse() : []
+        categoriesInfo = data[0] ? data : []
     })
-    getCoursesTable()
-    selectCategory()
+    cleanAndGetInfo()
+
 })
 const coursesTable = $.querySelector(".courses__table tbody")
-let numId = 20110
+let counter = null
 const getCoursesTable = () => {
+    counter = 0
     coursesTable.innerHTML = `
     ${coursesInfo.map((course, index) => {
         if (course.categoryID?.title === 'course') {
             return `
-  
-      <tr class="">   
+            
+            <tr class="" id="${course._id}"
+      onclick="courseInfoHandler(event)">   
       <th scope="col" class="px-6 py-3">
       <input
           type="checkbox"
           class="rounded-[5px] focus:drop-shadow"
       />
       </th>
-      <th scope="row" class="">${++numId}</th>
+      <th scope="row" class="">${++counter}</th>
       <td class="px-5 py-5">${course.name}</td>
       <td class="px-5 py-5">${course.categoryID.name}</td>
       <td class="px-5 py-5">${course.courseAverageScore}</td>
@@ -53,17 +51,14 @@ const getCoursesTable = () => {
     
     `
 }
-$.querySelector('form').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevents the form from submitting and the page from reloading 
-    // Your custom logic here 
-});
+
 const courseCategory = $.getElementById("courseCategory")
 const selectCategory = () => {
     courseCategory.innerHTML = `
     ${categoriesInfo.map(cat => {
-        return cat.title === "course" && `
+        return cat.title === "course" ? `
 <option value="${cat.title}">${cat.name}</option>
-`
+`: ""
     }).join("")}
     `
 }
@@ -87,24 +82,53 @@ const createCourse = async (e) => {
     newCourse.append("price", priceCourse.value.trim())
     newCourse.append("status", "start")
     newCourse.append("categoryID", categoryID)
-
     await addCourse(newCourse)
 
-    cleanAndGetInfo()
 }
 const addCourseBtn = $.getElementById('addCourseBtn')
 addCourseBtn.addEventListener('click', createCourse)
 
 let courseCover = null
 fileInputCourse.addEventListener('change', (e) => {
-    courseCover = e.target.files[0]
+    e.preventDefault()
+    courseCover = fileInputCourse.files[0]
+
 })
+
+
+
+
+
+window.courseInfoHandler = courseInfoHandler
+let targetCourseId = null
+
+function courseInfoHandler(e) {
+    e.preventDefault()
+    targetCourseId = e.currentTarget.id
+    if (e.target.classList.contains('remove')) {
+        showSwal('آیا از حذف دوره مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
+            if (res.isConfirmed) {
+                await removeTarget(targetCourseId, "courses", "دوره")
+                cleanAndGetInfo()
+            }
+        })
+
+    }
+}
+
+
+
+
+
+
+
 async function cleanAndGetInfo() {
     await getTarget("courses").then(data => {
-        coursesInfo = data[0] ? data.reverse() : []
+        coursesInfo = data[0] ? data : []
 
     })
     getCoursesTable()
+    selectCategory()
     clearInputs()
 }
 function clearInputs() {
