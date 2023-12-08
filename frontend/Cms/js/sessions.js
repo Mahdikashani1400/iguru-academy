@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addSession, removeTarget, minuteToTimer, timerToNum } from "./funcs/shared.js"
+import { getTarget, addTargetFormData, removeTarget, minuteToTimer, timerToNum } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 const $ = document;
 let coursesInfo = null
@@ -30,7 +30,8 @@ const getSessionsTable = () => {
               />
             </th>
             <th scope="row" class="">${++counter}</th>
-            <td class="px-5 py-5">${session.title}</td>
+            <td class="px-5 py-5">${session.title.split("/")[1]}</td>
+            <td class="px-5 py-5">${session.title.split("/")[0]}</td>
             <td class="px-5 py-5">${minuteToTimer(session.time)}</td>
             <td class="px-5 py-5">${session.course.name}</td>
             <td class="px-5 py-5">${session.free ? "رایگان" : "غیر رایگان"}</td>
@@ -82,7 +83,7 @@ const createSession = async (e) => {
     newSession.append("time", timerToNum(timeSession.value.trim()))
     newSession.append("free", +sessionState)
 
-    await addSession(courseID, newSession)
+    await addTargetFormData(`courses/${courseID}/sessions`, "قسمت", newSession)
 
 }
 const addSessionBtn = $.getElementById('addSessionBtn')

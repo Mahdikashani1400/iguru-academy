@@ -1,6 +1,7 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addCourse, removeTarget, changePriceNumberToFa } from "./funcs/shared.js"
+import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
+import { ckEditorBody } from "./funcs/ckEditor.js"
 
 
 const $ = document;
@@ -57,7 +58,7 @@ const selectCategory = () => {
     courseCategory.innerHTML = `
     ${categoriesInfo.map(cat => {
         return cat.title === "course" ? `
-<option value="${cat.title}">${cat.name}</option>
+<option value="${cat._id}">${cat.name}</option>
 `: ""
     }).join("")}
     `
@@ -67,22 +68,28 @@ const titleCourse = $.getElementById("title")
 const priceCourse = $.getElementById("price")
 const fileInputCourse = $.getElementById("file_input")
 const destCourse = $.getElementById("dest")
-const descCourse = $.getElementById("descCourse")
+let descCourse = null
 
 const createCourse = async (e) => {
     e.preventDefault()
-    const categoryID = categoriesInfo.find(cat => {
-        return cat.title === courseCategory.value
-    })?._id
+
+
+
+    const categoryID = courseCategory.value
+    await ckEditorBody.then(editor => {
+        console.log(editor);
+        descCourse = editor.getData()
+    })
+    // console.log(descCourse);
     const newCourse = new FormData()
     newCourse.append("name", titleCourse.value.trim())
-    newCourse.append("description", descCourse.value.trim())
+    newCourse.append("description", descCourse.trim())
     newCourse.append("cover", courseCover)
     newCourse.append("shortName", destCourse.value.trim())
     newCourse.append("price", priceCourse.value.trim())
     newCourse.append("status", "start")
     newCourse.append("categoryID", categoryID)
-    await addCourse(newCourse)
+    await addTargetFormData("courses", "دوره", newCourse)
 
 }
 const addCourseBtn = $.getElementById('addCourseBtn')
@@ -94,6 +101,7 @@ fileInputCourse.addEventListener('change', (e) => {
     courseCover = fileInputCourse.files[0]
 
 })
+
 
 
 
@@ -135,5 +143,5 @@ function clearInputs() {
     titleCourse.value = ''
     priceCourse.value = ''
     destCourse.value = ''
-    descCourse.value = ''
+    // descCourse.value = ''
 }
