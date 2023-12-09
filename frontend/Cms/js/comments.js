@@ -6,7 +6,6 @@ const $ = document;
 let commentsInfo = null
 
 window.addEventListener("load", () => {
-    // sizeOfMenuHandler()
     createHeader()
     cleanAndGetInfo()
 })

@@ -1,24 +1,26 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addCourse, removeTarget, changePriceNumberToFa } from "./funcs/shared.js"
+import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa, ckEditorHandler } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 
 
 const $ = document;
 let productsInfo = null
 let categoriesInfo = null
+let ckEditorBody = null
+
 window.addEventListener("load", async () => {
-    // sizeOfMenuHandler()
     createHeader()
     await getTarget("category").then(data => {
-        categoriesInfo = data
-
+        categoriesInfo = data[0] ? data : []
     })
+    ckEditorBody = ckEditorHandler()
+
     cleanAndGetInfo()
 })
 const productsTable = $.querySelector(".products__table tbody")
 let counter = null
 const getProductsTable = () => {
-    let counter = 0
+    counter = 0
 
     productsTable.innerHTML = `
     ${productsInfo.map((product, index) => {
@@ -60,32 +62,33 @@ const selectCategory = () => {
     productCategory.innerHTML = `
     ${categoriesInfo.map(cat => {
         return cat.title === "product" && `
-<option value="${cat.title}">${cat.name}</option>
+<option value="${cat._id}">${cat.name}</option>
 `
     }).join("")}
     `
 }
-
 const titleProduct = $.getElementById("title")
 const priceProduct = $.getElementById("price")
 const fileInputProduct = $.getElementById("file_input")
 const destProduct = $.getElementById("dest")
-const descProduct = $.getElementById("descProduct")
+let descProduct = $.getElementById("descProduct")
 
 const createProduct = async (e) => {
     e.preventDefault()
-    const categoryID = categoriesInfo.find(cat => {
-        return cat.title === productCategory.value
-    })?._id
+    const categoryID = productCategory.value
+    await ckEditorBody.then(editor => {
+
+        descProduct = editor.getData()
+    })
     const newProduct = new FormData()
     newProduct.append("name", titleProduct.value.trim())
-    newProduct.append("description", descProduct.value.trim())
+    newProduct.append("description", descProduct.trim())
     newProduct.append("cover", productCover)
     newProduct.append("shortName", destProduct.value.trim())
     newProduct.append("price", priceProduct.value.trim())
     newProduct.append("status", "start")
     newProduct.append("categoryID", categoryID)
-    await addCourse(newProduct)
+    await addTargetFormData("courses", "محصول", newProduct)
 
 }
 const addProductBtn = $.getElementById('addProductBtn')
@@ -131,11 +134,4 @@ async function cleanAndGetInfo() {
     })
     getProductsTable()
     selectCategory()
-    clearInputs()
-}
-function clearInputs() {
-    titleProduct.value = ''
-    priceProduct.value = ''
-    destProduct.value = ''
-    descProduct.value = ''
 }
