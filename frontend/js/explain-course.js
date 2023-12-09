@@ -380,10 +380,10 @@ ${comment.answerContent.body}
       <form class="row py-4">
         <div class="mb-3">
           <div class="h3 my-3 d-flex justify-content-between align-items-center"><span class="text-normal" id="userName">${userInfo.username
-      }</span>
+      || "ناشناس"}</span>
          
           </div>
-          <textarea name="comment" cols="45" rows="5" placeholder="دیدگاه شما ..." id="commentText" class="form-control p-3"></textarea>
+          <textarea name="comment" cols="45" rows="5" placeholder="${userInfo ? " دیدگاه شما ..." : "برای نظر دادن باید وارد شوید"}" id="commentText" class="form-control p-3" ${userInfo ? "" : "readonly"}></textarea>
         </div>
         <div class="mb-3 d-flex pe-3 me-1" id="starsContainer">
           <span class="text-normal ps-3" style="font-size: 18px">

@@ -44,7 +44,7 @@ function addCoursesToContainer(coursesArray, category) {
   coursesContainer.innerHTML = `
   ${coursesArray
       .map((course) => {
-        console.log(course);
+
         if (
           course.categoryID.title === "course" &&
           category === course.categoryID.name

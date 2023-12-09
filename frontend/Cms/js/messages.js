@@ -45,7 +45,7 @@ const getMessagesTable = () => {
 
 async function cleanAndGetInfo() {
     await getTarget("contact").then(data => {
-        messagesInfo = data[0] ? data : []
+        messagesInfo = data[0] ? data.reverse() : []
 
     })
     getMessagesTable()

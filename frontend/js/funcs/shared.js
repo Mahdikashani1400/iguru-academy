@@ -83,6 +83,7 @@ const showNotFoundAlert = (state, container) => {
 };
 
 const goToCourseDetail = (courseName) => {
+
   window.location.href = `explain-course.html?name=${courseName}`;
 };
 const goToProductDetail = (productName) => {
@@ -183,8 +184,8 @@ const changeDateToFa = (date) => {
 
 const minuteToTimer = (time) => {
   return `${Math.floor(time / 60) > 9
-      ? Math.floor(time / 60)
-      : `0${Math.floor(time / 60)}`
+    ? Math.floor(time / 60)
+    : `0${Math.floor(time / 60)}`
     }:${Math.floor(time % 60) > 9
       ? Math.floor(time % 60)
       : `0${Math.floor(time % 60)}`

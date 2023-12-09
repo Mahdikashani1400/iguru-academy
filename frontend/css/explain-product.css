@@ -87,8 +87,11 @@
   height: 580px;
 }
 .product__images .slick-dots {
-  bottom: -135px;
+  bottom: -160px;
   left: 30%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
 }
 .product__images .slick-dots li {
   width: 110px;
@@ -266,6 +269,7 @@ textarea {
   }
   .product__images .slick-dots {
     left: 0%;
+    bottom: -130px;
   }
   .explain__content {
     text-align: center;
