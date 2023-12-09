@@ -9,7 +9,7 @@ const showSwal = (title, icon, confirmButtonText, callback) => {
       callback ? callback(result) : null;
     });
 };
-const showToast = (title, icon, callback) => {
+const showToast = async (title, icon, callback) => {
   swal
     .fire({
       position: "center",
@@ -19,10 +19,8 @@ const showToast = (title, icon, callback) => {
       timer: 2000,
       timerProgressBar: true,
     })
-    .then((result) => {
-      setTimeout(() => {
-        callback ? callback(result) : null;
-      }, 500);
+    .then(async (result) => {
+      callback()
     });
 };
 const setToLocalSt = (key, value) => {
@@ -32,9 +30,9 @@ const getFromLocalSt = (key) => {
   return JSON.parse(localStorage.getItem(key));
 };
 const setToken = (token) => {
-  return setToLocalSt("user", { token });
+  return setToLocalSt("panel", { token });
 };
 const getToken = () => {
-  return getFromLocalSt("user")?.token||null;
+  return getFromLocalSt("panel")?.token || null;
 };
 export { showSwal, showToast, setToken, getToken };

@@ -40,6 +40,9 @@ nav.user-out .user-info {
 .navbar__info__left-login .btn {
   height: 100%;
 }
+.navbar__info__left-login svg {
+  width: 36px;
+}
 .navbar__info__left-accessibility {
   height: 100%;
 }

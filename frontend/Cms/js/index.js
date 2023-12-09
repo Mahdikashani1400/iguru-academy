@@ -1,11 +1,13 @@
-import { createHeader } from "./funcs/header.js"
+import { createHeader, adminInfos } from "./funcs/header.js"
 
 const $ = document;
 
-window.addEventListener("load", () => {
-    // sizeOfMenuHandler()
-    createHeader()
+window.addEventListener("load", async () => {
+    await createHeader()
+    console.log(adminInfos);
     createChart()
+    getLastUsers()
+
 })
 
 
@@ -185,7 +187,23 @@ function createChart() {
 
 
 
-
+let lastUsersTable = $.querySelector('.last__users__table tbody')
+function getLastUsers() {
+    lastUsersTable.innerHTML = `
+    ${adminInfos.lastUsers.map((user, index) => {
+        return `
+        <tr class="">
+        <th scope="row" class="">${++index}</th>
+        <td class="px-5 py-5">${user.name}</td>
+        <td class="px-5 py-5">${user.username}</td>
+        <td class="px-5 py-5">${user.phone}</td>
+        <td class="px-5 py-5">${user.email}</td>
+        <td class="px-5 py-5">${user.createdAt.split("T")[0]}</td>
+      </tr>
+        `
+    }).join("")}
+`
+}
 
 
 

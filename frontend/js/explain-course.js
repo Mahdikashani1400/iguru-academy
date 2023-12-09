@@ -31,7 +31,7 @@ window.addEventListener("load", async () => {
       return obj.score;
     });
   });
-  getPoster(courseName, "course_page-bg.jpg");
+  getPoster(courseInfo.name, "course_page-bg.jpg");
   showCourseSessions();
   showCourseDetails();
   showScoreUsersByStars();
@@ -50,7 +50,7 @@ window.addEventListener("load", async () => {
 
 function showCourseDetails() {
   const title = $.querySelector(".course__title");
-  title.innerHTML = courseInfo.shortName;
+  title.innerHTML = courseInfo.name;
   const price = $.querySelector(".price-number");
   price.innerHTML = changePriceNumberToFa(courseInfo.price);
 
@@ -227,6 +227,7 @@ function showRelatedCourses() {
   relatedCoursesContainer.innerHTML = "";
   if (relatedCourses.length) {
     relatedCoursesContainer.innerHTML = `${relatedCourses.map((course) => {
+      console.log(course);
       return `
           <div class="course__box rounded">
                             <div class="course__box-container d-flex flex-column justify-content-end text-white h-100"

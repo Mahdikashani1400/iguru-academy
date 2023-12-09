@@ -160,10 +160,17 @@ const successRegister = (result) => {
     reviewformInputs("login", newUserInfo.username, newUserInfo.password);
   }
 };
-const successLogin = (result) => {
-  console.log(result);
-  if (result.isDismissed) {
-    location.href = "index.html";
+const successLogin = async () => {
+  let role = null
+  await getUserInfo().then(data => {
+    role = data.role
+    console.log(data);
+  })
+  if (role === "USER") {
+    window.location.href = "index.html"
+  } else {
+    window.location.href = "./Cms/index.html"
+
   }
 };
 
@@ -245,13 +252,15 @@ const login = (e) => {
       return res.json();
     })
     .then((result) => {
+      console.log(result);
       result.accessToken ? setToken(result.accessToken) && getUserInfo() : null;
+
     });
 };
 
-const token = getToken();
 async function getUserInfo() {
-  if (!isLogin()) {
+  const token = getToken();
+  if (!token) {
     return 0;
   } else {
     const res = await fetch("http://localhost:4000/v1/auth/me", {
@@ -263,7 +272,5 @@ async function getUserInfo() {
     return data;
   }
 }
-function isLogin() {
-  return token;
-}
-export { register, login, getUserInfo, isLogin, reviewformInputs };
+
+export { register, login, getUserInfo, reviewformInputs };

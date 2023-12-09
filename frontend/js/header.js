@@ -1,5 +1,6 @@
-import { getUserInfo, isLogin } from "../js/funcs/auth.js";
+import { getUserInfo } from "../js/funcs/auth.js";
 import { getMenus } from "../js/funcs/shared.js";
+import { getToken } from "../js/funcs/utils.js";
 
 const $ = document;
 const header = $.querySelector(".header");
@@ -29,7 +30,7 @@ async function getHeader() {
             <div
               class="navbar__info__left-login col-3 row justify-content-end d-none d-xl-flex"
             >
-              <button class="btn btn-primary d-flex align-items-center">
+              <a href="${getToken() ? "profile.html" : "login-form.html"}" class="btn btn-primary d-flex align-items-center">
                 <svg
                   class="svg-inline--fa fa-user col-6"
                   aria-hidden="true"
@@ -47,9 +48,9 @@ async function getHeader() {
                   ></path>
                 </svg>
                 <span class="text-white d-none d-md-inline col-6"
-                  >ورود</span
+                  >${getToken() ? "پروفایل" : "ورود"}</span
                 >
-              </button>
+              </a>
             </div>
             <div
               class="navbar__info__left-social-media col-5 align-self-center row mx-5 d-none d-xl-flex"
@@ -346,7 +347,7 @@ function getPageTitle() {
 }
 
 function showUserNameHandler() {
-  if (isLogin()) {
+  if (getToken()) {
     const navs = header.querySelectorAll("nav");
     const userNames = header.querySelectorAll(".user-info");
 

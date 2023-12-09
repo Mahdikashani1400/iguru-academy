@@ -140,6 +140,8 @@
   justify-content: center;
   box-shadow: 4px 4px 20px rgb(220, 224, 228), 4px 4px 20px rgb(227, 230, 232);
   overflow: hidden;
+  padding: 0 !important;
+  height: 270px;
   transition: 0.4s all;
 }
 .products__box-img:hover {

@@ -31,7 +31,7 @@ window.addEventListener("load", async () => {
 
   getFooter();
 
- 
+
 });
 
 const $ = document;
@@ -54,12 +54,12 @@ function addProductsToContainer(productsArray, category) {
     ${productsArray
       .map((product) => {
         if (
-          product.shortName.split("_")[0].includes("محصول") &&
+          product.categoryID.title === "product" &&
           category === product.categoryID.name
         ) {
           productTarget = product;
         } else if (
-          product.shortName.split("_")[0].includes("محصول") &&
+          product.categoryID.title === "product" &&
           category === "همه"
         ) {
           productTarget = product;
@@ -74,17 +74,14 @@ function addProductsToContainer(productsArray, category) {
                       <div class="p products__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
                         افزودن به سبد خرید
                       </div>
-                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${
-                        productTarget.cover
-                      }" alt="">
+                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${productTarget.cover
+          }" alt="">
                     </div>
-                    <div class="products__box-title h6 pt-4 fw-bold">${
-                      productTarget.name
-                    }</div>
+                    <div class="products__box-title h6 pt-4 fw-bold">${productTarget.name
+          }</div>
                     <div class="products__box-price p fw-bold text-orange fs-6">
-                      ${
-                        changePriceNumberToFa(productTarget.price)
-                      }
+                      ${changePriceNumberToFa(productTarget.price)
+          }
                     </div>
                   </div>`;
       })

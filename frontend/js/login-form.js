@@ -1,7 +1,7 @@
 import { register, login, reviewformInputs } from "./funcs/auth.js";
 const $ = document;
 window.addEventListener("load", () => {
-  reviewformInputs("register");
+  reviewformInputs("login");
 });
 
 window.register = register;

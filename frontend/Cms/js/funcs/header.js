@@ -1,5 +1,6 @@
+import { getTarget } from "./shared.js"
 const $ = document;
-function createHeader() {
+async function createHeader() {
   const headerNav = $.querySelector('.header__nav')
   insertHeaderTemplate(headerNav)
 
@@ -25,7 +26,7 @@ function createHeader() {
   sizeOfMenuHandler(headerNav)
 
   insertIcons()
-
+  await getAdminInfos()
 }
 
 function insertHeaderTemplate(headerNav) {
@@ -50,7 +51,9 @@ function insertHeaderTemplate(headerNav) {
       href="#"
       class="flex flex-col gap-x-2 dark:text-white text-zinc-800 items-center md:hidden p-0 mb-7 mt-2"
     >
-      <p class="flex items-center gap-x-1.5 order-1 md:-order-1">علی</p>
+      <p class="flex items-center gap-x-1.5 order-1 md:-order-1">
+      <span class="admin__name"></span>
+      </p>
 
       <img
         class="w-12 h-12 rounded-full"
@@ -205,7 +208,8 @@ function insertHeaderTemplate(headerNav) {
           <svg class="w-4 h-4 rotate-90 stroke-1">
             <use href="#chevron-right"></use>
           </svg>
-          علی شاهینی
+          <span class="admin__name"></span>
+
         </p>
 
         <img
@@ -571,6 +575,17 @@ function insertIcons() {
 
   `
 }
+let adminInfos = null
 
+async function getAdminInfos() {
+  await getTarget("infos/p-admin", "author").then(data => {
+    adminInfos = data
+  })
+  let adminNameElem = $.querySelectorAll('.admin__name')
+  adminNameElem.forEach(elem => {
+    elem.innerHTML = adminInfos.adminName
+  })
 
-export { createHeader }
+}
+
+export { createHeader, adminInfos }
