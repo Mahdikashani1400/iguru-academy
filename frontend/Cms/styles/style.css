@@ -1278,7 +1278,8 @@ input:focus {
 .customize__inputs input,
   .customize__inputs textarea,
   .customize__inputs select,
-  .contain-input-swal input {
+  .contain-input-swal input,
+  .contain-input-swal textarea {
   display: block;
   width: 100%;
   border-radius: 0.5rem;
@@ -1297,7 +1298,8 @@ input:focus {
 .customize__inputs input:focus,
   .customize__inputs textarea:focus,
   .customize__inputs select:focus,
-  .contain-input-swal input:focus {
+  .contain-input-swal input:focus,
+  .contain-input-swal textarea:focus {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
@@ -1307,7 +1309,8 @@ input:focus {
 :is(.dark .customize__inputs input),:is(.dark 
   .customize__inputs textarea),:is(.dark 
   .customize__inputs select),:is(.dark 
-  .contain-input-swal input) {
+  .contain-input-swal input),:is(.dark 
+  .contain-input-swal textarea) {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -1319,7 +1322,8 @@ input:focus {
 :is(.dark .customize__inputs input)::-moz-placeholder, :is(.dark 
   .customize__inputs textarea)::-moz-placeholder, :is(.dark 
   .customize__inputs select)::-moz-placeholder, :is(.dark 
-  .contain-input-swal input)::-moz-placeholder {
+  .contain-input-swal input)::-moz-placeholder, :is(.dark 
+  .contain-input-swal textarea)::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
@@ -1327,7 +1331,8 @@ input:focus {
 :is(.dark .customize__inputs input)::placeholder,:is(.dark 
   .customize__inputs textarea)::placeholder,:is(.dark 
   .customize__inputs select)::placeholder,:is(.dark 
-  .contain-input-swal input)::placeholder {
+  .contain-input-swal input)::placeholder,:is(.dark 
+  .contain-input-swal textarea)::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
@@ -1335,7 +1340,8 @@ input:focus {
 :is(.dark .customize__inputs input:focus),:is(.dark 
   .customize__inputs textarea:focus),:is(.dark 
   .customize__inputs select:focus),:is(.dark 
-  .contain-input-swal input:focus) {
+  .contain-input-swal input:focus),:is(.dark 
+  .contain-input-swal textarea:focus) {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
@@ -1346,10 +1352,16 @@ input:focus {
   .customize__inputs input,
   .customize__inputs textarea,
   .customize__inputs select,
-  .contain-input-swal input {
+  .contain-input-swal input,
+  .contain-input-swal textarea {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
+}
+
+.contain-input-swal textarea {
+  height: 130px !important;
+  padding-top: 1rem !important;
 }
 
 .customize__inputs input[type="file"] {
@@ -1631,7 +1643,8 @@ input:focus {
   margin-bottom: 1.5rem;
 }
 
-.contain-input-swal input {
+.contain-input-swal input,
+  .contain-input-swal textarea {
   margin-top: 0.5rem;
   width: -webkit-fill-available;
 }
@@ -2280,6 +2293,10 @@ input:focus {
 
 .text-center {
   text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 .text-base {

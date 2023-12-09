@@ -31,7 +31,7 @@ const getArticlesTable = () => {
                 return cat.name
             }
         }).join('')}</td>
-        <td class="px-5 py-5">${article.publish ? "انتشار" : "پیش نویس"}</td>
+        <td class="px-5 py-5">${article.publish ? "منتشر شده" : "پیش نویس"}</td>
         <td class="px-5 py-5">${article.updatedAt.split("T")[0]}</td>
         <td class="px-5 py-5">${article.creator.name}</td>
         <td class="px-4 py-5">

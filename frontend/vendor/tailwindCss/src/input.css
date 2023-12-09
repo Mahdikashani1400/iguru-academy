@@ -121,8 +121,13 @@
   .customize__inputs input,
   .customize__inputs textarea,
   .customize__inputs select,
-  .contain-input-swal input {
+  .contain-input-swal input,
+  .contain-input-swal textarea {
     @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-lg text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+  .contain-input-swal textarea {
+    height: 130px !important;
+    padding-top: 1rem !important;
   }
   .customize__inputs input[type="file"] {
     @apply cursor-pointer focus:outline-none p-0;
@@ -187,7 +192,8 @@
   .contain-input-swal {
     @apply mb-6;
   }
-  .contain-input-swal input {
+  .contain-input-swal input,
+  .contain-input-swal textarea {
     @apply w-[-webkit-fill-available] mt-2;
   }
 }

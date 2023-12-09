@@ -137,6 +137,26 @@ const banUser = async (id, body) => {
 
 }
 
+const commentState = async (bodyObj, state, stateFa) => {
+    await fetch(`http://localhost:4000/v1/comments/${state}`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyObj),
+    }).then(async (res) => {
+        console.log(res);
+        if (res.status === 201 || res.status === 200) {
+
+            showToast(`کامنت مد نظر با موفقیت ${stateFa} شد.`, "success");
+
+        }
+        return res.json();
+    });
+}
+
+
 const changePriceNumberToFa = (priceNumber) => {
     return priceNumber
         ? Number(priceNumber).toLocaleString("fa-IR") + " تومان"
@@ -182,6 +202,7 @@ export {
     banUser,
     changePriceNumberToFa,
     addTargetFormData,
+    commentState,
     ckEditorHandler,
     minuteToTimer,
     timerToNum

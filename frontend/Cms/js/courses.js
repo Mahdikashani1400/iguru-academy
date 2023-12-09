@@ -141,9 +141,3 @@ async function cleanAndGetInfo() {
     selectCategory()
 
 }
-function clearInputs() {
-    titleCourse.value = ''
-    priceCourse.value = ''
-    destCourse.value = ''
-    // descCourse.value = ''
-}
