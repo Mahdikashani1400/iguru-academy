@@ -1,17 +1,19 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa } from "./funcs/shared.js"
+import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa, ckEditorHandler } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
-import { ckEditorBody } from "./funcs/ckEditor.js"
 
 
 const $ = document;
 let coursesInfo = null
 let categoriesInfo = null
+let ckEditorBody = null
 window.addEventListener("load", async () => {
     createHeader()
     await getTarget("category").then(data => {
         categoriesInfo = data[0] ? data : []
     })
+    ckEditorBody = ckEditorHandler()
+
     cleanAndGetInfo()
 
 })
@@ -77,7 +79,7 @@ const createCourse = async (e) => {
 
     const categoryID = courseCategory.value
     await ckEditorBody.then(editor => {
-        console.log(editor);
+
         descCourse = editor.getData()
     })
     // console.log(descCourse);
@@ -137,7 +139,7 @@ async function cleanAndGetInfo() {
     })
     getCoursesTable()
     selectCategory()
-    clearInputs()
+
 }
 function clearInputs() {
     titleCourse.value = ''

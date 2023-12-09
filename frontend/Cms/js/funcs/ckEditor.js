@@ -1,6 +1,6 @@
 let ckEditorBody =
     ClassicEditor
-        .create(document.querySelector('#descCourse'), {
+        .create(document.querySelector('#editor'), {
 
 
             language: 'fa',
@@ -10,4 +10,4 @@ let ckEditorBody =
             console.error(error);
         });
 
-export { ckEditorBody }
+// export { ckEditorBody }

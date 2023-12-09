@@ -158,6 +158,22 @@ const timerToNum = (time) => {
     return time.includes(':') ? Number(time.split(":")[0] * 60) + Number(time.split(":")[1]) : time
 }
 
+const ckEditorHandler = () => {
+
+    return ClassicEditor
+        .create(document.querySelector('#editor'), {
+
+
+            language: 'fa',
+
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+}
+
+
 export {
     getTarget,
     addTarget,
@@ -166,6 +182,7 @@ export {
     banUser,
     changePriceNumberToFa,
     addTargetFormData,
+    ckEditorHandler,
     minuteToTimer,
     timerToNum
 }

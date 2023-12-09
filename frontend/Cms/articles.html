@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/sweet-alert.css" />
+    <link rel="stylesheet" href="styles/ckEditor.css" />
   </head>
   <body>
-    <svg class="icons hidden"> </svg>
+    <svg class="icons hidden"></svg>
     <nav class="header__nav"></nav>
     <div class="body__content mr-72">
       <header class="header"></header>
@@ -28,28 +30,56 @@
                   />
                 </div>
                 <div>
-                  <label for="link" class="">لینک</label>
+                  <label for="dest" class="">لینک</label>
                   <input
                     type="text"
                     lang="en"
                     dir="ltr"
-                    id="link"
+                    id="dest"
                     class=""
                     placeholder="test-article"
                     required
                   />
                 </div>
-                <div class="md:col-span-2">
-                  <label for="bodyArticle" class="">مقاله</label>
-                  <textarea name="" id="bodyArticle" rows="8"></textarea>
+                <div>
+                  <label for="descArticle" class="">توضیح کوتاه</label>
+                  <input
+                    type="text"
+                    lang="en"
+                    dir="ltr"
+                    id="descArticle"
+                    class=""
+                    placeholder="this is article"
+                    required
+                  />
                 </div>
                 <div class="">
-                  <label class="" for="file_input">عکس پروفایل</label>
+                  <label for="articleCategory" class="">انتخاب دسته بندی</label>
+                  <select id="articleCategory" class="">
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                    <option value="زبان انگلیسی">زبان انگلیسی</option>
+                  </select>
+                </div>
+                <div class="">
+                  <label class="" for="file_input">کاور</label>
                   <input class="" id="file_input" type="file" />
+                </div>
+                <div class="md:col-span-2">
+                  <label for="editor" class="">مقاله</label>
+                  <textarea name="" id="editor" rows="8"></textarea>
                 </div>
               </div>
 
-              <button type="submit" class="">انتشار مقاله</button>
+              <div class="flex gap-x-7">
+                <button type="submit" class="" id="addArticleBtn">
+                  انتشار مقاله
+                </button>
+                <button type="submit" class="" id="draftArticleBtn">
+                  پیش نویس مقاله
+                </button>
+              </div>
             </form>
           </div>
         </section>
@@ -69,6 +99,7 @@
                     <th scope="col" class="px-6 py-3">شماره</th>
                     <th scope="col" class="px-6 py-3">عنوان</th>
                     <th scope="col" class="px-6 py-3">دسته بندی</th>
+                    <th scope="col" class="px-6 py-3">وضعیت انتشار</th>
                     <th scope="col" class="px-6 py-3">زمان انتشار</th>
                     <th scope="col" class="px-6 py-3">نویسنده</th>
                     <th scope="col" class="px-6 py-3">ویرایش</th>
@@ -110,6 +141,9 @@
       </main>
     </div>
     <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
     <script type="module" src="./js/articles.js"></script>
   </body>
 </html>
