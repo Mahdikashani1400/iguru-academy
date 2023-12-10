@@ -30,7 +30,7 @@ async function getHeader() {
             <div
               class="navbar__info__left-login col-3 row justify-content-end d-none d-xl-flex"
             >
-              <a href="${getToken() ? "profile.html" : "login-form.html"}" class="btn btn-primary d-flex align-items-center">
+              <a href="login-form.html" class="btn btn-primary d-flex align-items-center">
                 <svg
                   class="svg-inline--fa fa-user col-6"
                   aria-hidden="true"
@@ -48,7 +48,7 @@ async function getHeader() {
                   ></path>
                 </svg>
                 <span class="text-white d-none d-md-inline col-6"
-                  >${getToken() ? "پروفایل" : "ورود"}</span
+                  >${getToken() ? "خروج" : "ورود"}</span
                 >
               </a>
             </div>

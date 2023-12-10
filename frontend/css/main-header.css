@@ -753,6 +753,13 @@ input:focus::-webkit-input-placeholder {
 .blog__box__tags {
   font-size: 14px;
 }
+.blog__box-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 2rem;
+  overflow: hidden;
+}
 .blog__box__author,
 .blog__box-category,
 .blog__box-title {

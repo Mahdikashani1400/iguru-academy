@@ -53,7 +53,7 @@ const getCommentsTable = () => {
 
 async function cleanAndGetInfo() {
     await getTarget("comments").then(data => {
-        commentsInfo = data[0] ? data : []
+        commentsInfo = data[0] ? data.reverse() : []
 
     })
     getCommentsTable()

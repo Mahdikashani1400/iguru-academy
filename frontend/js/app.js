@@ -232,7 +232,9 @@ async function showArticles() {
   const articlesContainer = $.querySelector(".blogs__boxes");
   articlesContainer.innerHTML = "";
   const articlesInfo = await getArticles().then((data) => data);
+  console.log(articlesInfo);
   articlesInfo.forEach((article) => {
+
     articlesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -246,14 +248,14 @@ async function showArticles() {
         <div class="blog__box__content">
           <div class="blog__box__tags pt-4 pb-2">
             <a href="" class="blog__box-category text-green fw-bold"
-              >${article.shortName}</a
+              >${article.title}</a
             ><span class="text-green px-1 fw-bold">/</span>
             <span class="fw-bold text-gray ps-2">توسط</span>
             <a href="" class="blog__box__author fw-bold text-gray"
               >علی سلیمانی</a
             >
           </div>
-          <div class="blog__box-title h5 fw-bold">${article.title}</div>
+          <div class="blog__box-title h5 fw-bold">${article.description}</div>
           <a
             href=""
             class="under__line-animate text-orange fw-bold d-inline-block pt-2 pb-1"

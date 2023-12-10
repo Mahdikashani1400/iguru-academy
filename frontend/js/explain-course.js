@@ -6,13 +6,16 @@ import {
   getCourseDetails,
   getRelatedCourses,
   goToCourseDetail,
+  registerUserToCourseTarget,
+  useDiscountCode,
   sendComment,
   changeDateToFa,
   changePriceNumberToFa,
   minuteToTimer,
   answerComment,
 } from "../js/funcs/shared.js";
-import { getUserInfo } from "../js/funcs/auth.js";
+import { getUserInfo, register } from "../js/funcs/auth.js";
+import { showToast } from "../js/funcs/utils.js";
 const $ = document;
 window.goToCourseDetail = goToCourseDetail;
 
@@ -27,6 +30,7 @@ window.addEventListener("load", async () => {
   await getHeader();
   await getCourseDetails(courseName).then((data) => {
     courseInfo = data;
+    console.log(courseInfo);
     scoresInfo = _.countBy(courseInfo.comments, (obj) => {
       return obj.score;
     });
@@ -69,6 +73,8 @@ function showCourseDetails() {
     ? "شما دانشجوی دوره هستید!"
     : "ثبت نام در دوره";
 
+  userState.addEventListener('click', registerToCourseHandler)
+
   const courseState = $.querySelector(".course__state");
   courseState.innerHTML = `وضعیت : ${courseInfo.isComplete ? "به اتمام رسیده" : "در حال برگزاری"
     }`;
@@ -81,6 +87,51 @@ function showCourseDetails() {
   courseTimeContainer.innerHTML = `مدت زمان دوره : ${minuteToTimer(
     courseTime
   )}`;
+}
+
+
+async function registerToCourseHandler() {
+  if (!courseInfo.isUserRegisteredToThisCourse) {
+    swal.fire({ title: "آیا کد تخفیف داری؟", icon: "warning", confirmButtonText: "بله", showCancelButton: true, cancelButtonText: "خیر" }).then(res => {
+      if (res.isConfirmed) {
+        swal.fire({
+          title: "کد تخفیف خود را وارد کنید.",
+          html:
+            `<input id="discountCode" placeholder="کد تخفیف ...">`,
+          confirmButtonText: 'تایید',
+          showCancelButton: true,
+          cancelButtonText: 'لغو',
+
+          preConfirm: async () => {
+            console.log('x');
+            const discountCode = $.getElementById('discountCode')
+            let discountInfo = null
+            console.log(discountCode, courseInfo._id);
+            await useDiscountCode(discountCode.value, courseInfo).then(data => {
+              discountInfo = data
+              console.log(discountInfo);
+              if (discountInfo.code) {
+                showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
+                })
+
+                registerUserToCourseTarget(courseInfo, discountInfo)
+
+              } else {
+                showToast("کد تخفیف را به درستی وارد کنید.", "error", () => { })
+              }
+            })
+
+          }
+
+        })
+      } else {
+        // registerUserToCourseTarget(courseInfo)
+      }
+    })
+    // await registerUserToCourseTarget(courseInfo).then(data => {
+    //   console.log(data);
+    // })
+  }
 }
 
 const sessionsContainer = $.getElementById("sessionsContainer");
@@ -118,6 +169,7 @@ function showCourseSessions() {
     );
   } else {
     courseInfo.sessions.forEach((session) => {
+      console.log(courseInfo);
       courseTime += +session.time;
       if (sessionsCategory !== session.title.split("/")[0]) {
         sessionsCategory = session.title.split("/")[0];
@@ -138,7 +190,7 @@ function showCourseSessions() {
       <li class="list-group-item gap-0 gap-sm-2 align-items-center d-flex bg-light py-0 px-1 px-sm-3 rounded-0">
       <a href="#" class="text-normal fw-bold px-1 py-2 d-flex align-items-center justify-content-center justify-content-sm-start w-100"><i class="bi bi-file-earmark text-orange fw-bold fs-5 ps-2 d-none d-sm-inline"></i><span class="course__video__title">${session.title.split("/")[1]
           }</span><span class="me-auto">${session.time} دقیقه
-          <i class="bi bi-${session.free || session.isUserRegisteredToThisCourse ? "un" : ""
+          <i class="bi bi-${(session.free || courseInfo.isUserRegisteredToThisCourse) ? "un" : ""
           }lock-fill me-1 me-sm-3 text-orange"></i></span></a>
     </li>
     
@@ -158,7 +210,7 @@ function showCourseSessions() {
             <li class="list-group-item gap-0 gap-sm-2 align-items-center d-flex bg-light py-0 px-1 px-sm-3 rounded-0">
             <a href="#" class="text-normal fw-bold px-1 py-2 d-flex align-items-center justify-content-center justify-content-sm-start w-100"><i class="bi bi-file-earmark text-orange fw-bold fs-5 ps-2 d-none d-sm-inline"></i><span class="course__video__title">${session.title.split("/")[1]
           }</span><span class="me-auto">${session.time} دقیقه
-                <i class="bi bi-${session.free || session.isUserRegisteredToThisCourse
+                <i class="bi bi-${session.free || courseInfo.isUserRegisteredToThisCourse
             ? "un"
             : ""
           }lock-fill me-1 me-sm-3 text-orange"></i></span></a>
@@ -195,22 +247,23 @@ function showScoreUsersByStars() {
   StarNumberAverageVar = +(
     StarNumberAverageVar / _.sum(Object.values(scoresInfo))
   ).toFixed(1);
-  console.log(typeof StarNumberAverageVar);
+  console.log(StarNumberAverageVar);
   StarNumberAverageElem.innerHTML = StarNumberAverageVar || 0;
 
   StarsIconsAverage.forEach((icon, index) => {
+    console.log(index + 1, +String(StarNumberAverageVar).split(".")[0] + 1);
     if (StarNumberAverageVar) {
       if (index + 1 <= String(StarNumberAverageVar).split(".")[0]) {
         icon.style.setProperty(
           "--star-fill-color",
           `-webkit-linear-gradient(0deg, #ffb606 100%, #6062622b 0%)`
         );
-      } else if (index + 1 == String(StarNumberAverageVar).split(".")[0] + 1) {
-        console.log("dcs");
+      } else if (index + 1 == +String(StarNumberAverageVar).split(".")[0] + 1) {
+        const colorPercent = String(StarNumberAverageVar).split(".")[1] * 10
         icon.style.setProperty(
           "--star-fill-color",
-          `-webkit-linear-gradient(0deg, #ffb606 ${StarNumberAverageVar.split(".")[1] * 10
-          }%, #6062622b ${100 - StarNumberAverageVar.split(".")[1] * 10}%)`
+          `-webkit-linear-gradient(0deg, #ffb606 ${colorPercent
+          }%, #6062622b ${100 - colorPercent}%)`
         );
       } else {
         icon.style.setProperty("--star-fill-color", `#6062622b`);

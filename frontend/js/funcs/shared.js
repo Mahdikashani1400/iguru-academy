@@ -41,6 +41,49 @@ const getCourseDetails = async (courseName) => {
   const result = await res.json();
   return result;
 };
+
+const registerUserToCourseTarget = async (courseInfo, discountInfo = null) => {
+  const percentPrice = (100 - (discountInfo.percent)) / 100
+  const priceBody = { price: (discountInfo ? (courseInfo.price * (percentPrice)).toFixed() : courseInfo.price) }
+  const res = await fetch(`http://localhost:4000/v1/courses/${courseInfo._id}/register`, {
+    method: "POST",
+
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+      "Content-Type": "application/json",
+
+    },
+    body: JSON.stringify(priceBody)
+
+  }).then(res => {
+    res.status === 200 || res.status === 201 ? location.reload() : null
+  })
+  console.log(res);
+}
+const useDiscountCode = async (code, courseInfo) => {
+  const courseBody = { course: courseInfo._id }
+  const res = await fetch(`http://localhost:4000/v1/offs/${code}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+      "Content-Type": "application/json",
+
+    },
+    body: JSON.stringify(courseBody)
+  })
+  // .then(result => {
+  //   console.log(result.json());
+  //   if (result.status === 404) {
+  //     showToast("کد تخفیف اشتباه است.", "error", () => { })
+  //   }
+  //   else if (result.status === 200) {
+  //     showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
+  //     })
+  //   }
+  // }
+  // )
+  return res.json()
+}
 const getRelatedCourses = async (courseName) => {
   const res = await fetch(
     `http://localhost:4000/v1/courses/related/${courseName}`
@@ -214,6 +257,8 @@ export {
   searchInData,
   showNotFoundAlert,
   getCourseDetails,
+  registerUserToCourseTarget,
+  useDiscountCode,
   getRelatedCourses,
   goToCourseDetail,
   goToProductDetail,

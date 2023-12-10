@@ -5,6 +5,7 @@ import {
   globalSearchHandler,
   goToCourseDetail,
   goToProductDetail,
+  getCategoryOfCourses,
   changePriceNumberToFa,
 } from "../js/funcs/shared.js";
 import { aricleSliderSearch } from "../vendor/slick-slider/app.js";
@@ -15,6 +16,7 @@ window.goToProductDetail = goToProductDetail;
 const $ = document;
 let searchValue = new URLSearchParams(location.search).get("searchValue");
 let searchValueInfos = null;
+let categoryInfos = null;
 window.addEventListener("load", async () => {
 
   getModals();
@@ -25,27 +27,43 @@ window.addEventListener("load", async () => {
   await globalSearchHandler(searchValue).then((data) => {
     searchValueInfos = data;
   });
-  console.log(searchValueInfos);
+  await getCategoryOfCourses().then((data) => {
+    categoryInfos = data;
+  });
+
   getSearchValueData();
   showSearchValueData();
   aricleSliderSearch();
   getFooter();
 
- 
+
 });
 
-let coursesInfoArray = null;
-let productsInfoArray = null;
-let articlesInfoArray = null;
+let coursesInfoArray = [];
+let productsInfoArray = [];
+let articlesInfoArray = [];
 
 function getSearchValueData() {
-  coursesInfoArray = searchValueInfos.allResultCourses.filter((data) => {
-    return !data.shortName.split("_")[0].includes("محصول");
+  console.log(searchValueInfos.allResultCourses);
+  console.log(categoryInfos);
+  searchValueInfos.allResultCourses.forEach((data) => {
+    for (let i = 0; i < categoryInfos.length; i++) {
+      if (data.categoryID == categoryInfos[i]._id && categoryInfos[i].title === "course") {
+        coursesInfoArray.push(data)
+        break
+      } else if (data.categoryID == categoryInfos[i]._id && categoryInfos[i].title === "product") {
+        console.log('t');
+        productsInfoArray.push(data)
+        break
+
+      }
+
+    }
+
   });
-  productsInfoArray = searchValueInfos.allResultCourses.filter((data) => {
-    return data.shortName.split("_")[0].includes("محصول");
-  });
+
   articlesInfoArray = searchValueInfos.allResultArticles;
+  // coursesInfoArray = new Set()
 }
 
 let coursesContainer = $.querySelector(".search__courses");
@@ -64,8 +82,8 @@ function showSearchValueData() {
   </div>
   <div class="blogs__boxes text-end">
    ${articlesInfoArray
-     .map((article) => {
-       return ` <div class="blog__box">
+        .map((article) => {
+          return ` <div class="blog__box">
     <div class="blog__box-container mx-1">
       <div class="blog__box-date">
         <span class="date-month">تیر</span>
@@ -93,8 +111,8 @@ function showSearchValueData() {
       </div>
     </div>
   </div>`;
-     })
-     .join("")}
+        })
+        .join("")}
   </div>
   `)
     : (articlesContainer.innerHTML = "");
@@ -106,9 +124,8 @@ function showSearchValueData() {
   </div>
   <div class="about__us_courses-boxes row gx-5 gy-5 mx-auto">
    ${coursesInfoArray
-     .map((course) => {
-       console.log(course);
-       return `
+        .map((course) => {
+          return `
     <div
     class="course__box col-xl-3 col-lg-4 col-md-6 col-12 rounded">
     <div
@@ -117,9 +134,8 @@ function showSearchValueData() {
     >
       <div
         class="course__box-bg-img position-absolute bg-img"
-        style="background-image:url('http://localhost:4000/courses/covers/${
-          course.cover
-        }');"
+        style="background-image:url('http://localhost:4000/courses/covers/${course.cover
+            }');"
       ></div>
     
       <div class="course__box-content">
@@ -145,9 +161,8 @@ function showSearchValueData() {
             class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white text-center"
             href="#"
           >
-          ${
-            changePriceNumberToFa(course.price)
-          }
+          ${changePriceNumberToFa(course.price)
+            }
           </a>
           <div
             class="course__box-star d-flex align-items-center gap-1"
@@ -217,8 +232,8 @@ function showSearchValueData() {
       </div>
     </div>
   </div>`;
-     })
-     .join("")}
+        })
+        .join("")}
   </div>
 
         `)
@@ -232,8 +247,8 @@ function showSearchValueData() {
   class="products__boxes text-end row justify-content-start row-cols-lg-3 row-cols-sm-2 g-5 g-sm-4 pb-4 w-100 mx-auto"
 >
 ${productsInfoArray
-  .map((product) => {
-    return `
+        .map((product) => {
+          return `
     <div
     class="products__box d-flex flex-column justify-content-center align-items-center my-5"
     onclick = "goToProductDetail('${product.shortName}')">
@@ -260,8 +275,8 @@ ${productsInfoArray
   </div>
 
     `;
-  })
-  .join("")}
+        })
+        .join("")}
 </div>
     `)
     : (productsContainer.innerHTML = "");
