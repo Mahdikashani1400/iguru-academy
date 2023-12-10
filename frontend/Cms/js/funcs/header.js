@@ -20,7 +20,7 @@ async function createHeader() {
     }
   });
   window.addEventListener('resize', () => {
-    sizeOfMenuHandler()
+    sizeOfMenuHandler(headerNav)
 
   });
   sizeOfMenuHandler(headerNav)
@@ -49,7 +49,7 @@ function insertHeaderTemplate(headerNav) {
   <ul class="header__menu">
     <a
       href="#"
-      class="flex flex-col gap-x-2 dark:text-white text-zinc-800 items-center md:hidden p-0 mb-7 mt-2"
+      class="name__container flex flex-col gap-x-2 dark:text-white text-zinc-800 items-center md:hidden p-0 mb-7 mt-2"
     >
       <p class="flex items-center gap-x-1.5 order-1 md:-order-1">
       <span class="admin__name"></span>
@@ -116,7 +116,7 @@ function insertHeaderTemplate(headerNav) {
         <use href="#envelope"></use>
       </svg>
       <span>پیغام ها</span></a
-    ><a href="#" class="text-red-500"
+    ><a href="../login-form.html" class="text-red-500"
       ><svg class="w-5 h-5">
         <use href="#power"></use>
       </svg>

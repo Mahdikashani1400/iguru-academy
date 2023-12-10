@@ -95,11 +95,19 @@
   .header__nav.mobile.hide ~ .body__content {
     @apply mr-0;
   }
-  .header__nav.mobile .header__menu span {
+  .header__nav.mobile .header__menu span:not(.admin__name) {
     display: none;
+  }
+  .header__nav.mobile .header__menu span.admin__name {
+    text-align: center;
+    word-break: break-word;
   }
   .header__nav.mobile .header__menu a {
     @apply w-14 h-14 py-2.5 rounded-full justify-center p-0;
+  }
+  .header__nav.mobile .header__menu a.name__container {
+    /* height: unset; */
+    @apply h-auto m-0 gap-y-2 leading-5;
   }
   .header__nav.mobile .header__menu svg {
     @apply w-9 h-9;

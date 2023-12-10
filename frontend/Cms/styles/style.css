@@ -1218,8 +1218,13 @@ input:focus {
   margin-right: 0px;
 }
 
-.header__nav.mobile .header__menu span {
+.header__nav.mobile .header__menu span:not(.admin__name) {
   display: none;
+}
+
+.header__nav.mobile .header__menu span.admin__name {
+  text-align: center;
+  word-break: break-word;
 }
 
 .header__nav.mobile .header__menu a {
@@ -1230,6 +1235,14 @@ input:focus {
   padding: 0px;
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
+}
+
+.header__nav.mobile .header__menu a.name__container {
+  /* height: unset; */
+  margin: 0px;
+  height: auto;
+  row-gap: 0.5rem;
+  line-height: 1.25rem;
 }
 
 .header__nav.mobile .header__menu svg {
