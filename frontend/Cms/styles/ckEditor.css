@@ -25,6 +25,8 @@
 .ck-toolbar_grouping {
   border-top-right-radius: 0.5rem !important;
   border-top-left-radius: 0.5rem !important;
+}
+.dark .ck-toolbar_grouping {
   background-color: rgb(55 65 81) !important;
 }
 button.ck.ck-button {
