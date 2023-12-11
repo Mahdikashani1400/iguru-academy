@@ -13,7 +13,7 @@ import {
 } from "../js/funcs/shared.js";
 let coursesInfo = null;
 window.addEventListener("load", async () => {
-  getModals();
+  await getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "course_page-bg.jpg");
@@ -96,7 +96,7 @@ function addCoursesToContainer(coursesArray, category) {
           <div
             class="course__box-state d-flex justify-content-between p-3 pe-sm-4 flex-wrap"
           >
-          <a class="d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white position-relative" href="#">
+          <a class="d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white position-relative text-center" href="#">
           ${courseTarget.discount && courseTarget.price ? `<span class="discount d-flex justify-content-center align-items-center bg-orange rounded-circle position-absolute ">${courseTarget.discount}%</span>` : ""}
 
          <span class="${courseTarget.discount && courseTarget.price ? "main__price" : ""}"> ${changePriceNumberToFa(courseTarget.price)}</span>

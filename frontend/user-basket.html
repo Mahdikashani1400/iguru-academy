@@ -20,7 +20,7 @@
         ></section>
         <section class="user__basket">
           <div class="container">
-            <div class="row row-cols-auto">
+            <div class="row row-cols-auto orders__container">
               <header class="row w-100 m-0 text-white fs-6 fs-md-5 px-0">
                 <div class="h5 col-5 px-md-4 px-3 rounded-end">محصول</div>
                 <div class="h5 col-2 text-md-center">قیمت</div>
@@ -200,7 +200,7 @@
             <div
               class="control__basket my-4 py-2 d-flex flex-column flex-lg-row gap-4 justify-content-between"
             >
-              <div class="discount__basket">
+              <div class="discount__basket d-none">
                 <input
                   type="text"
                   class="rounded-2"
@@ -211,7 +211,7 @@
                   اعمال تخفیف
                 </button>
               </div>
-              <div class="refresh__basket align-self-end">
+              <div class="refresh__basket">
                 <button class="btn p-2 text-green fw-bold">
                   بروزرسانی سبد خرید
                 </button>
@@ -226,7 +226,7 @@
                 <div class="card-header bg-white h3 fw-bold pb-4">
                   جمع کل سبد خرید
                 </div>
-                <div class="card-body border-0 px-0">
+                <div class="calculate__orders__body card-body border-0 px-0">
                   <div class="card-text subtotal__products pb-3 border-bottom">
                     <span class="ms-5">جمع جزء</span
                     ><b class="fw-bold fs-6">۱,۵۴۰,۰۰۰ تومان</b>

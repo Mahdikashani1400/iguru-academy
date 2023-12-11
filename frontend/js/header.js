@@ -573,7 +573,11 @@ function seacrhModalHandler() {
   });
 }
 
-window.addEventListener("scroll", showMenuOnScroll);
+window.addEventListener("scroll", () => {
+  try {
+    showMenuOnScroll()
+  } catch (err) { }
+});
 let scrollValue = null;
 
 let topSpace = null;

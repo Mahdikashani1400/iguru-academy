@@ -20,7 +20,7 @@ let searchValueInfos = null;
 let categoryInfos = null;
 window.addEventListener("load", async () => {
 
-  getModals();
+  await getModals();
   await getHeader();
   let pageTitle = getPageTitle();
 
@@ -158,7 +158,7 @@ function showSearchValueData() {
         <div
           class="course__box-state d-flex justify-content-between p-3 flex-wrap"
         >
-        <a class="position-relative d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white" href="#">
+        <a class="position-relative d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white text-center" href="#">
         ${course.discount && course.price ? `<span class="discount d-flex justify-content-center align-items-center bg-orange rounded-circle position-absolute ">${course.discount}%</span>` : ""}
 
        <span class="${course.discount && course.price ? "main__price" : ""}"> ${changePriceNumberToFa(course.price)

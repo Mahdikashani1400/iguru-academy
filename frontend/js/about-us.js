@@ -5,7 +5,7 @@ import { getFooter } from "./footer.js";
 const $ = document;
 
 window.addEventListener("load", async () => {
-  getModals();
+  await getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "about-us_page-bg.jpg");

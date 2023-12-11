@@ -55,8 +55,9 @@ const registerUserToCourseTarget = async (courseInfo, discountInfo = null) => {
     },
     body: JSON.stringify(priceBody)
 
-  }).then(res => {
-    res.status === 200 || res.status === 201 ? location.reload() : null
+  }).then(async res => {
+
+    res.status === 200 || res.status === 201 ? await showToast("به دوره خودت خوش اومدی :)", "success", () => { }) && location.reload() : null
   })
   console.log(res);
 }
@@ -71,17 +72,7 @@ const useDiscountCode = async (code, courseInfo) => {
     },
     body: JSON.stringify(courseBody)
   })
-  // .then(result => {
-  //   console.log(result.json());
-  //   if (result.status === 404) {
-  //     showToast("کد تخفیف اشتباه است.", "error", () => { })
-  //   }
-  //   else if (result.status === 200) {
-  //     showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
-  //     })
-  //   }
-  // }
-  // )
+
   return res.json()
 }
 const getRelatedCourses = async (courseName) => {
@@ -91,6 +82,18 @@ const getRelatedCourses = async (courseName) => {
   const result = await res.json();
   return result;
 };
+
+
+const getAllOfOrders = async () => {
+  const res = await fetch(`http://localhost:4000/v1/orders`, {
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+  const result = await res.json();
+  return result;
+}
+
 
 let findData = null;
 let AllCategoryBox = null;
@@ -270,6 +273,7 @@ export {
   getRelatedCourses,
   goToCourseDetail,
   goToProductDetail,
+  getAllOfOrders,
   submitContactsMSG,
   sendComment,
   changeDateToFa,

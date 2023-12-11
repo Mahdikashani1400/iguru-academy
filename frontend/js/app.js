@@ -13,7 +13,7 @@ import {
 
 const $ = document;
 window.addEventListener("load", async () => {
-  getModals();
+  await getModals();
   await getHeader();
 
   showPopularCourses("همه");
@@ -186,7 +186,7 @@ function showPopularCourses(category) {
             }</div>
             </div>
             <div class="course__box-state d-flex justify-content-between p-3">
-              <a class="d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white" href="#">
+              <a class="d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white text-center" href="#">
               ${courseTarget.discount && courseTarget.price ? `<span class="discount d-flex justify-content-center align-items-center bg-orange rounded-circle position-absolute ">${courseTarget.discount}%</span>` : ""}
   
              <span class="${courseTarget.discount && courseTarget.price ? "main__price" : ""}"> ${changePriceNumberToFa(courseTarget.price)

@@ -4,9 +4,9 @@ import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 const $ = document;
 
-window.addEventListener('load',async()=>{
+window.addEventListener('load', async () => {
 
-  getModals();
+  await getModals();
   await getHeader();
   let pageTitle = getPageTitle();
 
@@ -14,5 +14,5 @@ window.addEventListener('load',async()=>{
 
   getFooter();
 
-  
+
 })

@@ -5,13 +5,13 @@ import { getFooter } from "./footer.js";
 
 window.addEventListener("load", async () => {
 
-  getModals();
+  await getModals();
   await getHeader();
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "blog_page-bg.jpg");
   getFooter();
 
- 
+
 });
 
 const $ = document;

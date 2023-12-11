@@ -1,6 +1,19 @@
+
+import {
+  getAllOfOrders,
+  changePriceNumberToFa,
+  calculateDiscount
+} from "../js/funcs/shared.js";
 const $ = document;
+let ordersInfo = null
+// window.addEventListener("load", async () => {
+//   console.log(ordersInfo);
+// });
+
 const modals = $.querySelector(".modals");
-function getModals() {
+async function getModals() {
+  ordersInfo = await getAllOfOrders()
+  let sumOfPrice = null
   modals.innerHTML = `
     
   <div
@@ -9,103 +22,63 @@ function getModals() {
   tabindex="-1"
 >
   <div class="modal-dialog">
-    <div class="modal-content bg-modal">
+    <div class="modal-content bg-modal ${ordersInfo.length ? "" : "d-none"}">
       <div class="modal-body p-0">
-        <div class="product__boxes-modal row pb-4 gap-3">
-          <div class="product__box-modal d-flex">
+        <div class="product__boxes-modal scrollbar-customize row pb-4 gap-3">
+          ${ordersInfo.map(order => {
+    sumOfPrice += order.price
+    return `
+            <div class="product__box-modal d-flex">
             <div class="product__content-modal d-flex">
               <div class="product__img-modal ms-3">
                 <img
-                  src="./img/products/product-1-small.png"
+                  src="http://localhost:4000/courses/covers/${order.course.cover
+      }"
                   alt=""
                   class="img-fluid"
                 />
               </div>
               <div class="product__info-modal">
                 <p class="product__title-modal fw-bold text-white">
-                  آموزش HTML و CSS
+                  ${order.course.name}
                 </p>
                 <p class="mt-1 text-end">
-                  <span class="product__count-modal text-gray">* 39</span>
-                  <span class="product__price-modal text-orange me-2"
-                    >۲۰,۰۰۰ تومان</span
-                  >
+               ${order.price ? ` <span class="product__price-modal text-orange me-2"
+               >${changePriceNumberToFa(order.price)}</span
+             >`: ""}
+                  <span class="${order.price ? "main__price" : ""} product__price-modal bg-transparent text-orange me-2"
+                    >${changePriceNumberToFa(order.course.price)}</span
+                 
                 </p>
               </div>
             </div>
-            <div class="product__remove-modal me-auto">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                fill="currentColor"
-                class="bi bi-x text-gray"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                />
-              </svg>
-            </div>
-          </div>
-          <div class="product__box-modal d-flex">
-            <div class="product__content-modal d-flex">
-              <div class="product__img-modal ms-3">
-                <img
-                  src="./img/products/product-1-small.png"
-                  alt=""
-                  class="img-fluid"
-                />
-              </div>
-              <div class="product__info-modal">
-                <p class="product__title-modal fw-bold text-white">
-                  آموزش HTML و CSS
-                </p>
-                <p class="mt-1 text-end">
-                  <span class="product__count-modal text-gray">* 39</span>
-                  <span class="product__price-modal text-orange me-2"
-                    >۲۰,۰۰۰ تومان</span
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="product__remove-modal me-auto">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                fill="currentColor"
-                class="bi bi-x text-gray"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                />
-              </svg>
-            </div>
-          </div>
+           
+          </div>`
+  }).join("")}
+         
         </div>
       </div>
       <div class="modal-footer px-0">
         <p class="fs-5 fw-bold flex-grow-1">
           <span class="text-white">جمع كل سبد خريد: </span>
           <span class="product__price-modal text-orange me-2"
-            >۱,۵۸۰,۰۰۰ تومان</span
+            >${changePriceNumberToFa(sumOfPrice)}</span
           >
         </p>
         <br />
         <br />
         <br />
         <div class="d-flex justify-content-center w-100">
-          <button
+          <a
+          href="user-basket.html"
             class="btn px-4 py-3 fw-bold text-white bg-green to-orange"
           >
             مشاهده سبد خرید
-          </button>
+          </a>
         </div>
       </div>
     </div>
-    <div class="modal-content bg-modal d-none">
+    <div class="modal-content bg-modal ${!ordersInfo.length ? "" : "d-none"}">
       <div class="modal-body">
         <div class="h6 text-white">هیچ محصولی در سبد خرید نیست.</div>
       </div>
@@ -160,4 +133,4 @@ function goToSearchPage() {
   let searchBox = $.getElementById("searchBox");
   window.location.href = `search.html?searchValue=${searchBox.value}`;
 }
-export { getModals };
+export { getModals, ordersInfo };

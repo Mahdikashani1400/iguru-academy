@@ -22,7 +22,7 @@ let userInfo = null;
 let productName = new URLSearchParams(location.search).get("name");
 
 window.addEventListener("load", async () => {
-  getModals();
+  await getModals();
   await getHeader();
   await getCourseDetails(productName).then((data) => {
     productInfo = data;
@@ -90,8 +90,8 @@ function showRelatedproducts() {
   if (relatedProducts.length) {
     relatedProductsContainer.innerHTML = `
     ${relatedProducts
-      .map((product) => {
-        return `
+        .map((product) => {
+          return `
         <div class="same__product__box d-flex flex-column justify-content-center align-items-center pb-5 pb-lg-0 mb-4"
         onclick = "goToProductDetail('${product.shortName}')">
         <div class="same__product__content">
@@ -99,23 +99,21 @@ function showRelatedproducts() {
             <div class="p same__product__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
               افزودن به سبد خرید
             </div>
-            <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${
-              product.cover
+            <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${product.cover
             }" alt="">
           </div>
           <div class="same__product__box-title h6 pt-4 fw-bold text-center">
           ${product.name}
           </div>
           <div class="same__product__box-price p fw-bold text-orange fs-6 text-center">
-          ${
-            changePriceNumberToFa(product.price)
-          }
+          ${changePriceNumberToFa(product.price)
+            }
           </div>
         </div>
       </div>
       `;
-      })
-      .join("")}`;
+        })
+        .join("")}`;
   }
 }
 
@@ -173,9 +171,9 @@ function getAllComments() {
     <div class="comments__container row mx-auto px-0">
     
     ${productInfo.comments
-      .map((comment) => {
-        console.log(comment);
-        return `
+        .map((comment) => {
+          console.log(comment);
+          return `
         <div class="comment card py-4 my-3 border-1 px-sm-3 bg-normal position-relative d-flex px-0"
         >
         <div class="row g-0">
@@ -185,17 +183,15 @@ function getAllComments() {
           <div class="col-md-10 flex-grow-1 pe-4">
             <div class="card-body p-0">
              <div class="d-flex align-items-center gap-2" >
-             <h3 class="card-title fw-bold mb-0 username">${
-               comment.creator.username
-             }</h3>
-            <span class="badge bg-green">${
-              comment.creator.role === "ADMIN" ? "ادمین" : "کاربر"
+             <h3 class="card-title fw-bold mb-0 username">${comment.creator.username
+            }</h3>
+            <span class="badge bg-green">${comment.creator.role === "ADMIN" ? "ادمین" : "کاربر"
             }</span>
              </div>
               
               <small class="text-gray fw-bold date-comment">${changeDateToFa(
-                comment.updatedAt.split("T")[0]
-              )}</small>
+              comment.updatedAt.split("T")[0]
+            )}</small>
            
               <p class="card-text mt-1 text-normal lh-lg">
               ${comment.body}
@@ -206,9 +202,8 @@ function getAllComments() {
           </div>
         </div>
 
-       ${
-         comment.answerContent
-           ? ` <div class="comment answer card py-3 mt-4 mb-3 border-1 px-3 position-relative align-self-center bg-transparent"
+       ${comment.answerContent
+              ? ` <div class="comment answer card py-3 mt-4 mb-3 border-1 px-3 position-relative align-self-center bg-transparent"
          >
        <div class="row g-0">
          <div class="col-md-2 d-flex justify-content-center contain-img pe-4 pe-md-0 pb-2 pb-md-0">
@@ -217,17 +212,15 @@ function getAllComments() {
          <div class="col-md-10 flex-grow-1 pe-4">
            <div class="card-body p-0">
            <div class="d-flex align-items-center gap-2" >
-           <h3 class="card-title fw-bold mb-0 username">${
-             comment.answerContent.creator.username
-           }</h3>
-          <span class="badge bg-primary">${
-            comment.answerContent.creator.role === "ADMIN" ? "ادمین" : "کاربر"
-          }</span>
+           <h3 class="card-title fw-bold mb-0 username">${comment.answerContent.creator.username
+              }</h3>
+          <span class="badge bg-primary">${comment.answerContent.creator.role === "ADMIN" ? "ادمین" : "کاربر"
+              }</span>
            </div>
          
              <small class="text-gray fw-bold date-comment">${changeDateToFa(
-               comment.answerContent.updatedAt.split("T")[0]
-             )}</small>
+                comment.answerContent.updatedAt.split("T")[0]
+              )}</small>
    
              <p class="card-text mt-1 text-normal lh-lg">
 ${comment.answerContent.body} 
@@ -237,22 +230,21 @@ ${comment.answerContent.body}
          </div>
        </div>
      </div>`
-           : ""
-       }
+              : ""
+            }
       </div>
 
       `;
-      })
-      .join("")}
+        })
+        .join("")}
     </div>
     <div class="send__comment shadow pt-5 pb-3 pb-md4 px-md-5 px-sm-4 px-3 mt-4">
       <div class="h1 pb-1">دیدگاهتان را بنویسید</div>
 
       <form class="row py-4">
         <div class="mb-3">
-          <div class="h3 my-3 d-flex justify-content-between align-items-center"><span class="text-normal" id="userName">${
-            userInfo.username
-          }</span>
+          <div class="h3 my-3 d-flex justify-content-between align-items-center"><span class="text-normal" id="userName">${userInfo.username
+      }</span>
          
           </div>
           <textarea name="comment" cols="45" rows="5" placeholder="دیدگاه شما ..." id="commentText" class="form-control p-3"></textarea>

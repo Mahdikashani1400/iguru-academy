@@ -51,6 +51,23 @@
 }
 
 /* product in user-basket */
+
+.scrollbar-customize {
+  scrollbar-gutter: stable;
+}
+.scrollbar-customize::-webkit-scrollbar {
+  width: 3px;
+}
+.scrollbar-customize::-webkit-scrollbar-thumb {
+  background: #71717a;
+  border-radius: 100px;
+}
+
+.product__boxes-modal {
+  height: 300px;
+  overflow-y: scroll;
+  text-align: justify;
+}
 .product__box-modal {
   cursor: pointer;
 }
