@@ -359,3 +359,27 @@ nav.user-out .user-info {
     font-size: 13px;
   }
 }
+
+/* course-box */
+
+.course__box-price .discount {
+  font-size: 8px;
+  width: 22px;
+  height: 22px;
+  right: -12.5px;
+  bottom: -7px;
+}
+.main__price {
+  background-color: #fff;
+  text-decoration: line-through;
+  color: #d1d5dbed !important;
+  text-decoration-color: red;
+  border-radius: 20px;
+}
+.course__box-price:hover {
+  background: transparent;
+  color: var(--primary-color-green) !important;
+}
+.course__box-price:hover .discount {
+  color: #fff;
+}

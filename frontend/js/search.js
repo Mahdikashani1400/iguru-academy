@@ -7,6 +7,7 @@ import {
   goToProductDetail,
   getCategoryOfCourses,
   changePriceNumberToFa,
+  calculateDiscount
 } from "../js/funcs/shared.js";
 import { aricleSliderSearch } from "../vendor/slick-slider/app.js";
 import { getFooter } from "./footer.js";
@@ -157,13 +158,16 @@ function showSearchValueData() {
         <div
           class="course__box-state d-flex justify-content-between p-3 flex-wrap"
         >
-          <a
-            class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white text-center"
-            href="#"
-          >
-          ${changePriceNumberToFa(course.price)
-            }
-          </a>
+        <a class="position-relative d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white" href="#">
+        ${course.discount && course.price ? `<span class="discount d-flex justify-content-center align-items-center bg-orange rounded-circle position-absolute ">${course.discount}%</span>` : ""}
+
+       <span class="${course.discount && course.price ? "main__price" : ""}"> ${changePriceNumberToFa(course.price)
+            }</span>
+ ${course.discount && course.price ? `
+ <span class="off__price px-1">
+ ${changePriceNumberToFa(calculateDiscount(course.price, course.discount))}
+ </span>`: ""}
+        </a>
           <div
             class="course__box-star d-flex align-items-center gap-1"
           >

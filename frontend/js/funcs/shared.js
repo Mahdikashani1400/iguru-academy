@@ -43,8 +43,8 @@ const getCourseDetails = async (courseName) => {
 };
 
 const registerUserToCourseTarget = async (courseInfo, discountInfo = null) => {
-  const percentPrice = (100 - (discountInfo.percent)) / 100
-  const priceBody = { price: (discountInfo ? (courseInfo.price * (percentPrice)).toFixed() : courseInfo.price) }
+
+  const priceBody = { price: (discountInfo ? (calculateDiscount(calculateDiscount(courseInfo.price, courseInfo.discount), discountInfo.percent)).toFixed() : calculateDiscount(courseInfo.price, courseInfo.discount)) }
   const res = await fetch(`http://localhost:4000/v1/courses/${courseInfo._id}/register`, {
     method: "POST",
 
@@ -235,11 +235,17 @@ const minuteToTimer = (time) => {
     }`;
 };
 
-const changePriceNumberToFa = (priceNumber) => {
+function changePriceNumberToFa(priceNumber) {
   return priceNumber
     ? Number(priceNumber).toLocaleString("fa-IR") + " تومان"
     : "رایگان";
 };
+
+function calculateDiscount(price, discount) {
+  {
+    return price * (100 - discount) / 100
+  }
+}
 
 const globalSearchHandler = async (searchValue) => {
   const res = await fetch(`http://localhost:4000/v1/search/${searchValue}`);
@@ -247,6 +253,8 @@ const globalSearchHandler = async (searchValue) => {
   const result = await res.json();
   return result;
 };
+
+
 
 export {
   getCourses,
@@ -267,6 +275,7 @@ export {
   changeDateToFa,
   changePriceNumberToFa,
   minuteToTimer,
+  calculateDiscount,
   answerComment,
   globalSearchHandler,
 };

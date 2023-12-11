@@ -11,6 +11,7 @@ import {
   sendComment,
   changeDateToFa,
   changePriceNumberToFa,
+  calculateDiscount,
   minuteToTimer,
   answerComment,
 } from "../js/funcs/shared.js";
@@ -52,11 +53,14 @@ window.addEventListener("load", async () => {
   getFooter();
 });
 
+
+
+const courseDetailsContainer = $.querySelector(".learning__info")
 function showCourseDetails() {
   const title = $.querySelector(".course__title");
   title.innerHTML = courseInfo.name;
-  const price = $.querySelector(".price-number");
-  price.innerHTML = changePriceNumberToFa(courseInfo.price);
+  // const price = $.querySelector(".price-number");
+  // price.innerHTML = changePriceNumberToFa(calculateDiscount(courseInfo.price, courseInfo.discount))
 
   const category = $.querySelector(".course__category");
   category.innerHTML = courseInfo.categoryID.name;
@@ -67,29 +71,70 @@ function showCourseDetails() {
     "src",
     `http://localhost:4000/courses/covers/${courseInfo.cover}`
   );
+  courseDetailsContainer.innerHTML = `
 
-  const userState = $.querySelector(".learning__info-btn");
-  userState.innerHTML = courseInfo.isUserRegisteredToThisCourse
-    ? "شما دانشجوی دوره هستید!"
-    : "ثبت نام در دوره";
+                  <div class="learning__info-price bg-green text-white d-flex justify-content-center gap-3 py-4 align-items-center rounded-top">
+                  <a class="d-flex flex-column gap-1  price__number span order-1 bg-green py-1 px-2 rounded fw-bold text-white text-center" href="#">
+                  
+      
+                 <span class="fs-5 ${courseInfo.discount && courseInfo.price ? "main__price " : ""}"> ${changePriceNumberToFa(courseInfo.price)
+    }</span>
+           ${courseInfo.discount && courseInfo.price ? `
+           <span class="off__price fs-5 px-1">
+           ${changePriceNumberToFa(calculateDiscount(courseInfo.price, courseInfo.discount))}
+           </span>`: ""}
 
-  userState.addEventListener('click', registerToCourseHandler)
 
-  const courseState = $.querySelector(".course__state");
-  courseState.innerHTML = `وضعیت : ${courseInfo.isComplete ? "به اتمام رسیده" : "در حال برگزاری"
-    }`;
+           ${courseInfo.discount && courseInfo.price ? `<span class="discount d-flex justify-content-center align-items-center bg-orange rounded-2 p-2 ">${courseInfo.discount}% تخفیف ویژه</span>` : ""}
+                  </a>
+                    
+                  </div>
+                  <div class="learning__info__decription p-4">
+                    <ul class="items d-flex flex-column gap-3">
+                      <li class="item text-normal">
+                        <svg class="svg-inline--fa fa-user ps-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path></svg><!-- <i class="fa fa-user ps-2"></i> Font Awesome fontawesome.com --><span>${courseInfo.courseStudentsCount ? "تعداد دانشجویان : " + courseInfo.courseStudentsCount : "اولین دانشجو باشید"}</span>
+                      </li>
+                      <li class="item text-normal">
+                        <i class="bi bi-mortarboard-fill ps-2"></i><span class="course__state">وضعیت : ${courseInfo.isComplete ? "به اتمام رسیده" : "در حال برگزاری"
+    }</span>
+                      </li>
+                      <li class="item text-normal">
+                        <i class="bi bi-calendar3 text-gray ps-2"></i><span class="course__date">آخرین بروزرسانی : ${changeDateToFa(courseInfo.updatedAt.split("T")[0])}</span>
+                      </li>
+                      <li class="item text-normal">
+                       <i class="bi bi-collection text-gray ps-2"></i><span class="course__time">تعداد جلسات  : ${courseInfo.sessions.length}</span>
+                      </li>
+                      <li class="item text-normal">
+                        <i class="bi bi-clock-history text-gray ps-2"></i><span class="course__time">مدت زمان دوره : ${minuteToTimer(
+      courseTime
+    )}</span>
+                      </li>
+                      <li class="item text-normal">
+                        <i class="bi bi-chat-left text-gray ps-2"></i><span class="course__time">تعداد دیدگاه ها : ${courseInfo.comments.length}</span>
+                      </li>
+                 
+                     
+                    </ul>
+                  </div>
+                  <div class="learning__info-btn btn w-100 rounded-0 fw-bold bg-orange to-green py-3 text-center text-white rounded-bottom"
+                  onclick= "registerToCourseHandler(event)">
+${courseInfo.isUserRegisteredToThisCourse
+      ? "شما دانشجوی دوره هستید!"
+      : "ثبت نام در دوره"}
+                  </div>
+`
 
-  const lastUpdate = $.querySelector(".course__date");
-  lastUpdate.innerText =
-    "آخرین بروزرسانی : " + changeDateToFa(courseInfo.updatedAt.split("T")[0]);
 
-  const courseTimeContainer = $.querySelector(".course__time");
-  courseTimeContainer.innerHTML = `مدت زمان دوره : ${minuteToTimer(
-    courseTime
-  )}`;
+
+
+
+
+
+
+
 }
 
-
+window.registerToCourseHandler = registerToCourseHandler
 async function registerToCourseHandler() {
   if (!courseInfo.isUserRegisteredToThisCourse) {
     swal.fire({ title: "آیا کد تخفیف داری؟", icon: "warning", confirmButtonText: "بله", showCancelButton: true, cancelButtonText: "خیر" }).then(res => {
@@ -103,7 +148,6 @@ async function registerToCourseHandler() {
           cancelButtonText: 'لغو',
 
           preConfirm: async () => {
-            console.log('x');
             const discountCode = $.getElementById('discountCode')
             let discountInfo = null
             console.log(discountCode, courseInfo._id);
@@ -305,9 +349,16 @@ function showRelatedCourses() {
                                   </div>
                                 </div>
                                 <div class="course__box-state d-flex justify-content-between p-3">
-                                  <a class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white" href="#">
-                                  ${changePriceNumberToFa(course.price)}
-                                  </a>
+                                <a class="position-relative d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white" href="#">
+                                ${course.discount && course.price ? `<span class="discount d-flex justify-content-center align-items-center bg-orange rounded-circle position-absolute ">${course.discount}%</span>` : ""}
+                    
+                               <span class="${course.discount && course.price ? "main__price" : ""}"> ${changePriceNumberToFa(course.price)
+        }</span>
+                         ${course.discount && course.price ? `
+                         <span class="off__price px-1">
+                         ${changePriceNumberToFa(calculateDiscount(course.price, course.discount))}
+                         </span>`: ""}
+                                </a>
                                   <div class="course__box-star d-flex align-items-center justify-content-center justify-content-sm-start">
                                     <span class="course__box-number-star align-self-end">3</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">

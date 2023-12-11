@@ -7,6 +7,8 @@ import {
   getArticles,
   getCategoryOfCourses,
   goToCourseDetail,
+  calculateDiscount,
+  changePriceNumberToFa
 } from "./funcs/shared.js";
 
 const $ = document;
@@ -184,12 +186,15 @@ function showPopularCourses(category) {
             }</div>
             </div>
             <div class="course__box-state d-flex justify-content-between p-3">
-              <a class="course__box-price span order-1 bg-green py-1 px-3 rounded fw-bold text-white" href="#">
-              ${courseTarget.price
-              ? Number(courseTarget.price).toLocaleString("fa-IR") +
-              " تومان"
-              : "رایگان"
-            }
+              <a class="d-flex flex-column gap-1 course__box-price span order-1 bg-green py-1 px-2 rounded fw-bold text-white" href="#">
+              ${courseTarget.discount && courseTarget.price ? `<span class="discount d-flex justify-content-center align-items-center bg-orange rounded-circle position-absolute ">${courseTarget.discount}%</span>` : ""}
+  
+             <span class="${courseTarget.discount && courseTarget.price ? "main__price" : ""}"> ${changePriceNumberToFa(courseTarget.price)
+            }</span>
+       ${courseTarget.discount && courseTarget.price ? `
+       <span class="off__price px-1">
+       ${changePriceNumberToFa(calculateDiscount(courseTarget.price, courseTarget.discount))}
+       </span>`: ""}
               </a>
               <div class="course__box-star d-flex align-items-center gap-1">
                 
