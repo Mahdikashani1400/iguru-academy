@@ -28,4 +28,20 @@ const showToast = (title, icon, callback) => {
         });
 };
 
-export { showSwal, showToast }
+
+const setToLocalSt = (key, value) => {
+    return localStorage.setItem(key, JSON.stringify(value));
+};
+const getFromLocalSt = (key) => {
+    return JSON.parse(localStorage.getItem(key));
+};
+const setToken = (token) => {
+    return setToLocalSt("panel", { token });
+};
+const getToken = () => {
+    return getFromLocalSt("panel")?.token || null;
+};
+export {
+    showSwal, showToast, setToken,
+    getToken
+}

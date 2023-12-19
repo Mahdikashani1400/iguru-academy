@@ -10,6 +10,8 @@ window.addEventListener("load", async () => {
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "about-us_page-bg.jpg");
   getFooter();
+  await new AOS.init();
+
   particlesJS(
     "about__us__particles",
 

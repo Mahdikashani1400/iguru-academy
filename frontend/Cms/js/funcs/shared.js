@@ -1,11 +1,11 @@
-import { showSwal, showToast } from "./utils.js";
+import { getToken, showSwal, showToast } from "./utils.js";
 
 
 
 const getTarget = async (target, state = null) => {
     const res = await fetch(`http://localhost:4000/v1/${target}`, state === "author" ? {
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            Authorization: `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
     } : null);
@@ -19,7 +19,7 @@ const addTarget = async (target, targetFa, bodyObj, state = null) => {
     await fetch(`http://localhost:4000/v1/${target}/`, {
         method: "POST",
         headers: {
-            Authorization: state === "author" && `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            Authorization: state === "author" && `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(bodyObj),
@@ -45,7 +45,7 @@ const addTargetFormData = async (target, targetFa, bodyObj) => {
     const res = await fetch(`http://localhost:4000/v1/${target}`, {
         method: "POST",
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            Authorization: `Bearer ${getToken()}`,
 
         },
         body: bodyObj,
@@ -75,7 +75,7 @@ const removeTarget = async (id, target, targetFa) => {
     await fetch(`http://localhost:4000/v1/${target}/${id}`, {
         method: "DELETE",
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            Authorization: `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
     }).then((res) => {
@@ -93,7 +93,7 @@ const UpdateTarget = async (target, id, targetFa, bodyObj) => {
     await fetch(`http://localhost:4000/v1/${target}/${id}`, {
         method: "PUT",
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            Authorization: `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(bodyObj),
@@ -124,7 +124,7 @@ const banUser = async (id, body) => {
     await fetch(`http://localhost:4000/v1/users/${id}`, {
         method: "PUT",
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            Authorization: `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
         body
@@ -141,7 +141,7 @@ const commentState = async (bodyObj, state, stateFa) => {
     await fetch(`http://localhost:4000/v1/comments/${state}`, {
         method: "PUT",
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+            Authorization: `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(bodyObj),

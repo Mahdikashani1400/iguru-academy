@@ -1,6 +1,21 @@
 import { getToken, showSwal, showToast } from "./utils.js";
 
 const $ = document;
+const editUserInfo = async (Id, userInfo) => {
+  console.log(Id, userInfo);
+  const res = await fetch(`http://localhost:4000/v1/users/${Id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+    },
+    body: JSON.stringify(userInfo)
+  });
+  const result = await res.json();
+  return result;
+};
+
+
+
 const getCourses = async () => {
   const res = await fetch("http://localhost:4000/v1/courses", {});
 
@@ -273,6 +288,7 @@ export {
   getRelatedCourses,
   goToCourseDetail,
   goToProductDetail,
+  editUserInfo,
   getAllOfOrders,
   submitContactsMSG,
   sendComment,

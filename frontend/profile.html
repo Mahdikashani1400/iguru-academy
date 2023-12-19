@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/profile.css" />
   </head>
   <body>
-    <div class="modals "></div>
+    <div class="modals"></div>
 
     <div class="elements">
       <header class="header"></header>
@@ -74,6 +74,7 @@
                       <a
                         href="#"
                         class="list-group-item border-0 bg-transparent list-group-item active"
+                        data-change="publicInfo"
                         ><i class="bi bi-house-door-fill"></i>عمومی</a
                       ><a
                         href="#"
@@ -82,6 +83,7 @@
                       ><a
                         href="#"
                         class="list-group-item border-0 bg-transparent list-group-item"
+                        data-change="changePass"
                         ><i class="bi bi-key-fill key"></i>کلمه عبور</a
                       ><a
                         href="#"
@@ -95,6 +97,7 @@
                       <a
                         href="#"
                         class="list-group-item border-0 bg-transparent list-group-item active"
+                        data-change="publicInfo"
                         ><i class="bi bi-house-door-fill"></i>عمومی</a
                       ><a
                         href="#"
@@ -103,6 +106,7 @@
                       ><a
                         href="#"
                         class="list-group-item border-0 bg-transparent list-group-item"
+                        data-change="changePass"
                         ><i class="bi bi-key-fill key"></i>کلمه عبور</a
                       ><a
                         href="#"
@@ -362,7 +366,6 @@
                     <input
                       type="text"
                       class="font-italic px-3 py-3 mt-2 py-2 w-100 bg-white border"
-                      placeholder="کلید سفارش"
                     />
                   </div>
                   <div class="col-lg-2 col-sm-7 p-0 d-flex">
@@ -383,6 +386,7 @@
                       class="nav-link border text-dark active"
                       aria-current="page"
                       href="#"
+                      data-change="publicInfo"
                       >عمومی</a
                     >
                   </li>
@@ -390,13 +394,21 @@
                     <a class="nav-link border text-dark" href="#">آواتار</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link border text-dark" href="#">کلمه عبور</a>
+                    <a
+                      class="nav-link border text-dark"
+                      href="#"
+                      data-change="changePass"
+                      >کلمه عبور</a
+                    >
                   </li>
                   <li class="nav-item">
                     <a class="nav-link border text-dark" href="#">حریم خصوصی</a>
                   </li>
                 </ul>
-                <form class="px-0 pe-lg-2 my-3 public__info d-none">
+                <form
+                  class="px-0 pe-lg-2 my-3 public__info form-active"
+                  id="publicInfo"
+                >
                   <div class="mb-4">
                     <label
                       for="firstName"
@@ -405,66 +417,64 @@
                     >
                     <input
                       type="text"
-                      class="form-control py-3 mt-1 text-normal"
+                      class="form-control py-3 mt-1"
                       id="firstName"
-                      placeholder="کاربر"
                     />
                   </div>
-                  <div class="mb-4">
-                    <label
-                      for="lastName"
-                      class="form-label fs-6 fw-bold text-normal"
-                      >نام خانوادگی</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control py-3 mt-1 text-normal"
-                      id="lastName"
-                      placeholder="دمو"
-                    />
-                  </div>
+
                   <div class="mb-4">
                     <label
                       for="userName"
                       class="form-label fs-6 fw-bold text-normal"
-                      >نام کاربری *</label
+                      >نام کاربری</label
                     >
                     <input
                       type="text"
-                      class="form-control py-3 mt-1 text-normal"
+                      class="form-control py-3 mt-1"
                       id="userName"
                       value="demo"
                     />
                   </div>
                   <div class="mb-4">
                     <label
+                      for="lastName"
+                      class="form-label fs-6 fw-bold text-normal"
+                      >شماره تماس</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control py-3 mt-1"
+                      id="phone"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label
                       for="email"
                       class="form-label fs-6 fw-bold text-normal"
-                      >آدرس ایمیل *</label
+                      >آدرس ایمیل</label
                     >
                     <input
                       type="email"
-                      class="form-control py-3 mt-1 text-normal"
+                      class="form-control py-3 mt-1"
                       id="email"
                       value="demo@demo.com"
                     />
                   </div>
-                  <div class="mb-4">
-                    <label for="bio" class="form-label fs-6 fw-bold text-normal"
-                      >اطلاعات بیوگرافی</label
-                    >
-                    <textarea class="form-control" id="bio" rows="5"></textarea>
-                  </div>
+
                   <div class="col-xl-0 col-lg-3 col-sm-7">
                     <button
                       type="submit"
                       class="btn btn-warning text-white py-2 w-100 border-2 border border-warning fw-bold"
+                      id="changeInfoBtn"
                     >
                       ذخیره تغییرات
                     </button>
                   </div>
                 </form>
-                <form class="px-0 pe-lg-2 my-3 change__password">
+                <form
+                  class="px-0 pe-lg-2 my-3 change__password d-none"
+                  id="changePass"
+                >
                   <div class="mb-4 pb-3 position-relative">
                     <label
                       for="courrentPass"

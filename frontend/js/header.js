@@ -22,7 +22,7 @@ async function getHeader() {
         >
           <div class="navbar__info__left-gmail col h-100 d-flex align-items-center">
             <a href="#">iguru@mail.com</a>
-            <a href="#" class="user-info p-3 text-white d-flex align-items-center mx-auto rounded-top  h-100">محمد مهدی جان</a>
+            <a href="profile.html" class="user-info p-3 text-white d-flex align-items-center mx-auto rounded-top  h-100">محمد مهدی جان</a>
           </div>
           <div
             class="navbar__info__left-accessibility col row justify-content-center"
@@ -322,7 +322,7 @@ async function getHeader() {
       </div>
     </nav>
  `;
-  showUserNameHandler();
+  await showUserNameHandler();
 
   navMenuFix = header.querySelector(".navbar__header__menu.fix");
   navMenuScroll = header.querySelector(".navbar__header__menu.scroll");
@@ -346,12 +346,12 @@ function getPageTitle() {
   return pageTitle;
 }
 
-function showUserNameHandler() {
+async function showUserNameHandler() {
   if (getToken()) {
     const navs = header.querySelectorAll("nav");
     const userNames = header.querySelectorAll(".user-info");
 
-    getUserInfo().then((data) => {
+    await getUserInfo().then((data) => {
       navs.forEach((nav) => {
         nav.classList.remove("user-out");
         userNames.forEach((nameElem) => {

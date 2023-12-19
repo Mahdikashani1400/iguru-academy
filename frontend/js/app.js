@@ -20,6 +20,7 @@ window.addEventListener("load", async () => {
   showArticles();
   showCategoryOfCourses();
   getFooter();
+  await new AOS.init();
 
   particlesJS(
     "about__us__particles",

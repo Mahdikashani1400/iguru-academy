@@ -52,7 +52,13 @@
 .description__btn .btn:hover {
   background: transparent;
 }
-
+.course__btn {
+  border: 2px solid var(--primary-color-orange) !important;
+}
+.course__btn:hover {
+  background-color: transparent;
+  color: var(--primary-color-orange) !important;
+}
 /* education */
 
 .education__comments {

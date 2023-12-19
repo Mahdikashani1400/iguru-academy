@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>about-us</title>
     <link rel="stylesheet" href="vendor/FontAwesome5/all.min.css" />
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/about-us.css" />
   </head>
   <body>
@@ -199,9 +199,41 @@
           <div class="container">
             <div class="content mt-5 pt-5 pb-4 d-flex row">
               <div class="img col-lg-6 gy-5 py-2 mt-1 order-lg-1 text-center">
-                <div class="bg-green position-absolute rounded-circle"></div>
-                <div class="bg-orange position-absolute rounded-circle"></div>
-                <img src="./img/bg/about-us_skills.png" alt="" srcset="" />
+                <div
+                  class="bg-green position-absolute rounded-circle"
+                  data-aos="fade-down-left"
+                  data-aos-offset="-200"
+                  data-aos-delay="450"
+                  data-aos-duration="900"
+                  data-aos-easing="ease-in-out"
+                  data-aos-mirror="true"
+                  data-aos-once="true"
+                  data-aos-anchor-placement="top-center"
+                ></div>
+                <div
+                  class="bg-orange position-absolute rounded-circle"
+                  data-aos="fade-down-right"
+                  data-aos-offset="-200"
+                  data-aos-delay="300"
+                  data-aos-duration="900"
+                  data-aos-easing="ease-in-out"
+                  data-aos-mirror="true"
+                  data-aos-once="true"
+                  data-aos-anchor-placement="top-center"
+                ></div>
+                <img
+                  src="./img/bg/about-us_skills.png"
+                  alt=""
+                  srcset=""
+                  data-aos="fade-right"
+                  data-aos-offset="-480"
+                  data-aos-delay="250"
+                  data-aos-duration="800"
+                  data-aos-easing="ease-in-out"
+                  data-aos-mirror="true"
+                  data-aos-once="true"
+                  data-aos-anchor-placement="top-center"
+                />
               </div>
               <div
                 class="about-us-skills col-lg-6 ps-4 d-flex flex-column gap-3 gy-5 ps-5"
@@ -566,6 +598,8 @@
 
     <script src="vendor/FontAwesome5/all.min.js"></script>
     <script src="./vendor/particles/particles.js" type="module"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="./js/about-us.js" type="module"></script>
   </body>
 </html>
