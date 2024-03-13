@@ -412,7 +412,7 @@ input:focus::-webkit-input-placeholder {
 .caategories__courses-description {
 }
 .caategories__courses-title span::before {
-  right: 16px;
+  right: 0;
   top: 5px;
   height: 20px;
 }

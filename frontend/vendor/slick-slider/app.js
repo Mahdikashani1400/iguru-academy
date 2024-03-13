@@ -177,8 +177,8 @@ $(".teachers__information-boxes").slick({
   // asNavFor: ".slider-for",
   focusOnSelect: true,
   slidesToShow: 4, // Number
-  slidesToScroll: 4, // Number
-  infinite: false, // Boolean
+  // slidesToScroll: 4, // Number
+  infinite: true, // Boolean
 
   centerMode: false,
 
@@ -189,6 +189,8 @@ $(".teachers__information-boxes").slick({
       settings: {
         slidesToShow: 3,
         infinite: true, // Boolean
+        dots: true,
+
       },
     },
     {
@@ -205,6 +207,8 @@ $(".teachers__information-boxes").slick({
         slidesToShow: 1,
         infinite: true, // Boolean
         arrows: false,
+        dots: true,
+
       },
     },
   ],

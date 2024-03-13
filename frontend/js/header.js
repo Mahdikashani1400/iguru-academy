@@ -167,7 +167,7 @@ async function getHeader() {
         <a href="#" class="user-info px-sm-3 p-2 text-white d-flex align-items-center rounded rounded-2 bg-green">محمد مهدی جان</a>
           <button class="btn d-flex align-items-center gap-2 w-auto bg-white">
             <i class="fa fa-user col text-orange"></i>
-            <span class="text-normal d-md-inline col">ورود</span>
+            <span class="text-normal d-md-inline col">خروج</span>
           </button>
           
         </div>

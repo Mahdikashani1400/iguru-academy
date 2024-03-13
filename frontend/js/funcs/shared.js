@@ -162,15 +162,12 @@ const showNotFoundAlert = (state, container) => {
   }
 };
 
-const goToCourseDetail = (detailInfo) => {
-  let category = detailInfo.split(',')[1]
-  let courseName = detailInfo.split(',')[0]
-  if (category === 'course') {
-    window.location.href = `explain-course.html?name=${courseName}`;
-  } else {
-    window.location.href = `explain-product.html?name=${courseName}`;
-  }
-};
+const goToCourseDetail = (courseName) => {
+
+
+  window.location.href = `explain-course.html?name=${courseName}`;
+}
+
 const goToProductDetail = (productName) => {
   window.location.href = `explain-product.html?name=${productName}`;
 };

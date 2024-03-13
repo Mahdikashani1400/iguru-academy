@@ -5,14 +5,17 @@ import {
   calculateDiscount,
   goToCourseDetail,
   getCategoryOfCourses,
-  mainHost
+  mainHost,
+  goToProductDetail
 } from "../js/funcs/shared.js";
 const $ = document;
 let ordersInfo = null
 // window.addEventListener("load", async () => {
 //   console.log(ordersInfo);
 // });
+
 window.goToCourseDetail = goToCourseDetail
+window.goToProductDetail = goToProductDetail
 const modals = $.querySelector(".modals");
 async function getModals() {
   ordersInfo = await getAllOfOrders()
@@ -40,7 +43,7 @@ async function getModals() {
     sumOfPrice += order.price
     return `
             <div class="product__box-modal d-flex"
-            onclick = "goToCourseDetail('${order.course.shortName + "," + categoryTarget}')">
+            onclick =${categoryTarget === 'course' ? `goToCourseDetail('${order.course.shortName}')` : `goToProductDetail('${order.course.shortName}')`}>
             <div class="product__content-modal d-flex">
               <div class="product__img-modal ms-3">
                 <img
