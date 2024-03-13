@@ -2,6 +2,7 @@ import { getModals } from "./modals.js";
 import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
 import {
+  mainHost,
   globalSearchHandler,
   goToCourseDetail,
   goToProductDetail,
@@ -90,7 +91,7 @@ function showSearchValueData() {
         <span class="date-month">تیر</span>
         <div class="h4 date-day">20</div>
       </div>
-      <div class="blog__box-img" style="background-image:url('http://localhost:4000/courses/covers/${article.cover}');"></div>
+      <div class="blog__box-img" style="background-image:url('${mainHost}/courses/covers/${article.cover}');"></div>
       <div class="blog__box__content">
         <div class="blog__box__tags pt-4 pb-2">
           <a href="" class="blog__box-category text-green fw-bold"
@@ -135,7 +136,7 @@ function showSearchValueData() {
     >
       <div
         class="course__box-bg-img position-absolute bg-img"
-        style="background-image:url('http://localhost:4000/courses/covers/${course.cover
+        style="background-image:url('${mainHost}/courses/covers/${course.cover
             }');"
       ></div>
     
@@ -266,7 +267,7 @@ ${productsInfoArray
       </div>
       <img
         class="rounded mx-auto d-block"
-        src="http://localhost:4000/courses/covers/${product.cover}"
+        src="${mainHost}/courses/covers/${product.cover}"
         alt=""
       />
     </div>

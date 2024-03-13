@@ -8,7 +8,8 @@ import {
   getCategoryOfCourses,
   goToCourseDetail,
   calculateDiscount,
-  changePriceNumberToFa
+  changePriceNumberToFa,
+  mainHost
 } from "./funcs/shared.js";
 
 const $ = document;
@@ -171,7 +172,7 @@ function showPopularCourses(category) {
         <div class="course__box col-xl-3 col-lg-4 col-md-6 col-12 rounded">
         <div class="course__box-container d-flex flex-column justify-content-end text-white h-100"
         onclick = "goToCourseDetail('${courseTarget.shortName}')">
-          <div class="course__box-bg-img position-absolute bg-img" style="background-image:url('http://localhost:4000/courses/covers/${courseTarget.cover
+          <div class="course__box-bg-img position-absolute bg-img" style="background-image:url('${mainHost}/courses/covers/${courseTarget.cover
             }');">
             
           </div>
@@ -250,7 +251,7 @@ async function showArticles() {
           <span class="date-month">تیر</span>
           <div class="h4 date-day">20</div>
         </div>
-        <div class="blog__box-img" style="background-image:url('http://localhost:4000/courses/covers/${article.cover}');"></div>
+        <div class="blog__box-img" style="background-image:url('${mainHost}/courses/covers/${article.cover}');"></div>
         <div class="blog__box__content">
           <div class="blog__box__tags pt-4 pb-2">
             <a href="" class="blog__box-category text-green fw-bold"

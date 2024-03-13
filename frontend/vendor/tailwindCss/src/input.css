@@ -32,7 +32,7 @@
 
   @font-face {
     font-family: IRANSans;
-    src: local("IRANSans"), url("../../fonts/IRANSans/IRANSans_Light.ttf");
+    src: local("IRANSans"), url("/fonts/IRANSans/IRANSans_Light.ttf");
     font-display: "swap";
   }
 }

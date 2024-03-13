@@ -1,9 +1,10 @@
 import { getToken, showSwal, showToast } from "./utils.js";
 
+const mainHost = 'https://reverent-khayyam-cd1lhumdm.liara.run'
 
 
 const getTarget = async (target, state = null) => {
-    const res = await fetch(`http://localhost:4000/v1/${target}`, state === "author" ? {
+    const res = await fetch(`${mainHost}/v1/${target}`, state === "author" ? {
         headers: {
             Authorization: `Bearer ${getToken()}`,
             "Content-Type": "application/json",
@@ -14,35 +15,46 @@ const getTarget = async (target, state = null) => {
     return result;
 };
 
+// await fetch(`${mainHost}/v1/comments/answer/commentId`, {
+// const bodyObj = {
+// body:"text"
+// }
+//         method: "POST",
+//         headers: {
+//             Authorization:  `Bearer {adminToke}`,
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(bodyObj),
+// })
 
 const addTarget = async (target, targetFa, bodyObj, state = null) => {
-    await fetch(`http://localhost:4000/v1/${target}/`, {
+    const res = await fetch(`${mainHost}/v1/${target}/`, {
         method: "POST",
         headers: {
             Authorization: state === "author" && `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(bodyObj),
-    }).then(async (res) => {
-        console.log(res);
-        if (res.status === 201 || res.status === 200) {
+    })
+    console.log(res);
+    if (res.status === 201 || res.status === 200) {
 
-            showToast(`${targetFa} مد نظر با موفقیت اضافه شد.`, "success");
+        showToast(`${targetFa} مد نظر با موفقیت اضافه شد.`, "success");
 
-        } else if (res.status === 409) {
+    } else if (res.status === 409) {
 
-            showToast("اطلاعات داده شده تکراری میباشند .", "error");
+        showToast("اطلاعات داده شده تکراری میباشند .", "error");
 
-        } else if (res.status === 400) {
+    } else if (res.status === 400) {
 
-            showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
+        showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
 
-        }
-        return res.json();
-    });
+    }
+    return res.json();
+
 }
 const addTargetFormData = async (target, targetFa, bodyObj) => {
-    const res = await fetch(`http://localhost:4000/v1/${target}`, {
+    const res = await fetch(`${mainHost}/v1/${target}`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${getToken()}`,
@@ -71,15 +83,15 @@ const addTargetFormData = async (target, targetFa, bodyObj) => {
 
 
 const removeTarget = async (id, target, targetFa) => {
+    console.log(id);
 
-    await fetch(`http://localhost:4000/v1/${target}/${id}`, {
+    await fetch(`${mainHost}/v1/${target}/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${getToken()}`,
             "Content-Type": "application/json",
         },
     }).then((res) => {
-
         showToast(`${targetFa} مد نظر با موفقیت حذف شد.`, "success");
 
         return res.json();
@@ -90,7 +102,7 @@ const removeTarget = async (id, target, targetFa) => {
 
 
 const UpdateTarget = async (target, id, targetFa, bodyObj) => {
-    await fetch(`http://localhost:4000/v1/${target}/${id}`, {
+    await fetch(`${mainHost}/v1/${target}/${id}`, {
         method: "PUT",
         headers: {
             Authorization: `Bearer ${getToken()}`,
@@ -121,7 +133,7 @@ const UpdateTarget = async (target, id, targetFa, bodyObj) => {
 
 const banUser = async (id, body) => {
 
-    await fetch(`http://localhost:4000/v1/users/${id}`, {
+    await fetch(`${mainHost}/v1/users/ban/${id}`, {
         method: "PUT",
         headers: {
             Authorization: `Bearer ${getToken()}`,
@@ -138,7 +150,7 @@ const banUser = async (id, body) => {
 }
 
 const commentState = async (bodyObj, state, stateFa) => {
-    await fetch(`http://localhost:4000/v1/comments/${state}`, {
+    await fetch(`${mainHost}/v1/comments/${state}`, {
         method: "PUT",
         headers: {
             Authorization: `Bearer ${getToken()}`,

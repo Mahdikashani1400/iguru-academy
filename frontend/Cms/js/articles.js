@@ -33,12 +33,12 @@ const getArticlesTable = () => {
         }).join('')}</td>
         <td class="px-5 py-5">${article.publish ? "منتشر شده" : "پیش نویس"}</td>
         <td class="px-5 py-5">${article.updatedAt.split("T")[0]}</td>
-        <td class="px-5 py-5">${article.creator.name}</td>
+        <td class="px-5 py-5">${article.creator?.name}</td>
         <td class="px-4 py-5">
-          <a href="#" class="edit">ویرایش</a>
+          <a href="javascript:void(0)" class="edit">ویرایش</a>
         </td>
         <td class="px-4 py-5">
-          <a href="#" class="remove">حذف</a>
+          <a href="javascript:void(0)" class="remove">حذف</a>
         </td>
       </tr>
         `
@@ -66,11 +66,12 @@ let bodyArticle = null
 
 const createArticle = async (e) => {
     e.preventDefault()
-
-    const categoryID = articleCategory.value
     await ckEditorBody.then(editor => {
         bodyArticle = editor.getData()
+
     })
+    const categoryID = articleCategory.value
+
 
     const newArticle = new FormData()
     newArticle.append("title", titleArticle.value.trim())
@@ -79,7 +80,11 @@ const createArticle = async (e) => {
     newArticle.append("cover", articleCover)
     newArticle.append("shortName", destArticle.value.trim())
     newArticle.append("categoryID", categoryID)
-    e.target.id === "addArticleBtn" ? await addTargetFormData("articles", "مقاله", newArticle) : await addTargetFormData("articles/draft", "مقاله", newArticle)
+    e.target.id === "addArticleBtn" ? await addTargetFormData("articles", "مقاله", newArticle) : await addTargetFormData("articles/draft", "مقاله", newArticle).then(res => {
+        res?.title && cleanAndGetInfo()
+    })
+
+
 
 }
 const addArticleBtn = $.getElementById('addArticleBtn')
@@ -110,6 +115,8 @@ function articleInfoHandler(e) {
         showSwal('آیا از حذف مقاله مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {
                 await removeTarget(targetArticleId, "articles", "مقاله")
+                articlesInfo = [...articlesInfo].filter(article => article._id !== targetArticleId)
+                getArticlesTable()
             }
         })
 
@@ -123,6 +130,14 @@ function articleInfoHandler(e) {
 
 
 async function cleanAndGetInfo() {
+    titleArticle.value = ''
+    fileInputArticle.value = ''
+    destArticle.value = ''
+    descArticle.value = ''
+    await ckEditorBody.then(editor => {
+        bodyArticle = editor.setData("")
+    })
+
     await getTarget("articles").then(data => {
         articlesInfo = data[0] ? data : []
 

@@ -1,0 +1,11 @@
+{
+    "disks":[
+        {
+        "name":"iguru-disk",
+        "mountTo":"public/courses/covers"
+    }
+    ],
+    "app":"reverent-khayyam-cd1lhumdm",
+    "port":3000
+
+}

@@ -37,10 +37,10 @@ const getSessionsTable = () => {
             <td class="px-5 py-5">${session.free ? "رایگان" : "غیر رایگان"}</td>
 
             <td class="px-4 py-5">
-              <a href="#" class="edit">ویرایش</a>
+              <a href="javascript:void(0)" class="edit">ویرایش</a>
             </td>
             <td class="px-4 py-5">
-              <a href="#" class="remove">حذف</a>
+              <a href="javascript:void(0)" class="remove">حذف</a>
             </td>
           </tr>
   `
@@ -84,6 +84,7 @@ const createSession = async (e) => {
     newSession.append("free", +sessionState)
 
     await addTargetFormData(`courses/${courseID}/sessions`, "قسمت", newSession)
+    cleanAndGetInfo()
 
 }
 const addSessionBtn = $.getElementById('addSessionBtn')
@@ -110,11 +111,14 @@ function sessionInfoHandler(e) {
         showSwal('آیا از حذف قسمت مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {
                 await removeTarget(targetSessionId, `courses/sessions`, "دوره")
-                cleanAndGetInfo()
+                sessionsInfo = [...sessionsInfo].filter(session => session._id !== targetSessionId)
+                getSessionsTable()
+
             }
         })
 
     }
+
 }
 
 
@@ -123,7 +127,9 @@ async function cleanAndGetInfo() {
         sessionsInfo = data[0] ? data.reverse() : []
 
     })
-    console.log(sessionsInfo);
+    titleSession.value = ''
+    timeSession.value = ''
+    fileInputSession.value = ''
     getSessionsTable()
     selectCategory()
 }

@@ -15,9 +15,10 @@ exports.getIndex = async (req, res, next) => {
       (prev, current) => prev + Number(current.time.slice(0, 2)),
       0
     );
+
     res.json({
-      phone: allInfos.phone,
-      email: allInfos.email,
+      phone: allInfos[0].phone,
+      email: allInfos[0].email,
       coursesCount,
       usersCount,
       totalTime,

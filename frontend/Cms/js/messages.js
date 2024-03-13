@@ -27,13 +27,13 @@ const getMessagesTable = () => {
             <td scope="col" class="px-5 py-5">${message.phone}</td>
             <td scope="col" class="px-5 py-5">${message.updatedAt.split("T")[0]}</td>
             <td class="px-4 py-5">
-            <a href="#" class="see">مشاهده</a>
+            <a href="javascript:void(0)" class="see">مشاهده</a>
           </td>
           <td class="px-4 py-5">
-            <a href="#" class="answer">پاسخ</a>
+            <a href="javascript:void(0)" class="answer">پاسخ</a>
           </td>
           <td class="px-4 py-5">
-            <a href="#" class="remove">حذف</a>
+            <a href="javascript:void(0)" class="remove">حذف</a>
           </td>
           </tr>
   `

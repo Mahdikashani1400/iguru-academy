@@ -24,24 +24,24 @@ const getCommentsTable = () => {
               />
             </th>
             <th scope="col" class="${comment.answer ? "attention" : "no__attention"}">${++index}</th>
-            <td scope="col" class="px-5 py-5">${comment.creator.name}</td>
-            <td scope="col" class="px-5 py-5">${comment.creator.email}</td>
+            <td scope="col" class="px-5 py-5">${comment.creator?.name}</td>
+            <td scope="col" class="px-5 py-5">${comment.creator?.email}</td>
             <td scope="col" class="px-5 py-5">${comment.course}</td>
             <td scope="col" class="px-5 py-5">${comment.updatedAt.split("T")[0]}</td>
             <td class="px-4 py-5">
-            <a href="#" class="see">مشاهده</a>
+            <a href="javascript:void(0)" class="see">مشاهده</a>
           </td>
           <td class="px-4 py-5">
-            <a href="#" class="answer">پاسخ</a>
+            <a href="javascript:void(0)" class="answer">پاسخ</a>
           </td>
           <td class="px-4 py-5">
-            <a href="#" class="accept">تایید</a>
+            <a href="javascript:void(0)" class="accept">تایید</a>
           </td>
           <td class="px-4 py-5">
-            <a href="#" class="reject">رد</a>
+            <a href="javascript:void(0)" class="reject">رد</a>
           </td>
           <td class="px-4 py-5">
-            <a href="#" class="remove">حذف</a>
+            <a href="javascript:void(0)" class="remove">حذف</a>
           </td>
           </tr>
   `

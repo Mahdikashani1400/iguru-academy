@@ -10,6 +10,7 @@ import {
 
   goToProductDetail,
   changePriceNumberToFa,
+  mainHost,
 } from "./funcs/shared.js";
 
 window.goToProductDetail = goToProductDetail;
@@ -74,7 +75,7 @@ function addProductsToContainer(productsArray, category) {
                       <div class="p products__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
                         افزودن به سبد خرید
                       </div>
-                      <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${productTarget.cover
+                      <img class="rounded mx-auto d-block" src="${mainHost}/courses/covers/${productTarget.cover
           }" alt="">
                     </div>
                     <div class="products__box-title h6 pt-4 fw-bold">${productTarget.name

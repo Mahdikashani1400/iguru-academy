@@ -10,6 +10,8 @@ window.addEventListener("load", async () => {
     // sizeOfMenuHandler()
     createHeader()
     await getTarget("offs", "author").then(data => {
+        console.log(data);
+
         discountsInfo = data[0] ? data.reverse() : []
     })
     await getTarget("courses").then(data => {
@@ -34,10 +36,10 @@ function showDiscounts() {
 <td class="px-5 py-5">${off.updatedAt.split("T")[0]}</td>
 
 <td class="px-4 py-5">
-  <a href="#" class="edit">ویرایش</a>
+  <a href="javascript:void(0)" class="edit">ویرایش</a>
 </td>
 <td class="px-4 py-5">
-  <a href="#" class="remove">حذف</a>
+  <a href="javascript:void(0)" class="remove">حذف</a>
 </td>
 </tr>`
     }).join("")}
@@ -46,13 +48,23 @@ function showDiscounts() {
 
 const courseSelect = $.getElementById("courseSelect")
 function courseSelectHandler() {
+    code.parentElement.style.display = 'none'
+    max.parentElement.style.display = 'none'
     courseSelect.innerHTML = `     <option value="همه دوره ها و محصولات">همه دوره ها و محصولات</option>
+    
     ${coursesInfo.map(info => {
         return `<option value="${info.name}">${info.name} (${info.categoryID.title === 'product' ? "محصول" : "دوره"})</option>`
     })}`
-
-
 }
+courseSelect.addEventListener('change', () => {
+    if (courseSelect.value == 'همه دوره ها و محصولات') {
+        code.parentElement.style.display = 'none'
+        max.parentElement.style.display = 'none'
+    } else {
+        code.parentElement.style.display = 'block'
+        max.parentElement.style.display = 'block'
+    }
+})
 
 
 const code = $.getElementById('code')
@@ -63,9 +75,16 @@ async function createDiscount(e) {
     const courseTargetId = coursesInfo.find(item => {
         return item.name === courseSelect.value
     })?._id
-    const newDiscount = { code: code.value, percent: percent.value, course: courseTargetId, max: max.value }
+    if (courseTargetId) {
+        const newDiscount = { code: code.value, percent: percent.value, course: courseTargetId, max: max.value }
 
-    await addTarget("offs", "کد تخفیف", newDiscount, "author")
+        await addTarget("offs", "کد تخفیف", newDiscount, "author")
+    } else {
+        console.log('dd');
+        const newDiscount = { discount: percent.value }
+        await addTarget("offs/all", "کد تخفیف", newDiscount, "author")
+
+    }
     cleanAndGetInfo()
 }
 const addTargetBtn = $.getElementById("addOffBtn")

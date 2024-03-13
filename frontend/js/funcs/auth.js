@@ -1,5 +1,7 @@
 import { showSwal, showToast, setToken, getToken } from "./utils.js";
 const $ = document;
+const mainHost = 'https://reverent-khayyam-cd1lhumdm.liara.run'
+
 let newUserInfo = null;
 
 const reviewformInputs = (state, username = "", password = "") => {
@@ -28,6 +30,28 @@ const reviewformInputs = (state, username = "", password = "") => {
     >
     <div class="h1">ثبت نام</div>
     <form class="">
+    <div class="form-group my-4 ">
+        <label class="fw-bold" for="lastName"
+          >نام و نام خانوادگی *</label
+        >
+        <input
+          type="text"
+          class="form-control py-3 my-2"
+          id="lastName"
+          placeholder="احمد رشیدی"
+        />
+      </div>
+      <div class="form-group my-4 ">
+        <label class="fw-bold" for="phone"
+          >شماره همراه *</label
+        >
+        <input
+          type="text"
+          class="form-control py-3 my-2"
+          id="phone"
+          placeholder="09123456789"
+        />
+      </div>
       <div class="form-group my-4 ">
         <label class="fw-bold" for="email"
           >آدرس ایمیل *</label
@@ -176,20 +200,23 @@ const successLogin = async () => {
 
 const register = (e) => {
   e.preventDefault();
+  const lastName = $.getElementById("lastName");
+  const phone = $.getElementById("phone");
   const email = $.getElementById("email");
   const username = $.getElementById("username");
   const password = $.getElementById("password");
   const confirmPassword = $.getElementById("confirmPassword");
 
   newUserInfo = {
+    name: lastName.value.trim(),
+    phone: phone.value.trim(),
     username: username.value.trim(),
     email: email.value.trim(),
     password: password.value.trim(),
     confirmPassword: confirmPassword.value.trim(),
-    name: "مجمد مهدی",
-    phone: "09123456789",
+
   };
-  fetch("http://localhost:4000/v1/auth/register", {
+  fetch(`${mainHost}/v1/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -227,7 +254,7 @@ const login = (e) => {
     identifier: emailUserName.value.trim(),
     password: password.value.trim(),
   };
-  fetch("http://localhost:4000/v1/auth/login", {
+  fetch(`${mainHost}/v1/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(checkUserInfo),
@@ -263,7 +290,7 @@ async function getUserInfo() {
   if (!token) {
     return 0;
   } else {
-    const res = await fetch("http://localhost:4000/v1/auth/me", {
+    const res = await fetch(`${mainHost}/v1/auth/me`, {
       headers: {
         Authorization: `bearer ${token}`,
       },

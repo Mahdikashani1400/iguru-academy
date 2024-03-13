@@ -2,7 +2,9 @@ import { getModals } from "./modals.js";
 
 import {
   changePriceNumberToFa,
-  calculateDiscount
+  calculateDiscount,
+  goToCourseDetail,
+  mainHost
 } from "../js/funcs/shared.js";
 import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
@@ -19,6 +21,10 @@ window.addEventListener("load", async () => {
 
   getFooter();
 });
+
+
+
+window.goToCourseDetail = goToCourseDetail
 
 const ordersContainer = $.querySelector('.orders__container')
 let sumMainPrice = null
@@ -39,6 +45,7 @@ px-md-3 px-2 ps-2">تخفیف</div>
 px-md-3 px-2">قیمت نهایی</div>
 </header>
 ${ordersInfo.map((order, index) => {
+    console.log(order);
     sumMainPrice += order.course.price
     sumFinallyPrice += order.price
     sumOffs += order.course.price - order.price
@@ -49,7 +56,7 @@ ${ordersInfo.map((order, index) => {
     class="col-2 px-0 rounded-end"
   >
     <img
-      src="http://localhost:4000/courses/covers/${order.course.cover
+      src="${mainHost}/courses/covers/${order.course.cover
       }"
       class="product-img"
       alt=""
@@ -58,15 +65,16 @@ ${ordersInfo.map((order, index) => {
   </div>
   <div
   class="col-3 px-0 h5 product-name fw-bold lh-lg fs-5"
+  onclick = "goToCourseDetail('${order.course.shortName}')"
 >
-  آموزش HTML و CSS
+  ${order.course.name}
 </div>
   <div class="product-price p text-orange fs-6 col-2">
     ${order.price ? changePriceNumberToFa(order.course.price) : 0}
   </div>
   
-  <div class="product-subtotal p text-orange fs-6 col-2">
-    ${order.price ? changePriceNumberToFa(order.course.price - order.price) : 0}
+  <div class="product-off p text-orange fs-6 col-2">
+    ${order.price && order.price !== order.course.price ? changePriceNumberToFa(order.course.price - order.price) : 0}
   </div>
   <div class="product-subtotal p text-orange fs-6 col-2">
     ${order.price ? changePriceNumberToFa(order.price) : 0}

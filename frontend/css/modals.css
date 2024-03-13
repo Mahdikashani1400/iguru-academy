@@ -70,6 +70,7 @@
 }
 .product__box-modal {
   cursor: pointer;
+  height: fit-content;
 }
 .product__box-modal * {
   transition: 0.3s all;

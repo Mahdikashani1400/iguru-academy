@@ -2,20 +2,26 @@
 import {
   getAllOfOrders,
   changePriceNumberToFa,
-  calculateDiscount
+  calculateDiscount,
+  goToCourseDetail,
+  getCategoryOfCourses,
+  mainHost
 } from "../js/funcs/shared.js";
 const $ = document;
 let ordersInfo = null
 // window.addEventListener("load", async () => {
 //   console.log(ordersInfo);
 // });
-
+window.goToCourseDetail = goToCourseDetail
 const modals = $.querySelector(".modals");
 async function getModals() {
   ordersInfo = await getAllOfOrders()
+  let categoryOfCourses = await getCategoryOfCourses()
+  let categoryTarget = null
+  console.log(categoryOfCourses);
   let sumOfPrice = null
   modals.innerHTML = `
-    
+
   <div
   class="modal fade user__basket-modal"
   id="userBasketModal"
@@ -26,36 +32,42 @@ async function getModals() {
       <div class="modal-body p-0">
         <div class="product__boxes-modal scrollbar-customize row pb-4 gap-3">
           ${ordersInfo.map(order => {
+    categoryTarget = [...categoryOfCourses].filter(cat => {
+      if (cat._id === order.course.categoryID) {
+        return cat.title
+      }
+    })[0].title
     sumOfPrice += order.price
     return `
-            <div class="product__box-modal d-flex">
+            <div class="product__box-modal d-flex"
+            onclick = "goToCourseDetail('${order.course.shortName + "," + categoryTarget}')">
             <div class="product__content-modal d-flex">
               <div class="product__img-modal ms-3">
                 <img
-                  src="http://localhost:4000/courses/covers/${order.course.cover
+                  src="${mainHost}/courses/covers/${order.course.cover
       }"
                   alt=""
                   class="img-fluid"
                 />
               </div>
               <div class="product__info-modal">
-                <p class="product__title-modal fw-bold text-white">
+                <a href="#" class="product__title-modal fw-bold text-white">
                   ${order.course.name}
-                </p>
+                </a>
                 <p class="mt-1 text-end">
-               ${order.price ? ` <span class="product__price-modal text-orange me-2"
+               ${order.price !== order.course.price ? ` <span class="product__price-modal text-orange me-2"
                >${changePriceNumberToFa(order.price)}</span
              >`: ""}
-                  <span class="${order.price ? "main__price" : ""} product__price-modal bg-transparent text-orange me-2"
+                  <span class="${order.price !== order.course.price ? "main__price" : ""} product__price-modal bg-transparent text-orange me-2"
                     >${changePriceNumberToFa(order.course.price)}</span
-                 
+
                 </p>
               </div>
             </div>
-           
+
           </div>`
   }).join("")}
-         
+
         </div>
       </div>
       <div class="modal-footer px-0">
@@ -125,7 +137,7 @@ async function getModals() {
   </div>
 </div>
 
-    
+
     `;
 }
 window.goToSearchPage = goToSearchPage;

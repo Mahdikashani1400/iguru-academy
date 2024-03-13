@@ -5,6 +5,7 @@ import { getFooter } from "./footer.js";
 import {
   getArticles,
   getCategoryOfCourses,
+  mainHost,
   searchInData,
   showNotFoundAlert,
 } from "./funcs/shared.js";
@@ -49,7 +50,7 @@ function addArticlesToContainer(articlesArray, categoryID) {
         <span class="date-month">تیر</span>
         <div class="h4 date-day fw-bold">20</div>
       </div>
-      <div class="blog__box-img" style="background-image:url('http://localhost:4000/courses/covers/${article.cover}');"></div>
+      <div class="blog__box-img" style="background-image:url('${mainHost}/courses/covers/${article.cover}');"></div>
       <div class="blog__box__content">
         <div class="blog__box__tags pt-4 pb-2">
           <a
@@ -83,7 +84,7 @@ function addArticlesToContainer(articlesArray, categoryID) {
             <span class="date-month">تیر</span>
             <div class="h4 date-day fw-bold">20</div>
           </div>
-          <div class="blog__box-img" style="background-image:url('http://localhost:4000/courses/covers/${article.cover}');"></div>
+          <div class="blog__box-img" style="background-image:url('${mainHost}/courses/covers/${article.cover}');"></div>
           <div class="blog__box__content">
             <div class="blog__box__tags pt-4 pb-2">
               <a

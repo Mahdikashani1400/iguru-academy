@@ -12,17 +12,21 @@ window.addEventListener("load", async () => {
     await getTarget("category").then(data => {
         categoriesInfo = data[0] ? data : []
     })
+
     ckEditorBody = ckEditorHandler()
 
     cleanAndGetInfo()
 
 })
 const coursesTable = $.querySelector(".courses__table tbody")
+console.log(coursesTable);
 let counter = null
 const getCoursesTable = () => {
     counter = 0
+    console.log(coursesInfo);
     coursesTable.innerHTML = `
     ${coursesInfo.map((course, index) => {
+        console.log(course);
         if (course.categoryID?.title === 'course') {
             return `
             
@@ -35,16 +39,16 @@ const getCoursesTable = () => {
       />
       </th>
       <th scope="row" class="">${++counter}</th>
-      <td class="px-5 py-5">${course.name}</td>
-      <td class="px-5 py-5">${course.categoryID.name}</td>
+      <td class="px-5 py-5">${course?.name}</td>
+      <td class="px-5 py-5">${course.categoryID?.name}</td>
       <td class="px-5 py-5">${course.courseAverageScore}</td>
       <td class="px-5 py-5">${course.registers}</td>
       <td class="px-5 py-5">${changePriceNumberToFa(course.price)}</td>
       <td class="px-4 py-5">
-      <a href="#" class="edit">ویرایش</a>
+      <a href="javascript:void(0)" class="edit">ویرایش</a>
       </td>
       <td class="px-4 py-5">
-      <a href="#" class="remove">حذف</a>
+      <a href="javascript:void(0)" class="remove">حذف</a>
       </td>
       </tr>
   `
@@ -76,12 +80,12 @@ const createCourse = async (e) => {
     e.preventDefault()
 
 
-
-    const categoryID = courseCategory.value
     await ckEditorBody.then(editor => {
-
         descCourse = editor.getData()
+
     })
+    const categoryID = courseCategory.value
+
     // console.log(descCourse);
     const newCourse = new FormData()
     newCourse.append("name", titleCourse.value.trim())
@@ -91,7 +95,15 @@ const createCourse = async (e) => {
     newCourse.append("price", priceCourse.value.trim())
     newCourse.append("status", "start")
     newCourse.append("categoryID", categoryID)
-    await addTargetFormData("courses", "دوره", newCourse)
+
+
+    await addTargetFormData("courses", "دوره", newCourse).then(res => {
+        console.log(res);
+        res?.name && cleanAndGetInfo()
+
+    })
+
+
 
 }
 const addCourseBtn = $.getElementById('addCourseBtn')
@@ -113,13 +125,15 @@ window.courseInfoHandler = courseInfoHandler
 let targetCourseId = null
 
 function courseInfoHandler(e) {
-    e.preventDefault()
+    // e.preventDefault()
     targetCourseId = e.currentTarget.id
     if (e.target.classList.contains('remove')) {
         showSwal('آیا از حذف دوره مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {
                 await removeTarget(targetCourseId, "courses", "دوره")
-                cleanAndGetInfo()
+                coursesInfo = [...coursesInfo].filter(course => course._id !== targetCourseId)
+                getCoursesTable()
+
             }
         })
 
@@ -131,9 +145,17 @@ function courseInfoHandler(e) {
 
 
 
-
 async function cleanAndGetInfo() {
+    titleCourse.value = ''
+    priceCourse.value = ''
+    fileInputCourse.value = ''
+    destCourse.value = ''
+    await ckEditorBody.then(editor => {
+        editor.setData('')
+
+    })
     await getTarget("courses").then(data => {
+        console.log(data);
         coursesInfo = data[0] ? data : []
 
     })

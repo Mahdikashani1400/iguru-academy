@@ -27,10 +27,10 @@ const getCategoriesTable = () => {
         <td class="px-5 py-5">${category.title}</td>
 
         <td class="px-4 py-5">
-          <a href="#" class="edit">ویرایش</a>
+          <a href="javascript:void(0)" class="edit">ویرایش</a>
         </td>
         <td class="px-4 py-5">
-          <a href="#" class="remove">حذف</a>
+          <a href="javascript:void(0)" class="remove">حذف</a>
         </td>
       </tr>
         `

@@ -13,6 +13,7 @@ window.addEventListener("load", async () => {
     await getTarget("category").then(data => {
         categoriesInfo = data[0] ? data : []
     })
+
     ckEditorBody = ckEditorHandler()
 
     cleanAndGetInfo()
@@ -42,10 +43,10 @@ const getProductsTable = () => {
       <td class="px-5 py-5">${product.registers}</td>
       <td class="px-5 py-5">${changePriceNumberToFa(product.price)}</td>
       <td class="px-4 py-5">
-      <a href="#" class="edit">ویرایش</a>
+      <a href="javascript:void(0)" class="edit">ویرایش</a>
       </td>
       <td class="px-4 py-5">
-      <a href="#" class="remove">حذف</a>
+      <a href="javascript:void(0)" class="remove">حذف</a>
       </td>
       </tr>
   `
@@ -75,11 +76,13 @@ let descProduct = $.getElementById("descProduct")
 
 const createProduct = async (e) => {
     e.preventDefault()
-    const categoryID = productCategory.value
+
     await ckEditorBody.then(editor => {
 
         descProduct = editor.getData()
     })
+    const categoryID = productCategory.value
+
     const newProduct = new FormData()
     newProduct.append("name", titleProduct.value.trim())
     newProduct.append("description", descProduct.trim())
@@ -88,7 +91,12 @@ const createProduct = async (e) => {
     newProduct.append("price", priceProduct.value.trim())
     newProduct.append("status", "start")
     newProduct.append("categoryID", categoryID)
-    await addTargetFormData("courses", "محصول", newProduct)
+    await addTargetFormData("courses", "محصول", newProduct).then(res => {
+        res?.name && cleanAndGetInfo()
+
+    })
+
+
 
 }
 const addProductBtn = $.getElementById('addProductBtn')
@@ -114,7 +122,9 @@ function productInfoHandler(e) {
         showSwal('آیا از حذف محصول مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {
                 await removeTarget(targetProductId, "courses", "محصول")
-                cleanAndGetInfo()
+                productsInfo = [...productsInfo].filter(product => product._id !== targetProductId)
+                getProductsTable()
+
             }
         })
 
@@ -128,6 +138,15 @@ function productInfoHandler(e) {
 
 
 async function cleanAndGetInfo() {
+    titleProduct.value = ''
+    priceProduct.value = ''
+    fileInputProduct.value = ''
+    destProduct.value = ''
+    await ckEditorBody.then(editor => {
+        editor.setData('')
+
+    })
+
     await getTarget("courses").then(data => {
         productsInfo = data[0] ? data : []
 

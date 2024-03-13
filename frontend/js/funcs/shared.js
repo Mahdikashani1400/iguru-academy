@@ -1,54 +1,61 @@
 import { getToken, showSwal, showToast } from "./utils.js";
 
 const $ = document;
-const editUserInfo = async (Id, userInfo) => {
-  console.log(Id, userInfo);
-  const res = await fetch(`http://localhost:4000/v1/users/${Id}`, {
+const mainHost = 'https://reverent-khayyam-cd1lhumdm.liara.run'
+const protocol = 'https'
+const editUserInfo = async (userInfo) => {
+  console.log(userInfo);
+  const res = await fetch(`${mainHost}/v1/users/`, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWQzOTQyOWU1MTQ4OTgzNTNlNDIzYSIsImlhdCI6MTcwMTc1Njg3OCwiZXhwIjoxNzA0MzQ4ODc4fQ.zzRTFi5EQnv4zkPV31Rv-Xy-m2OzSpHDL-gE2QuCqoA`,
+      Authorization: `Bearer ${getToken()}`,
+      "Content-Type": "application/json",
+
     },
     body: JSON.stringify(userInfo)
   });
+
   const result = await res.json();
+  console.log(result);
+  result.name ? await showToast("اطلاعات شما با موفقیت تغییر پیدا کرد :)", "success", () => { }) : await showToast(result?.message[0].message, "error", () => { })
   return result;
 };
 
 
 
 const getCourses = async () => {
-  const res = await fetch("http://localhost:4000/v1/courses", {});
+  const res = await fetch(`${mainHost}/v1/courses`, {});
 
   const result = await res.json();
   return result;
 };
 const getPopularCourses = async () => {
-  const res = await fetch("http://localhost:4000/v1/courses/popular", {});
+  const res = await fetch(`${mainHost}/v1/courses/popular`, {});
 
   const result = await res.json();
   return result;
 };
 const getArticles = async () => {
-  const res = await fetch("http://localhost:4000/v1/articles", {});
+  const res = await fetch(`${mainHost}/v1/articles`, {});
 
   const result = await res.json();
   return result;
 };
 const getMenus = async () => {
-  const res = await fetch("http://localhost:4000/v1/menus");
+  const res = await fetch(`${mainHost}/v1/menus`);
 
   const result = await res.json();
   return result;
 };
 
 const getCategoryOfCourses = async () => {
-  const res = await fetch("http://localhost:4000/v1/category");
+  const res = await fetch(`${mainHost}/v1/category`);
   const result = await res.json();
   return result;
 };
 
 const getCourseDetails = async (courseName) => {
-  const res = await fetch(`http://localhost:4000/v1/courses/${courseName}`, {
+  const res = await fetch(`${mainHost}/v1/courses/${courseName}`, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
@@ -60,7 +67,7 @@ const getCourseDetails = async (courseName) => {
 const registerUserToCourseTarget = async (courseInfo, discountInfo = null) => {
 
   const priceBody = { price: (discountInfo ? (calculateDiscount(calculateDiscount(courseInfo.price, courseInfo.discount), discountInfo.percent)).toFixed() : calculateDiscount(courseInfo.price, courseInfo.discount)) }
-  const res = await fetch(`http://localhost:4000/v1/courses/${courseInfo._id}/register`, {
+  const res = await fetch(`${mainHost}/v1/courses/${courseInfo._id}/register`, {
     method: "POST",
 
     headers: {
@@ -71,14 +78,26 @@ const registerUserToCourseTarget = async (courseInfo, discountInfo = null) => {
     body: JSON.stringify(priceBody)
 
   }).then(async res => {
+    if (res.status === 200 || res.status === 201) {
 
-    res.status === 200 || res.status === 201 ? await showToast("به دوره خودت خوش اومدی :)", "success", () => { }) && location.reload() : null
+      if (courseInfo.categoryID.title === 'course') {
+        await showToast("به دوره خودت خوش اومدی :)", "success", () => {
+        })
+
+      } else {
+        await showToast("محصول مورد نظر با موفقیت خریداری شد :)", "success", () => {
+        })
+      }
+      setTimeout(() => {
+        location.reload()
+      }, 2000)
+    }
   })
   console.log(res);
 }
 const useDiscountCode = async (code, courseInfo) => {
   const courseBody = { course: courseInfo._id }
-  const res = await fetch(`http://localhost:4000/v1/offs/${code}`, {
+  const res = await fetch(`${mainHost}/v1/offs/${code}`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${getToken()}`,
@@ -92,7 +111,7 @@ const useDiscountCode = async (code, courseInfo) => {
 }
 const getRelatedCourses = async (courseName) => {
   const res = await fetch(
-    `http://localhost:4000/v1/courses/related/${courseName}`
+    `${mainHost}/v1/courses/related/${courseName}`
   );
   const result = await res.json();
   return result;
@@ -100,7 +119,7 @@ const getRelatedCourses = async (courseName) => {
 
 
 const getAllOfOrders = async () => {
-  const res = await fetch(`http://localhost:4000/v1/orders`, {
+  const res = await fetch(`${mainHost}/v1/orders`, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
@@ -143,9 +162,14 @@ const showNotFoundAlert = (state, container) => {
   }
 };
 
-const goToCourseDetail = (courseName) => {
-
-  window.location.href = `explain-course.html?name=${courseName}`;
+const goToCourseDetail = (detailInfo) => {
+  let category = detailInfo.split(',')[1]
+  let courseName = detailInfo.split(',')[0]
+  if (category === 'course') {
+    window.location.href = `explain-course.html?name=${courseName}`;
+  } else {
+    window.location.href = `explain-product.html?name=${courseName}`;
+  }
 };
 const goToProductDetail = (productName) => {
   window.location.href = `explain-product.html?name=${productName}`;
@@ -162,7 +186,7 @@ const submitContactsMSG = async () => {
     phone: phoneInput.value.trim(),
     body: messageInput.value.trim(),
   };
-  await fetch("http://localhost:4000/v1/contact", {
+  await fetch(`${mainHost}/v1/contact`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -195,7 +219,7 @@ const sendComment = async (courseShortName, body, score, getAllComments) => {
     courseShortName,
     score,
   };
-  await fetch(`http://localhost:4000/v1/comments`, {
+  await fetch(`${mainHost}/v1/comments`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${getToken()}`,
@@ -204,7 +228,7 @@ const sendComment = async (courseShortName, body, score, getAllComments) => {
     body: JSON.stringify(infoComment),
   }).then((res) => {
     if (res.status === 201) {
-      showToast("دیدگاه شما با موفقیت ارسال شد.", "success", () => { });
+      showToast("دیدگاه شما با موفقیت ارسال شد و پس از تایید منتشر خواهد شد.", "success", () => { });
     } else {
       showToast("مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.", "error");
     }
@@ -218,7 +242,7 @@ const answerComment = async (commentID, body, getAllComments) => {
     body,
   };
   console.log(getToken());
-  await fetch(`http://localhost:4000/v1/comments/answer/${commentID}`, {
+  await fetch(`${mainHost}/v1/comments/answer/${commentID}`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${getToken()}`,
@@ -266,7 +290,7 @@ function calculateDiscount(price, discount) {
 }
 
 const globalSearchHandler = async (searchValue) => {
-  const res = await fetch(`http://localhost:4000/v1/search/${searchValue}`);
+  const res = await fetch(`${mainHost}/v1/search/${searchValue}`);
 
   const result = await res.json();
   return result;
@@ -275,6 +299,7 @@ const globalSearchHandler = async (searchValue) => {
 
 
 export {
+  mainHost,
   getCourses,
   getPopularCourses,
   getArticles,

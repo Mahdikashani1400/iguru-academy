@@ -71,6 +71,7 @@ const firstName = $.getElementById('firstName')
 const userName = $.getElementById('userName')
 const phone = $.getElementById('phone')
 const email = $.getElementById('email')
+const password = $.getElementById('password')
 function showUserInfoHandler() {
 
   firstName.value = userInfo.name
@@ -78,19 +79,22 @@ function showUserInfoHandler() {
   phone.value = userInfo.phone
   email.value = userInfo.email
 
+
 }
 
 
-function editUserInfoHandler(e) {
+async function editUserInfoHandler(e) {
   e.preventDefault()
   const newInfo = {
     name: firstName.value,
     username: userName.value,
-    phone: phone.value,
     email: email.value,
+    phone: phone.value,
+    password: password.value
   }
-  editUserInfo(userInfo._id, newInfo).then(res => {
-    console.log(res);
+  await editUserInfo(newInfo).then((res) => {
+    res.name && ($.querySelector('.user-info').innerHTML = firstName.value)
+    password.value = ''
   })
 }
 

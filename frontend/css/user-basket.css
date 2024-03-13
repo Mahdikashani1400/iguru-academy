@@ -88,6 +88,11 @@
   /* @apply d-flex justify-content-center align-items-center lh-base; */
 }
 .product-name {
+  cursor: pointer;
+  transition: .3s;
+}
+.product-name:hover{
+  color: var(--primary-color-green);
 }
 table thead {
   /* height: 100px; */

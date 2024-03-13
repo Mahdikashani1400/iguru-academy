@@ -3,15 +3,19 @@ import { getHeader } from "./header.js";
 import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 import {
+  mainHost,
   getCourseDetails,
   getRelatedCourses,
   sendComment,
+  registerUserToCourseTarget,
   changeDateToFa,
   changePriceNumberToFa,
+
   goToProductDetail,
 } from "../js/funcs/shared.js";
 import { getUserInfo } from "../js/funcs/auth.js";
 import { productCoverSlider } from "../vendor/slick-slider/app.js";
+import { showToast } from "../js/funcs/utils.js";
 
 window.goToProductDetail = goToProductDetail;
 
@@ -21,13 +25,74 @@ let relatedProducts = null;
 let userInfo = null;
 let productName = new URLSearchParams(location.search).get("name");
 
+
+function addToBasketBtnHandler(e) {
+  e.preventDefault()
+  console.log(productInfo);
+  if (productInfo.price && !productInfo.isUserRegisteredToThisCourse) {
+    swal.fire({ title: "آیا کد تخفیف داری؟", icon: "warning", confirmButtonText: "بله", showCancelButton: true, cancelButtonText: "خیر" }).then(res => {
+      if (res.isConfirmed) {
+        swal.fire({
+          title: "کد تخفیف خود را وارد کنید.",
+          html:
+            `<input id="discountCode" placeholder="کد تخفیف ...">`,
+          confirmButtonText: 'تایید',
+          showCancelButton: true,
+          cancelButtonText: 'لغو',
+
+          preConfirm: async () => {
+            const discountCode = $.getElementById('discountCode')
+            let discountInfo = null
+            console.log(discountCode, productInfo._id);
+            await useDiscountCode(discountCode.value, productInfo).then(data => {
+              discountInfo = data
+              console.log(discountInfo);
+              if (discountInfo.code) {
+                showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
+                })
+
+                registerUserToCourseTarget(productInfo, discountInfo)
+
+              } else {
+                showToast("کد تخفیف را به درستی وارد کنید.", "error", () => { })
+              }
+            })
+
+          }
+
+        })
+      } else {
+        registerUserToCourseTarget(productInfo)
+      }
+    })
+    // await registerUserToCourseTarget(productInfo).then(data => {
+    //   console.log(data);
+    // })
+  } else if (!productInfo.isUserRegisteredToThisCourse) {
+    registerUserToCourseTarget(productInfo).then(res => {
+
+    })
+  } else {
+    showToast("شما قبلا این محصول را خریداری کرده اید دوست عزیز.", "warning", () => { })
+  }
+}
+
+let addToBasketBtn = $.getElementById('addToBasketBtn');
+
+
+addToBasketBtn.addEventListener('click', addToBasketBtnHandler)
+
+function contentBtnHandler() {
+  addToBasketBtn.innerHTML = productInfo.isUserRegisteredToThisCourse ? "محصول قبلا خریداری شده" : "افزودن به سبد خرید"
+}
+
 window.addEventListener("load", async () => {
   await getModals();
   await getHeader();
   await getCourseDetails(productName).then((data) => {
     productInfo = data;
   });
-
+  contentBtnHandler()
   getPoster(productName.split("_")[1], "blog_page-bg.jpg");
 
   showProductDetails();
@@ -59,12 +124,12 @@ function showProductDetails() {
   imagesContainer.innerHTML = `
     <img
     class=""
-    src="http://localhost:4000/courses/covers/${productInfo.cover}"
+    src="${mainHost}/courses/covers/${productInfo.cover}"
     alt=""
   />
     <img
     class=""
-    src="http://localhost:4000/courses/covers/${productInfo.cover}"
+    src="${mainHost}/courses/covers/${productInfo.cover}"
     alt=""
   />
     `;
@@ -78,7 +143,7 @@ function selectionImg() {
     imgLi.innerHTML = `
     <img
     class=""
-    src="http://localhost:4000/courses/covers/${productInfo.cover}"
+    src="${mainHost}/courses/covers/${productInfo.cover}"
     alt=""
   />
     `;
@@ -99,7 +164,7 @@ function showRelatedproducts() {
             <div class="p same__product__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
               افزودن به سبد خرید
             </div>
-            <img class="rounded mx-auto d-block" src="http://localhost:4000/courses/covers/${product.cover
+            <img class="rounded mx-auto d-block" src="${mainHost}/courses/covers/${product.cover
             }" alt="">
           </div>
           <div class="same__product__box-title h6 pt-4 fw-bold text-center">
@@ -118,21 +183,11 @@ function showRelatedproducts() {
 }
 
 let inputNumberContainers = $.querySelectorAll(".quantity__number-input");
-let inputNumber = null;
-function changeInputNumber(e) {
-  inputNumber = this.querySelector("input");
 
-  if (e.target.classList.contains("plus")) {
-    inputNumber.stepUp();
-  } else if (e.target.classList.contains("minus")) {
-    inputNumber.stepDown();
-  }
-}
 inputNumberContainers.forEach((elem) => {
   elem.querySelector("input").addEventListener("keydown", (e) => {
     e.preventDefault();
   });
-  elem.addEventListener("click", changeInputNumber.bind(elem));
 });
 
 const productMenuItems = $.querySelectorAll(".more__details .titles > div");

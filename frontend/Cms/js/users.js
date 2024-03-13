@@ -20,6 +20,7 @@ const usersTable = $.querySelector(".users__table tbody")
 function getUsersTable() {
     usersTable.innerHTML = `
     ${usersInfo.map((user, index) => {
+        console.log(user);
         return `
             <tr class="" id="${user._id}" onclick="userInfoHandler(event)">
             <th scope="col" class="">
@@ -35,13 +36,13 @@ function getUsersTable() {
             <td class="px-5 py-5">${user.email}</td>
             <td class="px-5 py-5">${user.role}</td>
             <td class="px-4 py-5">
-              <a href="#" class="edit">ویرایش</a>
+              <a href="javascript:void(0)" class="edit">ویرایش</a>
             </td>
             <td class="px-4 py-5">
-              <a href="#" class="remove">حذف</a>
+              <a href="javascript:void(0)" class="remove">حذف</a>
             </td>
             <td class="px-4 py-5">
-              <a href="#" class="ban">بن</a>
+              <a href="javascript:void(0)" class="ban">بن</a>
             </td>
           </tr>
   `
@@ -63,8 +64,10 @@ async function addNewUser(e) {
         "auth/register",
         "کاربر",
         newUser
-    )
-    cleanAndGetInfo()
+    ).then(res => {
+        console.log(res, res?.accessToken);
+        res?.accessToken && cleanAndGetInfo()
+    })
 }
 const addUserBtn = $.getElementById('addUserBtn')
 addUserBtn.addEventListener('click', addNewUser)
@@ -97,7 +100,8 @@ async function userInfoHandler(e) {
             if (res.isConfirmed) {
                 await removeTarget(targetUserId, "users", "کاربر")
 
-                cleanAndGetInfo()
+                usersInfo = [...usersInfo].filter(course => course._id !== targetUserId)
+                getUsersTable()
             }
         })
 

@@ -9,7 +9,8 @@ import {
   showNotFoundAlert,
   goToCourseDetail,
   changePriceNumberToFa,
-  calculateDiscount
+  calculateDiscount,
+  mainHost
 } from "../js/funcs/shared.js";
 let coursesInfo = null;
 window.addEventListener("load", async () => {
@@ -59,6 +60,7 @@ function addCoursesToContainer(coursesArray, category) {
         } else {
           return "";
         }
+        console.log(courseTarget);
         return `
        
       <div class="course__box rounded">
@@ -66,7 +68,7 @@ function addCoursesToContainer(coursesArray, category) {
         class="course__box-container d-flex flex-column justify-content-end text-white h-100"
         onclick = "goToCourseDetail('${courseTarget.shortName}')"
       >
-        <div class="course__box-bg-img position-absolute bg-img" style="background-image:url('http://localhost:4000/courses/covers/${courseTarget.cover
+        <div class="course__box-bg-img position-absolute bg-img" style="background-image:url('${mainHost}/courses/covers/${courseTarget.cover
           }');">
           
         </div>

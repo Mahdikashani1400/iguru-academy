@@ -30,10 +30,10 @@ const getMenusTable = async () => {
         <td class="px-5 py-5">__</td>
 
         <td class="px-4 py-5">
-          <a href="#" class="edit">ویرایش</a>
+          <a href="javascript:void(0)" class="edit">ویرایش</a>
         </td>
         <td class="px-4 py-5">
-          <a href="#" class="remove">حذف</a>
+          <a href="javascript:void(0)" class="remove">حذف</a>
         </td>
       </tr>
 
@@ -53,10 +53,10 @@ const getMenusTable = async () => {
         <td class="px-5 py-5">${item.title}</td>
 
         <td class="px-4 py-5">
-          <a href="#" class="edit">ویرایش</a>
+          <a href="javascript:void(0)" class="edit">ویرایش</a>
         </td>
         <td class="px-4 py-5">
-          <a href="#" class="remove">حذف</a>
+          <a href="javascript:void(0)" class="remove">حذف</a>
         </td>
       </tr>
     `
@@ -86,11 +86,12 @@ const createMenu = async (e) => {
   const itemParentId = menusInfo.find(item => {
     return item.title === itemParent.value
   })?._id
-  const newItemMenu = { title: title.value, href: destination.value + '.html', parent: itemParentId }
+  const newItemMenu = { title: title.value, href: destination.value.trim() ? destination.value + '.html' : "", parent: itemParentId }
 
   await addTarget("menus", "آیتم", newItemMenu, "author").then(res => {
+    res?.title && cleanAndGetInfo()
+
   })
-  cleanAndGetInfo()
 
 }
 const addItemBtn = $.getElementById('addItemBtn')
@@ -107,7 +108,8 @@ async function ItemInfoHandler(e) {
     showSwal('آیا از حذف آیتم مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
       if (res.isConfirmed) {
         await removeTarget(targetItemId, "menus", "آیتم")
-        cleanAndGetInfo()
+        menusInfo = [...menusInfo].filter(item => item._id !== targetItemId)
+        getMenusTable()
       }
     })
 

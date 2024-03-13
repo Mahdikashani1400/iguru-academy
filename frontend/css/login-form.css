@@ -67,8 +67,11 @@ form {
     padding: 30px 40px !important;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
   .login__form {
     zoom: 0.8;
+  }
+  #main {
+    padding: 2.5rem;
   }
 }
