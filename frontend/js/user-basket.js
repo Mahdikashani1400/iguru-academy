@@ -4,7 +4,9 @@ import {
   changePriceNumberToFa,
   calculateDiscount,
   goToCourseDetail,
-  mainHost
+  mainHost,
+  goToProductDetail,
+  getCategoryOfCourses
 } from "../js/funcs/shared.js";
 import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
@@ -15,6 +17,8 @@ const $ = document;
 window.addEventListener("load", async () => {
   await getModals();
   await getHeader();
+  categoryOfCourses = await getCategoryOfCourses()
+  categoryTarget = null
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "blog_page-bg.jpg");
   showOrdersInfo()
@@ -23,13 +27,15 @@ window.addEventListener("load", async () => {
 });
 
 
-
 window.goToCourseDetail = goToCourseDetail
+window.goToProductDetail = goToProductDetail
 
 const ordersContainer = $.querySelector('.orders__container')
 let sumMainPrice = null
 let sumOffs = null
 let sumFinallyPrice = null
+let categoryOfCourses
+let categoryTarget = null
 function showOrdersInfo() {
   ordersContainer.innerHTML = `
   
@@ -45,7 +51,11 @@ px-md-3 px-2 ps-2">تخفیف</div>
 px-md-3 px-2">قیمت نهایی</div>
 </header>
 ${ordersInfo.map((order, index) => {
-    console.log(order);
+    categoryTarget = [...categoryOfCourses].filter(cat => {
+      if (cat._id === order.course.categoryID) {
+        return cat.title
+      }
+    })[0].title
     sumMainPrice += order.course.price
     sumFinallyPrice += order.price
     sumOffs += order.course.price - order.price
@@ -65,7 +75,7 @@ ${ordersInfo.map((order, index) => {
   </div>
   <div
   class="col-3 px-0 h5 product-name fw-bold lh-lg fs-5"
-  onclick = "goToCourseDetail('${order.course.shortName}')"
+  onclick = ${categoryTarget === 'course' ? `goToCourseDetail('${order.course.shortName}')` : `goToProductDetail('${order.course.shortName}')`}
 >
   ${order.course.name}
 </div>
