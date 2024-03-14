@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTargetFormData, removeTarget, minuteToTimer, timerToNum } from "./funcs/shared.js"
+import { getTarget, addTargetFormData, removeTarget, minuteToTimer, timerToNum, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 const $ = document;
 let coursesInfo = null
@@ -123,9 +123,11 @@ function sessionInfoHandler(e) {
 
 
 async function cleanAndGetInfo() {
+    const loader = $.querySelector('.loader_container')
+
     await getTarget("courses/sessions").then(data => {
         sessionsInfo = data[0] ? data.reverse() : []
-
+        removeLoader(loader)
     })
     titleSession.value = ''
     timeSession.value = ''

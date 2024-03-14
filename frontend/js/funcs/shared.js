@@ -281,8 +281,12 @@ function changePriceNumberToFa(priceNumber) {
 };
 
 function removeLoader(loader) {
+  loader.classList.add('animation')
+
   setTimeout(() => {
     loader.classList.add('d-none')
+    loader.classList.remove('animation')
+
     $.querySelector('html').classList.remove('no-scroll')
   }, 500);
 }

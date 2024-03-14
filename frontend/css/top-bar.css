@@ -348,10 +348,6 @@ nav.user-out .user-info {
   .description__text-p {
     font-size: 75%;
   }
-  .loader {
-    width: 75px !important;
-    height: 110px !important;
-  }
 }
 @media only screen and (max-width: 575px) {
   .course__box-title {
@@ -410,20 +406,16 @@ nav.user-out .user-info {
   opacity: 1;
   transition: all 0.35s;
 }
+
 .loader_container.d-none {
+  display: none !important;
+}
+
+.loader_container.animation {
   visibility: hidden;
   opacity: 0;
-  display: flex !important;
-  animation: loader 0.4s;
 }
-@keyframes loader {
-  0% {
-    /* opacity: 0; */
-  }
-  100% {
-    display: none;
-  }
-}
+
 .loader {
   width: 100px;
   height: 150px;

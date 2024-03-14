@@ -1,9 +1,13 @@
 import { createHeader, adminInfos } from "./funcs/header.js"
+import { removeLoader } from "./funcs/shared.js";
 
 const $ = document;
 
 window.addEventListener("load", async () => {
-    await createHeader()
+    const loader = $.querySelector('.loader_container')
+    await createHeader().then(res => {
+        removeLoader(loader)
+    })
     console.log(adminInfos);
     createChart()
     getLastUsers()

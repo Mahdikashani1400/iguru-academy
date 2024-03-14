@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTarget, removeTarget, commentState } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget, commentState, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 
 const $ = document;
@@ -52,8 +52,11 @@ const getCommentsTable = () => {
 }
 
 async function cleanAndGetInfo() {
+
+    const loader = $.querySelector('.loader_container')
     await getTarget("comments").then(data => {
         commentsInfo = data[0] ? data.reverse() : []
+        removeLoader(loader)
 
     })
     getCommentsTable()

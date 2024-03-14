@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTarget, removeTarget, UpdateTarget } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget, UpdateTarget, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 const $ = document;
 let categoriesInfo = null
@@ -12,7 +12,7 @@ window.addEventListener("load", async () => {
 
     })
     console.log(categoriesInfo);
-    getCategoriesTable()
+    cleanAndGetInfo()
 })
 
 const categoriesTable = $.querySelector(".categories__table tbody")
@@ -103,9 +103,11 @@ function clearInputs() {
 }
 
 async function cleanAndGetInfo() {
+    const loader = $.querySelector('.loader_container')
+
     await getTarget("category").then(data => {
         categoriesInfo = data[0] ? data.reverse() : []
-
+        removeLoader(loader)
     })
     getCategoriesTable()
     clearInputs()

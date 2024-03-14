@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa, ckEditorHandler } from "./funcs/shared.js"
+import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa, ckEditorHandler, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 const $ = document;
 let articlesInfo = null
@@ -130,6 +130,7 @@ function articleInfoHandler(e) {
 
 
 async function cleanAndGetInfo() {
+    const loader = $.querySelector('.loader_container')
     titleArticle.value = ''
     fileInputArticle.value = ''
     destArticle.value = ''
@@ -140,7 +141,7 @@ async function cleanAndGetInfo() {
 
     await getTarget("articles").then(data => {
         articlesInfo = data[0] ? data : []
-
+        removeLoader(loader)
     })
     getArticlesTable()
     selectCategory()

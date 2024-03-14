@@ -15,17 +15,14 @@ const getTarget = async (target, state = null) => {
     return result;
 };
 
-// await fetch(`${mainHost}/v1/comments/answer/commentId`, {
-// const bodyObj = {
-// body:"text"
-// }
-//         method: "POST",
-//         headers: {
-//             Authorization:  `Bearer {adminToke}`,
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(bodyObj),
-// })
+function removeLoader(loader) {
+    loader.classList.add('animation')
+    setTimeout(() => {
+        document.querySelector('html').classList.remove('no-scroll')
+        loader.classList.add('hidden')
+        loader.classList.remove('animation')
+    }, 500);
+}
 
 const addTarget = async (target, targetFa, bodyObj, state = null) => {
     const res = await fetch(`${mainHost}/v1/${target}/`, {
@@ -217,5 +214,6 @@ export {
     commentState,
     ckEditorHandler,
     minuteToTimer,
-    timerToNum
+    timerToNum,
+    removeLoader
 }

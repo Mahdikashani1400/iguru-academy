@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTarget, removeTarget } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 
 
@@ -44,9 +44,11 @@ const getMessagesTable = () => {
 }
 
 async function cleanAndGetInfo() {
+    const loader = $.querySelector('.loader_container')
+
     await getTarget("contact").then(data => {
         messagesInfo = data[0] ? data.reverse() : []
-
+        removeLoader(loader)
     })
     getMessagesTable()
 

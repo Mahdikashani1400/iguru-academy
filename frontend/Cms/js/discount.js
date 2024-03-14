@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTarget, removeTarget } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 
 const $ = document;
@@ -97,8 +97,11 @@ function clearInputs() {
 }
 
 async function cleanAndGetInfo() {
+    const loader = $.querySelector('.loader_container')
+
     await getTarget("offs", "author").then(data => {
         discountsInfo = data[0] ? data.reverse() : []
+        removeLoader(loader)
     })
     courseSelectHandler()
     showDiscounts()

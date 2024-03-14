@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa, ckEditorHandler } from "./funcs/shared.js"
+import { getTarget, addTargetFormData, removeTarget, changePriceNumberToFa, ckEditorHandler, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js"
 
 
@@ -142,6 +142,8 @@ async function cleanAndGetInfo() {
     priceProduct.value = ''
     fileInputProduct.value = ''
     destProduct.value = ''
+    const loader = $.querySelector('.loader_container')
+
     await ckEditorBody.then(editor => {
         editor.setData('')
 
@@ -149,7 +151,7 @@ async function cleanAndGetInfo() {
 
     await getTarget("courses").then(data => {
         productsInfo = data[0] ? data : []
-
+        removeLoader(loader)
     })
     getProductsTable()
     selectCategory()

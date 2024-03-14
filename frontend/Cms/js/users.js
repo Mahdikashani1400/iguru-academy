@@ -1,5 +1,5 @@
 import { createHeader } from "./funcs/header.js"
-import { getTarget, addTarget, removeTarget, banUser, UpdateTarget } from "./funcs/shared.js"
+import { getTarget, addTarget, removeTarget, banUser, UpdateTarget, removeLoader } from "./funcs/shared.js"
 import { showSwal } from "./funcs/utils.js";
 
 const $ = document;
@@ -7,12 +7,7 @@ let usersInfo = null
 window.addEventListener("load", async () => {
     // sizeOfMenuHandler()
     createHeader()
-    await getTarget("users", "author").then(data => {
-        usersInfo = data[0] ? data.reverse() : []
-
-
-    })
-    getUsersTable()
+    cleanAndGetInfo()
 })
 
 const usersTable = $.querySelector(".users__table tbody")
@@ -75,9 +70,12 @@ addUserBtn.addEventListener('click', addNewUser)
 
 
 async function cleanAndGetInfo() {
+    const loader = $.querySelector('.loader_container')
+
     await getTarget("users", "author").then(data => {
         usersInfo = data[0] ? data.reverse() : []
-
+        console.log(usersInfo);
+        removeLoader(loader)
     })
     getUsersTable()
     clearInputs()
