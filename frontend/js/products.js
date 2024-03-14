@@ -11,6 +11,8 @@ import {
   goToProductDetail,
   changePriceNumberToFa,
   mainHost,
+  removeLoader,
+  calculateDiscount,
 } from "./funcs/shared.js";
 
 window.goToProductDetail = goToProductDetail;
@@ -19,6 +21,7 @@ window.seacrhInputHandler = seacrhInputHandler;
 
 let productsInfo = null;
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
 
   await getModals();
   await getHeader();
@@ -27,6 +30,7 @@ window.addEventListener("load", async () => {
   showCategoryOfProducts();
   await getCourses().then((data) => {
     productsInfo = data;
+    removeLoader(loader)
   });
   showProducts(productsInfo, "همه");
 
@@ -81,8 +85,12 @@ function addProductsToContainer(productsArray, category) {
                     <div class="products__box-title h6 pt-4 fw-bold">${productTarget.name
           }</div>
                     <div class="products__box-price p fw-bold text-orange fs-6">
-                      ${changePriceNumberToFa(productTarget.price)
-          }
+                      
+          <span class="${productTarget.discount && productTarget.price ? "main__price" : ""}"> ${changePriceNumberToFa(productTarget.price)}</span>
+          ${productTarget.discount && productTarget.price ? `
+          <span class="off__price px-1">
+          ${changePriceNumberToFa(calculateDiscount(productTarget.price, productTarget.discount))}
+          </span>`: ""}
                     </div>
                   </div>`;
       })

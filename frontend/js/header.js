@@ -165,10 +165,10 @@ async function getHeader() {
         </button>
         <div class="d-flex flex-column flex-sm-row order-3 d-xl-none align-items-center gap-3">
         <a href="#" class="user-info px-sm-3 p-2 text-white d-flex align-items-center rounded rounded-2 bg-green">محمد مهدی جان</a>
-          <button class="btn d-flex align-items-center gap-2 w-auto bg-white">
+          <a href="login-form.html" class="btn d-flex align-items-center gap-2 w-auto bg-white">
             <i class="fa fa-user col text-orange"></i>
             <span class="text-normal d-md-inline col">خروج</span>
-          </button>
+          </a>
           
         </div>
         <div class="navbar-collapse collapse " id="navbarSupportedContent">

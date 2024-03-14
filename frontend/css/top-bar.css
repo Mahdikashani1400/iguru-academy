@@ -339,10 +339,18 @@ nav.user-out .user-info {
   .categories__courses-timer-number {
     font-size: 40px !important;
   }
+  .loader {
+    width: 75px !important;
+    height: 110px !important;
+  }
 }
 @media only screen and (max-width: 768px) {
   .description__text-p {
     font-size: 75%;
+  }
+  .loader {
+    width: 75px !important;
+    height: 110px !important;
   }
 }
 @media only screen and (max-width: 575px) {
@@ -358,6 +366,10 @@ nav.user-out .user-info {
   .navbar__header__menu * {
     font-size: 13px;
   }
+  .loader {
+    width: 55px !important;
+    height: 90px !important;
+  }
 }
 
 /* course-box */
@@ -372,7 +384,7 @@ nav.user-out .user-info {
 .main__price {
   background-color: #fff;
   text-decoration: line-through;
-  color: #d1d5dbed !important;
+  color: #a3abb7ed !important;
   text-decoration-color: red;
   border-radius: 20px;
 }
@@ -382,4 +394,97 @@ nav.user-out .user-info {
 }
 .course__box-price:hover .discount {
   color: #fff;
+}
+
+/* loader */
+.loader_container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #eaf2f0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.35s;
+}
+.loader_container.d-none {
+  visibility: hidden;
+  opacity: 0;
+  display: flex !important;
+  animation: loader 0.4s;
+}
+@keyframes loader {
+  0% {
+    /* opacity: 0; */
+  }
+  100% {
+    display: none;
+  }
+}
+.loader {
+  width: 100px;
+  height: 150px;
+  --c1: var(--primary-color-green);
+  --c2: var(--primary-color-orange);
+  border-top: 4px solid var(--c1);
+  border-bottom: 4px solid var(--c1);
+  background: linear-gradient(
+      90deg,
+      var(--c1) 2px,
+      var(--c2) 0 5px,
+      var(--c1) 0
+    )
+    50%/7px 8px no-repeat;
+  display: grid;
+  overflow: hidden;
+  animation: l5-0 2s infinite linear;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  width: 75%;
+  height: calc(50% - 4px);
+  margin: 0 auto;
+  border: 2px solid var(--c1);
+  border-top: 0;
+  box-sizing: content-box;
+  border-radius: 0 0 40% 40%;
+  -webkit-mask: linear-gradient(#000 0 0) bottom/4px 2px no-repeat,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  background: linear-gradient(var(--d, 0deg), var(--c2) 50%, #0000 0) bottom /
+      100% 205%,
+    linear-gradient(var(--c2) 0 0) center/0 100%;
+  background-repeat: no-repeat;
+  animation: inherit;
+  animation-name: l5-1;
+}
+.loader::after {
+  transform-origin: 50% calc(100% + 2px);
+  transform: scaleY(-1);
+  --s: 3px;
+  --d: 180deg;
+}
+@keyframes l5-0 {
+  80% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+@keyframes l5-1 {
+  10%,
+  70% {
+    background-size: 100% 205%, var(--s, 0) 100%;
+  }
+  70%,
+  100% {
+    background-position: top, center;
+  }
 }

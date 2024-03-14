@@ -10,17 +10,21 @@ import {
   goToCourseDetail,
   changePriceNumberToFa,
   calculateDiscount,
-  mainHost
+  mainHost,
+  removeLoader
 } from "../js/funcs/shared.js";
 let coursesInfo = null;
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
   await getModals();
   await getHeader();
+
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "course_page-bg.jpg");
   showCategoryOfCourses();
   await getCourses().then((data) => {
     coursesInfo = data;
+    removeLoader(loader);
   });
 
   showCourses(coursesInfo, "همه");
@@ -89,7 +93,7 @@ function addCoursesToContainer(coursesArray, category) {
               />
             </div>
             <div class="course__box-teacher h6 mt-2">
-              علی رحیمی
+              ${courseTarget.creator}
             </div>
             <div
               class="course__box-title h2 fw-bold text-end mt-1"

@@ -6,6 +6,7 @@ import {
   getArticles,
   getCategoryOfCourses,
   mainHost,
+  removeLoader,
   searchInData,
   showNotFoundAlert,
 } from "./funcs/shared.js";
@@ -13,13 +14,17 @@ import {
 let articlesInfo = null;
 window.addEventListener("load", async () => {
 
+  const loader = $.querySelector('.loader_container')
   await getModals();
-  await getHeader();
+  await getHeader().then(res => {
+
+  });
   let pageTitle = getPageTitle();
   getPoster(pageTitle, "blog_page-bg.jpg");
   showCategoryOfArticles();
   await getArticles().then((data) => {
     articlesInfo = data;
+    removeLoader(loader)
   });
   showArticles(articlesInfo, "");
 

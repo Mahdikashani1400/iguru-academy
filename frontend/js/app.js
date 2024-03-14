@@ -9,13 +9,18 @@ import {
   goToCourseDetail,
   calculateDiscount,
   changePriceNumberToFa,
-  mainHost
+  mainHost,
+  removeLoader
 } from "./funcs/shared.js";
 
 const $ = document;
+
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
   await getModals();
-  await getHeader();
+  await getHeader().then(res => {
+    removeLoader(loader)
+  });
 
   showPopularCourses("همه");
   showArticles();

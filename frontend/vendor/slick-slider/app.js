@@ -333,8 +333,8 @@ $(".slick-wrap").on("init", function (event, slick) {
     $(".heading" + k).text(text);
   });
 });
-function productCoverSlider() {
-  $(".main-img").slick({
+async function productCoverSlider() {
+  await $(".main-img").slick({
     dots: true,
     focusOnSelect: true,
     infinite: true,

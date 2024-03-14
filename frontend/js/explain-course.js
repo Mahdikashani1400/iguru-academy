@@ -15,6 +15,7 @@ import {
   calculateDiscount,
   minuteToTimer,
   answerComment,
+  removeLoader,
 } from "../js/funcs/shared.js";
 import { getUserInfo, register } from "../js/funcs/auth.js";
 import { showToast } from "../js/funcs/utils.js";
@@ -28,11 +29,12 @@ let courseName = new URLSearchParams(location.search).get("name");
 let scoresInfo = null;
 
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
   await getModals();
   await getHeader();
   await getCourseDetails(courseName).then((data) => {
     courseInfo = data;
-    console.log(courseInfo);
+
     scoresInfo = _.countBy(courseInfo.comments, (obj) => {
       return obj.score;
     });
@@ -43,6 +45,7 @@ window.addEventListener("load", async () => {
   showScoreUsersByStars();
   await getRelatedCourses(courseName).then((data) => {
     relatedCourses = data;
+    removeLoader(loader)
   });
   showRelatedCourses();
   await getUserInfo().then((data) => {

@@ -8,7 +8,8 @@ import {
   goToProductDetail,
   getCategoryOfCourses,
   changePriceNumberToFa,
-  calculateDiscount
+  calculateDiscount,
+  removeLoader
 } from "../js/funcs/shared.js";
 import { aricleSliderSearch } from "../vendor/slick-slider/app.js";
 import { getFooter } from "./footer.js";
@@ -20,6 +21,7 @@ let searchValue = new URLSearchParams(location.search).get("searchValue");
 let searchValueInfos = null;
 let categoryInfos = null;
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
 
   await getModals();
   await getHeader();
@@ -28,6 +30,7 @@ window.addEventListener("load", async () => {
   getPoster(pageTitle, "blog_page-bg.jpg");
   await globalSearchHandler(searchValue).then((data) => {
     searchValueInfos = data;
+    removeLoader(loader)
   });
   await getCategoryOfCourses().then((data) => {
     categoryInfos = data;
@@ -275,7 +278,11 @@ ${productsInfoArray
     ${product.name}
     </div>
     <div class="products__box-price p fw-bold text-orange fs-6">
-    ${changePriceNumberToFa(product.price)}
+    <span class="${product.discount && product.price ? "main__price" : ""}"> ${changePriceNumberToFa(product.price)}</span>
+    ${product.discount && product.price ? `
+    <span class="off__price px-1">
+    ${changePriceNumberToFa(calculateDiscount(product.price, product.discount))}
+    </span>`: ""}
     </div>
   </div>
 

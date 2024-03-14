@@ -1,6 +1,6 @@
 import { getModals } from "./modals.js";
 import { getHeader, getPageTitle } from "./header.js";
-import { editUserInfo } from "./funcs/shared.js";
+import { editUserInfo, removeLoader } from "./funcs/shared.js";
 import { getUserInfo } from "./funcs/auth.js";
 import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
@@ -9,6 +9,7 @@ import { getFooter } from "./footer.js";
 let userInfo = null
 
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
 
   await getModals();
   await getHeader();
@@ -16,6 +17,7 @@ window.addEventListener("load", async () => {
   getPoster(pageTitle, "blog_page-bg.jpg");
   await getUserInfo().then(data => {
     userInfo = data
+    removeLoader(loader)
   })
   showUserInfoHandler()
   getFooter();

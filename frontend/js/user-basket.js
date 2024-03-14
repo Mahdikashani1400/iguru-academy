@@ -6,7 +6,8 @@ import {
   goToCourseDetail,
   mainHost,
   goToProductDetail,
-  getCategoryOfCourses
+  getCategoryOfCourses,
+  removeLoader
 } from "../js/funcs/shared.js";
 import { getHeader, getPageTitle } from "./header.js";
 import { getPoster } from "./title-page.js";
@@ -15,8 +16,12 @@ import { getFooter } from "./footer.js";
 const $ = document;
 
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
+
   await getModals();
-  await getHeader();
+  await getHeader().then(res=>{
+    removeLoader(loader)
+  });
   categoryOfCourses = await getCategoryOfCourses()
   categoryTarget = null
   let pageTitle = getPageTitle();

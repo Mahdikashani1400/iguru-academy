@@ -280,6 +280,13 @@ function changePriceNumberToFa(priceNumber) {
     : "رایگان";
 };
 
+function removeLoader(loader) {
+  setTimeout(() => {
+    loader.classList.add('d-none')
+    $.querySelector('html').classList.remove('no-scroll')
+  }, 500);
+}
+
 function calculateDiscount(price, discount) {
   {
     return price * (100 - discount) / 100
@@ -320,4 +327,5 @@ export {
   calculateDiscount,
   answerComment,
   globalSearchHandler,
+  removeLoader
 };

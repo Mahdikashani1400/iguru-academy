@@ -12,6 +12,8 @@ import {
   changePriceNumberToFa,
 
   goToProductDetail,
+  removeLoader,
+  calculateDiscount,
 } from "../js/funcs/shared.js";
 import { getUserInfo } from "../js/funcs/auth.js";
 import { productCoverSlider } from "../vendor/slick-slider/app.js";
@@ -26,86 +28,31 @@ let userInfo = null;
 let productName = new URLSearchParams(location.search).get("name");
 
 
-function addToBasketBtnHandler(e) {
-  e.preventDefault()
-  console.log(productInfo);
-  if (productInfo.price && !productInfo.isUserRegisteredToThisCourse) {
-    swal.fire({ title: "آیا کد تخفیف داری؟", icon: "warning", confirmButtonText: "بله", showCancelButton: true, cancelButtonText: "خیر" }).then(res => {
-      if (res.isConfirmed) {
-        swal.fire({
-          title: "کد تخفیف خود را وارد کنید.",
-          html:
-            `<input id="discountCode" placeholder="کد تخفیف ...">`,
-          confirmButtonText: 'تایید',
-          showCancelButton: true,
-          cancelButtonText: 'لغو',
 
-          preConfirm: async () => {
-            const discountCode = $.getElementById('discountCode')
-            let discountInfo = null
-            console.log(discountCode, productInfo._id);
-            await useDiscountCode(discountCode.value, productInfo).then(data => {
-              discountInfo = data
-              console.log(discountInfo);
-              if (discountInfo.code) {
-                showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
-                })
-
-                registerUserToCourseTarget(productInfo, discountInfo)
-
-              } else {
-                showToast("کد تخفیف را به درستی وارد کنید.", "error", () => { })
-              }
-            })
-
-          }
-
-        })
-      } else {
-        registerUserToCourseTarget(productInfo)
-      }
-    })
-    // await registerUserToCourseTarget(productInfo).then(data => {
-    //   console.log(data);
-    // })
-  } else if (!productInfo.isUserRegisteredToThisCourse) {
-    registerUserToCourseTarget(productInfo).then(res => {
-
-    })
-  } else {
-    showToast("شما قبلا این محصول را خریداری کرده اید دوست عزیز.", "warning", () => { })
-  }
-}
-
-let addToBasketBtn = $.getElementById('addToBasketBtn');
-
-
-addToBasketBtn.addEventListener('click', addToBasketBtnHandler)
-
-function contentBtnHandler() {
-  addToBasketBtn.innerHTML = productInfo.isUserRegisteredToThisCourse ? "محصول قبلا خریداری شده" : "افزودن به سبد خرید"
-}
 
 window.addEventListener("load", async () => {
+  const loader = $.querySelector('.loader_container')
   await getModals();
   await getHeader();
   await getCourseDetails(productName).then((data) => {
     productInfo = data;
+    showProductDetails();
+
   });
   contentBtnHandler()
   getPoster(productName.split("_")[1], "blog_page-bg.jpg");
 
-  showProductDetails();
-  setTimeout(() => {
-    productCoverSlider();
-    selectionImg();
-  }, 50);
+
 
   await getRelatedCourses(productName).then((data) => {
     relatedProducts = data;
-    console.log(relatedProducts);
-  });
+    removeLoader(loader)
 
+  });
+  setTimeout(async () => {
+    await productCoverSlider();
+    selectionImg();
+  }, 200);
   await getUserInfo().then((data) => {
     userInfo = data;
   });
@@ -119,7 +66,13 @@ function showProductDetails() {
   const category = $.querySelector(".product-category");
   const imagesContainer = $.querySelector(".main-img");
   title.innerHTML = productInfo.name;
-  price.innerHTML = changePriceNumberToFa(productInfo.price)
+  price.innerHTML = `
+  <span class="${productInfo.discount && productInfo.price ? "main__price" : ""}"> ${changePriceNumberToFa(productInfo.price)}</span>
+  ${productInfo.discount && productInfo.price ? `
+  <span class="off__price px-1">
+  ${changePriceNumberToFa(calculateDiscount(productInfo.price, productInfo.discount))}
+  </span>`: ""}
+  `
   category.innerHTML = productInfo.categoryID.name;
   imagesContainer.innerHTML = `
     <img
@@ -160,7 +113,7 @@ function showRelatedproducts() {
         <div class="same__product__box d-flex flex-column justify-content-center align-items-center pb-5 pb-lg-0 mb-4"
         onclick = "goToProductDetail('${product.shortName}')">
         <div class="same__product__content">
-          <div class="same__product__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3">
+          <div class="same__product__box-img rounded rounded-3 px-3 px-lg-0 py-lg-3 w-100">
             <div class="p same__product__box-add-basket fw-bold d-flex bg-green p-3 text-white rounded-top position-absolute">
               افزودن به سبد خرید
             </div>
@@ -171,8 +124,11 @@ function showRelatedproducts() {
           ${product.name}
           </div>
           <div class="same__product__box-price p fw-bold text-orange fs-6 text-center">
-          ${changePriceNumberToFa(product.price)
-            }
+          <span class="${product.discount && product.price ? "main__price" : ""}"> ${changePriceNumberToFa(product.price)}</span>
+          ${product.discount && product.price ? `
+          <span class="off__price px-1">
+          ${changePriceNumberToFa(calculateDiscount(product.price, product.discount))}
+          </span>`: ""}
           </div>
         </div>
       </div>
@@ -395,4 +351,69 @@ function submitCommentHandler(e) {
   e.preventDefault();
   commentText = $.getElementById("commentText");
   sendComment(productName, commentText.value, starNumber, getAllComments);
+}
+
+
+
+
+
+
+function addToBasketBtnHandler(e) {
+  e.preventDefault()
+  console.log(productInfo);
+  if (productInfo.price && !productInfo.isUserRegisteredToThisCourse) {
+    swal.fire({ title: "آیا کد تخفیف داری؟", icon: "warning", confirmButtonText: "بله", showCancelButton: true, cancelButtonText: "خیر" }).then(res => {
+      if (res.isConfirmed) {
+        swal.fire({
+          title: "کد تخفیف خود را وارد کنید.",
+          html:
+            `<input id="discountCode" placeholder="کد تخفیف ...">`,
+          confirmButtonText: 'تایید',
+          showCancelButton: true,
+          cancelButtonText: 'لغو',
+
+          preConfirm: async () => {
+            const discountCode = $.getElementById('discountCode')
+            let discountInfo = null
+            console.log(discountCode, productInfo._id);
+            await useDiscountCode(discountCode.value, productInfo).then(data => {
+              discountInfo = data
+              console.log(discountInfo);
+              if (discountInfo.code) {
+                showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
+                })
+
+                registerUserToCourseTarget(productInfo, discountInfo)
+
+              } else {
+                showToast("کد تخفیف را به درستی وارد کنید.", "error", () => { })
+              }
+            })
+
+          }
+
+        })
+      } else {
+        registerUserToCourseTarget(productInfo)
+      }
+    })
+    // await registerUserToCourseTarget(productInfo).then(data => {
+    //   console.log(data);
+    // })
+  } else if (!productInfo.isUserRegisteredToThisCourse) {
+    registerUserToCourseTarget(productInfo).then(res => {
+
+    })
+  } else {
+    showToast("شما قبلا این محصول را خریداری کرده اید دوست عزیز.", "warning", () => { })
+  }
+}
+
+let addToBasketBtn = $.getElementById('addToBasketBtn');
+
+
+addToBasketBtn.addEventListener('click', addToBasketBtnHandler)
+
+function contentBtnHandler() {
+  addToBasketBtn.innerHTML = productInfo.isUserRegisteredToThisCourse ? "محصول قبلا خریداری شده" : "افزودن به سبد خرید"
 }
