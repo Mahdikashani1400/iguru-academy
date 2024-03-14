@@ -1,3 +1,4 @@
+import { removeLoader } from "./shared.js";
 import { showSwal, showToast, setToken, getToken } from "./utils.js";
 const $ = document;
 const mainHost = 'https://reverent-khayyam-cd1lhumdm.liara.run'
@@ -198,6 +199,8 @@ const successLogin = async () => {
   }
 };
 
+const loader = $.querySelector('.loader_container')
+
 const register = (e) => {
   e.preventDefault();
   const lastName = $.getElementById("lastName");
@@ -216,6 +219,8 @@ const register = (e) => {
     confirmPassword: confirmPassword.value.trim(),
 
   };
+
+  loader.classList.remove('d-none')
   fetch(`${mainHost}/v1/auth/register`, {
     method: "POST",
     headers: {
@@ -223,6 +228,8 @@ const register = (e) => {
     },
     body: JSON.stringify(newUserInfo),
   }).then((res) => {
+    removeLoader(loader)
+
     if (res.status === 201) {
       showSwal(
         "ثبت نام شما با موفقیت انجام شد.",
@@ -254,12 +261,15 @@ const login = (e) => {
     identifier: emailUserName.value.trim(),
     password: password.value.trim(),
   };
+  loader.classList.remove('d-none')
+
   fetch(`${mainHost}/v1/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(checkUserInfo),
   })
     .then((res) => {
+      removeLoader(loader)
       console.log(res);
       if (res.status === 200) {
         showToast("ورود با موفقیت انجام شد.", "success", successLogin);

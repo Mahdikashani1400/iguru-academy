@@ -1,9 +1,16 @@
 import { register, login, reviewformInputs } from "./funcs/auth.js";
+import { removeLoader } from "./funcs/shared.js";
 const $ = document;
 window.addEventListener("load", () => {
   reviewformInputs("login");
-});
 
+});
+const loader = $.querySelector('.loader_container')
+window.addEventListener('DOMContentLoaded', () => {
+
+
+  removeLoader(loader)
+})
 window.register = register;
 window.login = login;
 
