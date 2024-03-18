@@ -1,6 +1,6 @@
 import { createHeader } from "./funcs/header.js"
 import { getTarget, addTarget, removeTarget, removeLoader } from "./funcs/shared.js"
-import { showSwal } from "./funcs/utils.js";
+import { showSwal, showToast } from "./funcs/utils.js";
 
 const $ = document;
 let menusInfo = null
@@ -83,15 +83,16 @@ const title = $.getElementById('title')
 const destination = $.getElementById('destination')
 const createMenu = async (e) => {
   e.preventDefault()
-  const itemParentId = menusInfo.find(item => {
-    return item.title === itemParent.value
-  })?._id
-  const newItemMenu = { title: title.value, href: destination.value.trim() ? destination.value + '.html' : "", parent: itemParentId }
+  showToast("به دلایل امنیتی امکان افزودن آیتمی به منو وجود ندارد .", "error");
+  // const itemParentId = menusInfo.find(item => {
+  //   return item.title === itemParent.value
+  // })?._id
+  // const newItemMenu = { title: title.value, href: destination.value.trim() ? destination.value + '.html' : "", parent: itemParentId }
 
-  await addTarget("menus", "آیتم", newItemMenu, "author").then(res => {
-    res?.title && cleanAndGetInfo()
+  // await addTarget("menus", "آیتم", newItemMenu, "author").then(res => {
+  //   res?.title && cleanAndGetInfo()
 
-  })
+  // })
 
 }
 const addItemBtn = $.getElementById('addItemBtn')
@@ -105,13 +106,14 @@ async function ItemInfoHandler(e) {
 
   targetItemId = e.currentTarget.id
   if (e.target.classList.contains('remove')) {
-    showSwal('آیا از حذف آیتم مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
-      if (res.isConfirmed) {
-        await removeTarget(targetItemId, "menus", "آیتم")
-        menusInfo = [...menusInfo].filter(item => item._id !== targetItemId)
-        getMenusTable()
-      }
-    })
+    showToast("به دلایل امنیتی امکان حذف آیتمی از منو وجود ندارد .", "error");
+    // showSwal('آیا از حذف آیتم مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
+    //   if (res.isConfirmed) {
+    //     await removeTarget(targetItemId, "menus", "آیتم")
+    //     menusInfo = [...menusInfo].filter(item => item._id !== targetItemId)
+    //     getMenusTable()
+    //   }
+    // })
 
   }
 
