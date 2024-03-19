@@ -130,6 +130,7 @@
   left: 0;
   transition: 0.4s all;
   background-color: #0909098a;
+  backdrop-filter: blur(4px);
 }
 .course__box-container:hover .course__box-content::after {
   background: var(--white-color);
@@ -180,6 +181,7 @@
 }
 .course__box-title {
   transition: 0.4s all;
+  font-size: 24px;
 }
 .course__box-title:hover {
   color: var(--primary-color-green) !important;
@@ -274,7 +276,7 @@
 }
 @media screen and (min-width: 992px) {
   .course__box {
-    height: 550px;
+    height: 400px;
   }
 }
 @media screen and (max-width: 400px) {

@@ -205,6 +205,13 @@ nav.user-out .user-info {
   z-index: 1;
 }
 
+
+/* errors-box */
+.empty__comments{
+  font-size: 26px !important;
+  background-color: #e95374d4;
+}
+
 @media screen and (min-width: 1200px) {
   .dropdown-menu {
     display: block;
@@ -348,6 +355,10 @@ nav.user-out .user-info {
   .description__text-p {
     font-size: 75%;
   }
+  .empty__comments{
+    font-size: 22px !important;
+  }
+  
 }
 @media only screen and (max-width: 575px) {
   .course__box-title {
@@ -365,6 +376,9 @@ nav.user-out .user-info {
   .loader {
     width: 55px !important;
     height: 90px !important;
+  }
+  .empty__comments{
+    font-size: 18px !important;
   }
 }
 

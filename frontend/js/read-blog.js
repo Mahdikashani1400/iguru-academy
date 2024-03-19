@@ -4,10 +4,10 @@ import { getPoster } from "./title-page.js";
 import { getFooter } from "./footer.js";
 import { removeLoader } from "./funcs/shared.js";
 window.addEventListener("load", async () => {
-  const loader = $.querySelector('.loader_container')
+  const loader = document.querySelector('.loader_container')
 
   await getModals();
-  await getHeader().then(res=>{
+  await getHeader().then(res => {
     removeLoader(loader)
   });
   getPoster("", "read-blog.jpg");

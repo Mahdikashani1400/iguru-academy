@@ -96,6 +96,11 @@ function addProductsToContainer(productsArray, category) {
       })
       .join("")}
     `;
+  if (!productsContainer.innerHTML.trim()) {
+    productsContainer.innerHTML = `
+    <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5">محصولی در این دسته وجود ندارد !</div>
+      `
+  }
 }
 const categoryContainer = $.querySelector(".products__category-items");
 

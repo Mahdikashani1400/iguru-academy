@@ -145,7 +145,18 @@ async function getModals() {
 }
 window.goToSearchPage = goToSearchPage;
 function goToSearchPage() {
+  console.log('c');
   let searchBox = $.getElementById("searchBox");
   window.location.href = `search.html?searchValue=${searchBox.value}`;
 }
+
+
+$.body.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault()
+    const searchModal = $.getElementById("searchModal")
+    searchModal.classList.contains("show") ? goToSearchPage() : ""
+  }
+})
+
 export { getModals, ordersInfo };

@@ -146,6 +146,11 @@ function addCoursesToContainer(coursesArray, category) {
       })
       .join("")}  
   `;
+
+  if (!coursesContainer.innerHTML.trim()) {
+    coursesContainer.innerHTML = `
+    <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5">دوره ای در این دسته وجود ندارد !</div>`
+  }
 }
 const categoryContainer = $.querySelector(".learning__tags-container");
 

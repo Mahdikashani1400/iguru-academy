@@ -104,7 +104,6 @@ function selectionImg() {
 }
 const relatedProductsContainer = $.querySelector(".same__products__boxes");
 function showRelatedproducts() {
-  relatedProductsContainer.innerHTML = "";
   if (relatedProducts.length) {
     relatedProductsContainer.innerHTML = `
     ${relatedProducts
@@ -135,6 +134,9 @@ function showRelatedproducts() {
       `;
         })
         .join("")}`;
+  } else {
+    relatedProductsContainer.innerHTML = `
+    <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5">محصول مرتبطی وجود ندارد !</div>`;
   }
 }
 

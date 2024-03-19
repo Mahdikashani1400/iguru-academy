@@ -152,9 +152,9 @@ window.addEventListener("load", async () => {
 
 let courseTarget = null;
 
-function showPopularCourses(category) {
+async function showPopularCourses(category) {
   const coursesContainer = $.querySelector(".about__us_courses-boxes");
-  getPopularCourses().then((data) => {
+  await getPopularCourses().then((data) => {
     coursesContainer.innerHTML = `
     ${data
         .map((course) => {
@@ -237,6 +237,11 @@ function showPopularCourses(category) {
         })
         .join("")}
     `;
+    if (!coursesContainer.innerHTML.trim()) {
+      coursesContainer.innerHTML =
+        `
+      <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5">دوره ای در این دسته وجود ندارد !</div>`
+    }
   });
 }
 window.goToCourseDetail = goToCourseDetail;
@@ -244,7 +249,6 @@ async function showArticles() {
   const articlesContainer = $.querySelector(".blogs__boxes");
   articlesContainer.innerHTML = "";
   const articlesInfo = await getArticles().then((data) => data);
-  console.log(articlesInfo);
   articlesInfo.forEach((article) => {
 
     articlesContainer.insertAdjacentHTML(
@@ -280,7 +284,12 @@ async function showArticles() {
     );
   });
 
-  aricleSliderHome();
+  if (articlesContainer.innerHTML.trim()) {
+    aricleSliderHome();
+  } else {
+    articlesContainer.innerHTML = `
+    <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5">هنوز مقاله ای منتشر نشده است !</div>`
+  }
 }
 
 const categoryContainer = $.querySelector(".about__us_courses-menu ul");

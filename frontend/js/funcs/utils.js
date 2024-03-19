@@ -20,7 +20,7 @@ const showToast = async (title, icon, callback) => {
       timerProgressBar: true,
     })
     .then(async (result) => {
-      callback()
+      callback ? callback() : ''
     });
 };
 const setToLocalSt = (key, value) => {

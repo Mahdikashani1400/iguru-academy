@@ -59,12 +59,12 @@ function addArticlesToContainer(articlesArray, categoryID) {
       <div class="blog__box__content">
         <div class="blog__box__tags pt-4 pb-2">
           <a
-            href=""
+            href="javascript:void(0)"
             class="blog__box-category text-green fw-bold"
             >${article.title}</a
           ><span class="text-green px-1 fw-bold">/</span>
           <span class="fw-bold text-gray ps-2">توسط</span>
-          <a href="" class="blog__box__author fw-bold text-gray"
+          <a href="javascript:void(0)" class="blog__box__author fw-bold text-gray"
             >علی سلیمانی</a
           >
         </div>
@@ -72,7 +72,7 @@ function addArticlesToContainer(articlesArray, categoryID) {
         <div class="blog__box-text p pb-2">${article.description}
         </div>
         <a
-          href=""
+          href="javascript:void(0)"
           class="under__line-animate text-orange fw-bold d-inline-block pt-2 pb-1"
           >ادامه مطلب</a
         >
@@ -93,12 +93,12 @@ function addArticlesToContainer(articlesArray, categoryID) {
           <div class="blog__box__content">
             <div class="blog__box__tags pt-4 pb-2">
               <a
-                href=""
+                href="javascript:void(0)"
                 class="blog__box-category text-green fw-bold"
                 >${article.shortName}</a
               ><span class="text-green px-1 fw-bold">/</span>
               <span class="fw-bold text-gray ps-2">توسط</span>
-              <a href="" class="blog__box__author fw-bold text-gray"
+              <a href="javascript:void(0)" class="blog__box__author fw-bold text-gray"
                 >علی سلیمانی</a
               >
             </div>
@@ -106,7 +106,7 @@ function addArticlesToContainer(articlesArray, categoryID) {
             <div class="blog__box-text p pb-2">${article.description}
             </div>
             <a
-              href=""
+              href="javascript:void(0)"
               class="under__line-animate text-orange fw-bold d-inline-block pt-2 pb-1"
               >ادامه مطلب</a
             >
@@ -118,6 +118,10 @@ function addArticlesToContainer(articlesArray, categoryID) {
     })
     .join("")
     } `;
+  if (!articlesContainer.innerHTML.trim()) {
+    articlesContainer.innerHTML = `
+      <div class="empty__comments d-flex p justify-content-center align-items-center py-4 py-sm-5 w-100 mx-auto text-white rounded-3 fs-5">مقاله ای در این دسته وجود ندارد !</div>`
+  }
 }
 
 const categoryContainer = $.querySelector(".reading__category-items");

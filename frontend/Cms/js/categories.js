@@ -42,7 +42,6 @@ const title = $.getElementById('title')
 const destination = $.getElementById('destination')
 const createCategory = async (e) => {
     e.preventDefault()
-
     const newCategory = { title: destination.value, name: title.value }
 
     await addTarget("category", "دسته بندی", newCategory, "author").then(res => {
@@ -99,7 +98,7 @@ async function categoryInfoHandler(e) {
 function clearInputs() {
 
     title.value = ''
-    destination.value = ''
+    destination.value = 'course'
 }
 
 async function cleanAndGetInfo() {

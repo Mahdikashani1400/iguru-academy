@@ -201,7 +201,7 @@ const submitContactsMSG = async () => {
       );
     } else {
       showSwal(
-        "مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.",
+        "لطفا اطلاعات خود و پیام مورد نظر را کامل وارد کنید.",
         "error",
         "تصحیح اطلاعات"
       );
@@ -212,7 +212,7 @@ const submitContactsMSG = async () => {
 let infoComment = {};
 const sendComment = async (courseShortName, body, score, getAllComments) => {
   infoComment = {
-    body,
+    body: body.trim(),
     courseShortName,
     score,
   };
@@ -227,7 +227,7 @@ const sendComment = async (courseShortName, body, score, getAllComments) => {
     if (res.status === 201) {
       showToast("دیدگاه شما با موفقیت ارسال شد و پس از تایید منتشر خواهد شد.", "success", () => { });
     } else {
-      showToast("مشکلی وجود دارد، \nلطفا دوباره امتحان کنید.", "error");
+      showToast("لطفا کامنت خالی نفرستید 😐", "error");
     }
     getAllComments();
   });

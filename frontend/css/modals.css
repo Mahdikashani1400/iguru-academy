@@ -14,7 +14,7 @@
 .user__basket-modal .modal-content {
   width: 375px;
   min-height: 33%;
-  max-height: calc(100vh - 30px);
+  /* max-height: calc(100vh - 30px); */
   padding: 39px 34px 20px;
   text-align: center;
 }

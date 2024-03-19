@@ -283,6 +283,8 @@ input:focus::-webkit-input-placeholder {
   left: 0;
   transition: 0.4s all;
   background-color: #0909098a;
+  backdrop-filter: blur(4px);
+
 }
 .course__box-container:hover .course__box-content::after {
   background: var(--white-color);
