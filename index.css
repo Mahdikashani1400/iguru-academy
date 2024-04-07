@@ -1,4 +1,3 @@
-
 #particles-js {
     position: relative;
     width: 100%;
@@ -37,6 +36,8 @@ strong{
 .description{
     position: relative;
     margin: 20px 50px ;
+    text-transform: uppercase !important;
+    
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -53,7 +54,6 @@ strong{
     flex-direction: column;
     gap: 1.2rem;
     font-size: 16px;
-    text-transform: uppercase;
     background: #9f959514;
     backdrop-filter: blur(5px);
     box-shadow: 2px 0px 7px #ffffff4f inset, 2px 0px 7px #ffffff4f inset;
