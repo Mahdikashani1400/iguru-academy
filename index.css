@@ -33,7 +33,7 @@ strong{
     display: flex;
     justify-content: space-between;
 }
-.description{
+.description:not(:last-of-type){
     position: relative;
     margin: 20px 50px ;
     text-transform: uppercase !important;
