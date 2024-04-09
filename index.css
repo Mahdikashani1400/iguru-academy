@@ -36,12 +36,15 @@ strong{
 .description:not(:last-of-type){
     position: relative;
     margin: 20px 50px ;
-    text-transform: uppercase !important;
     
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+.description:not(:last-of-type){
+    text-transform: uppercase !important;
+
 }
 .desc_title{
     font-size: 20px;
