@@ -64,7 +64,7 @@ strong{
     border-radius: 10px;
     max-width: 906px;
 }
-.desc_box a{
+.desc_box a:not(.login_link){
     color: #fff !important;
 }
 .technology .desc_item{
@@ -74,6 +74,14 @@ strong{
 .features .desc_item{
     list-style: arabic-indic;
     list-style-position: inside;
+}
+
+.login_link{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #50eaed !important;
+    text-shadow: 1px 2px 3px;
 }
 
 @media screen and (max-width: 768px) {

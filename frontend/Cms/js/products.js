@@ -25,7 +25,7 @@ const getProductsTable = () => {
 
     productsTable.innerHTML = `
     ${productsInfo.map((product, index) => {
-        if (product.categoryID.title === 'product') {
+        if (product.categoryID?.title === 'product') {
             return `
   
       <tr class="" id="${product._id}"

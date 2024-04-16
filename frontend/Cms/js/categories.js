@@ -1,6 +1,6 @@
 import { createHeader } from "./funcs/header.js"
 import { getTarget, addTarget, removeTarget, UpdateTarget, removeLoader } from "./funcs/shared.js"
-import { showSwal } from "./funcs/utils.js"
+import { showToast } from "./funcs/utils.js"
 const $ = document;
 let categoriesInfo = null
 
@@ -60,12 +60,13 @@ async function categoryInfoHandler(e) {
 
     targetCategoryId = e.currentTarget.id
     if (e.target.classList.contains('remove')) {
-        showSwal('آیا از حذف دسته بندی مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
-            if (res.isConfirmed) {
-                await removeTarget(targetCategoryId, "category", "دسته بندی")
-                cleanAndGetInfo()
-            }
-        })
+        showToast("به دلایل امنیتی امکان حذف دسته بندی وجود ندارد .", "error");
+        // showSwal('آیا از حذف دسته بندی مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
+        //     if (res.isConfirmed) {
+        //         await removeTarget(targetCategoryId, "category", "دسته بندی")
+        //         cleanAndGetInfo()
+        //     }
+        // })
 
     } else if (e.target.classList.contains("edit")) {
         const categoryTargetInfo = categoriesInfo.find(category => category._id === targetCategoryId)
