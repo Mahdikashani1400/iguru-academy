@@ -11,6 +11,9 @@
   padding: 0.8rem 0 !important;
   width: 140px;
 }
+.swal2-confirm{
+  background-color: #7066e0 !important;
+}
 .swal2-cancel {
   background-color: #dc2626 !important;
 }

@@ -1,86 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" class="no-scroll">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>login-form</title>
-    <link rel="stylesheet" href="vendor/FontAwesome5/all.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link rel="stylesheet" href="css/login-form.css" />
-  </head>
-  <body>
-    <div class="loader_container">
-      <div class="loader"></div>
-    </div>
-    <div class="elements">
-      <main id="main">
-        <section class="login__form">
-          <div class="container">
-            <div
-              class="toggle__btns__form d-flex shadow rounded rounded-2 bg-light w-fit-content mx-auto mb-4"
-            >
-              <div class="p toggle__btn-arrive active py-2 px-3 rounded-end">
-                ورود
-              </div>
-              <div class="p toggle__btn-register py-2 px-3 rounded-start">
-                ثبت نام
-              </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>login-form</title>
+  <link rel="stylesheet" href="vendor/FontAwesome5/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="css/login-form.css" />
+</head>
+
+<body>
+  <div class="loader_container">
+    <div class="loader"></div>
+  </div>
+  <div class="elements">
+    <main id="main">
+      <section class="login__form">
+        <div class="container">
+          <div class="toggle__btns__form d-flex shadow rounded rounded-2 bg-light w-fit-content mx-auto mb-4">
+            <div class="p toggle__btn-arrive active py-2 px-3 rounded-end">
+              ورود
             </div>
-            <div
-              class="form__container shadow bg-white rounded rounded-2 row mx-2 px-md-3 px-2 py-4"
-            >
-              <div class="h1">وارد شدن</div>
-              <form class="">
-                <div class="form-group my-4 pe-sm-3">
-                  <label class="fw-bold" for="email"
-                    >نام کاربری یا پست الکترونیک *</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control py-3 my-2"
-                    id="email"
-                    placeholder="ایمیل یا نام کاربری"
-                  />
-                </div>
-                <div class="form-group my-4 pe-sm-3">
-                  <label class="fw-bold" for="password">کلمه عبور *</label>
-                  <input
-                    type="password"
-                    class="form-control py-3 my-2"
-                    id="password"
-                    placeholder="کلمه عبور"
-                  />
-                </div>
-                <div class="form-check d-flex align-items-center">
-                  <input type="checkbox" class="t" id="check" />
-                  <label class="form-check-label pe-2" for="check"
-                    >مرا به خاطر بسپار</label
-                  >
-                </div>
-                <button
-                  type="submit"
-                  class="btn bg-green text-white w-100 py-3 my-3 fw-bold"
-                >
-                  وارد شدن
-                </button>
-                <a href="#" class="text-green"
-                  >رمز عبور خود را فراموش کرده اید؟</a
-                >
-              </form>
+            <div class="p toggle__btn-register py-2 px-3 rounded-start">
+              ثبت نام
             </div>
           </div>
-        </section>
-      </main>
-    </div>
+          <div class="form__container shadow bg-white rounded rounded-2 row mx-2 px-md-3 px-2 py-4">
+            <div class="h1">وارد شدن</div>
+            <form class="">
+              <div class="form-group my-4 pe-sm-3">
+                <label class="fw-bold" for="email">نام کاربری یا پست الکترونیک *</label>
+                <input type="email" class="form-control py-3 my-2" id="email" placeholder="ایمیل یا نام کاربری" />
+              </div>
+              <div class="form-group my-4 pe-sm-3">
+                <label class="fw-bold" for="password">کلمه عبور *</label>
+                <input type="password" class="form-control py-3 my-2" id="password" placeholder="کلمه عبور" />
+              </div>
+              <div class="form-check d-flex align-items-center">
+                <input type="checkbox" class="t" id="check" />
+                <label class="form-check-label pe-2" for="check">مرا به خاطر بسپار</label>
+              </div>
+              <button type="submit" class="btn bg-green text-white w-100 py-3 my-3 fw-bold">
+                وارد شدن
+              </button>
+              <a href="#" class="text-green">رمز عبور خود را فراموش کرده اید؟</a>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-    <script src="vendor/Bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendor/Bootstrap/bootstrap.bundle.min.js"></script>
 
-    <script src="vendor/FontAwesome5/all.min.js"></script>
+  <script src="vendor/FontAwesome5/all.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/login-form.js" type="module"></script>
-  </body>
+  <!-- <script src="./vendor/Sweetalert2/app.js" type="module"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/login-form.js" type="module"></script>
+</body>
+
 </html>

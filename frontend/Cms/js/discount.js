@@ -7,10 +7,8 @@ let discountsInfo = null
 let coursesInfo = null
 
 window.addEventListener("load", async () => {
-    // sizeOfMenuHandler()
     createHeader()
     await getTarget("offs", "author").then(data => {
-        console.log(data);
 
         discountsInfo = data[0] ? data.reverse() : []
     })
@@ -80,7 +78,6 @@ async function createDiscount(e) {
 
         await addTarget("offs", "کد تخفیف", newDiscount, "author")
     } else {
-        console.log('dd');
         const newDiscount = { discount: percent.value }
         await addTarget("offs/all", "کد تخفیف", newDiscount, "author")
 
@@ -115,7 +112,6 @@ async function discountInfoHandler(e) {
     if (e.target.classList.contains("remove")) {
         showSwal('آیا از حذف کد تخفیف مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {
-                console.log(targetDiscountId);
                 await removeTarget(targetDiscountId, "offs", "کد تخفیف")
                 cleanAndGetInfo()
             }

@@ -33,7 +33,6 @@ const addTarget = async (target, targetFa, bodyObj, state = null) => {
         },
         body: JSON.stringify(bodyObj),
     })
-    console.log(res);
     if (res.status === 201 || res.status === 200) {
 
         showToast(`${targetFa} مد نظر با موفقیت اضافه شد.`, "success");
@@ -80,7 +79,6 @@ const addTargetFormData = async (target, targetFa, bodyObj) => {
 
 
 const removeTarget = async (id, target, targetFa) => {
-    console.log(id);
 
     await fetch(`${mainHost}/v1/${target}/${id}`, {
         method: "DELETE",
@@ -116,7 +114,6 @@ const UpdateTarget = async (target, id, targetFa, bodyObj) => {
             showToast("اطلاعات داده شده تکراری میباشند .", "error");
 
         } else if (res.status === 400) {
-            console.log(res.status);
 
             showToast("لطفا اطلاعات خود را به طور کامل وارد کنید.", "error");
 
@@ -155,7 +152,6 @@ const commentState = async (bodyObj, state, stateFa) => {
         },
         body: JSON.stringify(bodyObj),
     }).then(async (res) => {
-        console.log(res);
         if (res.status === 201 || res.status === 200) {
 
             showToast(`کامنت مد نظر با موفقیت ${stateFa} شد.`, "success");

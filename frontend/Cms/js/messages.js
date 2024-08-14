@@ -63,7 +63,6 @@ async function messageInfoHandler(e) {
     targetMessageId = e.currentTarget.id
 
     const messageTargetInfo = messagesInfo.find(message => message._id === targetMessageId)
-    console.log(messageTargetInfo);
     if (e.target.classList.contains('remove')) {
         showSwal('آیا از حذف پیام مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {

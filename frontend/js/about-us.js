@@ -35,7 +35,6 @@ window.addEventListener("load", async () => {
           type: "circle",
           stroke: {
             width: 0,
-            // color: "#000",
           },
           polygon: {
             nb_sides: 5,

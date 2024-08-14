@@ -5,7 +5,6 @@ import { showSwal } from "./funcs/utils.js";
 const $ = document;
 let usersInfo = null
 window.addEventListener("load", async () => {
-    // sizeOfMenuHandler()
     createHeader()
     cleanAndGetInfo()
 })
@@ -15,7 +14,6 @@ const usersTable = $.querySelector(".users__table tbody")
 function getUsersTable() {
     usersTable.innerHTML = `
     ${usersInfo.map((user, index) => {
-        console.log(user);
         return `
             <tr class="" id="${user._id}" onclick="userInfoHandler(event)">
             <th scope="col" class="">
@@ -60,7 +58,6 @@ async function addNewUser(e) {
         "کاربر",
         newUser
     ).then(res => {
-        console.log(res, res?.accessToken);
         res?.accessToken && cleanAndGetInfo()
     })
 }
@@ -74,7 +71,6 @@ async function cleanAndGetInfo() {
 
     await getTarget("users", "author").then(data => {
         usersInfo = data[0] ? data.reverse() : []
-        console.log(usersInfo);
         removeLoader(loader)
     })
     getUsersTable()

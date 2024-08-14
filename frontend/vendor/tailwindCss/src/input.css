@@ -118,9 +118,7 @@
 
   /* mony__info */
 
-  .mony__info .title {
-    @apply font-semibold text-xl;
-  }
+ 
 
   /* edit__info--admin */
   .title {
@@ -136,6 +134,9 @@
   .contain-input-swal textarea {
     height: 130px !important;
     padding-top: 1rem !important;
+  }
+  .swal2-confirm{
+    background-color: #7066e0 !important;
   }
   .customize__inputs input[type="file"] {
     @apply cursor-pointer focus:outline-none p-0;

@@ -189,7 +189,6 @@ const successLogin = async () => {
   let role = null
   await getUserInfo().then(data => {
     role = data.role
-    console.log(data);
   })
   if (role === "USER") {
     window.location.href = "index.html"
@@ -270,7 +269,6 @@ const login = (e) => {
   })
     .then((res) => {
       removeLoader(loader)
-      console.log(res);
       if (res.status === 200) {
         showToast("ورود با موفقیت انجام شد.", "success", successLogin);
       } else if (res.status === 401) {
@@ -289,7 +287,6 @@ const login = (e) => {
       return res.json();
     })
     .then((result) => {
-      console.log(result);
       result.accessToken ? setToken(result.accessToken) && getUserInfo() : null;
 
     });

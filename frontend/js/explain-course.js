@@ -154,10 +154,8 @@ async function registerToCourseHandler() {
           preConfirm: async () => {
             const discountCode = $.getElementById('discountCode')
             let discountInfo = null
-            console.log(discountCode, courseInfo._id);
             await useDiscountCode(discountCode.value, courseInfo).then(data => {
               discountInfo = data
-              console.log(discountInfo);
               if (discountInfo.code) {
                 showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
                 })
@@ -176,9 +174,7 @@ async function registerToCourseHandler() {
         registerUserToCourseTarget(courseInfo)
       }
     })
-    // await registerUserToCourseTarget(courseInfo).then(data => {
-    //   console.log(data);
-    // })
+
   } else if (!courseInfo.isUserRegisteredToThisCourse) {
     registerUserToCourseTarget(courseInfo).then(res => {
 
@@ -195,10 +191,6 @@ let sessionsCategory = null;
 let courseTime = 0;
 
 function showCourseSessions() {
-  // let sorted_obj = _.sortBy(courseInfo.sessions,
-  //   [function (o) { return o.title; }]);
-  // console.log(sorted_obj);
-
 
   sessionsContainer.innerHTML = "";
   if (!courseInfo.sessions.length) {
@@ -305,11 +297,9 @@ function showScoreUsersByStars() {
   StarNumberAverageVar = +(
     StarNumberAverageVar / _.sum(Object.values(scoresInfo))
   ).toFixed(1);
-  console.log(StarNumberAverageVar);
   StarNumberAverageElem.innerHTML = StarNumberAverageVar || 0;
 
   StarsIconsAverage.forEach((icon, index) => {
-    console.log(index + 1, +String(StarNumberAverageVar).split(".")[0] + 1);
     if (StarNumberAverageVar) {
       if (index + 1 <= String(StarNumberAverageVar).split(".")[0]) {
         icon.style.setProperty(
@@ -337,7 +327,6 @@ let notFoundourse = $.querySelector(".not__found__course");
 function showRelatedCourses() {
   if (relatedCourses.length) {
     relatedCoursesContainer.innerHTML = `${relatedCourses.map((course) => {
-      console.log(course);
       return `
           <div class="course__box rounded">
                             <div class="course__box-container d-flex flex-column justify-content-end text-white h-100"

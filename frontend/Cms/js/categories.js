@@ -5,13 +5,11 @@ const $ = document;
 let categoriesInfo = null
 
 window.addEventListener("load", async () => {
-    // sizeOfMenuHandler()
     createHeader()
     await getTarget("category").then(data => {
         categoriesInfo = data[0] ? data.reverse() : []
 
     })
-    console.log(categoriesInfo);
     cleanAndGetInfo()
 })
 
@@ -61,12 +59,7 @@ async function categoryInfoHandler(e) {
     targetCategoryId = e.currentTarget.id
     if (e.target.classList.contains('remove')) {
         showToast("به دلایل امنیتی امکان حذف دسته بندی وجود ندارد .", "error");
-        // showSwal('آیا از حذف دسته بندی مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
-        //     if (res.isConfirmed) {
-        //         await removeTarget(targetCategoryId, "category", "دسته بندی")
-        //         cleanAndGetInfo()
-        //     }
-        // })
+
 
     } else if (e.target.classList.contains("edit")) {
         const categoryTargetInfo = categoriesInfo.find(category => category._id === targetCategoryId)

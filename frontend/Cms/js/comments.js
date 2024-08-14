@@ -71,7 +71,6 @@ async function commentInfoHandler(e) {
     targetCommentId = e.currentTarget.id
 
     const commentTargetInfo = commentsInfo.find(comment => comment._id === targetCommentId)
-    console.log(commentTargetInfo);
     if (e.target.classList.contains('remove')) {
         showSwal('آیا از حذف کامنت مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
             if (res.isConfirmed) {
@@ -115,14 +114,12 @@ async function commentInfoHandler(e) {
             confirmButtonText: 'حله',
         });
     } else if (e.target.classList.contains('accept')) {
-        console.log({ body: commentTargetInfo.body },
-            `accept/${commentTargetInfo._id}`,
-            "تایید");
-        console.log(await commentState(
+
+        await commentState(
             { body: commentTargetInfo.body },
             `accept/${commentTargetInfo._id}`,
             "تایید"
-        ));
+        )
 
     } else if (e.target.classList.contains('reject')) {
         await commentState(

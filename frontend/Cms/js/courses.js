@@ -19,14 +19,11 @@ window.addEventListener("load", async () => {
 
 })
 const coursesTable = $.querySelector(".courses__table tbody")
-console.log(coursesTable);
 let counter = null
 const getCoursesTable = () => {
     counter = 0
-    console.log(coursesInfo);
     coursesTable.innerHTML = `
     ${coursesInfo.map((course, index) => {
-        console.log(course);
         if (course.categoryID?.title === 'course') {
             return `
             
@@ -86,7 +83,6 @@ const createCourse = async (e) => {
     })
     const categoryID = courseCategory.value
 
-    // console.log(descCourse);
     const newCourse = new FormData()
     newCourse.append("name", titleCourse.value.trim())
     newCourse.append("description", descCourse.trim())
@@ -98,7 +94,6 @@ const createCourse = async (e) => {
 
 
     await addTargetFormData("courses", "دوره", newCourse).then(res => {
-        console.log(res);
         res?.name && cleanAndGetInfo()
 
     })
@@ -125,7 +120,6 @@ window.courseInfoHandler = courseInfoHandler
 let targetCourseId = null
 
 function courseInfoHandler(e) {
-    // e.preventDefault()
     targetCourseId = e.currentTarget.id
     if (e.target.classList.contains('remove')) {
         showSwal('آیا از حذف دوره مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
@@ -157,7 +151,6 @@ async function cleanAndGetInfo() {
 
     })
     await getTarget("courses").then(data => {
-        console.log(data);
         coursesInfo = data[0] ? data : []
         removeLoader(loader)
     })

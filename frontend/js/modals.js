@@ -10,9 +10,7 @@ import {
 } from "../js/funcs/shared.js";
 const $ = document;
 let ordersInfo = null
-// window.addEventListener("load", async () => {
-//   console.log(ordersInfo);
-// });
+
 
 window.goToCourseDetail = goToCourseDetail
 window.goToProductDetail = goToProductDetail
@@ -21,7 +19,6 @@ async function getModals() {
   ordersInfo = await getAllOfOrders()
   let categoryOfCourses = await getCategoryOfCourses()
   let categoryTarget = null
-  console.log(categoryOfCourses);
   let sumOfPrice = null
   modals.innerHTML = `
 
@@ -145,7 +142,6 @@ async function getModals() {
 }
 window.goToSearchPage = goToSearchPage;
 function goToSearchPage() {
-  console.log('c');
   let searchBox = $.getElementById("searchBox");
   window.location.href = `search.html?searchValue=${searchBox.value}`;
 }

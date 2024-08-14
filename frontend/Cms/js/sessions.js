@@ -6,7 +6,6 @@ let coursesInfo = null
 let sessionsInfo = null
 
 window.addEventListener("load", async () => {
-    // sizeOfMenuHandler()
     createHeader()
     await getTarget("courses").then(data => {
         coursesInfo = data[0] ? data.reverse() : []
@@ -76,7 +75,6 @@ const createSession = async (e) => {
     const sessionState = Array.from(sessionStateContainer).find(input => {
         return input.checked
     }).value
-    console.log(sessionState);
     const newSession = new FormData()
     newSession.append("video", sessionVideo)
     newSession.append("title", titleSession.value.trim())

@@ -5,7 +5,6 @@ import { showSwal, showToast } from "./funcs/utils.js";
 const $ = document;
 let menusInfo = null
 window.addEventListener("load", async () => {
-  // sizeOfMenuHandler()
   createHeader()
   cleanAndGetInfo()
 })
@@ -84,16 +83,6 @@ const destination = $.getElementById('destination')
 const createMenu = async (e) => {
   e.preventDefault()
   showToast("به دلایل امنیتی امکان افزودن آیتمی به منو وجود ندارد .", "error");
-  // const itemParentId = menusInfo.find(item => {
-  //   return item.title === itemParent.value
-  // })?._id
-  // const newItemMenu = { title: title.value, href: destination.value.trim() ? destination.value + '.html' : "", parent: itemParentId }
-
-  // await addTarget("menus", "آیتم", newItemMenu, "author").then(res => {
-  //   res?.title && cleanAndGetInfo()
-
-  // })
-
 }
 const addItemBtn = $.getElementById('addItemBtn')
 addItemBtn.addEventListener('click', createMenu)
@@ -107,14 +96,6 @@ async function ItemInfoHandler(e) {
   targetItemId = e.currentTarget.id
   if (e.target.classList.contains('remove')) {
     showToast("به دلایل امنیتی امکان حذف آیتمی از منو وجود ندارد .", "error");
-    // showSwal('آیا از حذف آیتم مورد نظر اطمینان دارید؟', "error", ["بله", "خیر"], async (res) => {
-    //   if (res.isConfirmed) {
-    //     await removeTarget(targetItemId, "menus", "آیتم")
-    //     menusInfo = [...menusInfo].filter(item => item._id !== targetItemId)
-    //     getMenusTable()
-    //   }
-    // })
-
   }
 
 }

@@ -49,15 +49,12 @@ let productsInfoArray = [];
 let articlesInfoArray = [];
 
 function getSearchValueData() {
-  console.log(searchValueInfos.allResultCourses);
-  console.log(categoryInfos);
   searchValueInfos.allResultCourses.forEach((data) => {
     for (let i = 0; i < categoryInfos.length; i++) {
       if (data.categoryID == categoryInfos[i]._id && categoryInfos[i].title === "course") {
         coursesInfoArray.push(data)
         break
       } else if (data.categoryID == categoryInfos[i]._id && categoryInfos[i].title === "product") {
-        console.log('t');
         productsInfoArray.push(data)
         break
 
@@ -68,7 +65,6 @@ function getSearchValueData() {
   });
 
   articlesInfoArray = searchValueInfos.allResultArticles;
-  // coursesInfoArray = new Set()
 }
 
 let coursesContainer = $.querySelector(".search__courses");

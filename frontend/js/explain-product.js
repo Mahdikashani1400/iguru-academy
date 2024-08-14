@@ -165,7 +165,6 @@ function descriptionCourseToggle() {
   activeLastDescribe = $.querySelector(".details__content > div.active");
   activeLastDescribe.classList.remove("active");
   activeLastDescribe.classList.add("d-none");
-  console.log(this.dataset);
   activeNewDescribe = $.getElementById(`${this.dataset.bsTarget}`);
   activeNewDescribe.classList.add("active");
   activeNewDescribe.classList.remove("d-none");
@@ -185,7 +184,6 @@ function getAllComments() {
     
     ${productInfo.comments
         .map((comment) => {
-          console.log(comment);
           return `
         <div class="comment card py-4 my-3 border-1 px-sm-3 bg-normal position-relative d-flex px-0"
         >
@@ -362,7 +360,6 @@ function submitCommentHandler(e) {
 
 function addToBasketBtnHandler(e) {
   e.preventDefault()
-  console.log(productInfo);
   if (productInfo.price && !productInfo.isUserRegisteredToThisCourse) {
     swal.fire({ title: "آیا کد تخفیف داری؟", icon: "warning", confirmButtonText: "بله", showCancelButton: true, cancelButtonText: "خیر" }).then(res => {
       if (res.isConfirmed) {
@@ -377,10 +374,8 @@ function addToBasketBtnHandler(e) {
           preConfirm: async () => {
             const discountCode = $.getElementById('discountCode')
             let discountInfo = null
-            console.log(discountCode, productInfo._id);
             await useDiscountCode(discountCode.value, productInfo).then(data => {
               discountInfo = data
-              console.log(discountInfo);
               if (discountInfo.code) {
                 showToast("کد تخفیف با موفقیت اعمال شد.", "success", () => {
                 })
@@ -399,9 +394,6 @@ function addToBasketBtnHandler(e) {
         registerUserToCourseTarget(productInfo)
       }
     })
-    // await registerUserToCourseTarget(productInfo).then(data => {
-    //   console.log(data);
-    // })
   } else if (!productInfo.isUserRegisteredToThisCourse) {
     registerUserToCourseTarget(productInfo).then(res => {
 

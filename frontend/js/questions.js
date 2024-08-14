@@ -8,7 +8,7 @@ window.addEventListener("load", async () => {
   const loader = $.querySelector('.loader_container')
 
   await getModals();
-  await getHeader().then(res=>{
+  await getHeader().then(res => {
     removeLoader(loader)
   });
   let pageTitle = getPageTitle();
@@ -35,7 +35,6 @@ window.addEventListener("load", async () => {
           type: "circle",
           stroke: {
             width: 0,
-            // color: "#000",
           },
           polygon: {
             nb_sides: 5,

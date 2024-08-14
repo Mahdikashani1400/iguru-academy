@@ -47,7 +47,6 @@ window.addEventListener("load", async () => {
           type: "circle",
           stroke: {
             width: 0,
-            // color: "#000",
           },
           polygon: {
             nb_sides: 5,
@@ -327,4 +326,3 @@ function changeCategoryOfCourses(e) {
   showPopularCourses(e.target.innerHTML);
 }
 
-// particles

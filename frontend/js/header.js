@@ -364,7 +364,6 @@ async function showUserNameHandler() {
 let fixMenuContainer = null;
 let scrollMenuContainer = null;
 
-// let pageTitle = null;
 
 async function showMenus() {
   fixMenuContainer = navMenuFix.querySelector(".navbar-nav");

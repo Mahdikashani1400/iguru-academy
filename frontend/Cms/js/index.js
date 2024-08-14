@@ -8,7 +8,6 @@ window.addEventListener("load", async () => {
     await createHeader().then(res => {
         removeLoader(loader)
     })
-    console.log(adminInfos);
     createChart()
     getLastUsers()
 

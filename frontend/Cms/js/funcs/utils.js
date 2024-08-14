@@ -1,5 +1,5 @@
 const showSwal = (title, icon, [confirmButtonText, cancelButtonText], callback) => {
-    swal
+    Swal
         .fire({
             title,
             icon,
@@ -12,7 +12,7 @@ const showSwal = (title, icon, [confirmButtonText, cancelButtonText], callback) 
         });
 };
 const showToast = (title, icon, callback) => {
-    swal
+    Swal
         .fire({
             position: "center",
             icon,

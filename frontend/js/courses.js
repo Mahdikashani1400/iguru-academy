@@ -64,7 +64,6 @@ function addCoursesToContainer(coursesArray, category) {
         } else {
           return "";
         }
-        console.log(courseTarget);
         return `
        
       <div class="course__box rounded">
@@ -192,7 +191,6 @@ function changeActivityCategoryBox(elem) {
 window.seacrhInputHandler = seacrhInputHandler;
 let searchInput = $.getElementById("searchCourses");
 function seacrhInputHandler(e) {
-  console.log(searchInput.value);
   searchInData(
     coursesInfo,
     "name",

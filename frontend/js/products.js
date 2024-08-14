@@ -182,16 +182,9 @@ async function sortedProductByUser(e) {
       break;
     }
     case "first": {
-      console.log(productsInfo);
       outPutArray = [...productsInfo].reverse();
       break;
     }
-    // case "score" : {
-    //   outPutArray =productsInfo.filter(product=>{
-
-    //   })
-    //   break
-    // }
   }
   showProducts(outPutArray, categoryTargetText);
 }

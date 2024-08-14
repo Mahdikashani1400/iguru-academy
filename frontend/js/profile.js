@@ -21,7 +21,6 @@ window.addEventListener("load", async () => {
   })
   showUserInfoHandler()
   getFooter();
-  console.log(userInfo);
 
 });
 

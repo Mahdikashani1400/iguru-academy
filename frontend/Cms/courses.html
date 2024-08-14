@@ -1,178 +1,143 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl" class="no-scroll">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/sweet-alert.css" />
-    <link rel="stylesheet" href="styles/ckEditor.css" />
-  </head>
-  <body>
-    <svg class="icons hidden"></svg>
-    <div class="loader_container">
-      <div class="loader"></div>
-    </div>
-    <nav class="header__nav"></nav>
-    <div class="body__content mr-72">
-      <header class="header"></header>
-      <main>
-        <section class="new__course">
-          <div class="container">
-            <h1 class="title">دوره جدید</h1>
-            <form
-              class="customize__inputs"
-              action="javascript:void(0)"
-              enctype="multipart/form-data"
-              onsubmit="formSubmitHandlert()"
-            >
-              <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
-                <div>
-                  <label for="title" class="">نام دوره</label>
-                  <input
-                    type="text"
-                    id="title"
-                    class=""
-                    placeholder="کتاب"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="price" class="">قیمت دوره</label>
-                  <input
-                    type="text"
-                    dir="ltr"
-                    id="price"
-                    class=""
-                    placeholder="120000"
-                    required
-                  />
-                </div>
 
-                <div class="">
-                  <label class="" for="file_input">عکس دوره</label>
-                  <input class="" id="file_input" type="file" />
-                </div>
-                <div>
-                  <label for="dest" class="">لینک</label>
-                  <input
-                    type="text"
-                    lang="en"
-                    dir="ltr"
-                    id="dest"
-                    class=""
-                    placeholder="test-course"
-                    required
-                  />
-                </div>
-                <div class="">
-                  <label for="courseCategory" class="">انتخاب دسته بندی</label>
-                  <select id="courseCategory" class="">
-                    <option value="زبان انگلیسی">زبان انگلیسی</option>
-                    <option value="زبان انگلیسی">زبان انگلیسی</option>
-                    <option value="زبان انگلیسی">زبان انگلیسی</option>
-                    <option value="زبان انگلیسی">زبان انگلیسی</option>
-                  </select>
-                </div>
-                <div class="md:col-span-2">
-                  <label for="editor" class="">توضیحات دوره</label>
-                  <textarea name="" id="editor" rows="8"></textarea>
-                </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/sweet-alert.css" />
+  <link rel="stylesheet" href="styles/ckEditor.css" />
+</head>
+
+<body>
+  <svg class="icons hidden"></svg>
+  <div class="loader_container">
+    <div class="loader"></div>
+  </div>
+  <nav class="header__nav"></nav>
+  <div class="body__content mr-72">
+    <header class="header"></header>
+    <main>
+      <section class="new__course">
+        <div class="container">
+          <h1 class="title">دوره جدید</h1>
+          <form class="customize__inputs" action="javascript:void(0)" enctype="multipart/form-data"
+            onsubmit="formSubmitHandlert()">
+            <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
+              <div>
+                <label for="title" class="">نام دوره</label>
+                <input type="text" id="title" class="" placeholder="کتاب" required />
+              </div>
+              <div>
+                <label for="price" class="">قیمت دوره</label>
+                <input type="text" dir="ltr" id="price" class="" placeholder="120000" required />
               </div>
 
-              <button type="submit" class="" id="addCourseBtn">
-                افزودن دوره
-              </button>
-            </form>
-          </div>
-        </section>
-        <section class="courses__table">
-          <div class="container">
-            <div
-              class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main"
-            >
-              <h4
-                class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800"
-              >
-                لیست <span class="text-blue-primary">دوره ها</span>
-              </h4>
-              <table class="public__table">
-                <thead class="">
-                  <tr>
-                    <th scope="col" class="px-6 py-3">
-                      <input
-                        type="checkbox"
-                        class="rounded-[5px] focus:drop-shadow"
-                      />
-                    </th>
-                    <th scope="col" class="">شماره</th>
-                    <th scope="col" class="">نام دوره</th>
-                    <th scope="col" class="">دسته بندی</th>
-                    <th scope="col" class="">امتیاز</th>
-                    <th scope="col" class="">تعداد دانشجویان</th>
-                    <th scope="col" class="">قیمت</th>
-                    <th scope="col" class="">ویرایش</th>
-                    <th scope="col" class="">حذف</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="">
-                    <th scope="col" class="px-6 py-3">
-                      <input
-                        type="checkbox"
-                        class="rounded-[5px] focus:drop-shadow"
-                      />
-                    </th>
-                    <th scope="row" class="">23344</th>
-                    <td class="px-5 py-5">زبان انگلیسی پیشرفته</td>
-                    <td class="px-5 py-5">550</td>
-                    <td class="px-5 py-5">در حال فروش</td>
-                    <td class="px-5 py-5">88</td>
-                    <td class="px-5 py-5">50,000</td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="edit">ویرایش</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="remove">حذف</a>
-                    </td>
-                  </tr>
-                  <tr class="">
-                    <th scope="col" class="px-6 py-3">
-                      <input
-                        type="checkbox"
-                        class="rounded-[5px] focus:drop-shadow"
-                      />
-                    </th>
-                    <th scope="row" class="">23344</th>
-                    <td class="px-5 py-5">زبان انگلیسی پیشرفته</td>
-                    <td class="px-5 py-5">550</td>
-                    <td class="px-5 py-5">در حال فروش</td>
-                    <td class="px-5 py-5">88</td>
-                    <td class="px-5 py-5">50,000</td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="edit">ویرایش</a>
-                    </td>
-                    <td class="px-4 py-5">
-                      <a href="#" class="remove">حذف</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="">
+                <label class="" for="file_input">عکس دوره</label>
+                <input class="" id="file_input" type="file" />
+              </div>
+              <div>
+                <label for="dest" class="">لینک</label>
+                <input type="text" lang="en" dir="ltr" id="dest" class="" placeholder="test-course" required />
+              </div>
+              <div class="">
+                <label for="courseCategory" class="">انتخاب دسته بندی</label>
+                <select id="courseCategory" class="">
+                  <option value="زبان انگلیسی">زبان انگلیسی</option>
+                  <option value="زبان انگلیسی">زبان انگلیسی</option>
+                  <option value="زبان انگلیسی">زبان انگلیسی</option>
+                  <option value="زبان انگلیسی">زبان انگلیسی</option>
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label for="editor" class="">توضیحات دوره</label>
+                <textarea name="" id="editor" rows="8"></textarea>
+              </div>
             </div>
+
+            <button type="submit" class="" id="addCourseBtn">
+              افزودن دوره
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="courses__table">
+        <div class="container">
+          <div class="overflow-x-auto rounded-md bg-white dark:bg-gray-800 shadow-main">
+            <h4 class="font-bold text-xl my-5 px-4 dark:text-white text-zinc-800">
+              لیست <span class="text-blue-primary">دوره ها</span>
+            </h4>
+            <table class="public__table">
+              <thead class="">
+                <tr>
+                  <th scope="col" class="px-6 py-3">
+                    <input type="checkbox" class="rounded-[5px] focus:drop-shadow" />
+                  </th>
+                  <th scope="col" class="">شماره</th>
+                  <th scope="col" class="">نام دوره</th>
+                  <th scope="col" class="">دسته بندی</th>
+                  <th scope="col" class="">امتیاز</th>
+                  <th scope="col" class="">تعداد دانشجویان</th>
+                  <th scope="col" class="">قیمت</th>
+                  <th scope="col" class="">ویرایش</th>
+                  <th scope="col" class="">حذف</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <th scope="col" class="px-6 py-3">
+                    <input type="checkbox" class="rounded-[5px] focus:drop-shadow" />
+                  </th>
+                  <th scope="row" class="">23344</th>
+                  <td class="px-5 py-5">زبان انگلیسی پیشرفته</td>
+                  <td class="px-5 py-5">550</td>
+                  <td class="px-5 py-5">در حال فروش</td>
+                  <td class="px-5 py-5">88</td>
+                  <td class="px-5 py-5">50,000</td>
+                  <td class="px-4 py-5">
+                    <a href="#" class="edit">ویرایش</a>
+                  </td>
+                  <td class="px-4 py-5">
+                    <a href="#" class="remove">حذف</a>
+                  </td>
+                </tr>
+                <tr class="">
+                  <th scope="col" class="px-6 py-3">
+                    <input type="checkbox" class="rounded-[5px] focus:drop-shadow" />
+                  </th>
+                  <th scope="row" class="">23344</th>
+                  <td class="px-5 py-5">زبان انگلیسی پیشرفته</td>
+                  <td class="px-5 py-5">550</td>
+                  <td class="px-5 py-5">در حال فروش</td>
+                  <td class="px-5 py-5">88</td>
+                  <td class="px-5 py-5">50,000</td>
+                  <td class="px-4 py-5">
+                    <a href="#" class="edit">ویرایش</a>
+                  </td>
+                  <td class="px-4 py-5">
+                    <a href="#" class="remove">حذف</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </section>
-      </main>
-    </div>
-    <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../vendor/tailwindCss/node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
-    <script type="module" src="./js/courses.js"></script>
+  <script type="module" src="./js/courses.js"></script>
 
-    <script>
-      const formSubmitHandlert = (event) => {
-        event.preventDefault();
-      };
-    </script>
-  </body>
+  <script>
+    const formSubmitHandlert = (event) => {
+      event.preventDefault();
+    };
+  </script>
+</body>
+
 </html>
